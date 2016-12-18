@@ -1,0 +1,79 @@
+@import "../../../contrib/zurb_foundation/scss/foundation/functions";
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i,900');
+
+$row-width: rem-calc(1280);
+
+$white       	: #FFFFFF;
+$ghost       	: #FAFAFA;
+$snow        	: #F9F9F9;
+$vapor       	: #F6F6F6;
+$white-smoke 	: #F5F5F5;
+$silver      	: #EFEFEF;
+$smoke       	: #EEEEEE;
+$gainsboro   	: #DDDDDD;
+$iron        	: #CCCCCC;
+$base        	: #AAAAAA;
+$aluminum    	: #999999;
+$jumbo       	: #888888;
+$monsoon     	: #777777;
+$steel       	: #666666;
+$charcoal    	: #555555;
+$tuatara     	: #444444;
+$oil         	: #333333;
+$jet         	: #222222;
+$black       	: #000000;
+$rhs-dark-blue	: #040A1A;
+$rhs-maroon		: #582011;
+$rhs-green		: #648F3F;
+$rhs-beige		: #FAE5BA;
+$rhs-light-blue	: #055F82;
+
+$font-family-sans-serif: "Nunito Sans", Arial, Helvetica, sans-serif;
+$font-family-serif: "Baskerville", serif;
+
+$topbar-height: rem-calc(75) !default;
+$topbar-margin-bottom: rem-calc(20) !default;
+$topbar-bg-color: $oil !default;
+$topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%) !default;
+$topbar-title-font-size: rem-calc(25) !default;
+$topbar-title-weight: bolder !default;
+$topbar-link-font-size: rem-calc(14) !default;
+$topbar-link-color: #fafafa !default;
+.top-bar .menu li:not(:last-child) {
+	border-right: 1px solid #4e4e4e;
+}
+
+.people-grid-item {text-align: center;}
+.people-row {margin-bottom: 2rem;}
+.staff-listing-image {margin-bottom: 10px;}
+.staff-listing-name {font-weight: 700;}
+.staff-listing-position {line-height: .5em;}
+.profile-bio {margin-top: 1.5em;}
+.vmiddle {padding-top: 2.5em;}
+
+.article-listing-item {margin-top: 1em; padding-bottom: 1em; padding-right: 1em; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
+.article-listing-title {font-weight: bold; font-size: 1.3em; padding-bottom: .25em;}
+.article-listing-body p {font-size: .9em;}
+.article-listing-display-name {display: inline;}
+.article-listing-author {margin-bottom: .5em;}
+.article-listing-author-image {display: inline;}
+.article-listing-date {font-size: .85em; padding: .5em 0;}
+.article-listing-topics {display: inline;}
+.article-listing-topics-wrapper {display: inline; font-size: .85rem;}
+.catarch {padding-top: 1em;}
+.article-topics-block {padding-bottom: 2em;}
+.article-body {padding-top: 2em;}
+.article-topics-label {font-size: 1.25em; font-weight: bold;}
+.article-topics {display: inline;}
+.bc-active-page {color: black;}
+.search-form-button {font-size: small;}
+.pager__items {margin: auto;}
+.pager__item {display:inline; padding: 1em; }
+.accordion-content {padding: 0 .5em 2em; }
+
+.profile-staff-listing-image {margin-bottom: 1rem;}
+.profile-details {padding: 0 0 0 1em;} 
+.profile-staff-listing-name {margin-bottom: .5rem; font-weight: 700;}
+.profile-staff-listing-position {margin-bottom: .5rem; font-style: italic;}
+.profile-staff-listing-email {margin-bottom: .5rem;}
+.profile-staff-listing-linkedin {margin-bottom: .5rem;}

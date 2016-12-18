@@ -1,7 +1,0 @@
-global:
-  version: VERSION
-  css:
-    base:
-      css/cobalt.css: {}
-  js:
-    js/cobalt.js: {}
