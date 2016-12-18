@@ -1,0 +1,110 @@
+.footer {
+  background-color: $rhs-dark-blue;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 4rem;
+  
+  .inline-list a {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    line-height: 35px;
+    margin: 0 3px 0 0;
+  }
+  
+    .contact {
+    list-style-type: none;
+    font-size: 1rem;
+    margin-top: -1rem;
+    text-align: left;
+    vertical-align: middle;
+
+    color: #fff;
+    
+    li {
+      margin-bottom: 1rem;
+      
+      p {
+      vertical-align: text-bottom;
+      }
+    }
+    
+    i {
+      position: absolute;
+      background-color: #33383b;
+      color: #fff;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      line-height: 1rem;
+      margin: 0 0 0 -4rem;
+      vertical-align: middle;
+      padding: .25em .45em;
+    }
+  }
+
+  
+  .copywrite {
+    color: #FFF;
+    font-size: 0.875rem;
+    margin: 0 0 1rem 0;
+  }
+  
+  .about {
+    color: #92999f;
+    font-size: 0.875rem;
+    margin: 0 0 1rem 0;
+  }
+  
+  .footer-links a {
+    list-style: none;
+    font-weight: bold;
+    color: #fff;
+    padding: 1rem 0 2rem;
+    margin: 0;
+    font-size: 1rem;
+    
+    &::after {
+      content: "•";
+      padding: 0 0.2rem 0 0.4rem;
+    }
+    
+    &:last-child::after {
+      content: "";
+      padding: 0 0.4rem 0 0.8rem;
+    }
+  }
+  
+  @media only screen and (min-width: 40.063em) {
+    
+    p {
+      text-align: left;
+    }
+    
+    .social {
+      text-align: left;
+      margin: 0;
+    }
+    
+    .contact {
+      text-align: left;
+      > i {
+        margin-right: 1rem;
+      }
+    }
+    
+  }
+}
+   
+.logo {
+  color: #fff;
+  font-size: 1.25rem;
+  
+  img {
+    margin-right: 0.5rem;
+  }
+}

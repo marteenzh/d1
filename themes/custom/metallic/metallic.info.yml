@@ -1,0 +1,53 @@
+name: Metallic
+description: "A custom sub-theme of <a href=\"http://foundation.zurb.com/docs/index.php\">Zurb Foundation</a> for Roundhouse Solutions."
+core: 8.x
+type: theme
+base theme: zurb_foundation
+
+# Image appears on admin/appearance
+# screenshot: images/screenshot.jpg
+
+# Uncomment these lines and change "STARTER" to your theme name if you
+# need to add custom CSS or JS
+libraries:
+ - metallic/global
+
+# Regions are output in the page.html.twig
+
+regions:
+  meta_header: 'Meta Header'
+  header: Header
+  help: Help
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  highlighted: Highlighted
+  breadcrumbs: Breadcrumbs
+  page_title: 'Page Title'
+  content: Content
+  half_left: 'Half Left'
+  half_right: 'Half Right'
+  triptych_left: 'Triptych Left'
+  triptych_center: 'Triptych Center'
+  triptych_right: 'Triptych Right'
+  two_thirds_left: 'Two Thirds Left'
+  one_third_right: 'One Third Right'
+  sidebar_first: 'Left Sidebar'
+  sidebar_second: 'Right Sidebar'
+  footer_first: 'Footer first column'
+  footer_middle: 'Footer middle column'
+  footer_last: 'Footer last column'
+  left_off_canvas: 'Left off canvas'
+  right_off_canvas: 'Right off canvas'
+regions_hidden:
+  page_top: 'Page Top'
+  page_bottom: 'Page bottom'
+
+# Hidden regions
+# regions_hidden[]: Page top
+# regions_hidden[]: Page bottom
+
+features:
+  - logo
+  - name
+  - slogan
+  - favicon

@@ -1,0 +1,10 @@
+global:
+  version: VERSION
+  css:
+    base:
+      css/metallic.css: {}
+  js:
+    js/metallic.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

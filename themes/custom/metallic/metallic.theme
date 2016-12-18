@@ -1,0 +1,74 @@
+<?php
+
+// Add your custom theme override functions here.
+
+/**
+ * Implements hook_preprocess_block()
+ */
+function metallic_preprocess_block(&$variables) {
+	$variables['logopath'] = '/' . drupal_get_path('theme','metallic') . '/logo.svg';
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+}
+
+/**
+ * Implements template_preprocess_field().
+ */
+function metallic_preprocess_field(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_html().
+ *
+ * Adds additional classes
+ */
+function metallic_preprocess_html(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_node
+ *
+ * Add template suggestions and classes
+ */
+function metallic_preprocess_node(&$variables) {
+}
+/**
+ * Implements template_preprocess_menu
+ *
+ * Add convenience variables and template suggestions
+ */
+
+function metallic_preprocess_menu(&$variables) {
+	$variables['logopath'] = '/' . drupal_get_path('theme','metallic') . '/logo.svg';
+}
+/**
+ * Implements template_preprocess_page
+ *
+ * Add convenience variables and template suggestions
+ */
+function metallic_preprocess_page(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_views_view().
+ */
+function metallic_preprocess_views_view(&$variables) {}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ * @param array $suggestions
+ * @param array $variables
+ */
+function metallic_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+}
+/** Implements a theme hook for content type Article.
+*/
+function metallic_theme_suggestions_page_alter(array &$suggestions, array $variables, $hook) {
+  // Try to get the node, so we can check if we're on the node page.
+  $node = Drupal::request()->attributes->get('node');
+  if ($node && $node->getType() == 'Article') {
+    $suggestions[] = 'page__article';
+  }
+}
