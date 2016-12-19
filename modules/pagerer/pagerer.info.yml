@@ -1,0 +1,12 @@
+type: module
+# core: 8.x
+name: Pagerer
+description: 'Configurable pager styles.'
+package: User interface
+configure: entity.pagerer_preset.collection
+
+# Information added by Drupal.org packaging script on 2016-09-18
+version: '8.x-1.1'
+core: '8.x'
+project: 'pagerer'
+datestamp: 1474201181
