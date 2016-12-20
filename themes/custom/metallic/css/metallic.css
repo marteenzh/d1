@@ -31,41 +31,46 @@
 }
 
 /* line 46, ../scss/base/_init.scss */
+.body-trim {
+  padding: 0 3rem;
+}
+
+/* line 48, ../scss/base/_init.scss */
 .people-grid-item {
   text-align: center;
 }
 
-/* line 47, ../scss/base/_init.scss */
+/* line 49, ../scss/base/_init.scss */
 .people-row {
   margin-bottom: 2rem;
 }
 
-/* line 48, ../scss/base/_init.scss */
+/* line 50, ../scss/base/_init.scss */
 .staff-listing-image {
   margin-bottom: 10px;
 }
 
-/* line 49, ../scss/base/_init.scss */
+/* line 51, ../scss/base/_init.scss */
 .staff-listing-name {
   font-weight: 700;
 }
 
-/* line 50, ../scss/base/_init.scss */
+/* line 52, ../scss/base/_init.scss */
 .staff-listing-position {
   line-height: .5em;
 }
 
-/* line 51, ../scss/base/_init.scss */
+/* line 53, ../scss/base/_init.scss */
 .profile-bio {
   margin-top: 1.5em;
 }
 
-/* line 52, ../scss/base/_init.scss */
+/* line 54, ../scss/base/_init.scss */
 .vmiddle {
   padding-top: 2.5em;
 }
 
-/* line 54, ../scss/base/_init.scss */
+/* line 56, ../scss/base/_init.scss */
 .article-listing-item {
   margin-top: 1em;
   padding-bottom: 1em;
@@ -75,149 +80,149 @@
   border-width: thin;
 }
 
-/* line 55, ../scss/base/_init.scss */
+/* line 57, ../scss/base/_init.scss */
 .article-listing-title {
   font-weight: bold;
   font-size: 1.3em;
   padding-bottom: .25em;
 }
 
-/* line 56, ../scss/base/_init.scss */
+/* line 58, ../scss/base/_init.scss */
 .article-listing-body p {
   font-size: .9em;
 }
 
-/* line 57, ../scss/base/_init.scss */
+/* line 59, ../scss/base/_init.scss */
 .article-listing-display-name {
   display: inline;
 }
 
-/* line 58, ../scss/base/_init.scss */
+/* line 60, ../scss/base/_init.scss */
 .article-listing-author {
   margin-bottom: .5em;
 }
 
-/* line 59, ../scss/base/_init.scss */
+/* line 61, ../scss/base/_init.scss */
 .article-listing-author-image {
   display: inline;
 }
 
-/* line 60, ../scss/base/_init.scss */
+/* line 62, ../scss/base/_init.scss */
 .article-listing-date {
   font-size: .85em;
   padding: .5em 0;
 }
 
-/* line 61, ../scss/base/_init.scss */
+/* line 63, ../scss/base/_init.scss */
 .article-listing-topics {
   display: inline;
 }
 
-/* line 62, ../scss/base/_init.scss */
+/* line 64, ../scss/base/_init.scss */
 .article-listing-topics-wrapper {
   display: inline;
   font-size: .85rem;
 }
 
-/* line 63, ../scss/base/_init.scss */
+/* line 65, ../scss/base/_init.scss */
 .catarch {
   padding-top: 1em;
 }
 
-/* line 64, ../scss/base/_init.scss */
+/* line 66, ../scss/base/_init.scss */
 .article-topics-block {
   padding-bottom: 2em;
 }
 
-/* line 65, ../scss/base/_init.scss */
+/* line 67, ../scss/base/_init.scss */
 .article-body {
   padding-top: 2em;
 }
 
-/* line 66, ../scss/base/_init.scss */
+/* line 68, ../scss/base/_init.scss */
 .article-topics-label {
   font-size: 1.25em;
   font-weight: bold;
 }
 
-/* line 67, ../scss/base/_init.scss */
+/* line 69, ../scss/base/_init.scss */
 .article-topics {
   display: inline;
 }
 
-/* line 68, ../scss/base/_init.scss */
+/* line 70, ../scss/base/_init.scss */
 .bc-active-page {
   color: black;
 }
 
-/* line 69, ../scss/base/_init.scss */
+/* line 71, ../scss/base/_init.scss */
 .search-form-button {
   font-size: small;
 }
 
-/* line 70, ../scss/base/_init.scss */
+/* line 72, ../scss/base/_init.scss */
 .pager__items {
   margin: auto;
 }
 
-/* line 71, ../scss/base/_init.scss */
+/* line 73, ../scss/base/_init.scss */
 .pager__item {
   display: inline;
   padding: 1em;
 }
 
-/* line 72, ../scss/base/_init.scss */
+/* line 74, ../scss/base/_init.scss */
 .accordion-content {
   padding: 0 .5em 2em;
 }
 
-/* line 74, ../scss/base/_init.scss */
+/* line 76, ../scss/base/_init.scss */
 .profile-staff-listing-image {
   margin-bottom: 1rem;
 }
 
-/* line 75, ../scss/base/_init.scss */
+/* line 77, ../scss/base/_init.scss */
 .profile-details {
   padding: 0 0 0 1em;
 }
 
-/* line 76, ../scss/base/_init.scss */
+/* line 78, ../scss/base/_init.scss */
 .profile-staff-listing-name {
   margin-bottom: .5rem;
   font-weight: 700;
 }
 
-/* line 77, ../scss/base/_init.scss */
+/* line 79, ../scss/base/_init.scss */
 .profile-staff-listing-position {
   margin-bottom: .5rem;
   font-style: italic;
 }
 
-/* line 78, ../scss/base/_init.scss */
+/* line 80, ../scss/base/_init.scss */
 .profile-staff-listing-email {
   margin-bottom: .5rem;
 }
 
-/* line 79, ../scss/base/_init.scss */
+/* line 81, ../scss/base/_init.scss */
 .profile-staff-listing-linkedin {
   margin-bottom: .5rem;
 }
 
-/* line 81, ../scss/base/_init.scss */
+/* line 83, ../scss/base/_init.scss */
 .social-icons {
   display: inline-block;
   margin: 0 0 0 1em;
   vertical-align: 3px;
 }
 
-/* line 82, ../scss/base/_init.scss */
+/* line 84, ../scss/base/_init.scss */
 .social-icon-style {
   font-size: 24px;
 }
 
-/* line 83, ../scss/base/_init.scss */
+/* line 85, ../scss/base/_init.scss */
 .social-block {
-  margin: 2em 2em;
+  margin: 0 0;
 }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */

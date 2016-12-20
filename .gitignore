@@ -27,6 +27,9 @@ tmp*
 sites/*/files/
 sites/*/settings.php
 
+# Ignore sass-cache files.
+*.sass-cache*
+
 # Exclude IDE's project directory
 nbproject
 .idea
