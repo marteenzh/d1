@@ -203,6 +203,23 @@
   margin-bottom: .5rem;
 }
 
+/* line 81, ../scss/base/_init.scss */
+.social-icons {
+  display: inline-block;
+  margin: 0 0 0 1em;
+  vertical-align: 3px;
+}
+
+/* line 82, ../scss/base/_init.scss */
+.social-icon-style {
+  font-size: 24px;
+}
+
+/* line 83, ../scss/base/_init.scss */
+.social-block {
+  margin: 2em 2em;
+}
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
