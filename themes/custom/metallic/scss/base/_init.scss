@@ -53,7 +53,7 @@ $topbar-link-color: #fafafa !default;
 .profile-bio {margin-top: 1.5em;}
 .vmiddle {padding-top: 2.5em;}
 
-.article-listing-item {margin-top: 1em; padding-bottom: 1em; padding-right: 1em; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
+.article-listing-item {margin-top: 1em; padding-bottom: 1em; padding-right: 2em; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
 .article-listing-title {font-weight: bold; font-size: 1.3em; padding-bottom: .25em;}
 .article-listing-body p {font-size: .9em;}
 .article-listing-display-name {display: inline;}
@@ -63,12 +63,13 @@ $topbar-link-color: #fafafa !default;
 .article-listing-topics {display: inline;}
 .article-listing-topics-wrapper {display: inline; font-size: .85rem;}
 .catarch {padding-top: 1em;}
-.article-topics-block {padding-bottom: 2em;}
+.article-topics-block {padding: 0 1em 2em 1em;}
 .article-body {padding-top: 2em;}
 .article-topics-label {font-size: 1.25em; font-weight: bold;}
 .article-topics {display: inline;}
 .bc-active-page {color: black;}
 .search-form-button {font-size: small;}
+.blog-page-search {padding: 1em;}
 .pager__items {margin: auto;}
 .pager__item {display:inline; padding: 1em; }
 .accordion-content {padding: 0 .5em 2em; }
