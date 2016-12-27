@@ -74,7 +74,7 @@
 .article-listing-item {
   margin-top: 1em;
   padding-bottom: 1em;
-  padding-right: 1em;
+  padding-right: 2em;
   border-bottom-style: solid;
   border-bottom-color: #404040;
   border-width: thin;
@@ -131,7 +131,7 @@
 
 /* line 66, ../scss/base/_init.scss */
 .article-topics-block {
-  padding-bottom: 2em;
+  padding: 0 1em 2em 1em;
 }
 
 /* line 67, ../scss/base/_init.scss */
@@ -161,66 +161,71 @@
 }
 
 /* line 72, ../scss/base/_init.scss */
+.blog-page-search {
+  padding: 1em;
+}
+
+/* line 73, ../scss/base/_init.scss */
 .pager__items {
   margin: auto;
 }
 
-/* line 73, ../scss/base/_init.scss */
+/* line 74, ../scss/base/_init.scss */
 .pager__item {
   display: inline;
   padding: 1em;
 }
 
-/* line 74, ../scss/base/_init.scss */
+/* line 75, ../scss/base/_init.scss */
 .accordion-content {
   padding: 0 .5em 2em;
 }
 
-/* line 76, ../scss/base/_init.scss */
+/* line 77, ../scss/base/_init.scss */
 .profile-staff-listing-image {
   margin-bottom: 1rem;
 }
 
-/* line 77, ../scss/base/_init.scss */
+/* line 78, ../scss/base/_init.scss */
 .profile-details {
   padding: 0 0 0 1em;
 }
 
-/* line 78, ../scss/base/_init.scss */
+/* line 79, ../scss/base/_init.scss */
 .profile-staff-listing-name {
   margin-bottom: .5rem;
   font-weight: 700;
 }
 
-/* line 79, ../scss/base/_init.scss */
+/* line 80, ../scss/base/_init.scss */
 .profile-staff-listing-position {
   margin-bottom: .5rem;
   font-style: italic;
 }
 
-/* line 80, ../scss/base/_init.scss */
+/* line 81, ../scss/base/_init.scss */
 .profile-staff-listing-email {
   margin-bottom: .5rem;
 }
 
-/* line 81, ../scss/base/_init.scss */
+/* line 82, ../scss/base/_init.scss */
 .profile-staff-listing-linkedin {
   margin-bottom: .5rem;
 }
 
-/* line 83, ../scss/base/_init.scss */
+/* line 84, ../scss/base/_init.scss */
 .social-icons {
   display: inline-block;
   margin: 0 0 0 1em;
   vertical-align: 3px;
 }
 
-/* line 84, ../scss/base/_init.scss */
+/* line 85, ../scss/base/_init.scss */
 .social-icon-style {
   font-size: 24px;
 }
 
-/* line 85, ../scss/base/_init.scss */
+/* line 86, ../scss/base/_init.scss */
 .social-block {
   margin: 0 0;
 }
@@ -9489,7 +9494,6 @@ meta.foundation-mq-topbar {
 /* line 210, ../scss/modules/_topbar.scss */
 .top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {
   color: #fafafa;
-  display: inline-block;
   font-weight: bolder;
   padding: 0 0.52083rem;
   width: 75%;
