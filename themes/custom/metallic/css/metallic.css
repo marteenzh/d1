@@ -230,6 +230,12 @@
   margin: 0 0;
 }
 
+/* line 88, ../scss/base/_init.scss */
+.video-title {
+  font-weight: bolder;
+  padding: .875rem 0;
+}
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
