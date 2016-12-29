@@ -1,10 +1,11 @@
 global:
-  version: VERSION
+  version: 1.x
   css:
-    base:
+    theme:
       css/metallic.css: {}
+      css/fonts/foundation-icons/foundation-icons.css: {}
   js:
     js/metallic.js: {}
   dependencies:
-    - core/drupal
     - core/jquery
+    - core/jquery.once

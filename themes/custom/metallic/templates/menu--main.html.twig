@@ -21,24 +21,24 @@
 #}
 
 {% if top_bar %}
-  <div class="{{ top_bar_classes }}">
-    <nav class="top-bar" data-topbar data-options="{{ top_bar_options }}" >
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="/">{{ site_name }}</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon">
-          <a href="#"><span>{{ top_bar_menu_text }}</span></a>
-        </li>
-      </ul>
+    <div class="{{ top_bar_classes }}">
+      <nav class="top-bar" data-topbar data-options="{{ top_bar_options }}" >
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="/">{{ site_name }}</a></h1>
+          </li>
+         <li class="toggle-topbar menu-icon">
+           <a href="#"><span>{{ top_bar_menu_text }}</span></a>
+          </li>
+        </ul>
       <section class="top-bar-section">
         {{ menus.menu_links(items, attributes, 0, 1) }}
         {% if top_bar_search %}
           {{ top_bar_search }}
         {% endif %}
       </section>
-    </nav>
-  </div>
+      </nav>
+    </div>
 {% else %}
   {{ menus.menu_links(items, attributes, 0, 0) }}
 {% endif %}
