@@ -40,7 +40,6 @@ db_offline ? 'db-offline',
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
-    <script src="themes/custom/metallic/js/vendor/modernizr.js"></script>
     </head>
   <body{{ attributes.addClass(body_classes) }}>
   <a href="#main-content" class="visually-hidden focusable skip-link">
@@ -50,12 +49,10 @@ db_offline ? 'db-offline',
   {{ page }}
   {{ page_bottom }}
   <js-bottom-placeholder token="{{ placeholder_token|raw }}">
-  <script src="themes/custom/metallic/js/vendor/jquery.js"></script>
-  <script src="themes/custom/metallic/js/fastclick/lib/fastclick.js"></script>
-  <script src="themes/custom/metallic/js/foundation.min.js"></script>
-  <script src="themes/custom/metallic/js/foundation/foundation.topbar.js"></script>
   <script>
-  $(document).foundation();
+    (function ($) {
+      $(document).foundation();
+    })(jQuery);
   </script>
   </body>
 
