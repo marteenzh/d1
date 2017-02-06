@@ -1,6 +1,9 @@
 langcode: und
 status: true
 dependencies:
+  config:
+    - views.view.file_entity_browser
+    - image.style.file_entity_browser_small
   enforced:
     module:
       - file_browser
