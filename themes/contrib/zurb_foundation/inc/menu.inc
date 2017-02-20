@@ -51,13 +51,15 @@ function zurb_foundation_menu_local_task(&$variables) {
 function zurb_foundation_preprocess_menu__off_canvas(&$variables) {
   $blocks = \Drupal::service('block.repository')->getVisibleBlocksPerRegion();
   foreach (array('left', 'right') as $direction) {
-    foreach ($blocks[$direction . '_off_canvas'] as $block) {
-      $plugin = $block->getPlugin();
-      if ($plugin->getBaseId() == 'system_menu_block') {
-        $menu_name = str_replace('-', '_', $plugin->getDerivativeId());
-        if ($variables['theme_hook_original'] == 'menu__' . $menu_name) {
-          $variables['attributes']['class'][] = $direction . '-submenu';
-          break;
+    if (!empty($blocks[$direction . '_off_canvas'])) {
+      foreach ($blocks[$direction . '_off_canvas'] as $block) {
+        $plugin = $block->getPlugin();
+        if ($plugin->getBaseId() == 'system_menu_block') {
+          $menu_name = str_replace('-', '_', $plugin->getDerivativeId());
+          if ($variables['theme_hook_original'] == 'menu__' . $menu_name) {
+            $variables['attributes']['class'][] = $direction . '-submenu';
+            break;
+          }
         }
       }
     }

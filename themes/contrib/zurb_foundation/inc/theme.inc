@@ -7,9 +7,15 @@ function zurb_foundation_theme_suggestions_alter(&$suggestions, $variables, $hoo
   if ($hook == 'menu' || $hook == 'block') {
     // For menu blocks, check to see if the menu block is placed in an off-canvas
     // region, and if so use our custom template.
-    $blocks = \Drupal::service('block.repository')->getVisibleBlocksPerRegion();
-    $blocks = array_merge($blocks['left_off_canvas'], $blocks['right_off_canvas']);
-    foreach ($blocks as $block) {
+    $all_blocks = \Drupal::service('block.repository')->getVisibleBlocksPerRegion();
+    $off_canvas_blocks = [];
+    if (!empty($all_blocks['left_off_canvas'])) {
+      $off_canvas_blocks += $all_blocks['left_off_canvas'];
+    }
+    if (!empty($all_blocks['right_off_canvas'])) {
+      $off_canvas_blocks += $all_blocks['right_off_canvas'];
+    }
+    foreach ($off_canvas_blocks as $block) {
       $plugin = $block->getPlugin();
       if ($plugin->getBaseId() == 'system_menu_block') {
         $menu_name = str_replace('-', '_', $plugin->getDerivativeId());

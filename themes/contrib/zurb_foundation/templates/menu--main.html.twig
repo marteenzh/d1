@@ -22,10 +22,10 @@
 
 {% if top_bar %}
   <div class="{{ top_bar_classes }}">
-    <nav class="top-bar" data-topbar data-options="{{ top_bar_options }}" >
+    <nav class="top-bar" data-topbar data-options="{{ top_bar_options }}" role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#">{{ site_name }}</a></h1>
+          <h1>{{ site_name }}</h1>
         </li>
         <li class="toggle-topbar menu-icon">
           <a href="#"><span>{{ top_bar_menu_text }}</span></a>
