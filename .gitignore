@@ -26,6 +26,9 @@ tmp*
 # Excludes for installed Drupal site
 sites/*/files/
 sites/*/settings.php
+sites/development.services.yml
+sites/default/settings.local.php
+sites/default/services.yml
 
 # Ignore sass-cache files.
 *.sass-cache*
