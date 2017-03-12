@@ -8,22 +8,45 @@
 use Drupal\Core\DrupalKernel;
 use Drupal\Core\Extension\ModuleHandler;
 use Drupal\libraries\ExternalLibrary\Asset\AttachableAssetLibraryRegistrationInterface;
+use Drupal\libraries\ExternalLibrary\Utility\LibraryAccessorInterface;
+use Drupal\libraries\ExternalLibrary\Utility\LibraryIdAccessorInterface;
 use Symfony\Component\Yaml\Parser;
 
 /**
  * Implements hook_library_info_build().
+ *
+ * Register external asset libraries with Drupal core's library APIs.
  */
 function libraries_library_info_build() {
   /** @var \Drupal\libraries\ExternalLibrary\LibraryManagerInterface $library_manager */
   $library_manager = \Drupal::service('libraries.manager');
-
   $attachable_libraries = [];
+  $libraries_with_errors = [];
   foreach ($library_manager->getRequiredLibraryIds() as $external_library_id) {
-    $external_library = $library_manager->getLibrary($external_library_id);
-    $library_type = $external_library->getType();
-    if ($library_type instanceof AttachableAssetLibraryRegistrationInterface) {
-      $attachable_libraries += $library_type->getAttachableAssetLibraries($external_library, $library_manager);
+    try {
+      $external_library = $library_manager->getLibrary($external_library_id);
+      $library_type = $external_library->getType();
+      if ($library_type instanceof AttachableAssetLibraryRegistrationInterface) {
+        $attachable_libraries += $library_type->getAttachableAssetLibraries($external_library, $library_manager);
+      }
     }
+    catch (\Exception $e) {
+      // Library-specific exceptions should not be allowed to kill the rest of
+      // the build process, but should be logged.
+      if ($e instanceof LibraryIdAccessorInterface || $e instanceof LibraryAccessorInterface) {
+        $libraries_with_errors[] = $external_library_id;
+        watchdog_exception('libraries', $e);
+      }
+      else {
+        // Re-throw exceptions that are not library-specific.
+        throw $e;
+      }
+    }
+  }
+  // If we had library specific errors also log an informative message to
+  // tell admins that detection will not be run again without a cache clear.
+  if ($libraries_with_errors) {
+    \Drupal::logger('libraries')->error('The following external libraries could not successfully be registered with Drupal core: @libs. See earlier log entries for more details. Once these issues are addressed please be sure to clear your Drupal library cache to ensure external library detection is run again.', ['@libs' => implode(',', $libraries_with_errors)]);
   }
   return $attachable_libraries;
 }

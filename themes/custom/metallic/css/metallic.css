@@ -760,7 +760,7 @@ body {
   background: #fff;
   color: #222;
   cursor: auto;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.5;
@@ -2379,7 +2379,7 @@ select {
   background: #EFEFEF;
   color: #222222;
   display: block;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   padding: 1rem;
 }
@@ -3011,7 +3011,7 @@ button, .button {
   border-style: solid;
   border-width: 0;
   cursor: pointer;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -3020,7 +3020,7 @@ button, .button {
   text-decoration: none;
   display: inline-block;
   padding: 1rem 2rem 1.0625rem 2rem;
-  font-size: 0.8125rem;
+  font-size: 1rem;
   background-color: #008CBA;
   border-color: #007095;
   color: #FFFFFF;
@@ -3107,22 +3107,22 @@ button.info:hover, button.info:focus, .button.info:hover, .button.info:focus {
 /* line 231, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.large, .button.large {
   padding: 1.125rem 2.25rem 1.1875rem 2.25rem;
-  font-size: 1.0625rem;
+  font-size: 1.25rem;
 }
 /* line 232, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.small, .button.small {
   padding: 0.875rem 1.75rem 0.9375rem 1.75rem;
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
 }
 /* line 233, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.tiny, .button.tiny {
   padding: 0.625rem 1.25rem 0.6875rem 1.25rem;
-  font-size: 0.5rem;
+  font-size: 0.6875rem;
 }
 /* line 234, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.expand, .button.expand {
   padding: 1rem 2rem 1.0625rem 2rem;
-  font-size: 0.8125rem;
+  font-size: 1rem;
   padding-bottom: 1.0625rem;
   padding-top: 1rem;
   padding-left: 1rem;
@@ -5247,7 +5247,7 @@ kbd {
 /* line 91, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label {
   display: inline-block;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: 1;
   margin-bottom: auto;
@@ -5811,7 +5811,7 @@ ul.pagination li {
 .pricing-table .title {
   background-color: #333333;
   color: #EEEEEE;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   padding: 0.9375rem 1.25rem;
@@ -5821,7 +5821,7 @@ ul.pagination li {
 .pricing-table .price {
   background-color: #F6F6F6;
   color: #333333;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: normal;
   padding: 0.9375rem 1.25rem;
@@ -6217,7 +6217,7 @@ ul.pagination li {
 /* line 118, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav {
   display: block;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   list-style-position: outside;
   list-style-type: none;
   margin: 0;
@@ -6248,7 +6248,7 @@ ul.pagination li {
 /* line 91, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li.active > a:first-child:not(.button) {
   color: #1cc7ff;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
 /* line 97, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
@@ -6434,7 +6434,7 @@ ul.pagination li {
 .sub-nav li {
   color: #999999;
   float: left;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   font-weight: normal;
   margin-left: 1rem;
@@ -7114,7 +7114,7 @@ p aside {
 /* line 255, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #222222;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.4;
@@ -9286,7 +9286,7 @@ th.hide-for-touch {
   display: block;
   background-color: #040A1A;
   color: #FFFFFF;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
 }
@@ -9612,7 +9612,7 @@ meta.foundation-mq-topbar {
 .top-bar-section ul li > a {
   color: #fafafa;
   display: block;
-  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   font-weight: normal;
   padding-left: 1.5625rem;
