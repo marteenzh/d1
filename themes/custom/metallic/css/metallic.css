@@ -9150,12 +9150,16 @@ th.hide-for-touch {
 
 /* line 1, ../scss/modules/_footer.scss */
 .footer {
-  background-color: #040A1A;
+  background-color: #222222;
   text-align: center;
   font-size: 1.2rem;
   padding: 4rem;
 }
 /* line 7, ../scss/modules/_footer.scss */
+.footer h4 {
+  color: #fff;
+}
+/* line 10, ../scss/modules/_footer.scss */
 .footer .inline-list a {
   display: inline-block;
   width: 2rem;
@@ -9168,7 +9172,7 @@ th.hide-for-touch {
   line-height: 35px;
   margin: 0 3px 0 0;
 }
-/* line 20, ../scss/modules/_footer.scss */
+/* line 23, ../scss/modules/_footer.scss */
 .footer .contact {
   list-style-type: none;
   font-size: 1rem;
@@ -9177,15 +9181,15 @@ th.hide-for-touch {
   vertical-align: middle;
   color: #fff;
 }
-/* line 29, ../scss/modules/_footer.scss */
+/* line 32, ../scss/modules/_footer.scss */
 .footer .contact li {
   margin-bottom: 1rem;
 }
-/* line 32, ../scss/modules/_footer.scss */
+/* line 35, ../scss/modules/_footer.scss */
 .footer .contact li p {
   vertical-align: text-bottom;
 }
-/* line 37, ../scss/modules/_footer.scss */
+/* line 40, ../scss/modules/_footer.scss */
 .footer .contact i {
   position: absolute;
   background-color: #33383b;
@@ -9197,19 +9201,19 @@ th.hide-for-touch {
   vertical-align: middle;
   padding: .25em .45em;
 }
-/* line 51, ../scss/modules/_footer.scss */
+/* line 54, ../scss/modules/_footer.scss */
 .footer .copywrite {
   color: #FFF;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
 }
-/* line 57, ../scss/modules/_footer.scss */
+/* line 60, ../scss/modules/_footer.scss */
 .footer .about {
   color: #92999f;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
 }
-/* line 63, ../scss/modules/_footer.scss */
+/* line 66, ../scss/modules/_footer.scss */
 .footer .footer-links a {
   list-style: none;
   font-weight: bold;
@@ -9218,42 +9222,42 @@ th.hide-for-touch {
   margin: 0;
   font-size: 1rem;
 }
-/* line 71, ../scss/modules/_footer.scss */
+/* line 74, ../scss/modules/_footer.scss */
 .footer .footer-links a::after {
   content: "•";
   padding: 0 0.2rem 0 0.4rem;
 }
-/* line 76, ../scss/modules/_footer.scss */
+/* line 79, ../scss/modules/_footer.scss */
 .footer .footer-links a:last-child::after {
   content: "";
   padding: 0 0.4rem 0 0.8rem;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 84, ../scss/modules/_footer.scss */
+  /* line 87, ../scss/modules/_footer.scss */
   .footer p {
     text-align: left;
   }
-  /* line 88, ../scss/modules/_footer.scss */
+  /* line 91, ../scss/modules/_footer.scss */
   .footer .social {
     text-align: left;
     margin: 0;
   }
-  /* line 93, ../scss/modules/_footer.scss */
+  /* line 96, ../scss/modules/_footer.scss */
   .footer .contact {
     text-align: left;
   }
-  /* line 95, ../scss/modules/_footer.scss */
+  /* line 98, ../scss/modules/_footer.scss */
   .footer .contact > i {
     margin-right: 1rem;
   }
 }
 
-/* line 103, ../scss/modules/_footer.scss */
+/* line 106, ../scss/modules/_footer.scss */
 .logo {
   color: #fff;
   font-size: 1.25rem;
 }
-/* line 107, ../scss/modules/_footer.scss */
+/* line 110, ../scss/modules/_footer.scss */
 .logo img {
   margin-right: 0.5rem;
 }
@@ -9400,7 +9404,7 @@ meta.foundation-mq-topbar {
 /* line 110, ../scss/modules/_topbar.scss */
 .contain-to-grid {
   width: 100%;
-  background: #333333;
+  background: #222222;
 }
 /* line 114, ../scss/modules/_topbar.scss */
 .contain-to-grid .top-bar {
@@ -9436,7 +9440,7 @@ meta.foundation-mq-topbar {
 
 /* line 147, ../scss/modules/_topbar.scss */
 .top-bar {
-  background: #333333;
+  background: #222222;
   height: 4.6875rem;
   line-height: 4.6875rem;
   margin-bottom: 1.25rem;
@@ -9558,7 +9562,7 @@ meta.foundation-mq-topbar {
 }
 /* line 263, ../scss/modules/_topbar.scss */
 .top-bar.expanded .title-area {
-  background: #333333;
+  background: #222222;
 }
 /* line 268, ../scss/modules/_topbar.scss */
 .top-bar.expanded .toggle-topbar a {
@@ -9599,7 +9603,7 @@ meta.foundation-mq-topbar {
 /* line 314, ../scss/modules/_topbar.scss */
 .top-bar-section .divider,
 .top-bar-section [role="separator"] {
-  border-top: solid 1px #1a1a1a;
+  border-top: solid 1px #111111;
   clear: both;
   height: 1px;
   width: 100%;
@@ -9922,7 +9926,7 @@ meta.foundation-mq-topbar {
 @media only screen and (min-width: 40.0625em) {
   /* line 483, ../scss/modules/_topbar.scss */
   .top-bar {
-    background: #333333;
+    background: #222222;
     overflow: visible;
   }
   /* line 239, ../../../contrib/zurb_foundation/scss/foundation/components/_global.scss */
@@ -9971,7 +9975,7 @@ meta.foundation-mq-topbar {
   }
   /* line 516, ../scss/modules/_topbar.scss */
   .top-bar.expanded {
-    background: #333333;
+    background: #222222;
   }
 
   /* line 521, ../scss/modules/_topbar.scss */
@@ -10008,7 +10012,7 @@ meta.foundation-mq-topbar {
   }
   /* line 554, ../scss/modules/_topbar.scss */
   .top-bar-section li:not(.has-form) a:not(.button) {
-    background: #333333;
+    background: #222222;
     line-height: 4.6875rem;
     padding: 0 1.5625rem;
   }
@@ -10124,7 +10128,7 @@ meta.foundation-mq-topbar {
   /* line 667, ../scss/modules/_topbar.scss */
   .top-bar-section > ul > .divider,
   .top-bar-section > ul > [role="separator"] {
-    border-right: solid 1px #4e4e4e;
+    border-right: solid 1px #3f3f3f;
     border-bottom: none;
     border-top: none;
     clear: none;
@@ -10133,7 +10137,7 @@ meta.foundation-mq-topbar {
   }
   /* line 677, ../scss/modules/_topbar.scss */
   .top-bar-section .has-form {
-    background: #333333;
+    background: #222222;
     height: 4.6875rem;
     padding: 0 1.5625rem;
   }

@@ -1,9 +1,12 @@
 .footer {
-  background-color: $rhs-dark-blue;
+  background-color: $jet;
   text-align: center;
   font-size: 1.2rem;
   padding: 4rem;
   
+  h4 {
+    color: #fff;
+  }
   .inline-list a {
     display: inline-block;
     width: 2rem;
