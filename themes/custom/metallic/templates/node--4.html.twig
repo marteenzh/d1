@@ -89,8 +89,8 @@
 
   {# We hide the comments and links now so that we can render them later. #}
   <div{{ content_attributes }}>
-<div class="large-3 columns"> {{ content.field_basic_page_image }} </div>
-    <div class="large-9 columns"> {{ content.body }} </div>
+<div class="large-9 columns end"> {{ content.field_basic_page_image }} </div>
+    <div class="large-9 columns end"> <span class="about-body">{{ content.body }} </span></div>
       </div>
 
   {% if content.field_tags|length and not is_front %}
