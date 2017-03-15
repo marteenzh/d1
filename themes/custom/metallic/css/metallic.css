@@ -237,9 +237,8 @@
 }
 
 /* line 90, ../scss/base/_init.scss */
-.about-body {
-  padding: 0;
-  margin: 0;
+.header-image {
+  margin-bottom: 2em;
 }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */

@@ -89,11 +89,8 @@
 
   {# We hide the comments and links now so that we can render them later. #}
   <div{{ content_attributes }}>
-    <div class="large-9 columns end">
-      <div class="header-image">{{content.field_basic_page_image}}</div>
-    </div>
-    <div class="large-9 columns end"> 
-      {{ content.body }}
+    <div class="body-trim">
+    {{ content|without('comment', 'links', 'field_tags') }}
     </div>
   </div>
 
