@@ -67,7 +67,8 @@
  * @ingroup themeable
  */
 #}
-<article id="node-{{ node.id }}" {{ attributes }}>
+    <article id="node-{{ node.id }}" {{ attributes }}>
+  <div class="large-9 columns end">
 
   {{ title_prefix }}
   {% if not page %}
@@ -81,33 +82,22 @@
     <div class="posted">
       {{ author_picture }}
       <div{{ author_attributes }}>
-        {% trans %}Contributed by {{ author_name }} on {{ date }}{% endtrans %}
+        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
         {{ metadata }}
       </div>
     </div>
   {% endif %}
 
   {# We hide the comments and links now so that we can render them later. #}
-  <div class="row">
-    <div class="large-8 columns large-centered end">
-          {{ content.field_image}}
-    </div>
+  <div{{ content_attributes }}>
+    {{ content|without('comment', 'links', 'field_tags') }}
   </div>
-  <div class="row">
-    <div class="large-8 columns large-centered end">
-<div{{ content_attributes }}> 
-        {{ content|without('comment', 'links', 'field_tags', 'field_image') }}
-      </div>
-    </div>    
-  </div>
+
   {% if content.field_tags|length and not is_front %}
     {{ content.field_tags }}
   {% endif %}
 
   {{ content.links }}
-    <div class="row"
-      <div class="large-9 end"
-      {{ content.comment }}
-      </div>
-    </div>
+  {{ content.comment }}
+  </div>
     </article>

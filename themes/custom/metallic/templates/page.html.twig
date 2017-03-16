@@ -93,21 +93,21 @@
       {% endif %}
     {% endif %}
 
-    <header class="top-bar">
+    <header class="top-bar row">
       {% if linked_site_name or linked_logo %}
-        <div class="large-2 columns">
-          {% if linked_logo %}
-            {{ linked_logo }}
-          {% endif %}
-        </div>
+          <div class="large-2 columns">
+            {% if linked_logo %}
+              {{ linked_logo }}
+            {% endif %}
+          </div>
         
-        <div class="large-4 columns">
-          {% if is_front %}
-            <h1 id="site-name">{{ linked_site_name }}</h1>
-          {% else %}
-            <div id="site-name">{{ linked_site_name }}</div>
-          {% endif %}
-        </div>
+          <div class="large-4 columns">
+            {% if is_front %}
+              <h1 id="site-name">{{ linked_site_name }}</h1>
+            {% else %}
+              <div id="site-name">{{ linked_site_name }}</div>
+            {% endif %}
+          </div>
       {% endif %}
       
       {% if page.header %}
@@ -225,6 +225,7 @@
         </div>
       </div>  
     {% endif %}
+    
     <div class="row">
       {% if page.content_top %}
         <div class="{{ main_grid }} columns">  
