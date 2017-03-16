@@ -3,25 +3,16 @@
 // Add your custom theme override functions here.
 
 /**
- * Implements hook_preprocess_block()
- */
-function metallic_preprocess_block(&$variables) {
-	$variables['logopath'] = '/' . drupal_get_path('theme','metallic') . '/logo.svg';
-  $variables['site_name'] = \Drupal::config('system.site')->get('name');
-}
-
-/**
- * Implements template_preprocess_field().
- */
-function metallic_preprocess_field(&$variables) {
-}
-
-/**
  * Implements template_preprocess_html().
  *
  * Adds additional classes
  */
 function metallic_preprocess_html(&$variables) {
+}
+/**
+ * Implements template_preprocess_field().
+ */
+function metallic_preprocess_field(&$variables) {
 }
 
 /**
@@ -128,7 +119,13 @@ $site_name = isset($variables['site_name']) ? $variables['site_name'] : \Drupal:
   // Variable to disable hard-coded login elements.
   $variables['show_account_info'] = theme_get_setting('metallic_page_account_info');
 }
-
+/**
+ * Implements hook_preprocess_block()
+ */
+function metallic_preprocess_block(&$variables) {
+  $variables['logopath'] = '/' . drupal_get_path('theme','metallic') . '/logo.svg';
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+}
 /**
  * Implements template_preprocess_views_view().
  */
