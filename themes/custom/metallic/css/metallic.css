@@ -236,6 +236,11 @@
   padding: .875rem 0;
 }
 
+/* line 90, ../scss/base/_init.scss */
+.header-image {
+  margin-bottom: 2em;
+}
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
