@@ -136,6 +136,24 @@ function metallic_preprocess_views_view(&$variables) {}
  * @param array $suggestions
  * @param array $variables
  */
+function metallic_theme_suggestions_form_alter(&$suggestions, &$vars, $hook) {
+  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('entity');
+  if (!empty($request)) {
+    $suggestions[] = 'form__' . $request;
+  }
+}
+function metallic_theme_suggestions_container_alter(&$suggestions, &$vars, $hook) {
+  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('entity');
+  if (!empty($request)) {
+    $suggestions[] = 'container__' . $request;
+  }
+}
+function metallic_theme_suggestions_details_alter(&$suggestions, &$vars, $hook) {
+  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('entity');
+  if (!empty($request)) {
+    $suggestions[] = 'details__' . $request;
+  }
+}
 function metallic_theme_suggestions_block_alter(array &$suggestions, array $variables) {
   if (isset($variables['elements']['content']['#block_content'])) {
     array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());

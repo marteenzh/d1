@@ -85,6 +85,10 @@ $topbar-link-color: #fafafa !default;
 .social-icon-style {font-size: 24px;}
 .social-block {margin: 0 0;}
 
+.video-details {display: block; padding: 1em 0;}
 .video-title {font-weight: bolder; padding: .875rem 0;}
+.video-category {font-size: 1em; display: inline-flex;}
+.video-body {display: block; padding-top: 1em; border-top: solid 1px; clear:both;}
+
 
 .header-image {margin-bottom: 2em;}

@@ -231,12 +231,32 @@
 }
 
 /* line 88, ../scss/base/_init.scss */
+.video-details {
+  display: block;
+  padding: 1em 0;
+}
+
+/* line 89, ../scss/base/_init.scss */
 .video-title {
   font-weight: bolder;
   padding: .875rem 0;
 }
 
 /* line 90, ../scss/base/_init.scss */
+.video-category {
+  font-size: 1em;
+  display: inline-flex;
+}
+
+/* line 91, ../scss/base/_init.scss */
+.video-body {
+  display: block;
+  padding-top: 1em;
+  border-top: solid 1px;
+  clear: both;
+}
+
+/* line 94, ../scss/base/_init.scss */
 .header-image {
   margin-bottom: 2em;
 }
