@@ -24,53 +24,29 @@
  * - https://drupal.org/node/1887922
  * - http://smacss.com/
  */
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i,900");
-/* line 42, ../scss/base/_init.scss */
+@import url("https://fonts.googleapis.com/css?family=Merriweather:700|Source+Sans+Pro:400,400i,700");
+/* line 73, ../scss/base/_init.scss */
 .top-bar .menu li:not(:last-child) {
   border-right: 1px solid #4e4e4e;
 }
 
-/* line 46, ../scss/base/_init.scss */
+/* Default Link Styles */
+/* line 83, ../scss/base/_init.scss */
 .body-trim {
   padding: 0 3rem;
 }
 
-/* line 48, ../scss/base/_init.scss */
-.people-grid-item {
-  text-align: center;
-}
-
-/* line 49, ../scss/base/_init.scss */
-.people-row {
-  margin-bottom: 2rem;
-}
-
-/* line 50, ../scss/base/_init.scss */
-.staff-listing-image {
-  margin-bottom: 10px;
-}
-
-/* line 51, ../scss/base/_init.scss */
-.staff-listing-name {
-  font-weight: 700;
-}
-
-/* line 52, ../scss/base/_init.scss */
-.staff-listing-position {
-  line-height: .5em;
-}
-
-/* line 53, ../scss/base/_init.scss */
+/* line 85, ../scss/base/_init.scss */
 .profile-bio {
   margin-top: 1.5em;
 }
 
-/* line 54, ../scss/base/_init.scss */
+/* line 86, ../scss/base/_init.scss */
 .vmiddle {
   padding-top: 2.5em;
 }
 
-/* line 56, ../scss/base/_init.scss */
+/* line 88, ../scss/base/_init.scss */
 .article-listing-item {
   margin-top: 1em;
   padding-bottom: 1em;
@@ -80,163 +56,149 @@
   border-width: thin;
 }
 
-/* line 57, ../scss/base/_init.scss */
+/* line 89, ../scss/base/_init.scss */
 .article-listing-title {
-  font-weight: bold;
-  font-size: 1.3em;
   padding-bottom: .25em;
 }
 
-/* line 58, ../scss/base/_init.scss */
+/* line 90, ../scss/base/_init.scss */
 .article-listing-body p {
-  font-size: .9em;
+  font-size: 1em;
 }
 
-/* line 59, ../scss/base/_init.scss */
+/* line 91, ../scss/base/_init.scss */
 .article-listing-display-name {
   display: inline;
 }
 
-/* line 60, ../scss/base/_init.scss */
+/* line 92, ../scss/base/_init.scss */
 .article-listing-author {
   margin-bottom: .5em;
 }
 
-/* line 61, ../scss/base/_init.scss */
+/* line 93, ../scss/base/_init.scss */
 .article-listing-author-image {
   display: inline;
 }
 
-/* line 62, ../scss/base/_init.scss */
+/* line 94, ../scss/base/_init.scss */
 .article-listing-date {
   font-size: .85em;
   padding: .5em 0;
 }
 
-/* line 63, ../scss/base/_init.scss */
+/* line 95, ../scss/base/_init.scss */
 .article-listing-topics {
   display: inline;
 }
 
-/* line 64, ../scss/base/_init.scss */
+/* line 96, ../scss/base/_init.scss */
 .article-listing-topics-wrapper {
   display: inline;
   font-size: .85rem;
 }
 
-/* line 65, ../scss/base/_init.scss */
+/* line 97, ../scss/base/_init.scss */
 .catarch {
   padding-top: 1em;
 }
 
-/* line 66, ../scss/base/_init.scss */
+/* line 98, ../scss/base/_init.scss */
 .article-topics-block {
   padding: 0 1em 2em 1em;
 }
 
-/* line 67, ../scss/base/_init.scss */
+/* line 99, ../scss/base/_init.scss */
 .article-body {
   padding-top: 2em;
 }
 
-/* line 68, ../scss/base/_init.scss */
+/* line 100, ../scss/base/_init.scss */
 .article-topics-label {
   font-size: 1em;
   font-weight: bold;
 }
 
-/* line 69, ../scss/base/_init.scss */
+/* line 101, ../scss/base/_init.scss */
 .article-topics {
   display: inline;
 }
 
-/* line 70, ../scss/base/_init.scss */
+/* line 102, ../scss/base/_init.scss */
 .bc-active-page {
   color: black;
 }
 
-/* line 71, ../scss/base/_init.scss */
+/* line 103, ../scss/base/_init.scss */
 .search-form-button {
   font-size: small;
 }
 
-/* line 72, ../scss/base/_init.scss */
+/* line 104, ../scss/base/_init.scss */
 .blog-page-search {
   padding: 1em;
 }
 
-/* line 73, ../scss/base/_init.scss */
+/* line 105, ../scss/base/_init.scss */
 .pager__items {
   margin: auto;
 }
 
-/* line 74, ../scss/base/_init.scss */
+/* line 106, ../scss/base/_init.scss */
 .pager__item {
   display: inline;
   padding: 1em;
 }
 
-/* line 75, ../scss/base/_init.scss */
+/* line 107, ../scss/base/_init.scss */
 .accordion-content {
   padding: 0 .5em 2em;
 }
 
-/* line 77, ../scss/base/_init.scss */
-.profile-staff-listing-image {
-  margin-bottom: 1rem;
-}
-
-/* line 78, ../scss/base/_init.scss */
-.profile-details {
-  padding: 0 0 0 1em;
-}
-
-/* line 79, ../scss/base/_init.scss */
-.profile-staff-listing-name {
-  margin-bottom: .5rem;
-  font-weight: 700;
-}
-
-/* line 80, ../scss/base/_init.scss */
-.profile-staff-listing-position {
-  margin-bottom: .5rem;
-  font-style: italic;
-}
-
-/* line 81, ../scss/base/_init.scss */
-.profile-staff-listing-email {
-  margin-bottom: .5rem;
-}
-
-/* line 82, ../scss/base/_init.scss */
-.profile-staff-listing-linkedin {
-  margin-bottom: .5rem;
-}
-
-/* line 84, ../scss/base/_init.scss */
+/* line 109, ../scss/base/_init.scss */
 .social-icons {
   display: inline-block;
   margin: 0 0 0 1em;
   vertical-align: 3px;
 }
 
-/* line 85, ../scss/base/_init.scss */
+/* line 110, ../scss/base/_init.scss */
 .social-icon-style {
   font-size: 24px;
 }
 
-/* line 86, ../scss/base/_init.scss */
+/* line 111, ../scss/base/_init.scss */
 .social-block {
   margin: 0 0;
 }
 
-/* line 88, ../scss/base/_init.scss */
+/* line 113, ../scss/base/_init.scss */
+.video-details {
+  display: block;
+  padding: 1em 0;
+}
+
+/* line 114, ../scss/base/_init.scss */
 .video-title {
   font-weight: bolder;
   padding: .875rem 0;
 }
 
-/* line 90, ../scss/base/_init.scss */
+/* line 115, ../scss/base/_init.scss */
+.video-category {
+  font-size: 1em;
+  display: inline-flex;
+}
+
+/* line 116, ../scss/base/_init.scss */
+.video-body {
+  display: block;
+  padding-top: 1em;
+  border-top: solid 1px;
+  clear: both;
+}
+
+/* line 119, ../scss/base/_init.scss */
 .header-image {
   margin-bottom: 2em;
 }
@@ -765,7 +727,7 @@ body {
   background: #fff;
   color: #222;
   cursor: auto;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.5;
@@ -2384,7 +2346,7 @@ select {
   background: #EFEFEF;
   color: #222222;
   display: block;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   padding: 1rem;
 }
@@ -2399,7 +2361,7 @@ select {
 }
 /* line 153, ../../../contrib/zurb_foundation/scss/foundation/components/_accordion.scss */
 .accordion .accordion-navigation > .content.active, .accordion dd > .content.active {
-  background: #FFFFFF;
+  background: #FFF;
   display: block;
 }
 
@@ -2416,7 +2378,7 @@ select {
   transition: opacity 300ms ease-out;
   background-color: #008CBA;
   border-color: #0078a0;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 115, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box .close {
@@ -2447,13 +2409,13 @@ select {
 .alert-box.success {
   background-color: #43AC6A;
   border-color: #3a945b;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 121, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.alert {
   background-color: #f04124;
   border-color: #de2d0f;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 122, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.secondary {
@@ -2465,7 +2427,7 @@ select {
 .alert-box.warning {
   background-color: #f08a24;
   border-color: #de770f;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 124, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.info {
@@ -3016,7 +2978,7 @@ button, .button {
   border-style: solid;
   border-width: 0;
   cursor: pointer;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -3028,7 +2990,7 @@ button, .button {
   font-size: 1rem;
   background-color: #008CBA;
   border-color: #007095;
-  color: #FFFFFF;
+  color: #FFF;
   transition: background-color 300ms ease-out;
 }
 /* line 163, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
@@ -3037,7 +2999,7 @@ button:hover, button:focus, .button:hover, .button:focus {
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button:hover, button:focus, .button:hover, .button:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 225, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.secondary, .button.secondary {
@@ -3057,7 +3019,7 @@ button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button
 button.success, .button.success {
   background-color: #43AC6A;
   border-color: #368a55;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 163, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
@@ -3065,13 +3027,13 @@ button.success:hover, button.success:focus, .button.success:hover, .button.succe
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 227, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.alert, .button.alert {
   background-color: #f04124;
   border-color: #cf2a0e;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 163, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
@@ -3079,13 +3041,13 @@ button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 228, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.warning, .button.warning {
   background-color: #f08a24;
   border-color: #cf6e0e;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 163, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
@@ -3093,7 +3055,7 @@ button.warning:hover, button.warning:focus, .button.warning:hover, .button.warni
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 229, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.info, .button.info {
@@ -3107,7 +3069,7 @@ button.info:hover, button.info:focus, .button.info:hover, .button.info:focus {
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.info:hover, button.info:focus, .button.info:hover, .button.info:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 231, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.large, .button.large {
@@ -3156,7 +3118,7 @@ button.round, .button.round {
 button.disabled, button[disabled], .button.disabled, .button[disabled] {
   background-color: #008CBA;
   border-color: #007095;
-  color: #FFFFFF;
+  color: #FFF;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
@@ -3167,7 +3129,7 @@ button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[dis
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
@@ -3198,7 +3160,7 @@ button.disabled.secondary:hover, button.disabled.secondary:focus, button[disable
 button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
   background-color: #43AC6A;
   border-color: #368a55;
-  color: #FFFFFF;
+  color: #FFF;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
@@ -3209,7 +3171,7 @@ button.disabled.success:hover, button.disabled.success:focus, button[disabled].s
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
@@ -3219,7 +3181,7 @@ button.disabled.success:hover, button.disabled.success:focus, button[disabled].s
 button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
   background-color: #f04124;
   border-color: #cf2a0e;
-  color: #FFFFFF;
+  color: #FFF;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
@@ -3230,7 +3192,7 @@ button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
@@ -3240,7 +3202,7 @@ button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert
 button.disabled.warning, button[disabled].warning, .button.disabled.warning, .button[disabled].warning {
   background-color: #f08a24;
   border-color: #cf6e0e;
-  color: #FFFFFF;
+  color: #FFF;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
@@ -3251,7 +3213,7 @@ button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].w
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
@@ -3272,7 +3234,7 @@ button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:ho
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:hover, button[disabled].info:focus, .button.disabled.info:hover, .button.disabled.info:focus, .button[disabled].info:hover, .button[disabled].info:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:hover, button[disabled].info:focus, .button.disabled.info:hover, .button.disabled.info:focus, .button[disabled].info:hover, .button[disabled].info:focus {
@@ -3955,7 +3917,7 @@ button::-moz-focus-inner {
 
 /* line 80, ../../../contrib/zurb_foundation/scss/foundation/components/_clearing.scss */
 .clearing-touch-label {
-  color: #AAAAAA;
+  color: #212121;
   font-size: .6em;
   left: 50%;
   position: absolute;
@@ -4158,7 +4120,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFFFFF;
+  background: #FFF;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4187,7 +4149,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent transparent #FFFFFF transparent;
+  border-color: transparent transparent #FFF transparent;
   border-bottom-style: solid;
   position: absolute;
   top: -12px;
@@ -4225,7 +4187,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFFFFF;
+  background: #FFF;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4255,7 +4217,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent #FFFFFF transparent transparent;
+  border-color: transparent #FFF transparent transparent;
   border-right-style: solid;
   position: absolute;
   top: 10px;
@@ -4283,7 +4245,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFFFFF;
+  background: #FFF;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4313,7 +4275,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent transparent transparent #FFFFFF;
+  border-color: transparent transparent transparent #FFF;
   border-left-style: solid;
   position: absolute;
   top: 10px;
@@ -4343,7 +4305,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFFFFF;
+  background: #FFF;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4373,7 +4335,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: #FFFFFF transparent transparent transparent;
+  border-color: #FFF transparent transparent transparent;
   border-top-style: solid;
   bottom: -12px;
   position: absolute;
@@ -4422,7 +4384,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFFFFF;
+  background: #FFF;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4481,7 +4443,7 @@ button::-moz-focus-inner {
 }
 /* line 63, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button::after, button.dropdown::after {
-  border-color: #FFFFFF transparent transparent transparent;
+  border-color: #FFF transparent transparent transparent;
   border-style: solid;
   content: "";
   display: block;
@@ -4498,7 +4460,7 @@ button::-moz-focus-inner {
 }
 /* line 117, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button::after, button.dropdown::after {
-  border-color: #FFFFFF transparent transparent transparent;
+  border-color: #FFF transparent transparent transparent;
 }
 /* line 124, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.tiny, button.dropdown.tiny {
@@ -4512,7 +4474,7 @@ button::-moz-focus-inner {
 }
 /* line 117, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.tiny::after, button.dropdown.tiny::after {
-  border-color: #FFFFFF transparent transparent transparent;
+  border-color: #FFF transparent transparent transparent;
 }
 /* line 125, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.small, button.dropdown.small {
@@ -4526,7 +4488,7 @@ button::-moz-focus-inner {
 }
 /* line 117, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.small::after, button.dropdown.small::after {
-  border-color: #FFFFFF transparent transparent transparent;
+  border-color: #FFF transparent transparent transparent;
 }
 /* line 126, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.large, button.dropdown.large {
@@ -4540,7 +4502,7 @@ button::-moz-focus-inner {
 }
 /* line 117, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.large::after, button.dropdown.large::after {
-  border-color: #FFFFFF transparent transparent transparent;
+  border-color: #FFF transparent transparent transparent;
 }
 /* line 127, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.secondary:after, button.dropdown.secondary:after {
@@ -4687,11 +4649,11 @@ button::-moz-focus-inner {
 }
 /* line 177, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * label {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 179, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * i {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 182, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a:hover {
@@ -4699,11 +4661,11 @@ button::-moz-focus-inner {
 }
 /* line 186, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a:hover label {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 188, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a:hover i {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 191, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a.active {
@@ -4711,11 +4673,11 @@ button::-moz-focus-inner {
 }
 /* line 195, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a.active label {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 197, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a.active i {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 201, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar .item.disabled {
@@ -5042,7 +5004,7 @@ button::-moz-focus-inner {
 /* line 51, ../../../contrib/zurb_foundation/scss/foundation/components/_joyride.scss */
 .joyride-tip-guide {
   background: #333333;
-  color: #FFFFFF;
+  color: #FFF;
   display: none;
   font-family: inherit;
   font-weight: normal;
@@ -5119,7 +5081,7 @@ button::-moz-focus-inner {
 .joyride-tip-guide h4,
 .joyride-tip-guide h5,
 .joyride-tip-guide h6 {
-  color: #FFFFFF;
+  color: #FFF;
   font-weight: bold;
   line-height: 1.25;
   margin: 0;
@@ -5181,9 +5143,9 @@ button::-moz-focus-inner {
 
 /* line 170, ../../../contrib/zurb_foundation/scss/foundation/components/_joyride.scss */
 .joyride-expose-wrapper {
-  background-color: #FFFFFF;
+  background-color: #FFF;
   border-radius: 3px;
-  box-shadow: 0 0 15px #FFFFFF;
+  box-shadow: 0 0 15px #FFF;
   position: absolute;
   z-index: 102;
 }
@@ -5252,7 +5214,7 @@ kbd {
 /* line 91, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label {
   display: inline-block;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: 1;
   margin-bottom: auto;
@@ -5263,7 +5225,7 @@ kbd {
   padding: 0.25rem 0.5rem 0.25rem;
   font-size: 0.6875rem;
   background-color: #008CBA;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 96, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.radius {
@@ -5276,17 +5238,17 @@ kbd {
 /* line 99, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.alert {
   background-color: #f04124;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 100, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.warning {
   background-color: #f08a24;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 101, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.success {
   background-color: #43AC6A;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 102, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.secondary {
@@ -5301,7 +5263,7 @@ kbd {
 
 /* line 18, ../../../contrib/zurb_foundation/scss/foundation/components/_magellan.scss */
 [data-magellan-expedition], [data-magellan-expedition-clone] {
-  background: #FFFFFF;
+  background: #FFF;
   min-width: 100%;
   padding: 10px;
   z-index: 50;
@@ -5385,7 +5347,7 @@ kbd {
   animation-iteration-count: infinite;
   animation-name: rotate;
   animation-timing-function: linear;
-  border-color: #555555 #FFFFFF;
+  border-color: #555555 #FFF;
   border: solid 3px;
   display: block;
   height: 40px;
@@ -5437,7 +5399,7 @@ kbd {
   bottom: 0;
   position: absolute;
   background-color: rgba(51, 51, 51, 0.8);
-  color: #FFFFFF;
+  color: #FFF;
   font-size: 0.875rem;
   padding: 0.625rem 0.875rem;
   width: 100%;
@@ -5446,7 +5408,7 @@ kbd {
 .orbit-container .orbit-slide-number {
   left: 10px;
   background: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-size: 12px;
   position: absolute;
   top: 10px;
@@ -5478,7 +5440,7 @@ kbd {
 }
 /* line 223, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-timer > span {
-  border: solid 4px #FFFFFF;
+  border: solid 4px #FFF;
   border-bottom: none;
   border-top: none;
   display: none;
@@ -5496,7 +5458,7 @@ kbd {
   border: inset 8px;
   border-left-style: solid;
   border-color: transparent;
-  border-left-color: #FFFFFF;
+  border-left-color: #FFF;
   right: -4px;
 }
 /* line 247, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
@@ -5545,11 +5507,11 @@ kbd {
 .orbit-container .orbit-prev > span {
   border-right-style: solid;
   border-color: transparent;
-  border-right-color: #FFFFFF;
+  border-right-color: #FFF;
 }
 /* line 292, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-prev:hover > span {
-  border-right-color: #FFFFFF;
+  border-right-color: #FFF;
 }
 /* line 296, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-next {
@@ -5559,13 +5521,13 @@ kbd {
 .orbit-container .orbit-next > span {
   border-color: transparent;
   border-left-style: solid;
-  border-left-color: #FFFFFF;
+  border-left-color: #FFF;
   left: 50%;
   margin-left: -4px;
 }
 /* line 304, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-next:hover > span {
-  border-left-color: #FFFFFF;
+  border-left-color: #FFF;
 }
 
 /* line 310, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
@@ -5699,7 +5661,7 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.p
 /* line 69, ../../../contrib/zurb_foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li.current a, ul.pagination li.current button {
   background: #008CBA;
-  color: #FFFFFF;
+  color: #FFF;
   cursor: default;
   font-weight: bold;
 }
@@ -5816,7 +5778,7 @@ ul.pagination li {
 .pricing-table .title {
   background-color: #333333;
   color: #EEEEEE;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   padding: 0.9375rem 1.25rem;
@@ -5826,7 +5788,7 @@ ul.pagination li {
 .pricing-table .price {
   background-color: #F6F6F6;
   color: #333333;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: normal;
   padding: 0.9375rem 1.25rem;
@@ -5834,7 +5796,7 @@ ul.pagination li {
 }
 /* line 144, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .description {
-  background-color: #FFFFFF;
+  background-color: #FFF;
   border-bottom: dotted 1px #DDDDDD;
   color: #777777;
   font-size: 0.75rem;
@@ -5845,7 +5807,7 @@ ul.pagination li {
 }
 /* line 145, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .bullet-item {
-  background-color: #FFFFFF;
+  background-color: #FFF;
   border-bottom: dotted 1px #DDDDDD;
   color: #333333;
   font-size: 0.875rem;
@@ -5855,7 +5817,7 @@ ul.pagination li {
 }
 /* line 146, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .cta-button {
-  background-color: #FFFFFF;
+  background-color: #FFF;
   padding: 1.25rem 1.25rem 0;
   text-align: center;
 }
@@ -6079,7 +6041,7 @@ ul.pagination li {
   width: 100%;
   z-index: 1005;
   left: 0;
-  background-color: #FFFFFF;
+  background-color: #FFF;
   padding: 1.875rem;
   border: solid 1px #666666;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -6209,7 +6171,7 @@ ul.pagination li {
 }
 /* line 209, ../../../contrib/zurb_foundation/scss/foundation/components/_reveal.scss */
 .reveal-modal .close-reveal-modal {
-  color: #AAAAAA;
+  color: #212121;
   cursor: pointer;
   font-size: 2.5rem;
   font-weight: bold;
@@ -6222,7 +6184,7 @@ ul.pagination li {
 /* line 118, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav {
   display: block;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   list-style-position: outside;
   list-style-type: none;
   margin: 0;
@@ -6253,7 +6215,7 @@ ul.pagination li {
 /* line 91, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li.active > a:first-child:not(.button) {
   color: #1cc7ff;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
 /* line 97, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
@@ -6318,7 +6280,7 @@ ul.pagination li {
 }
 /* line 166, ../../../contrib/zurb_foundation/scss/foundation/components/_split-buttons.scss */
 .split.button span:after {
-  border-color: #FFFFFF transparent transparent transparent;
+  border-color: #FFF transparent transparent transparent;
 }
 /* line 103, ../../../contrib/zurb_foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.secondary span {
@@ -6326,7 +6288,7 @@ ul.pagination li {
 }
 /* line 166, ../../../contrib/zurb_foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.secondary span:after {
-  border-color: #FFFFFF transparent transparent transparent;
+  border-color: #FFF transparent transparent transparent;
 }
 /* line 103, ../../../contrib/zurb_foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.alert span {
@@ -6439,7 +6401,7 @@ ul.pagination li {
 .sub-nav li {
   color: #999999;
   float: left;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   font-weight: normal;
   margin-left: 1rem;
@@ -6465,7 +6427,7 @@ ul.pagination li {
 .sub-nav li.active a {
   border-radius: 3px;
   background: #008CBA;
-  color: #FFFFFF;
+  color: #FFF;
   cursor: default;
   font-weight: normal;
   padding: 0.1875rem 1rem;
@@ -6517,7 +6479,7 @@ ul.pagination li {
 }
 /* line 88, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch label:after {
-  background: #FFFFFF;
+  background: #FFF;
   content: "";
   display: block;
   height: 1.5rem;
@@ -6564,7 +6526,7 @@ ul.pagination li {
 }
 /* line 162, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch label:after {
-  background: #FFFFFF;
+  background: #FFF;
 }
 /* line 166, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch input:checked + label {
@@ -6635,7 +6597,7 @@ ul.pagination li {
 
 /* line 131, ../../../contrib/zurb_foundation/scss/foundation/components/_tables.scss */
 table {
-  background: #FFFFFF;
+  background: #FFF;
   border: solid 1px #DDDDDD;
   margin-bottom: 1.25rem;
   table-layout: auto;
@@ -6697,7 +6659,7 @@ table tr td {
 /* Image Thumbnails */
 /* line 59, ../../../contrib/zurb_foundation/scss/foundation/components/_thumbs.scss */
 .th {
-  border: solid 4px #FFFFFF;
+  border: solid 4px #FFF;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
   display: inline-block;
   line-height: 0;
@@ -6734,7 +6696,7 @@ table tr td {
 /* line 54, ../../../contrib/zurb_foundation/scss/foundation/components/_tooltips.scss */
 .tooltip {
   background: #333333;
-  color: #FFFFFF;
+  color: #FFF;
   display: none;
   font-size: 0.875rem;
   font-weight: normal;
@@ -7080,13 +7042,14 @@ td {
 /* Default Link Styles */
 /* line 220, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 a {
-  color: #008CBA;
+  color: #00A6D2;
   line-height: inherit;
   text-decoration: none;
 }
 /* line 225, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 a:hover, a:focus {
-  color: #0078a0;
+  color: #008fb5;
+  text-decoration: underline;
 }
 /* line 233, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 a img {
@@ -7119,7 +7082,7 @@ p aside {
 /* line 255, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #222222;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.4;
@@ -7529,14 +7492,14 @@ blockquote p {
 .tab-bar {
   -webkit-backface-visibility: hidden;
   background: #333333;
-  color: #FFFFFF;
+  color: #FFF;
   height: 2.8125rem;
   line-height: 2.8125rem;
   position: relative;
 }
 /* line 185, ../../../contrib/zurb_foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar h1, .tab-bar h2, .tab-bar h3, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
-  color: #FFFFFF;
+  color: #FFF;
   font-weight: bold;
   line-height: 2.8125rem;
   margin: 0;
@@ -7600,7 +7563,7 @@ blockquote p {
 
 /* line 424, ../../../contrib/zurb_foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar .menu-icon {
-  color: #FFFFFF;
+  color: #FFF;
   display: block;
   height: 2.8125rem;
   padding: 0;
@@ -7618,7 +7581,7 @@ blockquote p {
   top: 50%;
   margin-top: -0.5rem;
   left: 0.90625rem;
-  box-shadow: 0 0 0 1px #FFFFFF, 0 7px 0 1px #FFFFFF, 0 14px 0 1px #FFFFFF;
+  box-shadow: 0 0 0 1px #FFF, 0 7px 0 1px #FFF, 0 14px 0 1px #FFF;
   width: 1rem;
 }
 /* line 229, ../../../contrib/zurb_foundation/scss/foundation/components/_global.scss */
@@ -9032,7 +8995,7 @@ th.hide-for-touch {
 }
 /* line 96, ../scss/modules/_breadcrumbs.scss */
 .breadcrumbs > *:before {
-  color: #AAAAAA;
+  color: #212121;
   content: "/";
   margin: 0 0.75rem;
   position: relative;
@@ -9294,8 +9257,8 @@ th.hide-for-touch {
 .tabs .tab-title > a {
   display: block;
   background-color: #040A1A;
-  color: #FFFFFF;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  color: #FFF;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
 }
@@ -9308,7 +9271,7 @@ th.hide-for-touch {
 .tabs dd.active > a,
 .tabs .tab-title.active > a {
   background-color: #055F82;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 57, ../scss/modules/_tabs.scss */
 .tabs.radius dd:first-child a,
@@ -9409,7 +9372,7 @@ meta.foundation-mq-topbar {
 /* line 110, ../scss/modules/_topbar.scss */
 .contain-to-grid {
   width: 100%;
-  background: #222222;
+  background: #323A45;
 }
 /* line 114, ../scss/modules/_topbar.scss */
 .contain-to-grid .top-bar {
@@ -9445,7 +9408,7 @@ meta.foundation-mq-topbar {
 
 /* line 147, ../scss/modules/_topbar.scss */
 .top-bar {
-  background: #222222;
+  background: #323A45;
   height: 4.6875rem;
   line-height: 4.6875rem;
   margin-bottom: 1.25rem;
@@ -9509,7 +9472,7 @@ meta.foundation-mq-topbar {
 /* line 210, ../scss/modules/_topbar.scss */
 .top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {
   color: #fafafa;
-  font-weight: bolder;
+  font-weight: 700;
   padding: 0 0.52083rem;
   width: 75%;
 }
@@ -9538,7 +9501,7 @@ meta.foundation-mq-topbar {
 }
 /* line 243, ../scss/modules/_topbar.scss */
 .top-bar .toggle-topbar.menu-icon a {
-  color: #FFFFFF;
+  color: #FFF;
   height: 34px;
   line-height: 33px;
   padding: 0 3.125rem 0 1.5625rem;
@@ -9553,7 +9516,7 @@ meta.foundation-mq-topbar {
   margin-top: -8px;
   top: 50%;
   right: 1.5625rem;
-  box-shadow: 0 0 0 1px #FFFFFF, 0 7px 0 1px #FFFFFF, 0 14px 0 1px #FFFFFF;
+  box-shadow: 0 0 0 1px #FFF, 0 7px 0 1px #FFF, 0 14px 0 1px #FFF;
   width: 16px;
 }
 /* line 229, ../../../contrib/zurb_foundation/scss/foundation/components/_global.scss */
@@ -9567,7 +9530,7 @@ meta.foundation-mq-topbar {
 }
 /* line 263, ../scss/modules/_topbar.scss */
 .top-bar.expanded .title-area {
-  background: #222222;
+  background: #323A45;
 }
 /* line 268, ../scss/modules/_topbar.scss */
 .top-bar.expanded .toggle-topbar a {
@@ -9608,7 +9571,7 @@ meta.foundation-mq-topbar {
 /* line 314, ../scss/modules/_topbar.scss */
 .top-bar-section .divider,
 .top-bar-section [role="separator"] {
-  border-top: solid 1px #111111;
+  border-top: solid 1px #191d23;
   clear: both;
   height: 1px;
   width: 100%;
@@ -9621,8 +9584,8 @@ meta.foundation-mq-topbar {
 .top-bar-section ul li > a {
   color: #fafafa;
   display: block;
-  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
-  font-size: 0.875rem;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
   font-weight: normal;
   padding-left: 1.5625rem;
   padding: 12px 0 12px 1.5625rem;
@@ -9631,12 +9594,12 @@ meta.foundation-mq-topbar {
 }
 /* line 336, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button {
-  font-size: 0.875rem;
+  font-size: 1rem;
   padding-left: 1.5625rem;
   padding-right: 1.5625rem;
   background-color: #008CBA;
   border-color: #007095;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
@@ -9644,7 +9607,7 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 343, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.secondary {
@@ -9664,7 +9627,7 @@ meta.foundation-mq-topbar {
 .top-bar-section ul li > a.button.success {
   background-color: #43AC6A;
   border-color: #368a55;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.success:hover, .top-bar-section ul li > a.button.success:focus {
@@ -9672,13 +9635,13 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.success:hover, .top-bar-section ul li > a.button.success:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 345, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.alert {
   background-color: #f04124;
   border-color: #cf2a0e;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.alert:hover, .top-bar-section ul li > a.button.alert:focus {
@@ -9686,13 +9649,13 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.alert:hover, .top-bar-section ul li > a.button.alert:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 346, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.warning {
   background-color: #f08a24;
   border-color: #cf6e0e;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.warning:hover, .top-bar-section ul li > a.button.warning:focus {
@@ -9700,7 +9663,7 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.warning:hover, .top-bar-section ul li > a.button.warning:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 347, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.info {
@@ -9714,16 +9677,16 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.info:hover, .top-bar-section ul li > a.button.info:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 350, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button {
-  font-size: 0.875rem;
+  font-size: 1rem;
   padding-left: 1.5625rem;
   padding-right: 1.5625rem;
   background-color: #008CBA;
   border-color: #007095;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
@@ -9731,7 +9694,7 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 356, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.secondary {
@@ -9751,7 +9714,7 @@ meta.foundation-mq-topbar {
 .top-bar-section ul li > button.success {
   background-color: #43AC6A;
   border-color: #368a55;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.success:hover, .top-bar-section ul li > button.success:focus {
@@ -9759,13 +9722,13 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.success:hover, .top-bar-section ul li > button.success:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 358, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.alert {
   background-color: #f04124;
   border-color: #cf2a0e;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
@@ -9773,13 +9736,13 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 359, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.warning {
   background-color: #f08a24;
   border-color: #cf6e0e;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
@@ -9787,7 +9750,7 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 360, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.info {
@@ -9801,23 +9764,23 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.info:hover, .top-bar-section ul li > button.info:focus {
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 364, ../scss/modules/_topbar.scss */
 .top-bar-section ul li:hover:not(.has-form) > a {
-  background-color: #555555;
-  color: #FFFFFF;
-  background: #222222;
+  background-color: #AEB0B5;
+  color: #FFF;
+  background: #5B616B;
 }
 /* line 374, ../scss/modules/_topbar.scss */
 .top-bar-section ul li.active > a {
-  background: #008CBA;
-  color: #FFFFFF;
+  background: #D6D7D9;
+  color: #FFF;
 }
 /* line 378, ../scss/modules/_topbar.scss */
 .top-bar-section ul li.active > a:hover {
-  background: #0078a0;
-  color: #FFFFFF;
+  background: #b7b8bc;
+  color: #FFF;
 }
 /* line 386, ../scss/modules/_topbar.scss */
 .top-bar-section .has-form {
@@ -9931,7 +9894,7 @@ meta.foundation-mq-topbar {
 @media only screen and (min-width: 40.0625em) {
   /* line 483, ../scss/modules/_topbar.scss */
   .top-bar {
-    background: #222222;
+    background: #323A45;
     overflow: visible;
   }
   /* line 239, ../../../contrib/zurb_foundation/scss/foundation/components/_global.scss */
@@ -9980,7 +9943,7 @@ meta.foundation-mq-topbar {
   }
   /* line 516, ../scss/modules/_topbar.scss */
   .top-bar.expanded {
-    background: #222222;
+    background: #323A45;
   }
 
   /* line 521, ../scss/modules/_topbar.scss */
@@ -10011,32 +9974,32 @@ meta.foundation-mq-topbar {
   }
   /* line 544, ../scss/modules/_topbar.scss */
   .top-bar-section li.hover > a:not(.button) {
-    background-color: #555555;
-    background: #222222;
-    color: #FFFFFF;
+    background-color: #AEB0B5;
+    background: #5B616B;
+    color: #FFF;
   }
   /* line 554, ../scss/modules/_topbar.scss */
   .top-bar-section li:not(.has-form) a:not(.button) {
-    background: #222222;
+    background: #323A45;
     line-height: 4.6875rem;
     padding: 0 1.5625rem;
   }
   /* line 558, ../scss/modules/_topbar.scss */
   .top-bar-section li:not(.has-form) a:not(.button):hover {
-    background-color: #555555;
-    background: #222222;
+    background-color: #AEB0B5;
+    background: #5B616B;
   }
   /* line 568, ../scss/modules/_topbar.scss */
   .top-bar-section li.active:not(.has-form) a:not(.button) {
-    background: #008CBA;
-    color: #FFFFFF;
+    background: #D6D7D9;
+    color: #FFF;
     line-height: 4.6875rem;
     padding: 0 1.5625rem;
   }
   /* line 573, ../scss/modules/_topbar.scss */
   .top-bar-section li.active:not(.has-form) a:not(.button):hover {
-    background: #0078a0;
-    color: #FFFFFF;
+    background: #b7b8bc;
+    color: #FFF;
   }
   /* line 583, ../scss/modules/_topbar.scss */
   .top-bar-section .has-dropdown > a {
@@ -10104,7 +10067,7 @@ meta.foundation-mq-topbar {
   /* line 631, ../scss/modules/_topbar.scss */
   .top-bar-section .dropdown li a {
     background: #333333;
-    color: #FFFFFF;
+    color: #FFF;
     line-height: 4.6875rem;
     padding: 12px 1.5625rem;
     white-space: nowrap;
@@ -10112,12 +10075,12 @@ meta.foundation-mq-topbar {
   /* line 640, ../scss/modules/_topbar.scss */
   .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
     background: #333333;
-    color: #FFFFFF;
+    color: #FFF;
   }
   /* line 645, ../scss/modules/_topbar.scss */
   .top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button) {
-    background-color: #555555;
-    color: #FFFFFF;
+    background-color: #AEB0B5;
+    color: #FFF;
     background: #222222;
   }
   /* line 654, ../scss/modules/_topbar.scss */
@@ -10133,7 +10096,7 @@ meta.foundation-mq-topbar {
   /* line 667, ../scss/modules/_topbar.scss */
   .top-bar-section > ul > .divider,
   .top-bar-section > ul > [role="separator"] {
-    border-right: solid 1px #3f3f3f;
+    border-right: solid 1px #475362;
     border-bottom: none;
     border-top: none;
     clear: none;
@@ -10142,7 +10105,7 @@ meta.foundation-mq-topbar {
   }
   /* line 677, ../scss/modules/_topbar.scss */
   .top-bar-section .has-form {
-    background: #222222;
+    background: #323A45;
     height: 4.6875rem;
     padding: 0 1.5625rem;
   }
@@ -10167,14 +10130,14 @@ meta.foundation-mq-topbar {
 
   /* line 707, ../scss/modules/_topbar.scss */
   .no-js .top-bar-section ul li:hover > a {
-    background-color: #555555;
-    background: #222222;
-    color: #FFFFFF;
+    background-color: #AEB0B5;
+    background: #5B616B;
+    color: #FFF;
   }
   /* line 716, ../scss/modules/_topbar.scss */
   .no-js .top-bar-section ul li:active > a {
-    background: #008CBA;
-    color: #FFFFFF;
+    background: #D6D7D9;
+    color: #FFF;
   }
   /* line 724, ../scss/modules/_topbar.scss */
   .no-js .top-bar-section .has-dropdown:hover > .dropdown {
@@ -10364,7 +10327,7 @@ input:not([type]), input[type="text"], input[type="password"], input[type="date"
   -webkit-appearance: none;
   -moz-appearance: none;
   border-radius: 0;
-  background-color: #FFFFFF;
+  background-color: #FFF;
   border-style: solid;
   border-width: 1px;
   border-color: #cccccc;
@@ -10621,7 +10584,7 @@ fieldset legend {
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
   background: #f04124;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 547, ../scss/modules/_forms.scss */
 [data-abide] span.error, [data-abide] small.error {
@@ -10638,7 +10601,7 @@ span.error, small.error {
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
   background: #f04124;
-  color: #FFFFFF;
+  color: #FFF;
 }
 
 /* line 555, ../scss/modules/_forms.scss */
@@ -10667,7 +10630,7 @@ span.error, small.error {
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
   background: #f04124;
-  color: #FFFFFF;
+  color: #FFF;
 }
 /* line 576, ../scss/modules/_forms.scss */
 .error > label > small {

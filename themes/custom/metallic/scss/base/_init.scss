@@ -1,61 +1,93 @@
 @import "../../../contrib/zurb_foundation/scss/foundation/functions";
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i,900');
 
 $row-width: rem-calc(1280);
 
-$white       	: #FFFFFF;
-$ghost       	: #FAFAFA;
-$snow        	: #F9F9F9;
-$vapor       	: #F6F6F6;
-$white-smoke 	: #F5F5F5;
-$silver      	: #EFEFEF;
-$smoke       	: #EEEEEE;
-$gainsboro   	: #DDDDDD;
-$iron        	: #CCCCCC;
-$base        	: #AAAAAA;
-$aluminum    	: #999999;
-$jumbo       	: #888888;
-$monsoon     	: #777777;
-$steel       	: #666666;
-$charcoal    	: #555555;
-$tuatara     	: #444444;
-$oil         	: #333333;
-$jet         	: #222222;
-$black       	: #000000;
 $rhs-dark-blue	: #040A1A;
 $rhs-maroon		: #582011;
 $rhs-green		: #648F3F;
 $rhs-beige		: #FAE5BA;
 $rhs-light-blue	: #055F82;
 
-$font-family-sans-serif: "proxima-nova", Arial, Helvetica, sans-serif;
-$font-family-serif: "Baskerville", serif;
+$primary				: #0071BC;
+$primary-darker			: #205493;
+$primary-darkest 		: #112E51;
+$base 					: #212121;
+$gray-dark				: #323A45;
+$gray-light				: #AEB0B5;
+$white 					: #FFF;
+
+$primary-alt			: #02BFE7;
+$primary-alt-darkest 	: #046B99;
+$primary-alt-dark 	 	: #00A6D2;
+$primary-alt-light	 	: #9BDAF1;
+$primary-alt-lightest	: #E1F3F8;
+
+$secondary				: #E31C3D;
+$secondary-darkest		: #981B1E;
+$secondary-dark 		: #CD2026;
+$secondary-light		: #E59393;
+$secondary-lightest		: #F9DEDE;
+
+$gray 					: #5B616B;
+$gray-lighter			: #D6D7D9;
+$gray-lightest			: #F1F1F1;
+$gray-warm-dark			: #494440;
+$gray-warm-light		: #E4E2E0;
+$gray-cool-light		: #DCE4EF;
+
+$gold					: #FDB81E;
+$gold-light				: #F9C642;
+$gold-lighter			: #FAD980;
+$gold-lightest			: #FFF1D2;
+
+$green					: #2E8540;
+$green-light			: #4AA564;
+$green-lighter			: #94BFA2;
+$green-lightest			: #E7F4E4;
+
+$cool-blue				: #205493;	
+$cool-blue-light 		: #4773AA;
+$cool-blue-lighter		: #8BA6CA;
+$cool-blue-lightest		: #DCE4EF;
+
+$focus					: #3E94CF;
+$visited				: #4C2C92;
+
+@import url('https://fonts.googleapis.com/css?family=Merriweather:700|Source+Sans+Pro:400,400i,700');
+
+$font-family-sans-serif: "Source Sans Pro", Arial, Helvetica, sans-serif;
+$font-family-serif: "Merriweather", serif;
 
 $topbar-height: rem-calc(75) !default;
 $topbar-margin-bottom: rem-calc(20) !default;
-$topbar-bg-color: $jet !default;
+$topbar-bg-color: $gray-dark !default;
+$topbar-link-bg-hover: $gray !default;
+$topbar-link-bg-color-hover: $gray-light !default;
+$topbar-link-bg-active: $gray-lighter !default;
+$topbar-link-bg-active-hover: scale-color($gray-lighter, $lightness: -14%) !default;
 $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%) !default;
 $topbar-title-font-size: rem-calc(25) !default;
-$topbar-title-weight: bolder !default;
-$topbar-link-font-size: rem-calc(14) !default;
+$topbar-title-weight: 700 !default;
+$topbar-link-font-size: rem-calc(16) !default;
 $topbar-link-color: #fafafa !default;
 .top-bar .menu li:not(:last-child) {
 	border-right: 1px solid #4e4e4e;
 }
 
+/* Default Link Styles */
+$anchor-text-decoration: none !default;
+$anchor-text-decoration-hover: underline !default;
+$anchor-font-color: $primary-alt-dark !default;
+$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%) !default;
+
 .body-trim {padding: 0 3rem;}
 
-.people-grid-item {text-align: center;}
-.people-row {margin-bottom: 2rem;}
-.staff-listing-image {margin-bottom: 10px;}
-.staff-listing-name {font-weight: 700;}
-.staff-listing-position {line-height: .5em;}
 .profile-bio {margin-top: 1.5em;}
 .vmiddle {padding-top: 2.5em;}
 
 .article-listing-item {margin-top: 1em; padding-bottom: 1em; padding-right: 2em; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
-.article-listing-title {font-weight: bold; font-size: 1.3em; padding-bottom: .25em;}
-.article-listing-body p {font-size: .9em;}
+.article-listing-title {padding-bottom: .25em;}
+.article-listing-body p {font-size: 1em;}
 .article-listing-display-name {display: inline;}
 .article-listing-author {margin-bottom: .5em;}
 .article-listing-author-image {display: inline;}
@@ -74,17 +106,14 @@ $topbar-link-color: #fafafa !default;
 .pager__item {display:inline; padding: 1em; }
 .accordion-content {padding: 0 .5em 2em; }
 
-.profile-staff-listing-image {margin-bottom: 1rem;}
-.profile-details {padding: 0 0 0 1em;} 
-.profile-staff-listing-name {margin-bottom: .5rem; font-weight: 700;}
-.profile-staff-listing-position {margin-bottom: .5rem; font-style: italic;}
-.profile-staff-listing-email {margin-bottom: .5rem;}
-.profile-staff-listing-linkedin {margin-bottom: .5rem;}
-
 .social-icons { display:inline-block; margin: 0 0 0 1em; vertical-align: 3px;}
 .social-icon-style {font-size: 24px;}
 .social-block {margin: 0 0;}
 
+.video-details {display: block; padding: 1em 0;}
 .video-title {font-weight: bolder; padding: .875rem 0;}
+.video-category {font-size: 1em; display: inline-flex;}
+.video-body {display: block; padding-top: 1em; border-top: solid 1px; clear:both;}
+
 
 .header-image {margin-bottom: 2em;}
