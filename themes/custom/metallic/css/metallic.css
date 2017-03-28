@@ -9118,16 +9118,16 @@ th.hide-for-touch {
 
 /* line 1, ../scss/modules/_footer.scss */
 .footer {
-  background-color: #222222;
+  background-color: #323A45;
   text-align: center;
   font-size: 1.2rem;
   padding: 4rem;
 }
 /* line 7, ../scss/modules/_footer.scss */
-.footer h4 {
+.footer p, .footer h4 {
   color: #fff;
 }
-/* line 10, ../scss/modules/_footer.scss */
+/* line 11, ../scss/modules/_footer.scss */
 .footer .inline-list a {
   display: inline-block;
   width: 2rem;
@@ -9140,7 +9140,7 @@ th.hide-for-touch {
   line-height: 35px;
   margin: 0 3px 0 0;
 }
-/* line 23, ../scss/modules/_footer.scss */
+/* line 24, ../scss/modules/_footer.scss */
 .footer .contact {
   list-style-type: none;
   font-size: 1rem;
@@ -9149,15 +9149,15 @@ th.hide-for-touch {
   vertical-align: middle;
   color: #fff;
 }
-/* line 32, ../scss/modules/_footer.scss */
+/* line 33, ../scss/modules/_footer.scss */
 .footer .contact li {
   margin-bottom: 1rem;
 }
-/* line 35, ../scss/modules/_footer.scss */
+/* line 36, ../scss/modules/_footer.scss */
 .footer .contact li p {
   vertical-align: text-bottom;
 }
-/* line 40, ../scss/modules/_footer.scss */
+/* line 41, ../scss/modules/_footer.scss */
 .footer .contact i {
   position: absolute;
   background-color: #33383b;
@@ -9169,19 +9169,19 @@ th.hide-for-touch {
   vertical-align: middle;
   padding: .25em .45em;
 }
-/* line 54, ../scss/modules/_footer.scss */
+/* line 55, ../scss/modules/_footer.scss */
 .footer .copywrite {
   color: #FFF;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
 }
-/* line 60, ../scss/modules/_footer.scss */
+/* line 61, ../scss/modules/_footer.scss */
 .footer .about {
   color: #92999f;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
 }
-/* line 66, ../scss/modules/_footer.scss */
+/* line 67, ../scss/modules/_footer.scss */
 .footer .footer-links a {
   list-style: none;
   font-weight: bold;
@@ -9190,42 +9190,42 @@ th.hide-for-touch {
   margin: 0;
   font-size: 1rem;
 }
-/* line 74, ../scss/modules/_footer.scss */
+/* line 75, ../scss/modules/_footer.scss */
 .footer .footer-links a::after {
   content: "•";
   padding: 0 0.2rem 0 0.4rem;
 }
-/* line 79, ../scss/modules/_footer.scss */
+/* line 80, ../scss/modules/_footer.scss */
 .footer .footer-links a:last-child::after {
   content: "";
   padding: 0 0.4rem 0 0.8rem;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 87, ../scss/modules/_footer.scss */
+  /* line 88, ../scss/modules/_footer.scss */
   .footer p {
     text-align: left;
   }
-  /* line 91, ../scss/modules/_footer.scss */
+  /* line 92, ../scss/modules/_footer.scss */
   .footer .social {
     text-align: left;
     margin: 0;
   }
-  /* line 96, ../scss/modules/_footer.scss */
+  /* line 97, ../scss/modules/_footer.scss */
   .footer .contact {
     text-align: left;
   }
-  /* line 98, ../scss/modules/_footer.scss */
+  /* line 99, ../scss/modules/_footer.scss */
   .footer .contact > i {
     margin-right: 1rem;
   }
 }
 
-/* line 106, ../scss/modules/_footer.scss */
+/* line 107, ../scss/modules/_footer.scss */
 .logo {
   color: #fff;
   font-size: 1.25rem;
 }
-/* line 110, ../scss/modules/_footer.scss */
+/* line 111, ../scss/modules/_footer.scss */
 .logo img {
   margin-right: 0.5rem;
 }
