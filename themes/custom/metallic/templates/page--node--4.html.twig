@@ -75,7 +75,7 @@
 #}
 <section class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap">
-    <aside class="left-off-canvas-menu" role="complementary">
+    <aside class="left-off-canvas-menu" role="complemetary">
       {{ page.left_off_canvas }}
     </aside>
 
@@ -93,7 +93,7 @@
       {% endif %}
     {% endif %}
 
-    <header class="top-bar row">
+    <header class="top-bar row" role="banner" aria-label="{{ 'Site header'|t }}>
       {% if linked_site_name or linked_logo %}
           <div class="large-2 columns">
             {% if linked_logo %}
@@ -219,34 +219,24 @@
     {% endif %}
     
       {% if page.content_top %}
-        <div class="{{ main_grid }} columns">  
+        <div class="{large-9 columns end">  
           {{ page.content_top }}
         </div>
       {% endif %}
 
       {% if page.content %}
-        <div class="{{ main_grid }} columns">  
+        <div class="large-9 columns end">  
           {{ page.content }}
         </div>
       {% endif %}
 
       {% if page.content_bottom %}
-        <div class="{{ main_grid }} columns">  
+        <div class="large-9 columns end">  
           {{ page.content_bottom }}
         </div>
       {% endif %}
 
-      {% if page.sidebar_first %}
-        <div id="sidebar-first" class="{{ sidebar_first_grid }} columns sidebar ">
-          {{ page.sidebar_first }}
-        </div>
-      {% endif %}
 
-      {% if page.sidebar_second %}
-        <div id="sidebar-second" class="{{ sidebar_sec_grid }} columns sidebar">
-          {{ page.sidebar_second }}
-        </div>        
-      {% endif %}
   </div>
 
     {% if page.half_left or page.half_right %}

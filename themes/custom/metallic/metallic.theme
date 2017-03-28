@@ -168,9 +168,3 @@ function metallic_theme_suggestions_page_alter(array &$suggestions, array $varia
     $suggestions[] = 'page__article';
   }
 }
-/** Implements tokens for Forms.
-*/
-$form['token_help'] = array(
-  '#theme' => 'token_tree_link',
-  '#token_types' => array('user', 'node'),
-);
