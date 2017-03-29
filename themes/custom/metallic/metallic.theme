@@ -37,7 +37,7 @@ function metallic_preprocess_menu(&$variables) {
  * Add convenience variables and template suggestions
  */
 function metallic_preprocess_page(&$variables) {
-$site_name = isset($variables['site_name']) ? $variables['site_name'] : \Drupal::config('system.site')->get('name');
+  $site_name = isset($variables['site_name']) ? $variables['site_name'] : \Drupal::config('system.site')->get('name');
 
   // Add page--node_type.html.twig suggestions
   if (!empty($variables['node'])) {
@@ -129,7 +129,10 @@ function metallic_preprocess_block(&$variables) {
 /**
  * Implements template_preprocess_views_view().
  */
-function metallic_preprocess_views_view(&$variables) {}
+function metallic_preprocess_views_view__view_articles__block_1(&$variables) {
+  $block = \Drupal\block\Entity\Block::load('metallic_search');
+  $variables['search_block_output'] = \Drupal::entityManager() ->getViewBuilder('block') ->view($block);
+  }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for form templates.
