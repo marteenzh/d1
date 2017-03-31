@@ -59,7 +59,7 @@
  @import "../../../contrib/zurb_foundation/scss/foundation/components/magellan";
  @import "../../../contrib/zurb_foundation/scss/foundation/components/orbit";
  @import "../../../contrib/zurb_foundation/scss/foundation/components/pagination";
- @import "../../../contrib/zurb_foundation/scss/foundation/components/panels";
+ //@import "../../../contrib/zurb_foundation/scss/foundation/components/panels";
  @import "../../../contrib/zurb_foundation/scss/foundation/components/pricing-tables";
  @import "../../../contrib/zurb_foundation/scss/foundation/components/progress-bars";
  @import "../../../contrib/zurb_foundation/scss/foundation/components/range-slider";
@@ -114,7 +114,7 @@
 @import "modules/tabs";
 @import "modules/topbar";
 @import "modules/forms";
-
+@import "modules/panels";
 // States
 @import "states/collapse";
 

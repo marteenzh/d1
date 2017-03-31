@@ -20,8 +20,7 @@ function metallic_preprocess_field(&$variables) {
  *
  * Add template suggestions and classes
  */
-function metallic_preprocess_node(&$variables) {
-}
+function metallic_preprocess_node(&$variables) {}
 /**
  * Implements template_preprocess_menu
  *
@@ -37,6 +36,7 @@ function metallic_preprocess_menu(&$variables) {
  * Add convenience variables and template suggestions
  */
 function metallic_preprocess_page(&$variables) {
+
   $site_name = isset($variables['site_name']) ? $variables['site_name'] : \Drupal::config('system.site')->get('name');
 
   // Add page--node_type.html.twig suggestions
@@ -129,27 +129,29 @@ function metallic_preprocess_block(&$variables) {
 /**
  * Implements template_preprocess_views_view().
  */
+function metallic_preprocess_views_view(&$variables) {}
+
+/** Adds the search block to the View Articles block on Blog landing page.
+*/
 function metallic_preprocess_views_view__view_articles__block_1(&$variables) {
   $block = \Drupal\block\Entity\Block::load('metallic_search');
-  $variables['search_block_output'] = \Drupal::entityManager() ->getViewBuilder('block') ->view($block);
-  }
-
+  $variables['search_form'] = \Drupal::entityTypeManager()
+  ->getViewBuilder('block')
+  ->view($block);
+}
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for form templates.
  * @param array $suggestions
  * @param array $variables
  */
-function metallic_theme_suggestions_form_alter(&$suggestions, &$vars, $hook) {
-  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('entity');
-  if (!empty($request)) {
-    $suggestions[] = 'form__' . $request;
+
+function metallic_theme_suggestions_container_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  if (isset($element['#form_id'])){
+    $suggestions[] = 'container__' . $element['#form_id'];
   }
-}
-function metallic_theme_suggestions_container_alter(&$suggestions, &$vars, $hook) {
-  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('entity');
-  if (!empty($request)) {
-    $suggestions[] = 'container__' . $request;
-  }
+  else
+    $suggestions[] = 'container__' . $element['#type'];
 }
 function metallic_theme_suggestions_details_alter(&$suggestions, &$vars, $hook) {
   $request = \Drupal::routeMatch()->getRouteObject()->getDefault('entity');
@@ -157,6 +159,15 @@ function metallic_theme_suggestions_details_alter(&$suggestions, &$vars, $hook) 
     $suggestions[] = 'details__' . $request;
   }
 }
+function metallic_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  if (isset($element['#form_id'])){
+  $suggestions[] = 'input__' . $element['#form_id'] . '__' . $element['#type'];
+}
+  else
+   $suggestions[] = 'input__' . $element['#id'] . '__' . $element['#type'];
+}
+
 function metallic_theme_suggestions_block_alter(array &$suggestions, array $variables) {
   if (isset($variables['elements']['content']['#block_content'])) {
     array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());

@@ -24,45 +24,64 @@
  * - https://drupal.org/node/1887922
  * - http://smacss.com/
  */
+/* Global Colors
+// Here we define the colors used in the Metallic theme.
+// These are based on U.S. Web Standards.
+*/
+/* Font overrides */
 @import url("https://fonts.googleapis.com/css?family=Merriweather:700|Source+Sans+Pro:400,400i,700");
-/* line 73, ../scss/base/_init.scss */
+/* Style for Top Bar */
+/* line 78, ../scss/base/_init.scss */
 .top-bar .menu li:not(:last-child) {
   border-right: 1px solid #4e4e4e;
 }
 
 /* Default Link Styles */
-/* line 83, ../scss/base/_init.scss */
+/* Media Query Ranges
+// Here we define the breakpoints which will become the upper border for each media size.
+// The function em-calc() calculates the em-value from a px-value.
+*/
+/* Here we define the lower and upper bounds for each media size*/
+/* 0, 640px */
+/* 641px, 1024px */
+/* 1025px, 1440px */
+/* 1441px, 1920px */
+/* 1921px, ... */
+/*Media Queries*/
+/* Miscellaneous Styles */
+/* line 135, ../scss/base/_init.scss */
 .body-trim {
   padding: 0 3rem;
 }
 
-/* line 85, ../scss/base/_init.scss */
-.profile-bio {
-  margin-top: 1.5em;
-}
-
-/* line 86, ../scss/base/_init.scss */
+/* line 137, ../scss/base/_init.scss */
 .vmiddle {
   padding-top: 2.5em;
 }
 
-/* line 88, ../scss/base/_init.scss */
+/* For primary Blog landing page and associated views */
+/* line 140, ../scss/base/_init.scss */
 .blog-front {
   padding: 0 0 2em 0;
   border-bottom: solid 1px;
 }
 
-/* line 89, ../scss/base/_init.scss */
+/* line 141, ../scss/base/_init.scss */
+.blog-tags-form-label {
+  font-size: 1em;
+}
+
+/* line 142, ../scss/base/_init.scss */
 .catarch {
   padding-top: 1em;
 }
 
-/* line 90, ../scss/base/_init.scss */
+/* line 144, ../scss/base/_init.scss */
 .article-category-terms-view {
   display: inline;
 }
 
-/* line 91, ../scss/base/_init.scss */
+/* line 145, ../scss/base/_init.scss */
 .article-listing-item {
   margin-top: 1em;
   padding-bottom: 1em;
@@ -72,136 +91,144 @@
   border-width: thin;
 }
 
-/* line 92, ../scss/base/_init.scss */
+@media only screen and (min-width: 64.0625em) {
+  /* line 146, ../scss/base/_init.scss */
+  .article-listing-details {
+    padding: 1em 2em;
+  }
+}
+/* line 147, ../scss/base/_init.scss */
 .article-listing-title {
   padding-bottom: .25em;
 }
 
-/* line 93, ../scss/base/_init.scss */
+/* line 148, ../scss/base/_init.scss */
 .article-listing-body p {
   font-size: 1em;
 }
 
-/* line 94, ../scss/base/_init.scss */
+/* line 149, ../scss/base/_init.scss */
 .article-listing-display-name {
   display: inline;
 }
 
-/* line 95, ../scss/base/_init.scss */
+/* line 150, ../scss/base/_init.scss */
 .article-listing-author {
   margin-bottom: .5em;
 }
 
-/* line 96, ../scss/base/_init.scss */
+/* line 151, ../scss/base/_init.scss */
 .article-listing-author-image {
   display: inline;
 }
 
-/* line 97, ../scss/base/_init.scss */
+/* line 152, ../scss/base/_init.scss */
 .article-listing-date {
   font-size: .85em;
   padding: .5em 0;
 }
 
-/* line 98, ../scss/base/_init.scss */
+/* line 153, ../scss/base/_init.scss */
 .article-listing-topics {
   display: inline;
+  padding: 1em 0;
 }
 
-/* line 99, ../scss/base/_init.scss */
+/* line 154, ../scss/base/_init.scss */
 .article-listing-topics-wrapper {
-  display: inline;
+  display: block;
   font-size: .85rem;
+  margin: 1em 0;
 }
 
-/* line 100, ../scss/base/_init.scss */
+/* line 155, ../scss/base/_init.scss */
 .article-topics-block {
   padding: 0 1em 2em 1em;
 }
 
-/* line 101, ../scss/base/_init.scss */
+/* line 156, ../scss/base/_init.scss */
 .article-body {
   padding-top: 2em;
 }
 
-/* line 102, ../scss/base/_init.scss */
+/* line 157, ../scss/base/_init.scss */
 .article-topics-label {
   font-size: 1em;
   font-weight: bold;
 }
 
-/* line 103, ../scss/base/_init.scss */
+/* line 158, ../scss/base/_init.scss */
 .article-topics {
   display: inline;
 }
 
-/* line 104, ../scss/base/_init.scss */
+/* line 159, ../scss/base/_init.scss */
 .bc-active-page {
   color: black;
 }
 
-/* line 105, ../scss/base/_init.scss */
+/* line 160, ../scss/base/_init.scss */
 .search-form-button {
   font-size: small;
 }
 
-/* line 106, ../scss/base/_init.scss */
-.blog-page-search {
-  padding: 1em;
+/* line 161, ../scss/base/_init.scss */
+.blog-tags-label {
+  display: inline;
 }
 
-/* line 107, ../scss/base/_init.scss */
+/* line 162, ../scss/base/_init.scss */
 .pager__items {
   margin: auto;
 }
 
-/* line 108, ../scss/base/_init.scss */
+/* line 163, ../scss/base/_init.scss */
 .pager__item {
   display: inline;
   padding: 1em;
 }
 
-/* line 109, ../scss/base/_init.scss */
+/* line 164, ../scss/base/_init.scss */
 .accordion-content {
   padding: 0 .5em 2em;
 }
 
-/* line 111, ../scss/base/_init.scss */
+/* line 166, ../scss/base/_init.scss */
 .social-icons {
   display: inline-block;
   margin: 0 0 0 1em;
   vertical-align: 3px;
 }
 
-/* line 112, ../scss/base/_init.scss */
+/* line 167, ../scss/base/_init.scss */
 .social-icon-style {
   font-size: 24px;
 }
 
-/* line 113, ../scss/base/_init.scss */
+/* line 168, ../scss/base/_init.scss */
 .social-block {
   margin: 0 0;
 }
 
-/* line 115, ../scss/base/_init.scss */
+/* line 170, ../scss/base/_init.scss */
 .video-details {
   display: block;
   padding: 1em 0;
 }
 
-/* line 116, ../scss/base/_init.scss */
+/* line 171, ../scss/base/_init.scss */
 .video-title {
   font-weight: bolder;
   padding: .875rem 0;
 }
 
-/* line 117, ../scss/base/_init.scss */
+/* line 172, ../scss/base/_init.scss */
 .video-category {
   font-size: 1em;
   display: inline-flex;
 }
 
-/* line 118, ../scss/base/_init.scss */
+/* line 173, ../scss/base/_init.scss */
 .video-body {
   display: block;
   padding-top: 1em;
@@ -209,13 +236,19 @@
   clear: both;
 }
 
-/* line 121, ../scss/base/_init.scss */
+/* line 176, ../scss/base/_init.scss */
 .header-image {
   margin-bottom: 2em;
 }
 
-/* line 123, ../scss/base/_init.scss */
-.category-term {
+/* Adds tag style for taxonomy terms */
+/* line 179, ../scss/base/_init.scss */
+.category-term ul {
+  margin: 0;
+}
+
+/* line 180, ../scss/base/_init.scss */
+.category-term li {
   background: #F1F1F1;
   border-radius: 3px 0 0 3px;
   color: #999;
@@ -229,8 +262,8 @@
   -webkit-transition: color 0.2s;
 }
 
-/* line 137, ../scss/base/_init.scss */
-.category-term::before {
+/* line 194, ../scss/base/_init.scss */
+.category-term li::before {
   background: #fff;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
@@ -242,8 +275,8 @@
   top: 10px;
 }
 
-/* line 149, ../scss/base/_init.scss */
-.category-term::after {
+/* line 206, ../scss/base/_init.scss */
+.category-term li::after {
   background: #fff;
   border-bottom: 13px solid transparent;
   border-left: 10px solid #eee;
@@ -254,14 +287,14 @@
   top: 0;
 }
 
-/* line 160, ../scss/base/_init.scss */
-.category-term:hover {
+/* line 217, ../scss/base/_init.scss */
+.category-term li:hover {
   background-color: #E4E2E0;
   color: white;
 }
 
-/* line 165, ../scss/base/_init.scss */
-.category-term:hover::after {
+/* line 222, ../scss/base/_init.scss */
+.category-term li:hover::after {
   border-left-color: #E4E2E0;
 }
 
@@ -5748,82 +5781,6 @@ ul.pagination li {
   float: none;
 }
 
-/* Panels */
-/* line 86, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel {
-  border-style: solid;
-  border-width: 1px;
-  border-color: #d8d8d8;
-  margin-bottom: 1.25rem;
-  padding: 1.25rem;
-  background: #f2f2f2;
-  color: #333333;
-}
-/* line 61, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel > :first-child {
-  margin-top: 0;
-}
-/* line 62, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel > :last-child {
-  margin-bottom: 0;
-}
-/* line 67, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
-  color: #333333;
-}
-/* line 74, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
-  line-height: 1;
-  margin-bottom: 0.625rem;
-}
-/* line 76, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel h1.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
-  line-height: 1.4;
-}
-/* line 88, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout {
-  border-style: solid;
-  border-width: 1px;
-  border-color: #d8d8d8;
-  margin-bottom: 1.25rem;
-  padding: 1.25rem;
-  background: #ecfaff;
-  color: #333333;
-}
-/* line 61, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout > :first-child {
-  margin-top: 0;
-}
-/* line 62, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout > :last-child {
-  margin-bottom: 0;
-}
-/* line 67, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p, .panel.callout li, .panel.callout dl {
-  color: #333333;
-}
-/* line 74, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
-  line-height: 1;
-  margin-bottom: 0.625rem;
-}
-/* line 76, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1.subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
-  line-height: 1.4;
-}
-/* line 90, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout a:not(.button) {
-  color: #008CBA;
-}
-/* line 93, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.callout a:not(.button):hover, .panel.callout a:not(.button):focus {
-  color: #0078a0;
-}
-/* line 100, ../../../contrib/zurb_foundation/scss/foundation/components/_panels.scss */
-.panel.radius {
-  border-radius: 3px;
-}
-
 /* Pricing Tables */
 /* line 139, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table {
@@ -9119,7 +9076,7 @@ th.hide-for-touch {
 .service {
   width: 100%;
   height: 320px;
-  margin: 80px 0;
+  margin: 1em 0;
   text-align: center;
   border: 1px solid #ddd;
   -webkit-transition: all 0.3s ease;
@@ -10224,11 +10181,6 @@ meta.foundation-mq-topbar {
   }
 }
 /* Standard Forms */
-/* line 378, ../scss/modules/_forms.scss */
-form {
-  margin: 0 0 1rem;
-}
-
 /* Using forms within rows, we need to set some defaults */
 /* line 84, ../scss/modules/_forms.scss */
 form .row .row {
@@ -10721,4 +10673,80 @@ select.error {
 /* line 598, ../scss/modules/_forms.scss */
 label.error {
   color: #f04124;
+}
+
+/* Panels */
+/* line 83, ../scss/modules/_panels.scss */
+.panel {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #b9c9df;
+  margin-bottom: 1.25rem;
+  padding: 3.125rem 0;
+  background: #DCE4EF;
+  color: #333333;
+}
+/* line 58, ../scss/modules/_panels.scss */
+.panel > :first-child {
+  margin-top: 0;
+}
+/* line 59, ../scss/modules/_panels.scss */
+.panel > :last-child {
+  margin-bottom: 0;
+}
+/* line 64, ../scss/modules/_panels.scss */
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
+  color: #333333;
+}
+/* line 71, ../scss/modules/_panels.scss */
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
+  line-height: 1;
+  margin-bottom: 0.625rem;
+}
+/* line 73, ../scss/modules/_panels.scss */
+.panel h1.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
+  line-height: 1.4;
+}
+/* line 85, ../scss/modules/_panels.scss */
+.panel.callout {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #b9c9df;
+  margin-bottom: 1.25rem;
+  padding: 3.125rem 0;
+  background: #ecfaff;
+  color: #333333;
+}
+/* line 58, ../scss/modules/_panels.scss */
+.panel.callout > :first-child {
+  margin-top: 0;
+}
+/* line 59, ../scss/modules/_panels.scss */
+.panel.callout > :last-child {
+  margin-bottom: 0;
+}
+/* line 64, ../scss/modules/_panels.scss */
+.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p, .panel.callout li, .panel.callout dl {
+  color: #333333;
+}
+/* line 71, ../scss/modules/_panels.scss */
+.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
+  line-height: 1;
+  margin-bottom: 0.625rem;
+}
+/* line 73, ../scss/modules/_panels.scss */
+.panel.callout h1.subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
+  line-height: 1.4;
+}
+/* line 87, ../scss/modules/_panels.scss */
+.panel.callout a:not(.button) {
+  color: #008CBA;
+}
+/* line 90, ../scss/modules/_panels.scss */
+.panel.callout a:not(.button):hover, .panel.callout a:not(.button):focus {
+  color: #0078a0;
+}
+/* line 97, ../scss/modules/_panels.scss */
+.panel.radius {
+  border-radius: 3px;
 }

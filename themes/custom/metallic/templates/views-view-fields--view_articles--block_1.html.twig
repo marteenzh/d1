@@ -29,29 +29,19 @@
  * @see template_preprocess_views_view_fields()
  */
 #}
-
-<div class="row">
-	<div class="large-6 columns">
-		{{ exposed }}
-	</div>
-
-	<div class="large-6 columns">
-	{% block content %}
-		{{ search_block_output }}
-	{% endblock %}
-	</div>
-		
-	<div class="large-5 medium-6 small-12 columns">
-		<span class="article-listing-image"> {{ fields.field_image.content }}</span>
-	</div>
-
-	<div class="large-7 medium-6 small-12 columns">
-		<h3><span class="article-listing-title">{{ fields.title.content }}</span></h3>
-		<div><span class="article-listing-body"> {{ fields.body.content }} </span></div>
-		<div><span class="article-listing-date"> {{ fields.created.content }} </span></div>
- 
- 		{% if fields.field_tags.content|render is not empty %}
-			<div class="article-listing-topics-wrapper"><span class="article-listing-topics category-term"> {{ fields.field_tags.content }} </span></div>
-		{% endif %}
-	</div>
+<div class="large-4 medium-6 small-12 columns">
+  <span class="article-listing-image"> {{ fields.field_image.content }}</span>
 </div>
+
+<div class="large-8 medium-6 small-12 columns">
+  <div class="article-listing-details">
+  <h3 class="article-listing-title">{{ fields.title.content }}</h3>
+  <div><span class="article-listing-body"> {{ fields.body.content }} </span></div>
+  <div><span class="article-listing-date"> {{ fields.created.content }} </span></div>
+  {% if fields.field_tags.content|render is not empty %}
+  	<div class="article-listing-topics-wrapper">
+  	<span class="article-listing-topics"> {{ fields.field_tags.content }} </span>
+  	</div>
+  {% endif %}
+	</div>
+	</div>

@@ -375,7 +375,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 @include exports("form") {
   @if $include-html-form-classes {
     /* Standard Forms */
-    form { margin: 0 0 $form-spacing; }
+//    form { margin: 0 0 $form-spacing; }
 
     /* Using forms within rows, we need to set some defaults */
     form .row { @include form-row-base; }
