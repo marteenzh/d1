@@ -298,6 +298,12 @@
   border-left-color: #E4E2E0;
 }
 
+/* For primary Blog landing page and associated views */
+/* line 227, ../scss/base/_init.scss */
+.view-photo {
+  padding: 1em 0;
+}
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
