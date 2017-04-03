@@ -78,8 +78,12 @@ function metallic_preprocess_page(&$variables) {
   }
 
   // Convenience variables
-  $left = $variables['page']['sidebar_first'];
-  $right = $variables['page']['sidebar_second'];
+  if (isset($variables['page']['sidebar_first'])) {
+    $left = $variables['page']['sidebar_first'];
+  }
+  if (isset($variables['page']['sidebar_second'])) {
+    $right = $variables['page']['sidebar_second'];
+  }
 
   // Dynamic sidebars
   if (!empty($left) && !empty($right)) {
@@ -93,8 +97,8 @@ function metallic_preprocess_page(&$variables) {
     $variables['sidebar_sec_grid'] = 'large-3';
   }
   elseif (!empty($left) && empty($right)) {
-    $variables['main_grid'] = 'large-9 large-push-3';
-    $variables['sidebar_first_grid'] = 'large-3 large-pull-9';
+    $variables['main_grid'] = 'large-10 large-push-2';
+    $variables['sidebar_first_grid'] = 'large-2 large-pull-10';
     $variables['sidebar_sec_grid'] = '';
   }
   else {
@@ -102,7 +106,7 @@ function metallic_preprocess_page(&$variables) {
     $variables['sidebar_first_grid'] = '';
     $variables['sidebar_sec_grid'] = '';
   }
-
+  
   // Add classes to highlighted region.
   if (!empty($variables['page']['highlighted'])) {
     $variables['page']['highlighted']['#attributes']['class'][] = 'region-highlighted';

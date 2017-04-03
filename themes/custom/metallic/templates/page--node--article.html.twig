@@ -181,7 +181,7 @@
       </div>  
     {% endif %}
   
-  <div class="row">
+  <div class="row innermost">
     
     {% if page.breadcrumbs %}
       <div class="large-12 columns">{{ page.breadcrumbs }}</div>
@@ -198,7 +198,9 @@
     {% endif %}
  
     {% if page.page_title %}
-        <div class="large-12 columns"> <a id="main-content">{{ page.page_title }}</a></div>
+    <div class="large-12 columns">
+        <a id="main-content">{{ page.page_title }}</a>
+    </div>    
     {% endif %}
       
     {% if tabs %}
@@ -219,7 +221,7 @@
     {% endif %}
     
       {% if page.content_top %}
-        <div class="{large-9 columns end">  
+        <div class="large-9 columns end">  
           {{ page.content_top }}
         </div>
       {% endif %}
