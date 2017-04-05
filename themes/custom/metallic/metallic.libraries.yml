@@ -6,6 +6,8 @@ global:
       css/fonts/foundation-icons/foundation-icons.css: {}
   js:
     js/metallic.js: {}
+    js/foundation.min.js: {}
+    js/top_bar_active.js: {}
 
   dependencies:
     - core/drupal

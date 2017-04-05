@@ -20,9 +20,10 @@
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
 
+
 {% if top_bar %}
-    <div class="fixed">
-      <nav class="top-bar" data-topbar data-options="{{ top_bar_options }}" >
+     <div class="{{ top_bar_classes }}fixed">
+      <nav class="top-bar" data-topbar data-options="{{ top_bar_options }}" role="navigation">
         <ul class="title-area">
           <li class="name">
             <h1><a href="/"><img src="{{ logopath }}" width="40" />{{ site_name }}</a></h1>
