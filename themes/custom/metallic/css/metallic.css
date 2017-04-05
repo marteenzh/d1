@@ -8902,6 +8902,81 @@ th.hide-for-touch {
     display: table-cell !important;
   }
 }
+/*
+ * zurb_foundation.scss - Contains all Drupal-specific SASS for this theme.
+ *
+ * @todo Split this into multiple folders/files.
+*/
+/* line 11, ../scss/base/_drupal.scss */
+.region-highlighted:empty {
+  display: none;
+}
+
+/* line 18, ../scss/base/_drupal.scss */
+.toolbar-tray a {
+  font-size: 13px;
+}
+
+/* line 24, ../scss/base/_drupal.scss */
+.toolbar .toolbar-toggle-orientation .toolbar-icon {
+  margin: 0;
+}
+/* line 27, ../scss/base/_drupal.scss */
+.toolbar .toolbar-toggle-orientation .toolbar-icon:before {
+  min-height: 0;
+}
+
+/* line 34, ../scss/base/_drupal.scss */
+.top-bar-section ul li {
+  padding-top: 0;
+}
+/* line 36, ../scss/base/_drupal.scss */
+.top-bar-section ul li a.is-active {
+  color: #FFFFFF;
+}
+
+/* line 43, ../scss/base/_drupal.scss */
+body.toolbar-fixed .fixed .top-bar {
+  margin-top: 39px;
+}
+
+/* line 47, ../scss/base/_drupal.scss */
+body.toolbar-fixed.toolbar-horizontal.toolbar-tray-open .fixed .top-bar {
+  margin-top: 5em;
+}
+
+/* line 51, ../scss/base/_drupal.scss */
+body.toolbar-fixed.toolbar-horizontal.toolbar-tray-open {
+  padding-top: 11em !important;
+}
+
+/* line 55, ../scss/base/_drupal.scss */
+body.toolbar-fixed.toolbar-horizontal {
+  padding-top: 8em !important;
+}
+
+/* line 62, ../scss/base/_drupal.scss */
+.top-bar .menu-item--collapsed, .top-bar .menu-item--expanded {
+  list-style: none;
+}
+
+/* line 70, ../scss/base/_drupal.scss */
+.top-bar .search-block-form .form-item-keys, .top-bar .search-block-form .form-actions {
+  display: inline-block;
+}
+
+/* line 77, ../scss/base/_drupal.scss */
+.dropbutton-wrapper {
+  background-color: #008CBA;
+  margin: 0 0 1.25rem;
+}
+/* line 81, ../scss/base/_drupal.scss */
+.dropbutton-wrapper .button {
+  margin-bottom: 0;
+  width: 100%;
+  text-align: left;
+}
+
 /* line 60, ../scss/base/_elements.scss */
 .service {
   width: 100%;
