@@ -52,7 +52,11 @@
  * - page.highlighted
  * - page.breadcrumbs
  * - page.page_title
- * - page.content
+ * - page.content_top
+ * - page.content_middle
+ * - page.content_bottom
+ * - page.half_left
+ * - page.half_right
  * - page.sidebar_first
  * - page.sidebar_second
  * - page.triptych_left
@@ -71,54 +75,37 @@
 #}
 <section class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap">
-    <aside class="left-off-canvas-menu">
+    <aside class="left-off-canvas-menu" role="complementary">
       {{ page.left_off_canvas }}
     </aside>
 
-    <aside class="right-off-canvas-menu">
+    <aside class="right-off-canvas-menu" role="complementary">
       {{ page.right_off_canvas }}
     </aside>
 
-      {% if page.meta_header %}
-        {% if meta_header_grid %}
-          <div class="row">
-            <div class="large-12 columns">
-        {% endif %}
-        {{ page.meta_header }}
-        {% if meta_header_grid %}
-            </div>
+    {% if page.meta_header %}
+      {% if meta_header_grid %}
+        <div class="row">
+          <div class="large-12 columns">
+            {{ page.meta_header }}      
           </div>
-        {% endif %}
-      {% endif %}
+        </div>
+      {% endif %}  
+    {% endif %}
 
-      <header class="row">
-        {% if linked_site_name or linked_logo %}
-          <div class="large-2 columns">
-            {% if linked_logo %}
-              {{ linked_logo }}
-            {% endif %}
-          </div>
-          <div class="large-4 columns">
-            {% if is_front %}
-              <h1 id="site-name">{{ linked_site_name }}</h1>
-            {% else %}
-              <div id="site-name">{{ linked_site_name }}</div>
-            {% endif %}
-          </div>
-        {% endif %}
-      </header>
-
+    <header class="row" role="banner" aria-label="{{ 'Site header'|t }}">
       {% if page.header %}
-        <div class="top-bar">
+        <div class="row">
           <div class="large-12 columns">
             {{ page.header }}
           </div>
-        </div>
+        </div>  
       {% endif %}
+    </header>
 
-      <div class="row">
-        {% if show_account_info %}
-          <div class="{{ site_slogan ? 'large-6' : 'large-4 columns large-offset-8' }} columns hide-for-small">
+    <div class="row">
+      {% if show_account_info %}
+        <div class="{{ site_slogan ? 'large-6' : 'large-4 columns large-offset-8' }} columns hide-for-small">
             <p>
               {% if logged_in %}
                 <a href="{{ path('user.page') }}">{{ 'My Account'|t }}</a>
@@ -128,150 +115,116 @@
                 <a href="{{ path('user.register') }}">{{ 'Sign Up'|t }}</a>
               {% endif %}
             </p>
+        </div>
+      {% endif %}
+      
+      {% if site_slogan %}
+        <div class="large-6 columns hide-for-small"> {{ site_slogan }} </div>
+      {% endif %}
+      
+      {% if show_account_info %}
+        <div class="show-for-small">
+          <div class="six mobile-two columns">
+            <p><a href="{{ path('user.login') }}" class="radius button">{{ 'Login'|t }}</a></p>
           </div>
-        {% endif %}
-        {% if site_slogan %}
-          <div class="large-6 columns hide-for-small">
-            {{ site_slogan }}
+          
+          <div class="six mobile-two columns">
+            <p><a href="{{ path('user.register') }}" class="radius success button">{{ 'Sign Up'|t }}</a></p>
           </div>
-        {% endif %}
-        {% if show_account_info %}
-          <div class="show-for-small">
-            <div class="six mobile-two columns">
-              <p>
-                <a href="{{ path('user.login') }}" class="radius button">{{ 'Login'|t }}</a>
-              </p>
-            </div>
-            <div class="six mobile-two columns">
-              <p>
-                <a href="{{ path('user.register') }}" class="radius success button">{{ 'Sign Up'|t }}</a>
-              </p>
-            </div>
-          </div>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
+    </div>
 
-      {% if messages and not zurb_foundation_messages_modal %}
+    {% if messages and not zurb_foundation_messages_modal %}
       <div class="l-messages row">
         <div class="large-12 columns">
           {{ messages }}
         </div>
       </div>
-      {% endif %}
+    {% endif %}
 
-      {% if page.help %}
+    {% if page.help %}
       <div class="l-help row">
         <div class="large-12 columns">
           {{ page.help }}
         </div>
       </div>
-      {% endif %}
+    {% endif %}
+
+    {% if page.breadcrumbs %}
+      <div class="row">
+        <div class="large-12 columns">{{ page.breadcrumbs }}</div>
+      </div>
+    {% endif %}
+
+    {% if page.page_title %}
+      <div class="row">
+        <div class="large-12 columns"> {{ page.page_title }}</div>
+      </div>
+    {% endif %}              
+    
+    <div class="row">
+      <main id="main" role="main">
+        {% if page.highlighted %}
+          {% spaceless %}
+            {{ page.highlighted }}
+          {% endspaceless %}
+        {% endif %}
+        <a id="main-content"></a>
+        
+        <section>  
+          {% if page.content %}
+            <div class="medium-6 columns medium-centered large-centered">  
+              {{ page.content }}
+            </div>
+          {% endif %}
+        </section>
+      </main>      
+      
+    </div>  
+
+    {% if page.half_left or page.half_right %}
 
       <div class="row">
-        <div id="main" class="{{ main_grid }} columns">
-          {% if page.highlighted %}
-            {% spaceless %}
-              {{ page.highlighted }}
-            {% endspaceless %}
-          {% endif %}
-          
-          <a id="main-content"></a>
- <div class="row">
-          {% if page.breadcrumbs %}
-          <div class="large-12 columns">{{ page.breadcrumbs }}</div>
-           {% endif %}
-          </div>
-          {% if title and not is_front %}
-            {{ title_prefix }}
-            <h1 id="page-title" class="title">{{ title }}</h1>
-            {{ title_suffix }}
-          {% endif %}
- 
- <div class="row">
-        {% if page.page_title %}
-          <div class="large-12 columns">{{ page.page_title }}</div>
-        {% endif %}
-        </div>
-          {% if tabs %}
-            {{ tabs }}
-            {% if tabs2 %} {{ tabs2 }} {% endif %}
-          {% endif %}
-          {% if action_links %}
-            <ul class="action-links">
-              {{ action_links }}
-            </ul>
-          {% endif %}
-          <div class="large-6 medium-6 small-8 large-centered medium-centered small-centered columns"
- 
-                  {{ page.content }}
-          </div>
-        </div>
-        {% if page.sidebar_first %}
-          <div id="sidebar-first" class="{{ sidebar_first_grid }} columns sidebar ">
-            {{ page.sidebar_first }}
-          </div>
-        {% endif %}
-        {% if page.sidebar_second %}
-          <div id="sidebar-second" class="{{ sidebar_sec_grid }} columns sidebar">
-            {{ page.sidebar_second }}
-          </div>        
-        {% endif %}
-         </div>
-      
-          <div class="row">
-        {% if page.half_left %}
-          <div class="large-6 medium-6 small-12 columns">{{ page.half_left }}</div>
-        {% endif %}
-        {% if page.half_right %}
-          <div class="large-6 medium-6 small-12 columns">{{ page.half_right }}</div>
-        {% endif %}
-          </div>
-
-        
-        <div class="row">
-        {% if page.triptych_left %}
-          <div class="large-4 columns">{{ page.triptych_left }}</div>
-        {% endif %}
-        {% if page.triptych_center %}
-          <div class="large-4 columns">{{ page.triptych_center }}</div>
-        {% endif %}
-        {% if page.triptych_right %}
-          <div class="large-4 columns">{{ page.triptych_right }}</div>
-          {% endif %}
+        <div class="large-6 medium-6 small-12 columns">{{ page.half_left }}</div>
+        <div class="large-6 medium-6 small-12 columns">{{ page.half_right }}</div>
       </div>
+    
+    {% endif %}
+       
+    {% if page.triptych_left or page.triptych_center or page.triptych_right %}
 
-       <div class="row">
-        {% if page.two_thirds_left %}
-          <div class="large-8 columns">{{ page.two_thirds_left }}</div>
-        {% endif %}
-        {% if page.one_third_right %}
-          <div class="large-4 columns">{{ page.one_third_right }}</div>
-        {% endif %}
+      <div class="row">
+        <div class="large-4 columns">{{ page.triptych_left }}</div>  
+        <div class="large-4 columns">{{ page.triptych_center }}</div>
+        <div class="large-4 columns">{{ page.triptych_right }}</div>
       </div>
+    
+    {% endif %}
 
-      {% if page.footer_first or page.footer_middle or page.footer_last %}
-        <footer class="footer">
-        <div class="row">
-          {% if page.footer_first %}
+    {% if page.two_thirds_left or page.one_third_right %}
+
+    <div class="row">
+        <div class="large-8 columns">{{ page.two_thirds_left }}</div>
+        <div class="large-4 columns">{{ page.one_third_right }}</div>
+    </div>
+
+    {% endif %}
+
+      <footer class="footer">
             <div id="footer-first" class="small-12 medium-6 large-5 columns">
               {{ page.footer_first }}
             </div>
-          {% endif %}
-          {% if page.footer_middle %}
+         
             <div id="footer-middle" class="small-12 medium-6 large-4 columns">
               {{ page.footer_middle }}
             </div>
-          {% endif %}
-          {% if page.footer_last %}
-
+          
             <div id="footer-last" class="small-12 medium-12 large-3 columns">
               {{ page.footer_last }}
             </div>
-          {% endif %}
-        </div>
-        </footer>
-      {% endif %}
-    <a class="exit-off-canvas"></a>
-
+      </footer>
+ 
+  <a class="exit-off-canvas"></a>
   </div>
 </section>

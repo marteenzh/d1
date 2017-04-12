@@ -30,20 +30,26 @@
  * @see template_preprocess_views_view()
  */
 #}
+<div class="row">
   <div class="large-6 medium-6 small-12 columns end">
     {{ exposed }}
     {{ attachment_before }}
   </div>
+</div>  
 
+<div class="row">
   <div class="large-12 medium-12 small-12 columns">
       {{ rows }}
       {{ empty }}
   </div>
-  
-  <div class="large-12 columns">{{ pager }}
-  </div>
+</div>
 
+<div class="row">
+  <div class="large-12 columns">{{ pager }}</div>
+</div>
+<div class="row">
   <div class="large-12 columns">
     {{ attachment_after }}
     {{ more }}
   </div> 
+</div>

@@ -9053,7 +9053,7 @@ body.toolbar-fixed.toolbar-horizontal {
   list-style: none;
   margin-left: 0;
   overflow: hidden;
-  padding: 0.5625rem 0.875rem 0.5625rem;
+  padding: 0.5625rem 0 0.5625rem;
   background-color: #fff;
   border-color: #fff;
   border-radius: 3px;
