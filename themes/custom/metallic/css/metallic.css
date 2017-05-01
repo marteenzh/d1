@@ -315,6 +315,11 @@
   padding: 1em 0;
 }
 
+/* line 231, ../scss/base/_init.scss */
+html {
+  overflow-y: scroll;
+}
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.

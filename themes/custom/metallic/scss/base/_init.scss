@@ -227,3 +227,7 @@ $retina: (
 /* For primary Blog landing page and associated views */
 .photo-row {}
 .view-photo {padding: 1em 0;}
+
+html {
+  overflow-y: scroll;
+}
