@@ -164,6 +164,24 @@ $retina: (
 .pager__item {display:inline; padding: 1em; }
 .accordion-content {padding: 0 .5em 2em; }
 
+.writing-listing-item {margin: 1em 0; padding-bottom: 1em; padding-right: 2em; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
+@media #{$large-up} {.writing-listing-details {padding: 0 2em;} }
+.writing-listing-title {padding-bottom: .25em;}
+.writing-listing-topics-wrapper {display: inline-block; font-size: .85rem; margin: 1em 0;}
+.writing-listing-topics {display: inline; padding: 1em 0; font-weight: bold;}
+.writing-listing-teaser p {font-size: 1em;}
+
+.video-listing {}
+.video-listing-item {
+  margin: 1em 0;
+  padding: 1em;
+  background: $gray-cool-light;
+}
+.video-listing-item h4 {font-size: 1.25em;}
+.video-listing-embed {}
+.video-listing-title {padding: .25em 0;}
+.video-listing-topics-wrapper {display: block; margin: 1em 0;}
+
 .social-icons { display:inline-block; margin: 0 0 0 1em; vertical-align: 3px;}
 .social-icon-style {font-size: 24px;}
 .social-block {margin: 0 0;}
