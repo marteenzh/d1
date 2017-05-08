@@ -211,6 +211,9 @@ $retina: (
 .article-body {padding-top: 2em;}
 .article-topics-label {font-size: 1em; font-weight: bold;}
 .article-topics {display: inline;}
+.article-metadata {font-weight: 500; padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
+.article-date {display: inline-block;}
+
 .bc-active-page {color: black;}
 .search-form-button {font-size: small;}
 .blog-tags-label {display: inline;}
@@ -218,7 +221,7 @@ $retina: (
 .pager__item {display:inline; padding: 1em; }
 .accordion-content {padding: 0 .5em 2em; }
 
-.article-tags-block {padding: 0 1em 2em 0;}
+.article-tags-block {padding: 2em 1em 2em 0; border-top: 1px solid $gray-light;}
 .article-tags-label {font-size: 1.5em; font-weight: 500; margin-bottom: 1em; }
 .article-tags {display: inline;}
 .article-tag {display: inline;}

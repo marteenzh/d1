@@ -77,20 +77,16 @@
         </h2>
       {% endif %}
     {{ title_suffix }}
-
-    {% if display_submitted %}
-      <div class="posted">
-        {{ author_picture }}
-          <div{{ author_attributes }}>
-            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+    <div class="article-metadata">
+    {% if content.field_date|length and not is_front %}    
+              Posted by {{ author_name }} on <span class="article-date">{{ content.field_date }}</span>
             {{ metadata }}
-          </div>
-      </div>
-    {% endif %}
+        {% endif %}
+    </div>
 
     {# We hide the comments and links now so that we can render them later. #}
       <div{{ content_attributes }}>
-        {{ content|without('comment', 'links', 'field_tags') }}
+        {{ content|without('comment', 'links', 'field_tags', 'field_date') }}
       </div>
 
     {% if content.field_tags|length and not is_front %}
