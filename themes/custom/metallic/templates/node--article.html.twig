@@ -69,7 +69,7 @@
 #}
 <article id="node-{{ node.id }}" {{ attributes }}>
   <div class="row">
-  <div class="small-12 medium-12 large-9 columns end">
+  <div class="large-9 columns end">
     {{ title_prefix }}
       {% if not page %}
         <h2{{ title_attributes }}>
@@ -77,20 +77,24 @@
         </h2>
       {% endif %}
     {{ title_suffix }}
-    <div class="article-metadata">
-    {% if content.field_date|length and not is_front %}    
-              Posted by {{ author_name }} on <span class="article-date">{{ content.field_date }}</span>
+
+    {% if display_submitted %}
+      <div class="posted">
+        {{ author_picture }}
+          <div{{ author_attributes }}>
+            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
             {{ metadata }}
-        {% endif %}
-    </div>
+          </div>
+      </div>
+    {% endif %}
 
     {# We hide the comments and links now so that we can render them later. #}
       <div{{ content_attributes }}>
-        {{ content|without('comment', 'links', 'field_tags', 'field_date') }}
+        {{ content|without('comment', 'links', 'field_tags') }}
       </div>
 
     {% if content.field_tags|length and not is_front %}
-      <span class="article-listing-topics"> {{ content.field_tags }} </span>
+      {{ content.field_tags }}
     {% endif %}
 
     {{ content.links }}
