@@ -67,7 +67,7 @@
  * @ingroup themeable
  */
 #}
-  <article id="node-{{ node.id }}" {{ attributes }}>
+    <article id="node-{{ node.id }}" {{ attributes }}>
     <div class="row">
       <div class="large-9 columns end">     
         {{ content.field_video_url }}
@@ -77,11 +77,13 @@
     <div class="row">
       <div class="large-9 columns end">     
         <div class="media-details row">
-          <div class="large-6 columns"> <span class="media-subtitle">{{ content.field_video_title }}</span> </div>
-          <div class="media-category large-6 columns"> {{ content.field_video_category}} </div>
+          <div class="large-12 columns"> <span class="media-subtitle">{{ content.field_video_title }}</span> </div>
+          <div class="media-category large-12 columns"> {{ content.field_video_category}} </div>
         </div>
-            
-        <div class="media-body">
+    </div>
+    
+    <div class="row">
+      <div class="large-9 columns media-body">
           {{ content.body }}
     
           {% if content.field_tags|length and not is_front %}
@@ -90,7 +92,7 @@
 
           {{ content.links }}
           {{ content.comment }}
-        </div>
       </div>
-    </div>  
+    </div>
+    
   </article>

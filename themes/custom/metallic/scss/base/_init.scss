@@ -193,8 +193,13 @@ $retina: (
 .video-listing-title {padding: .25em 0;}
 .video-listing-topics-wrapper {display: block; margin: 1em 0;}
 
-.photos-top {padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
-.photos-array {padding-top: 1em;}
+.media-top {padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
+.media-array {padding-top: 1em;}
+.media-tags-block {padding: 2em 1em 2em 0;}
+.media-tags-label h3 { margin-bottom: 1em; }
+.media-tags {display: inline;}
+.media-tag {display: inline;}
+
 .social-icons { display:inline-block; margin: 0 0 0 1em; vertical-align: 3px;}
 .social-icon-style {font-size: 24px;}
 .social-block {margin: 0 0;}
@@ -261,5 +266,14 @@ $retina: (
 
 html {
   overflow-y: scroll;
-  font-size: 10px;
 }
+html p {
+  font-size: 1.125rem;
+}
+
+figure {
+  margin: 1em 0 !important;
+}
+figcaption {
+  padding: 1em 1em;
+  }
