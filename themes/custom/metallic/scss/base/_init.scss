@@ -143,7 +143,7 @@ $retina: (
 .catarch {padding-top: 1em;}
 
 .article-category-terms-view {display: inline;}
-.article-listing-item {margin-top: 1em; padding-bottom: 1em; padding-right: 2em; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
+.article-listing-item {margin-top: 2em; padding-bottom: 1em; padding-right: 2em; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
 @media #{$large-up} {.article-listing-details {padding: 1em 2em;} }
 .article-listing-title {padding-bottom: .25em;}
 .article-listing-body p {font-size: 1em;}
@@ -160,6 +160,7 @@ $retina: (
 .article-metadata {font-weight: 500; padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
 .article-date {display: inline-block;}
 
+.blog-top {border: 1px solid $gray-light; padding: 3em; background-color: $gray-lighter;}
 .bc-active-page {color: black;}
 .search-form-button {font-size: small;}
 .blog-tags-label {display: inline;}
@@ -179,6 +180,8 @@ $retina: (
 .writing-listing-topics {display: inline; padding: 1em 0; font-weight: bold;}
 .writing-listing-teaser p {font-size: 1em;}
 
+.videos-top {padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
+.videos-array {padding-top: 1em;}
 .video-listing {}
 .video-listing-item {
   margin: 1em 0;
@@ -190,6 +193,8 @@ $retina: (
 .video-listing-title {padding: .25em 0;}
 .video-listing-topics-wrapper {display: block; margin: 1em 0;}
 
+.photos-top {padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
+.photos-array {padding-top: 1em;}
 .social-icons { display:inline-block; margin: 0 0 0 1em; vertical-align: 3px;}
 .social-icon-style {font-size: 24px;}
 .social-block {margin: 0 0;}
