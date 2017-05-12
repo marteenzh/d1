@@ -313,97 +313,114 @@
   margin: 1em 0;
 }
 
+/* line 195, ../scss/base/_init.scss */
+.video-title-label {
+  display: inline-block;
+  padding-right: 1em;
+}
+
 /* line 196, ../scss/base/_init.scss */
+.video-title-wrapper {
+  display: inline-block;
+}
+
+/* line 197, ../scss/base/_init.scss */
+.video-title {
+  font-size: 1.25em;
+}
+
+/* line 199, ../scss/base/_init.scss */
 .media-top {
   padding-bottom: 1rem;
   border-bottom: 1px solid #AEB0B5;
 }
 
-/* line 197, ../scss/base/_init.scss */
+/* line 200, ../scss/base/_init.scss */
 .media-array {
   padding-top: 1em;
 }
 
-/* line 198, ../scss/base/_init.scss */
+/* line 201, ../scss/base/_init.scss */
 .media-tags-block {
   padding: 2em 1em 2em 0;
 }
 
-/* line 199, ../scss/base/_init.scss */
+/* line 202, ../scss/base/_init.scss */
 .media-tags-label h3 {
   margin-bottom: 1em;
 }
 
-/* line 200, ../scss/base/_init.scss */
+/* line 203, ../scss/base/_init.scss */
 .media-tags {
   display: inline;
 }
 
-/* line 201, ../scss/base/_init.scss */
+/* line 204, ../scss/base/_init.scss */
 .media-tag {
   display: inline;
 }
 
-/* line 203, ../scss/base/_init.scss */
+/* line 206, ../scss/base/_init.scss */
 .social-icons {
   display: inline-block;
   margin: 0 0 0 1em;
   vertical-align: 3px;
 }
 
-/* line 204, ../scss/base/_init.scss */
+/* line 207, ../scss/base/_init.scss */
 .social-icon-style {
   font-size: 24px;
 }
 
-/* line 205, ../scss/base/_init.scss */
+/* line 208, ../scss/base/_init.scss */
 .social-block {
   margin: 0 0;
 }
 
-/* line 207, ../scss/base/_init.scss */
+/* line 210, ../scss/base/_init.scss */
 .media-details {
   display: block;
   padding: 1em 0;
 }
 
-/* line 208, ../scss/base/_init.scss */
+/* line 211, ../scss/base/_init.scss */
 .media-title {
   font-weight: bolder;
   padding: .875rem 0;
 }
 
-/* line 209, ../scss/base/_init.scss */
+/* line 212, ../scss/base/_init.scss */
 .media-subtitle {
   text-decoration: underline;
+  display: inline-block;
 }
 
-/* line 210, ../scss/base/_init.scss */
+/* line 213, ../scss/base/_init.scss */
 .media-category {
   font-size: 1em;
   display: inline;
 }
 
-/* line 211, ../scss/base/_init.scss */
+/* line 214, ../scss/base/_init.scss */
 .media-body {
   display: block;
   padding-top: 1em;
-  border-top: solid 1px;
+  border-bottom: solid 1px;
   clear: both;
 }
 
-/* line 214, ../scss/base/_init.scss */
+/* line 217, ../scss/base/_init.scss */
 .header-image {
   margin-bottom: 2em;
 }
 
 /* Adds tag style for taxonomy terms */
-/* line 217, ../scss/base/_init.scss */
+/* line 220, ../scss/base/_init.scss */
 .category-term ul {
   margin: 0;
 }
 
-/* line 218, ../scss/base/_init.scss */
+/* line 221, ../scss/base/_init.scss */
 .category-term li {
   background: #F1F1F1;
   border-radius: 3px 0 0 3px;
@@ -418,7 +435,7 @@
   -webkit-transition: color 0.2s;
 }
 
-/* line 232, ../scss/base/_init.scss */
+/* line 235, ../scss/base/_init.scss */
 .category-term li::before {
   background: #fff;
   border-radius: 10px;
@@ -431,7 +448,7 @@
   top: 10px;
 }
 
-/* line 244, ../scss/base/_init.scss */
+/* line 247, ../scss/base/_init.scss */
 .category-term li::after {
   background: #fff;
   border-bottom: 13px solid transparent;
@@ -443,39 +460,39 @@
   top: 0;
 }
 
-/* line 255, ../scss/base/_init.scss */
+/* line 258, ../scss/base/_init.scss */
 .category-term li:hover {
   background-color: #E4E2E0;
   color: white;
 }
 
-/* line 260, ../scss/base/_init.scss */
+/* line 263, ../scss/base/_init.scss */
 .category-term li:hover::after {
   border-left-color: #E4E2E0;
 }
 
 /* For primary Blog landing page and associated views */
-/* line 265, ../scss/base/_init.scss */
+/* line 268, ../scss/base/_init.scss */
 .view-photo {
   padding: 1em 0;
 }
 
-/* line 267, ../scss/base/_init.scss */
+/* line 270, ../scss/base/_init.scss */
 html {
   overflow-y: scroll;
 }
 
-/* line 270, ../scss/base/_init.scss */
+/* line 273, ../scss/base/_init.scss */
 html p {
   font-size: 1.125rem;
 }
 
-/* line 274, ../scss/base/_init.scss */
+/* line 277, ../scss/base/_init.scss */
 figure {
   margin: 1em 0 !important;
 }
 
-/* line 277, ../scss/base/_init.scss */
+/* line 280, ../scss/base/_init.scss */
 figcaption {
   padding: 1em 1em;
 }
