@@ -192,6 +192,9 @@ $retina: (
 .video-listing-embed {}
 .video-listing-title {padding: .25em 0;}
 .video-listing-topics-wrapper {display: block; margin: 1em 0;}
+.video-title-label {display: inline-block; padding-right: 1em;}
+.video-title-wrapper {display: inline-block;}
+.video-title {font-size: 1.25em;}
 
 .media-top {padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
 .media-array {padding-top: 1em;}
@@ -206,9 +209,9 @@ $retina: (
 
 .media-details {display: block; padding: 1em 0;}
 .media-title {font-weight: bolder; padding: .875rem 0;}
-.media-subtitle {text-decoration: underline;}
+.media-subtitle {text-decoration: underline; display: inline-block;}
 .media-category {font-size: 1em; display: inline;}
-.media-body {display: block; padding-top: 1em; border-top: solid 1px; clear:both;}
+.media-body {display: block; padding-top: 1em; border-bottom: solid 1px; clear:both;}
 
 
 .header-image {margin-bottom: 2em;}

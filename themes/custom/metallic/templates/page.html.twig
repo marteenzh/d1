@@ -136,37 +136,34 @@
     </div>
 
     {% if messages and not zurb_foundation_messages_modal %}
-      <div class="l-messages row">
-        <div class="large-12 columns">
-          {{ messages }}
-        </div>
+    <div class="l-messages row">
+      <div class="large-12 columns">
+        {{ messages }}
       </div>
+    </div>
     {% endif %}
 
     {% if page.help %}
-      <div class="l-help row">
-        <div class="large-12 columns">
-          {{ page.help }}
-        </div>
+    <div class="l-help row">
+      <div class="large-12 columns">
+        {{ page.help }}
       </div>
+    </div>
     {% endif %}
-{#
-/**
-*    {% if page.breadcrumbs %}
-*      <div class="row">
-*        <div class="large-12 columns">{{ page.breadcrumbs }}</div>
-*      </div>
-*    {% endif %}
-*/
-#}
+
+    {% if page.breadcrumbs %}
+      <div class="row">
+        <div class="large-12 columns">{{ page.breadcrumbs }}</div>
+      </div>
+    {% endif %}         
 
     {% if page.page_title %}
       <div class="row">
         <div class="large-12 columns"> {{ page.page_title }}</div>
       </div>
-    {% endif %}              
-    
-    <div class="row">
+    {% endif %} 
+  
+    <div class="row">  
       <main id="main" role="main">
         {% if page.highlighted %}
           {% spaceless %}
@@ -174,17 +171,17 @@
           {% endspaceless %}
         {% endif %}
         <a id="main-content"></a>
-        
-        <section>  
-          {% if page.content %}
-            <div class="{{ main_grid }} columns">  
-              {{ page.content }}
-            </div>
-          {% endif %}
-        </section>
+
+    {% if page.content %}
+      <section>  
+        <div class="{{ main_grid }} columns">  
+          {{ page.content }}
+         </div>
+      </section>
+    {% endif %}
       </main>      
-      
-      {% if page.sidebar_first %}
+
+   {% if page.sidebar_first %}
         <div id="sidebar-first" class="{{ sidebar_first_grid }} columns sidebar ">
           {{ page.sidebar_first }}
         </div>
@@ -195,8 +192,7 @@
           {{ page.sidebar_second }}
         </div>        
       {% endif %}
-    </div>  
-
+      </div>
     {% if page.half_left or page.half_right %}
 
       <div class="row">

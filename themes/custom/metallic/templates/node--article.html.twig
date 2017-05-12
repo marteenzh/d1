@@ -68,33 +68,26 @@
  */
 #}
 <article id="node-{{ node.id }}" {{ attributes }}>
-  <div class="row">
-  <div class="large-9 columns end">
-    {{ title_prefix }}
-      {% if not page %}
-        <h2{{ title_attributes }}>
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-        </h2>
+  <div class="row">  
+    <div class="large-9 columns end">
+      <div class="article-metadata">
+      {% if content.field_date|length and not is_front %}    
+      Posted by {{ author_name }} on <span class="article-date">{{ content.field_date }}</span>
+      {{ metadata }}
       {% endif %}
-    {{ title_suffix }}
- <div class="article-metadata">
-    {% if content.field_date|length and not is_front %}    
-              Posted by {{ author_name }} on <span class="article-date">{{ content.field_date }}</span>
-            {{ metadata }}
-        {% endif %}
-</div>
+      </div>
 
-    {# We hide the comments and links now so that we can render them later. #}
+{# We hide the comments and links now so that we can render them later. #}
       <div{{ content_attributes }}>
         {{ content|without('comment', 'links', 'field_tags', 'field_date') }}
       </div>
 
-    {% if content.field_tags|length and not is_front %}
-      {{ content.field_tags }}
-    {% endif %}
+      {% if content.field_tags|length and not is_front %}
+        {{ content.field_tags }}
+      {% endif %}
 
-    {{ content.links }}
-    {{ content.comment }}
-  </div>
-  </div>
+      {{ content.links }}
+      {{ content.comment }}
+    </div>
+  </div>    
 </article>
