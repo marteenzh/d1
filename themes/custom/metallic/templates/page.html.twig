@@ -221,6 +221,16 @@
 
     {% endif %}
 
+    {% if page.two_thirds_right or page.one_third_left %}
+
+    <div class="row">
+        <div class="large-4 columns">{{ page.one_third_left }}</div>
+        <div class="large-8 columns">{{ page.two_thirds_right }}</div>
+    </div>
+
+    {% endif %}
+
+
       <footer class="footer">
             <div id="footer-first" class="small-12 medium-6 large-5 columns">
               {{ page.footer_first }}
