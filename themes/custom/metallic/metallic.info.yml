@@ -33,6 +33,8 @@ regions:
   triptych_right: 'Triptych Right'
   two_thirds_left: 'Two Thirds Left'
   one_third_right: 'One Third Right'
+  two_thirds_right: 'Two Thirds Right'
+  one_third_left: 'One Third Left'
   sidebar_first: 'Left Sidebar'
   sidebar_second: 'Right Sidebar'
   footer_first: 'Footer first column'
