@@ -369,15 +369,15 @@
 
 /* line 211, ../scss/base/_init.scss */
 .media-listing-item h4 {
-  font-size: 1.25em;
+  font-size: 1.125em;
 }
 
-/* line 213, ../scss/base/_init.scss */
+/* line 214, ../scss/base/_init.scss */
 .media-listing-title {
   padding: .25em 0;
 }
 
-/* line 214, ../scss/base/_init.scss */
+/* line 215, ../scss/base/_init.scss */
 .media-listing-topics-wrapper {
   display: block;
   margin: 1em 0 0 0;
@@ -385,53 +385,53 @@
   padding-top: 1em;
 }
 
-/* line 215, ../scss/base/_init.scss */
+/* line 216, ../scss/base/_init.scss */
 .media-listing-term {
   color: #112E51;
 }
 
-/* line 217, ../scss/base/_init.scss */
+/* line 218, ../scss/base/_init.scss */
 .social-icons {
   display: inline-block;
   margin: 0 0 0 1em;
   vertical-align: 3px;
 }
 
-/* line 218, ../scss/base/_init.scss */
+/* line 219, ../scss/base/_init.scss */
 .social-icon-style {
   font-size: 24px;
 }
 
-/* line 219, ../scss/base/_init.scss */
+/* line 220, ../scss/base/_init.scss */
 .social-block {
   margin: 0 0;
 }
 
-/* line 221, ../scss/base/_init.scss */
+/* line 222, ../scss/base/_init.scss */
 .media-details {
   display: block;
   padding: 1em 0;
 }
 
-/* line 222, ../scss/base/_init.scss */
+/* line 223, ../scss/base/_init.scss */
 .media-title {
   font-weight: bolder;
   padding: .875rem 0;
 }
 
-/* line 223, ../scss/base/_init.scss */
+/* line 224, ../scss/base/_init.scss */
 .media-subtitle {
   text-decoration: underline;
   display: inline-block;
 }
 
-/* line 224, ../scss/base/_init.scss */
+/* line 225, ../scss/base/_init.scss */
 .media-category {
   font-size: 1em;
   display: inline;
 }
 
-/* line 225, ../scss/base/_init.scss */
+/* line 226, ../scss/base/_init.scss */
 .media-body {
   display: block;
   padding-top: 1em;
@@ -439,18 +439,18 @@
   clear: both;
 }
 
-/* line 228, ../scss/base/_init.scss */
+/* line 229, ../scss/base/_init.scss */
 .header-image {
   margin-bottom: 2em;
 }
 
 /* Adds tag style for taxonomy terms */
-/* line 231, ../scss/base/_init.scss */
+/* line 232, ../scss/base/_init.scss */
 .category-term ul {
   margin: 0;
 }
 
-/* line 232, ../scss/base/_init.scss */
+/* line 233, ../scss/base/_init.scss */
 .category-term li {
   background: #F1F1F1;
   border-radius: 3px 0 0 3px;
@@ -465,7 +465,7 @@
   -webkit-transition: color 0.2s;
 }
 
-/* line 246, ../scss/base/_init.scss */
+/* line 247, ../scss/base/_init.scss */
 .category-term li::before {
   background: #fff;
   border-radius: 10px;
@@ -478,7 +478,7 @@
   top: 10px;
 }
 
-/* line 258, ../scss/base/_init.scss */
+/* line 259, ../scss/base/_init.scss */
 .category-term li::after {
   background: #fff;
   border-bottom: 13px solid transparent;
@@ -490,39 +490,39 @@
   top: 0;
 }
 
-/* line 269, ../scss/base/_init.scss */
+/* line 270, ../scss/base/_init.scss */
 .category-term li:hover {
   background-color: #E4E2E0;
   color: white;
 }
 
-/* line 274, ../scss/base/_init.scss */
+/* line 275, ../scss/base/_init.scss */
 .category-term li:hover::after {
   border-left-color: #E4E2E0;
 }
 
 /* For primary Blog landing page and associated views */
-/* line 279, ../scss/base/_init.scss */
+/* line 280, ../scss/base/_init.scss */
 .view-photo {
   padding: 1em 0;
 }
 
-/* line 281, ../scss/base/_init.scss */
+/* line 282, ../scss/base/_init.scss */
 html {
   overflow-y: scroll;
 }
 
-/* line 284, ../scss/base/_init.scss */
+/* line 285, ../scss/base/_init.scss */
 html p {
   font-size: 1.125rem;
 }
 
-/* line 288, ../scss/base/_init.scss */
+/* line 289, ../scss/base/_init.scss */
 figure {
   margin: 1em 0 !important;
 }
 
-/* line 291, ../scss/base/_init.scss */
+/* line 292, ../scss/base/_init.scss */
 figcaption {
   padding: 1em 1em;
 }
@@ -9379,16 +9379,19 @@ body.toolbar-fixed.toolbar-horizontal {
 /* line 1, ../scss/modules/_footer.scss */
 .footer {
   background-color: #323A45;
-  text-align: center;
-  font-size: 1.2rem;
-  padding: 4rem;
+  padding: 4rem 4rem 2rem;
   margin: 2em 0 0 0;
+  overflow: hidden;
 }
-/* line 8, ../scss/modules/_footer.scss */
+/* line 7, ../scss/modules/_footer.scss */
 .footer p, .footer h4 {
   color: #fff;
 }
-/* line 12, ../scss/modules/_footer.scss */
+/* line 11, ../scss/modules/_footer.scss */
+.footer a {
+  color: white;
+}
+/* line 15, ../scss/modules/_footer.scss */
 .footer .inline-list a {
   display: inline-block;
   width: 2rem;
@@ -9401,7 +9404,7 @@ body.toolbar-fixed.toolbar-horizontal {
   line-height: 35px;
   margin: 0 3px 0 0;
 }
-/* line 25, ../scss/modules/_footer.scss */
+/* line 28, ../scss/modules/_footer.scss */
 .footer .contact {
   list-style-type: none;
   font-size: 1rem;
@@ -9410,15 +9413,15 @@ body.toolbar-fixed.toolbar-horizontal {
   vertical-align: middle;
   color: #fff;
 }
-/* line 34, ../scss/modules/_footer.scss */
+/* line 37, ../scss/modules/_footer.scss */
 .footer .contact li {
   margin-bottom: 1rem;
 }
-/* line 37, ../scss/modules/_footer.scss */
+/* line 40, ../scss/modules/_footer.scss */
 .footer .contact li p {
   vertical-align: text-bottom;
 }
-/* line 42, ../scss/modules/_footer.scss */
+/* line 45, ../scss/modules/_footer.scss */
 .footer .contact i {
   position: absolute;
   background-color: #33383b;
@@ -9430,19 +9433,19 @@ body.toolbar-fixed.toolbar-horizontal {
   vertical-align: middle;
   padding: .25em .45em;
 }
-/* line 56, ../scss/modules/_footer.scss */
+/* line 59, ../scss/modules/_footer.scss */
 .footer .copywrite {
   color: #FFF;
-  font-size: 0.875rem;
+  font-size: .5rem;
   margin: 0 0 1rem 0;
 }
-/* line 62, ../scss/modules/_footer.scss */
+/* line 65, ../scss/modules/_footer.scss */
 .footer .about {
   color: #92999f;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
 }
-/* line 68, ../scss/modules/_footer.scss */
+/* line 71, ../scss/modules/_footer.scss */
 .footer .footer-links a {
   list-style: none;
   font-weight: bold;
@@ -9451,42 +9454,42 @@ body.toolbar-fixed.toolbar-horizontal {
   margin: 0;
   font-size: 1rem;
 }
-/* line 76, ../scss/modules/_footer.scss */
+/* line 79, ../scss/modules/_footer.scss */
 .footer .footer-links a::after {
   content: "•";
   padding: 0 0.2rem 0 0.4rem;
 }
-/* line 81, ../scss/modules/_footer.scss */
+/* line 84, ../scss/modules/_footer.scss */
 .footer .footer-links a:last-child::after {
   content: "";
   padding: 0 0.4rem 0 0.8rem;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 89, ../scss/modules/_footer.scss */
+  /* line 92, ../scss/modules/_footer.scss */
   .footer p {
     text-align: left;
   }
-  /* line 93, ../scss/modules/_footer.scss */
+  /* line 96, ../scss/modules/_footer.scss */
   .footer .social {
     text-align: left;
     margin: 0;
   }
-  /* line 98, ../scss/modules/_footer.scss */
+  /* line 101, ../scss/modules/_footer.scss */
   .footer .contact {
     text-align: left;
   }
-  /* line 100, ../scss/modules/_footer.scss */
+  /* line 103, ../scss/modules/_footer.scss */
   .footer .contact > i {
     margin-right: 1rem;
   }
 }
 
-/* line 108, ../scss/modules/_footer.scss */
+/* line 111, ../scss/modules/_footer.scss */
 .logo {
   color: #fff;
   font-size: 1.25rem;
 }
-/* line 112, ../scss/modules/_footer.scss */
+/* line 115, ../scss/modules/_footer.scss */
 .logo img {
   margin-right: 0.5rem;
 }

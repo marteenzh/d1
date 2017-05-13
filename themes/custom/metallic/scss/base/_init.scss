@@ -207,9 +207,10 @@ $retina: (
   margin: 1em 0;
   padding: 1em;
   background: $gray-cool-light;
-}
-.media-listing-item h4 {font-size: 1.25em;}
+  }
+.media-listing-item h4 {font-size: 1.125em;}
 .media-listing-embed {}
+.media-listing-title-wrapper {}
 .media-listing-title {padding: .25em 0;}
 .media-listing-topics-wrapper {display: block; margin: 1em 0 0 0; border-top: 1px solid $gray-light; padding-top: 1em; }
 .media-listing-term {color: $primary-darkest;}
