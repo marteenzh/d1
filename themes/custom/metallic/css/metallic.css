@@ -9436,16 +9436,16 @@ body.toolbar-fixed.toolbar-horizontal {
 /* line 59, ../scss/modules/_footer.scss */
 .footer .copywrite {
   color: #FFF;
-  font-size: .5rem;
-  margin: 0 0 1rem 0;
+  margin: 2em 0 1em;
+  text-align: center;
 }
-/* line 65, ../scss/modules/_footer.scss */
+/* line 64, ../scss/modules/_footer.scss */
 .footer .about {
   color: #92999f;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
 }
-/* line 71, ../scss/modules/_footer.scss */
+/* line 70, ../scss/modules/_footer.scss */
 .footer .footer-links a {
   list-style: none;
   font-weight: bold;
@@ -9454,42 +9454,42 @@ body.toolbar-fixed.toolbar-horizontal {
   margin: 0;
   font-size: 1rem;
 }
-/* line 79, ../scss/modules/_footer.scss */
+/* line 78, ../scss/modules/_footer.scss */
 .footer .footer-links a::after {
   content: "•";
   padding: 0 0.2rem 0 0.4rem;
 }
-/* line 84, ../scss/modules/_footer.scss */
+/* line 83, ../scss/modules/_footer.scss */
 .footer .footer-links a:last-child::after {
   content: "";
   padding: 0 0.4rem 0 0.8rem;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 92, ../scss/modules/_footer.scss */
+  /* line 91, ../scss/modules/_footer.scss */
   .footer p {
     text-align: left;
   }
-  /* line 96, ../scss/modules/_footer.scss */
+  /* line 95, ../scss/modules/_footer.scss */
   .footer .social {
     text-align: left;
     margin: 0;
   }
-  /* line 101, ../scss/modules/_footer.scss */
+  /* line 100, ../scss/modules/_footer.scss */
   .footer .contact {
     text-align: left;
   }
-  /* line 103, ../scss/modules/_footer.scss */
+  /* line 102, ../scss/modules/_footer.scss */
   .footer .contact > i {
     margin-right: 1rem;
   }
 }
 
-/* line 111, ../scss/modules/_footer.scss */
+/* line 110, ../scss/modules/_footer.scss */
 .logo {
   color: #fff;
   font-size: 1.25rem;
 }
-/* line 115, ../scss/modules/_footer.scss */
+/* line 114, ../scss/modules/_footer.scss */
 .logo img {
   margin-right: 0.5rem;
 }
