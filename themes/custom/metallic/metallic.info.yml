@@ -23,9 +23,13 @@ regions:
   highlighted: Highlighted
   breadcrumbs: Breadcrumbs
   page_title: 'Page Title'
-  content_top: 'Content Top'
+  two_thirds_left_top: 'Two Thirds Left Top'
+  one_third_right_top: 'One Third Right Top'
+  two_thirds_right_top: 'Two Thirds Right Top'
+  one_third_left_top: 'One Third Left Top'
+  half_left_top: 'Half Left Top'
+  half_right_top: 'Half Right Top'
   content: 'Content'
-  content_bottom: 'Content Bottom'
   half_left: 'Half Left'
   half_right: 'Half Right'
   triptych_left: 'Triptych Left'

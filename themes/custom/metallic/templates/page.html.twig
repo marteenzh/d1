@@ -52,9 +52,7 @@
  * - page.highlighted
  * - page.breadcrumbs
  * - page.page_title
- * - page.content_top
  * - page.content_middle
- * - page.content_bottom
  * - page.half_left
  * - page.half_right
  * - page.sidebar_first
@@ -162,6 +160,32 @@
         <div class="large-12 columns"> {{ page.page_title }}</div>
       </div>
     {% endif %} 
+ {% if page.half_left_top or page.half_right_top %}
+
+      <div class="row">
+        <div class="large-6 medium-6 small-12 columns">{{ page.half_left_top }}</div>
+        <div class="large-6 medium-6 small-12 columns">{{ page.half_right_top }}</div>
+      </div>
+    
+    {% endif %}
+
+        {% if page.two_thirds_left_top or page.one_third_right_top %}
+
+    <div class="row">
+        <div class="large-8 columns">{{ page.two_thirds_left_top }}</div>
+        <div class="large-4 columns">{{ page.one_third_right_top }}</div>
+    </div>
+
+    {% endif %}
+
+    {% if page.two_thirds_right_top or page.one_third_left_top %}
+
+    <div class="row">
+        <div class="large-4 medium-6 columns">{{ page.one_third_left_top }}</div>
+        <div class="large-8 medium-6 columns">{{ page.two_thirds_right_top }}</div>
+    </div>
+
+    {% endif %}
   
     <div class="row">  
       <main id="main" role="main">
@@ -171,7 +195,7 @@
           {% endspaceless %}
         {% endif %}
         <a id="main-content"></a>
-
+        
     {% if page.content %}
       <section>  
         <div class="{{ main_grid }} columns">  
