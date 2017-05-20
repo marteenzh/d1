@@ -181,13 +181,17 @@ $retina: (
 .writing-listing-topics {display: inline; padding: 1em 0; font-weight: bold;}
 .writing-listing-teaser p {font-size: 1em;}
 
-.videos-top {padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
-.videos-array {padding: 1em 1em 0;}
+.video-rule {width: 75%; margin: 1em auto 0;}
+.videos-top {padding: 0 1em;}
+.videos-form {padding: 0 1em 1em;}
+.videos-pager {padding: 1em 0; margin: auto;}
+.videos-array {padding: 1em 1em 0; display: flex;}
 .video-listing {}
 .video-listing-item {
   margin: 1em 0;
   padding: 1em;
   background: $gray-cool-light;
+  overflow:auto;
 }
 .video-listing-item h4 {font-size: 1.25em;}
 .video-listing-embed {}
@@ -199,7 +203,7 @@ $retina: (
 
 .media-top {padding-bottom: 1rem; border-bottom: 1px solid $gray-light;}
 .media-array {padding-top: 1em;}
-.media-tags-block {padding: 2em 1em 2em 0;}
+.media-tags-block {padding: 1em 1em 2em 0;}
 .media-tags-label h3 { margin-bottom: 1em; }
 .media-tags {display: inline;}
 .media-tag {display: inline;}
@@ -208,6 +212,7 @@ $retina: (
   margin: 1em 0;
   padding: 1em;
   background: $gray-cool-light;
+  display: block;
   }
 .media-listing-item h4 {font-size: 1.125em;}
 .media-listing-embed {}
@@ -276,6 +281,55 @@ $retina: (
 .category-term li:hover::after {
    border-left-color: $gray-warm-light; 
 }
+
+/* Adds tag style for taxonomy terms on Video Listing Wrapper */
+.category-term-dark ul { margin: 0; }
+.category-term-dark li {
+  background: $gray-lightest;
+  border-radius: 3px 0 0 3px;
+  color: #999;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.category-term-dark li::before {
+  background: $gray-cool-light;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+
+.category-term-dark li::after {
+  background: $gray-cool-light;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #eee;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.category-term-dark li:hover {
+  background-color: $gray-warm-light;
+  color: white;
+}
+
+.category-term-dark li:hover::after {
+   border-left-color: $gray-warm-light; 
+}
+
 /* For primary Blog landing page and associated views */
 .photo-row {}
 .view-photo {padding: 1em 0;}

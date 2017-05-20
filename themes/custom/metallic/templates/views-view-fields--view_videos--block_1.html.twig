@@ -32,10 +32,11 @@
 <div class="video-listing-item">
   <div class="video-listing-embed"> {{ fields.field_video_url.content }}</div>
 
-  <h4 class="video-listing-title">{{ fields.title.content }}</h3>
+  <h4 class="video-listing-title">{{ fields.title.content }}</h4>
   {% if fields.field_video_category.content|render is not empty %}
   	<div class="video-listing-topics-wrapper">
-  	<span class="category-term"> {{ fields.field_video_category.content }} </span>
+  	<span class="category-term-dark"> {{ fields.field_video_category.content }} </span>
+  	
   	</div>
   {% endif %}
 </div>
