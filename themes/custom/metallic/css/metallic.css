@@ -458,18 +458,57 @@
   clear: both;
 }
 
-/* line 235, ../scss/base/_init.scss */
+/* line 234, ../scss/base/_init.scss */
+.teaser-listing-item {
+  margin: 1em 0;
+  padding: 2em 2em;
+  border-bottom-style: solid;
+  border-bottom-color: #404040;
+  border-width: thin;
+}
+
+@media only screen and (min-width: 64.0625em) {
+  /* line 235, ../scss/base/_init.scss */
+  .writing-listing-details {
+    padding: 0 2em;
+  }
+}
+/* line 236, ../scss/base/_init.scss */
+.teaser-listing-title {
+  padding-bottom: .25em;
+}
+
+/* line 237, ../scss/base/_init.scss */
+.teaser-listing-topics-wrapper {
+  display: inline-block;
+  font-size: .85rem;
+  margin: 1em 0;
+}
+
+/* line 238, ../scss/base/_init.scss */
+.teaser-listing-topics {
+  display: inline;
+  padding: 1em 0;
+  font-weight: bold;
+}
+
+/* line 239, ../scss/base/_init.scss */
+.teaser-listing-teaser p {
+  font-size: 1em;
+}
+
+/* line 241, ../scss/base/_init.scss */
 .header-image {
   margin-bottom: 2em;
 }
 
 /* Adds tag style for taxonomy terms */
-/* line 238, ../scss/base/_init.scss */
+/* line 244, ../scss/base/_init.scss */
 .category-term ul {
   margin: 0;
 }
 
-/* line 239, ../scss/base/_init.scss */
+/* line 245, ../scss/base/_init.scss */
 .category-term li {
   background: #F1F1F1;
   border-radius: 3px 0 0 3px;
@@ -484,7 +523,7 @@
   -webkit-transition: color 0.2s;
 }
 
-/* line 253, ../scss/base/_init.scss */
+/* line 259, ../scss/base/_init.scss */
 .category-term li::before {
   background: #fff;
   border-radius: 10px;
@@ -497,7 +536,7 @@
   top: 10px;
 }
 
-/* line 265, ../scss/base/_init.scss */
+/* line 271, ../scss/base/_init.scss */
 .category-term li::after {
   background: #fff;
   border-bottom: 13px solid transparent;
@@ -509,24 +548,24 @@
   top: 0;
 }
 
-/* line 276, ../scss/base/_init.scss */
+/* line 282, ../scss/base/_init.scss */
 .category-term li:hover {
   background-color: #E4E2E0;
   color: white;
 }
 
-/* line 281, ../scss/base/_init.scss */
+/* line 287, ../scss/base/_init.scss */
 .category-term li:hover::after {
   border-left-color: #E4E2E0;
 }
 
 /* Adds tag style for taxonomy terms on Video Listing Wrapper */
-/* line 286, ../scss/base/_init.scss */
+/* line 292, ../scss/base/_init.scss */
 .category-term-dark ul {
   margin: 0;
 }
 
-/* line 287, ../scss/base/_init.scss */
+/* line 293, ../scss/base/_init.scss */
 .category-term-dark li {
   background: #F1F1F1;
   border-radius: 3px 0 0 3px;
@@ -541,7 +580,7 @@
   -webkit-transition: color 0.2s;
 }
 
-/* line 301, ../scss/base/_init.scss */
+/* line 307, ../scss/base/_init.scss */
 .category-term-dark li::before {
   background: #DCE4EF;
   border-radius: 10px;
@@ -554,7 +593,7 @@
   top: 10px;
 }
 
-/* line 313, ../scss/base/_init.scss */
+/* line 319, ../scss/base/_init.scss */
 .category-term-dark li::after {
   background: #DCE4EF;
   border-bottom: 13px solid transparent;
@@ -566,44 +605,44 @@
   top: 0;
 }
 
-/* line 324, ../scss/base/_init.scss */
+/* line 330, ../scss/base/_init.scss */
 .category-term-dark li:hover {
   background-color: #E4E2E0;
   color: white;
 }
 
-/* line 329, ../scss/base/_init.scss */
+/* line 335, ../scss/base/_init.scss */
 .category-term-dark li:hover::after {
   border-left-color: #E4E2E0;
 }
 
 /* For primary Blog landing page and associated views */
-/* line 335, ../scss/base/_init.scss */
+/* line 341, ../scss/base/_init.scss */
 .view-photo {
   padding: 1em 0;
 }
 
-/* line 337, ../scss/base/_init.scss */
+/* line 343, ../scss/base/_init.scss */
 html {
   overflow-y: scroll;
 }
 
-/* line 340, ../scss/base/_init.scss */
+/* line 346, ../scss/base/_init.scss */
 html p {
   font-size: 1.125rem;
 }
 
-/* line 344, ../scss/base/_init.scss */
+/* line 350, ../scss/base/_init.scss */
 figure {
   margin: 1em 0 !important;
 }
 
-/* line 347, ../scss/base/_init.scss */
+/* line 353, ../scss/base/_init.scss */
 figcaption {
   padding: 1em 1em;
 }
 
-/* line 350, ../scss/base/_init.scss */
+/* line 356, ../scss/base/_init.scss */
 .deck {
   font-family: "Merriweather", serif;
   font-size: 1.25em;
