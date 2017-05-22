@@ -461,7 +461,7 @@
 /* line 234, ../scss/base/_init.scss */
 .teaser-listing-item {
   margin: 1em 0;
-  padding: 2em 2em;
+  padding: 2em 2em 0;
   border-bottom-style: solid;
   border-bottom-color: #404040;
   border-width: thin;
@@ -475,21 +475,21 @@
 }
 /* line 236, ../scss/base/_init.scss */
 .teaser-listing-title {
-  padding-bottom: .25em;
+  padding: 1em 0 .25em;
+  font-size: 1.25em;
+  display: block;
 }
 
 /* line 237, ../scss/base/_init.scss */
 .teaser-listing-topics-wrapper {
   display: inline-block;
   font-size: .85rem;
-  margin: 1em 0;
 }
 
 /* line 238, ../scss/base/_init.scss */
 .teaser-listing-topics {
   display: inline;
   padding: 1em 0;
-  font-weight: bold;
 }
 
 /* line 239, ../scss/base/_init.scss */

@@ -231,11 +231,11 @@ $retina: (
 .media-category {font-size: 1em; display: inline;}
 .media-body {display: block; padding-top: 1em; border-bottom: solid 1px; clear:both;}
 
-.teaser-listing-item {margin: 1em 0; padding: 2em 2em; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
+.teaser-listing-item {margin: 1em 0; padding: 2em 2em 0; border-bottom-style: solid; border-bottom-color: rgb(64,64,64); border-width: thin;}
 @media #{$large-up} {.writing-listing-details {padding: 0 2em;} }
-.teaser-listing-title {padding-bottom: .25em;}
-.teaser-listing-topics-wrapper {display: inline-block; font-size: .85rem; margin: 1em 0;}
-.teaser-listing-topics {display: inline; padding: 1em 0; font-weight: bold;}
+.teaser-listing-title {padding: 1em 0 .25em; font-size: 1.25em; display: block;}
+.teaser-listing-topics-wrapper {display: inline-block; font-size: .85rem;}
+.teaser-listing-topics {display: inline; padding: 1em 0;}
 .teaser-listing-teaser p {font-size: 1em;}
 
 .header-image {margin-bottom: 2em;}

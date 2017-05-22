@@ -74,12 +74,12 @@
     </div>
 
     <div class="large-8 columns media-category">
-      {{ content.field_video_title }}
-        <div class="row">
-          <div class="large-6 columns">
+      <span class="teaser-listing-title">{{ content.field_video_title }}</span>
+        <div class="row teaser-listing-topics-wrapper">
+          <div class="large-6 columns teaser-listing-topics">
             {{ content.field_work_facets}}
           </div>
-          <div class="large-6 columns">
+          <div class="large-6 columns teaser-listing-topics">
             {{ content.field_video_category}}
           </div>
         </div>         
