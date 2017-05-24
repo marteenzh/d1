@@ -1,0 +1,4 @@
+interval: 60000
+active_on:
+  content_entity_forms: TRUE
+  config_entity_forms: FALSE
