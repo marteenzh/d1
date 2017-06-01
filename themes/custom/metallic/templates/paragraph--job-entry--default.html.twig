@@ -48,14 +48,16 @@
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
-<div class="row">
-  <div class="large-5 large-centered columns employer-wrapper">
+<div class="row employer-wrapper">
+  <div class="large-7 medium-12 columns">
     <span class="employer">{{ content.field_employer }}</span>
+  </div>
+  <div class="large-5 medium-12 columns dates-wrapper">
     <span class="location">{{ content.field_location }}</span>
   </div>
 </div>
-<div class="row">
-  <div class="large-12 columns role-wrapper">
+<div class="row role-wrapper">
+  <div class="large-12 columns">
     {{ content.field_role }}
   </div>
 </div>

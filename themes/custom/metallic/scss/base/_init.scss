@@ -134,19 +134,44 @@ $retina: (
 );
 
 /* Miscellaneous Styles */
-@media #{$large-up} {.body-trim {padding: 0 1.5em 0 1em;} }
 
+@media #{$large-up} {
+  .body-trim {
+    padding: 0 1.5em 0 1em;
+  } 
+  .location {
+    text-align: right !important;
+    font-size: 1.25em;
+    text-transform: uppercase;
+  }
+  .employer {
+    text-align: left !important;
+    font-size: 1.25em;
+    text-transform: uppercase;
+  }
+  .role-title {
+    font-size: 1.25em;
+    font-weight: bolder;
+    text-align: left !important;
+  }
+  .dates {
+    font-size: 1.125em;
+    font-weight: bolder;
+    text-align: right !important;
+    }
+}
 .vmiddle {padding-top: 2.5em;}
 /* For Paragraphs */
-.employer {text-align: center; font-size: 1.5em;}
-.employer-wrapper {padding: 1em 0;}
-.location {text-align: center;}
-.role-wrapper {padding: 1em 0;}
+.resume-block-title {text-align: center;}
+.employer {font-size: 1.25em; text-transform: uppercase; text-align: center;}
+.employer-wrapper {padding: 1em 0 0;}
+.location {text-align: center; font-size: 1.125em;}
+.role-wrapper {margin-bottom: 1em !important; padding: 0 0 1em 2em; border-bottom: solid 1px;}
 .role-title-wrapper {padding: 1em 0;}
-.role-title {font-size: 1.25em; font-weight: bolder;}
-.dates {font-size: 1.125em; font-weight: bolder; text-align: right;}
+.role-title {font-size: 1.25em; font-weight: bolder; text-align: center;}
+.dates {font-size: 1.125em; font-weight: bolder; text-align: center;}
 .dates-wrapper {display: inline-block;}
-.role-component li {padding: .5em 0;}
+.role-component li {padding: .5em 0 0 1em;}
 
 /* For primary Blog landing page and associated views */
 .blog-front {padding: 0 0 2em 0; border-bottom: solid 1px;}
