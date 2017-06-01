@@ -137,6 +137,16 @@ $retina: (
 @media #{$large-up} {.body-trim {padding: 0 1.5em 0 1em;} }
 
 .vmiddle {padding-top: 2.5em;}
+/* For Paragraphs */
+.employer {text-align: center; font-size: 1.5em;}
+.employer-wrapper {padding: 1em 0;}
+.location {text-align: center;}
+.role-wrapper {padding: 1em 0;}
+.role-title-wrapper {padding: 1em 0;}
+.role-title {font-size: 1.25em; font-weight: bolder;}
+.dates {font-size: 1.125em; font-weight: bolder; text-align: right;}
+.dates-wrapper {display: inline-block;}
+.role-component li {padding: .5em 0;}
 
 /* For primary Blog landing page and associated views */
 .blog-front {padding: 0 0 2em 0; border-bottom: solid 1px;}
