@@ -1,6 +1,8 @@
 
 # Honeypot
 
+[![Build Status](https://travis-ci.org/geerlingguy/drupal-honeypot.svg?branch=8.x-1.x)](https://travis-ci.org/geerlingguy/drupal-honeypot)
+
 
 ## Installation
 
