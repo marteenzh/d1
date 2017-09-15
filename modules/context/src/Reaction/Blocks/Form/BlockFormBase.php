@@ -7,6 +7,7 @@ use Drupal\context\ContextReactionManager;
 use Drupal\context\Form\AjaxFormTrait;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseModalDialogCommand;
+use Drupal\Core\Ajax\RemoveCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Extension\ThemeHandlerInterface;
 use Drupal\Core\Form\FormBase;
@@ -17,9 +18,11 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Plugin\PluginManagerInterface;
 use Drupal\Core\Plugin\Context\ContextRepositoryInterface;
 use Drupal\Core\Plugin\ContextAwarePluginInterface;
+use Drupal\Core\Render\Element\StatusMessages;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 abstract class BlockFormBase extends FormBase {
 
@@ -79,6 +82,11 @@ abstract class BlockFormBase extends FormBase {
   protected $contextManager;
 
   /**
+   * @var \Symfony\Component\HttpFoundation\Request
+   */
+  protected $request;
+
+  /**
    * Constructs a new VariantPluginFormBase.
    *
    * @param \Drupal\Component\Plugin\PluginManagerInterface $block_manager
@@ -90,6 +98,7 @@ abstract class BlockFormBase extends FormBase {
    * @param \Drupal\Core\Form\FormBuilderInterface $formBuilder
    * @param \Drupal\context\ContextReactionManager $contextReactionManager
    * @param \Drupal\context\ContextManager $contextManager
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    */
   public function __construct(
     PluginManagerInterface $block_manager,
@@ -97,7 +106,8 @@ abstract class BlockFormBase extends FormBase {
     ThemeHandlerInterface $themeHandler,
     FormBuilderInterface $formBuilder,
     ContextReactionManager $contextReactionManager,
-    ContextManager $contextManager
+    ContextManager $contextManager,
+    RequestStack $requestStack
   )
   {
     $this->blockManager = $block_manager;
@@ -106,6 +116,7 @@ abstract class BlockFormBase extends FormBase {
     $this->formBuilder = $formBuilder;
     $this->contextReactionManager = $contextReactionManager;
     $this->contextManager = $contextManager;
+    $this->request = $requestStack->getCurrentRequest();
   }
 
   /**
@@ -118,7 +129,8 @@ abstract class BlockFormBase extends FormBase {
       $container->get('theme_handler'),
       $container->get('form_builder'),
       $container->get('plugin.manager.context_reaction'),
-      $container->get('context.manager')
+      $container->get('context.manager'),
+      $container->get('request_stack')
     );
   }
 
@@ -170,6 +182,9 @@ abstract class BlockFormBase extends FormBase {
     // otherwise use the default theme.
     $theme = $this->getRequest()->query->get('theme', $this->themeHandler->getDefault());
 
+    // Some blocks require the theme name in the form state like Site Branding
+    $form_state->set('block_theme', $theme);
+
     // Some blocks require contexts, set a temporary value with gathered
     // contextual values.
     $form_state->setTemporaryValue('gathered_contexts', $this->contextRepository->getAvailableContexts());
@@ -205,6 +220,12 @@ abstract class BlockFormBase extends FormBase {
       '#value' => $theme,
     ];
 
+    $form['css_class'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Block Class'),
+      '#default_value' => isset($configuration['css_class']) ? $configuration['css_class'] : '',
+    ];
+
     $form['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->getSubmitValue(),
@@ -213,6 +234,14 @@ abstract class BlockFormBase extends FormBase {
         'callback' => '::submitFormAjax'
       ],
     ];
+
+    // Remove ajax from submit, if this is not ajax request.
+    if (!$this->request->isXmlHttpRequest()) {
+      unset($form['actions']['submit']['#ajax']);
+    }
+
+    // Disable cache on form to prevent ajax forms from failing.
+    $form_state->disableCache();
 
     return $form;
   }
@@ -243,7 +272,9 @@ abstract class BlockFormBase extends FormBase {
     $configuration = array_merge($this->block->getConfiguration(), [
       'region' => $form_state->getValue('region'),
       'theme' => $form_state->getValue('theme'),
+      'css_class' => $form_state->getValue('css_class'),
       'unique' => $form_state->getValue('unique'),
+      'context_id' => $this->context->id(),
     ]);
 
     // Add/Update the block.
@@ -265,13 +296,24 @@ abstract class BlockFormBase extends FormBase {
    *
    * @return AjaxResponse
    */
-  public function submitFormAjax() {
-    $form = $this->contextManager->getForm($this->context, 'edit');
-
+  public function submitFormAjax(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
 
-    $response->addCommand(new CloseModalDialogCommand());
-    $response->addCommand(new ReplaceCommand('#context-reactions', $form['reactions']));
+    if ($form_state->getErrors()) {
+      $messages = StatusMessages::renderMessages(NULL);
+      $output[] = $messages;
+      $output[] = $form;
+      $form_class = '.' . str_replace('_', '-', $form_state->getFormObject()->getFormId()) ;
+      // Remove any previously added error messages.
+      $response->addCommand(new RemoveCommand('#drupal-modal .messages--error'));
+      // Replace old form with new one and with error message.
+      $response->addCommand(new ReplaceCommand($form_class, $output));
+    }
+    else {
+      $form = $this->contextManager->getForm($this->context, 'edit');
+      $response->addCommand(new CloseModalDialogCommand());
+      $response->addCommand(new ReplaceCommand('#context-reactions', $form['reactions']));
+    }
 
     return $response;
   }

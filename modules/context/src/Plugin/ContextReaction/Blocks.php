@@ -139,7 +139,7 @@ class Blocks extends ContextReactionPluginBase implements ContainerFactoryPlugin
    * @return array
    */
   public function execute(array $build = array(), $title = NULL, $main_content = NULL) {
-    
+
     $cacheability = CacheableMetadata::createFromRenderArray($build);
 
     // Use the currently active theme to fetch blocks.
@@ -191,7 +191,9 @@ class Blocks extends ContextReactionPluginBase implements ContainerFactoryPlugin
         // @see template_preprocess_block().
         $blockBuild = [
           '#theme' => 'block',
-          '#attributes' => [],
+          '#attributes' => [
+            'class' => [$block->getConfiguration()['css_class']]
+          ],
           '#configuration' => $configuration,
           '#plugin_id' => $block->getPluginId(),
           '#base_plugin_id' => $block->getBaseId(),
@@ -199,10 +201,25 @@ class Blocks extends ContextReactionPluginBase implements ContainerFactoryPlugin
           '#block_plugin' => $block,
           '#pre_render' => [[$this, 'preRenderBlock']],
           '#cache' => [
-            'keys' => ['context_blocks_reaction', 'block', $block_placement_key, $block_placement_key],
+            'keys' => ['context_blocks_reaction', 'block', $block_placement_key],
             'tags' => $block->getCacheTags(),
             'contexts' => $block->getCacheContexts(),
             'max-age' => $block->getCacheMaxAge(),
+          ],
+        ];
+
+        // Add contextual links to block.
+        $content = $block->build();
+        if (isset($content['#contextual_links'])) {
+          $blockBuild['#contextual_links'] = $content['#contextual_links'];
+        }
+
+        // Add additional contextual link, for editing block configuration.
+        $blockBuild['#contextual_links']['context_block'] = [
+          'route_parameters' => [
+            'context' => $configuration['context_id'],
+            'reaction_id' => 'blocks',
+            'block_id' => $block->getConfiguration()['uuid'],
           ],
         ];
 
@@ -211,6 +228,10 @@ class Blocks extends ContextReactionPluginBase implements ContainerFactoryPlugin
         }
 
         $build[$region][$block_placement_key] = $blockBuild;
+
+        // After merging with blocks from Block layout, we want to sort all of
+        // them again.
+        $build[$region]['#sorted'] = FALSE;
 
         // The main content block cannot be cached: it is a placeholder for the
         // render array returned by the controller. It should be rendered as-is,
@@ -417,6 +438,15 @@ class Blocks extends ContextReactionPluginBase implements ContainerFactoryPlugin
       ],
     ];
 
+    $form['blocks']['include_default_blocks'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Include blocks from Block layout'),
+      '#description' => $this->t('if checked, all blocks from default Block layout will also be included in page build.'),
+      '#weight' => -10,
+      '#default_value' => isset($this->getConfiguration()['include_default_blocks']) ? $this->getConfiguration()['include_default_blocks'] : FALSE,
+    ];
+
+
     $form['blocks']['block_add'] = [
       '#type' => 'link',
       '#title' => $this->t('Place block'),
@@ -599,6 +629,11 @@ class Blocks extends ContextReactionPluginBase implements ContainerFactoryPlugin
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     $blocks = $form_state->getValue(['blocks', 'blocks'], []);
 
+    // Save configuration for including default blocks.
+    $config = $this->getConfiguration();
+    $config['include_default_blocks'] = $form_state->getValue(['blocks', 'include_default_blocks'], FALSE);
+    $this->setConfiguration($config);
+
     if (is_array($blocks)) {
       foreach ($blocks as $block_id => $configuration) {
         $block = $this->getBlock($block_id);
@@ -615,6 +650,16 @@ class Blocks extends ContextReactionPluginBase implements ContainerFactoryPlugin
         $this->updateBlock($block_id, $block_state->getValues());
       }
     }
+  }
+
+  /**
+   * Should reaction include default blocks from Block layout.
+   *
+   * @return bool
+   */
+  public function includeDefaultBlocks() {
+    $config = $this->getConfiguration();
+    return isset($config['include_default_blocks']) ? $config['include_default_blocks'] : FALSE;
   }
 
   /**

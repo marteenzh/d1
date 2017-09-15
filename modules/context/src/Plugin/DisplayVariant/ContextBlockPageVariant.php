@@ -2,9 +2,11 @@
 
 namespace Drupal\context\Plugin\DisplayVariant;
 
+use Drupal\Component\Utility\NestedArray;
 use Drupal\context\ContextManager;
 use Drupal\Core\Display\VariantBase;
 use Drupal\Core\Display\PageVariantInterface;
+use Drupal\Core\Display\VariantManager;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -98,21 +100,34 @@ class ContextBlockPageVariant extends VariantBase implements PageVariantInterfac
       ],
     ];
 
-    // Place main content and messages blocks, these will be removed by the
-    // reactions if a message or content block has been manually placed.
+    // Place main content block, it will be removed by the reactions if a main
+    // content block has been manually placed.
     $build['content']['system_main'] = $this->mainContent;
-
-    $build['content']['messages'] = [
-      '#weight' => -1000,
-      '#type' => 'status_messages',
-    ];
 
     // Execute each block reaction and let them modify the page build.
     foreach ($this->contextManager->getActiveReactions('blocks') as $reaction) {
       $build = $reaction->execute($build, $this->title, $this->mainContent);
     }
 
+    // Execute each block reaction and check if default block should be included in page build.
+    foreach ($this->contextManager->getActiveReactions('blocks') as $reaction) {
+      if ($reaction->includeDefaultBlocks()) {
+        $build = NestedArray::mergeDeep($this->getBuildFromBlockLayout(), $build);
+        return $build;
+      }
+    }
     return $build;
+  }
+
+  /**
+   * Get build from Block layout.
+   */
+  private function getBuildFromBlockLayout() {
+    $plugin_manager = \Drupal::service('plugin.manager.display_variant');
+    $display_variant = $plugin_manager->createInstance('block_page', $plugin_manager->getDefinition('block_page'));
+    $display_variant->setTitle($this->title);
+
+    return $display_variant->build();
   }
 
 }

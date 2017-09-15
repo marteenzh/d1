@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityConfirmFormBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class ContextDeleteForm extends EntityConfirmFormBase {
+class ContextDisableForm extends EntityConfirmFormBase {
 
   /**
    * @var ContextManager
@@ -35,7 +35,18 @@ class ContextDeleteForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return $this->t('Are you sure you want to delete the %label context?', array(
+    return $this->t('Are you sure you want to %status the %label context?', array(
+      '%status' => $this->entity->disabled() ? "enable" : "disable",
+      '%label' => $this->entity->getLabel(),
+    ));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDescription() {
+    return $this->t('This action will %status the %label context.', array(
+      '%status' => $this->entity->disabled() ? "enable" : "disable",
       '%label' => $this->entity->getLabel(),
     ));
   }
@@ -63,15 +74,14 @@ class ContextDeleteForm extends EntityConfirmFormBase {
     return $form;
   }
 
-
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $formState) {
-    $this->entity->delete();
-
-    drupal_set_message($this->t('The context %title has been deleted.', array(
+    $this->entity->disable();
+    drupal_set_message($this->t('The context %title has been %status.', array(
       '%title' => $this->entity->getLabel(),
+      '%status' => $this->entity->disabled() ? "disabled" : "enabled",
     )));
 
     $formState->setRedirectUrl($this->getCancelUrl());
