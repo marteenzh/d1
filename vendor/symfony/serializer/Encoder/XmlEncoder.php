@@ -30,18 +30,15 @@ class XmlEncoder extends SerializerAwareEncoder implements EncoderInterface, Dec
     private $format;
     private $context;
     private $rootNodeName = 'response';
-    private $loadOptions;
 
     /**
      * Construct new XmlEncoder and allow to change the root node element name.
      *
-     * @param string   $rootNodeName
-     * @param int|null $loadOptions  A bit field of LIBXML_* constants
+     * @param string $rootNodeName
      */
-    public function __construct($rootNodeName = 'response', $loadOptions = null)
+    public function __construct($rootNodeName = 'response')
     {
         $this->rootNodeName = $rootNodeName;
-        $this->loadOptions = null !== $loadOptions ? $loadOptions : LIBXML_NONET | LIBXML_NOBLANKS;
     }
 
     /**
@@ -84,7 +81,7 @@ class XmlEncoder extends SerializerAwareEncoder implements EncoderInterface, Dec
         libxml_clear_errors();
 
         $dom = new \DOMDocument();
-        $dom->loadXML($data, $this->loadOptions);
+        $dom->loadXML($data, LIBXML_NONET | LIBXML_NOBLANKS);
 
         libxml_use_internal_errors($internalErrors);
         libxml_disable_entity_loader($disableEntities);
@@ -95,15 +92,13 @@ class XmlEncoder extends SerializerAwareEncoder implements EncoderInterface, Dec
             throw new UnexpectedValueException($error->message);
         }
 
-        $rootNode = null;
         foreach ($dom->childNodes as $child) {
             if ($child->nodeType === XML_DOCUMENT_TYPE_NODE) {
                 throw new UnexpectedValueException('Document types are not allowed.');
             }
-            if (!$rootNode && $child->nodeType !== XML_PI_NODE) {
-                $rootNode = $child;
-            }
         }
+
+        $rootNode = $dom->firstChild;
 
         // todo: throw an exception if the root node name is not correctly configured (bc)
 
@@ -304,19 +299,11 @@ class XmlEncoder extends SerializerAwareEncoder implements EncoderInterface, Dec
         $data = array();
 
         foreach ($node->attributes as $attr) {
-            if (!is_numeric($attr->nodeValue)) {
+            if (ctype_digit($attr->nodeValue)) {
+                $data['@'.$attr->nodeName] = (int) $attr->nodeValue;
+            } else {
                 $data['@'.$attr->nodeName] = $attr->nodeValue;
-
-                continue;
             }
-
-            if (false !== $val = filter_var($attr->nodeValue, FILTER_VALIDATE_INT)) {
-                $data['@'.$attr->nodeName] = $val;
-
-                continue;
-            }
-
-            $data['@'.$attr->nodeName] = (float) $attr->nodeValue;
         }
 
         return $data;
@@ -342,10 +329,6 @@ class XmlEncoder extends SerializerAwareEncoder implements EncoderInterface, Dec
         $value = array();
 
         foreach ($node->childNodes as $subnode) {
-            if ($subnode->nodeType === XML_PI_NODE) {
-                continue;
-            }
-
             $val = $this->parseXml($subnode);
 
             if ('item' === $subnode->nodeName && isset($val['@key'])) {
@@ -471,7 +454,7 @@ class XmlEncoder extends SerializerAwareEncoder implements EncoderInterface, Dec
      */
     private function needsCdataWrapping($val)
     {
-        return 0 < preg_match('/[<>&]/', $val);
+        return preg_match('/[<>&]/', $val);
     }
 
     /**
