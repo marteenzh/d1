@@ -2,6 +2,7 @@
 
 namespace Drupal\tvi\Service;
 
+use Drupal\tvi\Service\TaxonomyViewsIntegratorManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\taxonomy\TermInterface;
 use Drupal\views\Views;
@@ -10,7 +11,16 @@ use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class TaxonomyViewsIntegratorManager implements ContainerAwareInterface {
+/**
+ * Default implementation of TaxonomyViewsIntegratorManagerInterface
+ *
+ * The manager will inspect the configuration of the passed TermInterface object
+ * and determine which view will be injected as the page output.
+ *
+ * At a later point, it would be great to support adherence to the Views permission
+ * settings, there is an outstanding patch and issue for that.
+ */
+class TaxonomyViewsIntegratorManager implements TaxonomyViewsIntegratorManagerInterface, ContainerAwareInterface {
 
   use ContainerAwareTrait;
 
@@ -96,9 +106,7 @@ class TaxonomyViewsIntegratorManager implements ContainerAwareInterface {
   }
 
   /**
-   * Return the taxonomy term View per taxonomy view integrator settings.
-   * @param \Drupal\taxonomy\TermInterface $taxonomy_term
-   * @return array
+   * {@inheritdoc}
    */
   public function getTaxonomyTermView(TermInterface $taxonomy_term) {
     $config = $this->getTermConfigSettings($taxonomy_term);

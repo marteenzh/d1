@@ -3,7 +3,7 @@
 namespace Drupal\tvi\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\tvi\Service\TaxonomyViewsIntegratorManager;
+use Drupal\tvi\Service\TaxonomyViewsIntegratorManagerInterface;
 use Drupal\taxonomy\TermInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -16,9 +16,9 @@ class TaxonomyViewsIntegratorTermPageController extends ControllerBase {
 
   /**
    * TaxonomyViewsIntegratorTermPageController constructor.
-   * @param \Drupal\tvi\Service\TaxonomyViewsIntegratorManager $term_display_manager
+   * @param \Drupal\tvi\Service\TaxonomyViewsIntegratorManagerInterface $term_display_manager
    */
-  public function __construct(TaxonomyViewsIntegratorManager $term_display_manager) {
+  public function __construct(TaxonomyViewsIntegratorManagerInterface $term_display_manager) {
     $this->term_display_manager = $term_display_manager;
   }
 

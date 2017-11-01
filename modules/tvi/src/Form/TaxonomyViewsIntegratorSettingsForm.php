@@ -3,7 +3,7 @@
 namespace Drupal\tvi\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -19,19 +19,20 @@ class TaxonomyViewsIntegratorSettingsForm extends ConfigFormBase {
   protected $configFactory;
 
   /**
-   * The entity manager service.
-   * @var EntityManagerInterface
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityManager;
+  protected $entityTypeManager;
 
   /**
    * TaxonomyViewsIntegratorSettingsForm constructor.
    * @param ConfigFactoryInterface $config_factory
-   * @param EntityManagerInterface $entity_manager
+   * @param EntityTypeManagerInterface $entity_type_manager
    */
-  public function __construct(ConfigFactoryInterface $config_factory, EntityManagerInterface $entity_manager) {
+  public function __construct(ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager) {
     $this->configFactory = $config_factory;
-    $this->entityManager = $entity_manager;
+    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
@@ -40,7 +41,7 @@ class TaxonomyViewsIntegratorSettingsForm extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
-      $container->get('entity.manager')
+      $container->get('entity_type.manager')
     );
   }
 
@@ -93,12 +94,12 @@ class TaxonomyViewsIntegratorSettingsForm extends ConfigFormBase {
     $form['#prefix'] = '<div id="tvi-settings-wrapper">';
     $form['#suffix'] = '</div>';
 
-    $form['tvi'] = array(
+    $form['tvi'] = [
       '#type' => 'details',
       '#title' => $this->t('Global settings'),
       '#open' => true,
       '#description' => $this->t('By enabling taxonomy views integration here, it will apply to all vocabularies and their terms by default.')
-    );
+    ];
 
     $form['tvi']['enable_override'] = [
       '#type' => 'checkbox',
@@ -115,16 +116,16 @@ class TaxonomyViewsIntegratorSettingsForm extends ConfigFormBase {
       '#options' => $view_options,
       '#states' => [
         'visible' => [
-          ':input[name="enable_override"]' => array('checked' => true),
+          ':input[name="enable_override"]' => ['checked' => true],
         ]
       ],
       '#ajax' => [
         'callback' => '::loadDisplayOptions',
         'event' => 'change',
         'wrapper' => 'tvi-settings-wrapper',
-        'progress' => array(
+        'progress' => [
           'type' => 'throbber',
-        ),
+        ],
       ],
     ];
 
@@ -136,7 +137,7 @@ class TaxonomyViewsIntegratorSettingsForm extends ConfigFormBase {
       '#options' => $display_options,
       '#states' => [
         'visible' => [
-          ':input[name="enable_override"]' => array('checked' => true),
+          ':input[name="enable_override"]' => ['checked' => true],
         ]
       ],
       '#prefix' => '<div id="tvi-view-display">',
@@ -183,7 +184,7 @@ class TaxonomyViewsIntegratorSettingsForm extends ConfigFormBase {
    */
   protected function getViewDisplayOptions($view_id) {
     $display_options = [];
-    $view = $this->entityManager->getStorage('view')->load($view_id);
+    $view = $this->entityTypeManager->getStorage('view')->load($view_id);
 
     if ($view) {
       foreach ($view->get('display') as $display) {
