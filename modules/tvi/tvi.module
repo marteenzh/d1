@@ -47,11 +47,11 @@ function _tvi_settings_form(&$form, FormStateInterface $form_state) {
     }
   }
 
-  $form['tvi'] = array(
+  $form['tvi'] = [
     '#type' => 'details',
     '#title' => t('Taxonomy Views Integrator Settings'),
     '#open' => TRUE,
-  );
+  ];
 
   $form['tvi']['tvi_enable_override'] = [
     '#type' => 'checkbox',
@@ -66,16 +66,16 @@ function _tvi_settings_form(&$form, FormStateInterface $form_state) {
     '#options' => $view_options,
     '#states' => [
       'visible' => [
-        ':input[name="tvi_enable_override"]' => array('checked' => TRUE),
+        ':input[name="tvi_enable_override"]' => ['checked' => TRUE],
       ]
     ],
     '#ajax' => [
       'callback' => 'tvi_view_display_ajax_handler',
       'event' => 'change',
       'wrapper' => 'tvi-view-display',
-      'progress' => array(
+      'progress' => [
         'type' => 'throbber',
-      ),
+      ],
     ],
   ];
 
@@ -110,21 +110,21 @@ function _tvi_settings_form(&$form, FormStateInterface $form_state) {
     ],
   ];
 
-  $form['tvi']['tvi_pass_arguments'] = array(
+  $form['tvi']['tvi_pass_arguments'] = [
     '#id' => 'tvi-pass-arguments',
     '#type' => 'checkbox',
     '#title' => t('Pass all arguments to views.'),
     '#description' => t('Enable this checkbox, and your views display will receive all arguments going after /taxonomy/term/ in the path. If disabled, your views display will only receive tid, and tid_depth.'),
     '#default_value' => $config->get('pass_arguments'),
-    '#states' => array(
-      'disabled' => array(
+    '#states' => [
+      'disabled' => [
         ':input[name="tvi_enable_override"]' => ['checked' => FALSE],
-      ),
-      'visible' => array(
+      ],
+      'visible' => [
         ':input[name="tvi_enable_override"]' => ['checked' => TRUE],
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 
   if ($entity_type == 'taxonomy_term') {
     $form['tvi']['#description'] = t('Override the default presentation this term page.');
@@ -236,7 +236,6 @@ function tvi_submit_handler($form, FormStateInterface $form_state) {
       ->set('view_display', $form_values['tvi_view_display'])
       ->set('inherit_settings', $form_values['tvi_inherit_settings'])
       ->set('pass_arguments', $form_values['tvi_pass_arguments'])
-      ->set('uuid', $entity->uuid())
       ->save();
   } else {
     Drupal::configFactory()

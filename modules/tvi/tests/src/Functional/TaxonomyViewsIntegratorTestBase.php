@@ -285,7 +285,6 @@ abstract class TaxonomyViewsIntegratorTestBase extends BrowserTestBase {
       ->set('view', 'tvi_page')
       ->set('view_display', 'page_1')
       ->set('inherit_settings', 1)
-      ->set('uuid', $this->vocabulary1->uuid())
       ->save();
 
     // set vocabulary2 config
@@ -299,7 +298,6 @@ abstract class TaxonomyViewsIntegratorTestBase extends BrowserTestBase {
       ->set('view', 'tvi_page')
       ->set('view_display', 'page_1')
       ->set('inherit_settings', 0)
-      ->set('uuid', $this->term1->uuid())
       ->save();
 
     // term 2
@@ -308,7 +306,6 @@ abstract class TaxonomyViewsIntegratorTestBase extends BrowserTestBase {
       ->set('view', 'tvi_page')
       ->set('view_display', 'page_2')
       ->set('inherit_settings', 1)
-      ->set('uuid', $this->term2->uuid())
       ->save();
 
     // term 3
@@ -327,7 +324,6 @@ abstract class TaxonomyViewsIntegratorTestBase extends BrowserTestBase {
       ->set('view', 'tvi_page')
       ->set('view_display', 'page_1')
       ->set('inherit_settings', 0)
-      ->set('uuid', $this->term5->uuid())
       ->save();
 
     // term 6
@@ -346,7 +342,6 @@ abstract class TaxonomyViewsIntegratorTestBase extends BrowserTestBase {
       ->set('view', 'tvi_page')
       ->set('view_display', 'page_1')
       ->set('inherit_settings', 0)
-      ->set('uuid', $this->term8->uuid())
       ->save();
 
     // term 9
@@ -360,7 +355,6 @@ abstract class TaxonomyViewsIntegratorTestBase extends BrowserTestBase {
       ->set('view', 'tvi_page')
       ->set('view_display', 'page_2')
       ->set('inherit_settings', 1)
-      ->set('uuid', $this->term10->uuid())
       ->save();
 
     // term 11
@@ -374,7 +368,6 @@ abstract class TaxonomyViewsIntegratorTestBase extends BrowserTestBase {
       ->set('view', 'tvi_page')
       ->set('view_display', 'page_1')
       ->set('inherit_settings', 0)
-      ->set('uuid', $this->term12->uuid())
       ->save();
 
     $this->refreshVariables();
