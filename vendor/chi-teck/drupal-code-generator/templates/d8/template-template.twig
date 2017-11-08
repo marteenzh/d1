@@ -7,12 +7,12 @@
  * - foo: Foo variable description. 
 {% if create_preprocess %}
  *
- * @see template_preprocess_{{ template_name | hyphen2underscore }}()
+ * @see template_preprocess_{{ template_name|h2u }}()
 {% endif %}
  *
  * @ingroup themeable
  */
 {{ '#}' }}
 <div class="wrapper-class">
-{% verbatim %}  {{ foo }} {% endverbatim %}
+  {{ '{{' }} foo {{ '}}' }}
 </div>

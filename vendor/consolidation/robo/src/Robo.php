@@ -19,7 +19,7 @@ use Symfony\Component\Process\Process;
 class Robo
 {
     const APPLICATION_NAME = 'Robo';
-    const VERSION = '1.1.3';
+    const VERSION = '1.1.5';
 
     /**
      * The currently active container object, or NULL if not initialized yet.
@@ -210,19 +210,20 @@ class Robo
             ->withArgument('output');
         $container->share('resultPrinter', \Robo\Log\ResultPrinter::class);
         $container->add('simulator', \Robo\Task\Simulator::class);
-        $container->share('globalOptionsEventListener', \Robo\GlobalOptionsEventListener::class);
+        $container->share('globalOptionsEventListener', \Robo\GlobalOptionsEventListener::class)
+            ->withMethodCall('setApplication', ['application']);
         $container->share('injectConfigEventListener', \Consolidation\Config\Inject\ConfigForCommand::class)
             ->withArgument('config')
             ->withMethodCall('setApplication', ['application']);
         $container->share('collectionProcessHook', \Robo\Collection\CollectionProcessHook::class);
-        $container->share('hookManager', \Consolidation\AnnotatedCommand\Hooks\HookManager::class)
-            ->withMethodCall('addResultProcessor', ['collectionProcessHook', '*']);
         $container->share('alterOptionsCommandEvent', \Consolidation\AnnotatedCommand\Options\AlterOptionsCommandEvent::class)
             ->withArgument('application');
+        $container->share('hookManager', \Consolidation\AnnotatedCommand\Hooks\HookManager::class)
+            ->withMethodCall('addCommandEvent', ['alterOptionsCommandEvent'])
+            ->withMethodCall('addCommandEvent', ['injectConfigEventListener'])
+            ->withMethodCall('addCommandEvent', ['globalOptionsEventListener'])
+            ->withMethodCall('addResultProcessor', ['collectionProcessHook', '*']);
         $container->share('eventDispatcher', \Symfony\Component\EventDispatcher\EventDispatcher::class)
-            ->withMethodCall('addSubscriber', ['injectConfigEventListener'])
-            ->withMethodCall('addSubscriber', ['globalOptionsEventListener'])
-            ->withMethodCall('addSubscriber', ['alterOptionsCommandEvent'])
             ->withMethodCall('addSubscriber', ['hookManager']);
         $container->share('formatterManager', \Consolidation\OutputFormatters\FormatterManager::class)
             ->withMethodCall('addDefaultFormatters', [])
