@@ -39,7 +39,7 @@ abstract class PBTKernelTestBase extends KernelTestBase {
   /**
    * @var int
    */
-  protected $nidNoTerms;
+  protected $nidNoRestriction;
 
   /**
    * {@inheritdoc}
@@ -73,15 +73,20 @@ abstract class PBTKernelTestBase extends KernelTestBase {
     $this->accessStorage = $this->container->get('permissions_by_term.access_storage');
     $this->accessCheck = $this->container->get('permissions_by_term.access_check');
     \Drupal::configFactory()->getEditable('taxonomy.settings')->set('maintain_index_table', TRUE)->save();
-    $this->createTestVocabulary();
+    $this->createTestVocabularies();
     $this->createPageNodeType();
     $this->createCurrentUser();
   }
 
-  protected function createTestVocabulary() {
+  protected function createTestVocabularies() {
     Vocabulary::create([
       'name' => 'test',
       'vid' => 'test',
+    ])->save();
+
+    Vocabulary::create([
+      'name' => 'test2',
+      'vid' => 'test2',
     ])->save();
   }
 
@@ -99,8 +104,24 @@ abstract class PBTKernelTestBase extends KernelTestBase {
       'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
     ])->save();
 
+    FieldStorageConfig::create([
+      'entity_type' => 'node',
+      'field_name' => 'field_tags2',
+      'type' => 'entity_reference',
+      'settings' => [
+        'target_type' => 'taxonomy_term',
+      ],
+      'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
+    ])->save();
+
     FieldConfig::create([
       'field_name' => 'field_tags',
+      'entity_type' => 'node',
+      'bundle' => 'page',
+    ])->save();
+
+    FieldConfig::create([
+      'field_name' => 'field_tags2',
       'entity_type' => 'node',
       'bundle' => 'page',
     ])->save();
@@ -137,6 +158,13 @@ abstract class PBTKernelTestBase extends KernelTestBase {
     $term->save();
     $tids[] = $term->id();
 
+    $term = Term::create([
+      'name' => 'term3',
+      'vid' => 'test2',
+    ]);
+    $term->save();
+    $tids[] = $term->id();
+
     $this->accessStorage->addTermPermissionsByUserIds([99], $term->id());
 
     $node = Node::create([
@@ -149,6 +177,11 @@ abstract class PBTKernelTestBase extends KernelTestBase {
         [
           'target_id' => $tids[1]
         ],
+      ],
+      'field_tags2' => [
+        [
+          'target_id' => $tids[2]
+        ]
       ]
     ]);
     $node->save();
@@ -216,7 +249,7 @@ abstract class PBTKernelTestBase extends KernelTestBase {
     $this->setNidAllGrantedTerms($node->id());
   }
 
-  protected function createRelationNoTerms() {
+  protected function createRelationWithoutRestriction() {
     $term = Term::create([
       'name' => 'term1',
       'vid' => 'test',
@@ -224,16 +257,12 @@ abstract class PBTKernelTestBase extends KernelTestBase {
     $term->save();
     $tids[] = $term->id();
 
-    $this->accessStorage->addTermPermissionsByUserIds([\Drupal::service('current_user')->id()], $term->id());
-
     $term = Term::create([
       'name' => 'term2',
       'vid' => 'test',
     ]);
     $term->save();
     $tids[] = $term->id();
-
-    $this->accessStorage->addTermPermissionsByUserIds([\Drupal::service('current_user')->id()], $term->id());
 
     $node = Node::create([
       'type' => 'page',
@@ -248,7 +277,7 @@ abstract class PBTKernelTestBase extends KernelTestBase {
       ]
     ]);
     $node->save();
-    $this->setNidNoTerms($node->id());
+    $this->setNidNoRestriction($node->id());
   }
 
 
@@ -304,15 +333,15 @@ abstract class PBTKernelTestBase extends KernelTestBase {
   /**
    * @return int
    */
-  protected function getNidNoTerms() {
-    return $this->nidNoTerms;
+  protected function getNidNoRestriction() {
+    return $this->nidNoRestriction;
   }
 
   /**
-   * @param int $nidNoTerms
+   * @param int $nidNoRestiction
    */
-  protected function setNidNoTerms($nidNoTerms) {
-    $this->nidNoTerms = $nidNoTerms;
+  protected function setNidNoRestriction($nidNoRestiction) {
+    $this->nidNoRestriction = $nidNoRestiction;
   }
 
 }

@@ -509,18 +509,6 @@ class AccessStorage {
   }
 
   /**
-   * @return array
-   */
-  public function getAllNids()
-  {
-    $query = $this->database->select('node', 'n')
-        ->fields('n', ['nid']);
-
-    return $query->execute()
-        ->fetchCol();
-  }
-
-  /**
    * @param $nid
    *
    * @return array
@@ -614,7 +602,7 @@ class AccessStorage {
 
   private function computePermittedTids(AccountInterface $user)
   {
-    $nidsWithNoTidRestriction = $this->getNidsWithNoTidRestriction();
+    $nidsWithNoTidRestriction = $this->getUnrestrictedNids();
     $nidsByTids = $this->term->getNidsByTids($this->getPermittedTids($user->id(), $user->getRoles()));
 
     if (\Drupal::config('permissions_by_term.settings.single_term_restriction')->get('value')) {
@@ -629,7 +617,7 @@ class AccessStorage {
 
     if (!empty($nidsByTids)) {
       return array_merge(
-        $this->getNidsWithNoTidRestriction(),
+        $this->getUnrestrictedNids(),
         $nidsByTids
       );
     }
@@ -637,21 +625,50 @@ class AccessStorage {
     return $nidsWithNoTidRestriction;
   }
 
-  private function getNidsWithNoTidRestriction() {
-    $queryNidsNoRestriction = $this->database->select('node', 'n')
-      ->fields('n', ['nid']);
+  private function getUnrestrictedNids() {
+    $tidsRestrictedUserQuery = $this->database->select('permissions_by_term_user', 'u')
+      ->fields('u', ['tid']);
 
-    $queryNidsNoRestriction->leftJoin('taxonomy_index', 'ti', 'n.nid = ti.nid');
-    $queryNidsNoRestriction->leftJoin('permissions_by_term_user', 'ptu', 'ptu.tid = ti.tid');
-    $queryNidsNoRestriction->condition('ptu.tid', NULL, 'IS');
-    $queryNidsNoRestriction->leftJoin('permissions_by_term_role', 'ptr', 'ptr.tid = ti.tid');
-    $queryNidsNoRestriction->condition('ptr.tid', NULL, 'IS');
+    $restrictedTids = $this->database->select('permissions_by_term_role', 'r')
+      ->fields('r', ['tid'])
+      ->union($tidsRestrictedUserQuery)
+      ->execute()
+      ->fetchCol();
 
-     return $queryNidsNoRestriction
+    if (empty($restrictedTids)) {
+      return $this->getAllNids();
+    }
+
+    $restrictedNids = $this->database->select('taxonomy_index', 't')
+      ->fields('t', ['nid'])
+      ->condition('t.tid', $restrictedTids, 'IN')
+      ->distinct(TRUE)
+      ->execute()
+      ->fetchCol();
+
+    if (empty($restrictedNids)) {
+      return $this->getAllNids();
+    }
+
+    $unrestrictedNids = $this->database->select('taxonomy_index', 't')
+      ->fields('t', ['nid'])
+      ->condition('t.nid', $restrictedNids, 'NOT IN')
+      ->distinct(TRUE)
+      ->execute()
+      ->fetchCol();
+
+    return $unrestrictedNids;
+  }
+
+  /**
+   * @return array
+   */
+  public function getAllNids() {
+    return $this->database->select('node', 'n')
+      ->fields('n', ['nid'])
       ->execute()
       ->fetchCol();
   }
-
 
   /**
    * @param $uid
