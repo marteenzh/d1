@@ -1,0 +1,14 @@
+name: "Sparkpost Requeue"
+type: module
+description: "Requeue failed Sparpost messages"
+# core: 8.x
+package: Sparkpost
+configure: sparkpost_requeue.settings_form
+dependencies:
+  - sparkpost
+
+# Information added by Drupal.org packaging script on 2017-09-25
+version: '8.x-2.0-rc1'
+core: '8.x'
+project: 'sparkpost'
+datestamp: 1506337829
