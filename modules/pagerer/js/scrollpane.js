@@ -170,13 +170,15 @@
         * If mouse is pressed on a first/last button, the pager is moved to
         * first/last page.
         */
-      $('.pagerer-scrollpane-button', context).each(function (index) {
+      $('.pagerer-scrollpane-button', context).once('pagerer').each(function (index) {
         this.pagererState = {
           outerPager: $(this).parents('.pagerer-pager-scrollpane').get(0),
           innerPager: $(this).parents('.pagerer-pager-scrollpane').find('.pagerer-scrollpane-embedded').get(0),
           pager: $(this).parents('.pagerer-pager-scrollpane').find('.pagerer-scrollpane-embedded').find('.pager__items').get(0)
         };
         $(this).button();
+        // Set button enable/disabled state.
+        setButtonState(this);
         $(this)
           .on('mousedown', function (event) {
             var button = this;
@@ -235,20 +237,7 @@
             clearTimeout(Drupal.pagerer.state.timeoutAction);
             this.pagererState.innerPager.pagererState.fastScrolling = 0;
           });
-      })
-        .load().each(function (index) {
-          // Align border color to button style.
-          if ($(this).hasClass('pagerer-first')) {
-            $(this.pagererState.innerPager).css({
-              'border-top-color': $(this).css('border-top-color'),
-              'border-right-color': $(this).css('border-right-color'),
-              'border-bottom-color': $(this).css('border-bottom-color'),
-              'border-left-color': $(this).css('border-left-color')
-            });
-          }
-          // Set button enable/disabled state.
-          setButtonState(this);
-        });
+      });
 
       /**
        * Helper functions.

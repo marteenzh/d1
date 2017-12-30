@@ -50,7 +50,7 @@ class Multipane extends PluginBase implements PagererStyleInterface {
     // Fully qualify all panes.
     if (isset($preset)) {
       $cacheable = TRUE;
-      foreach (array('left', 'center', 'right') as $pane) {
+      foreach (['left', 'center', 'right'] as $pane) {
         // Determine pane's style.
         if ($preset_style = $preset->getPaneData($pane, 'style')) {
           $this->configuration['panes'][$pane]['style'] = $preset_style;
@@ -79,7 +79,7 @@ class Multipane extends PluginBase implements PagererStyleInterface {
     }
 
     // Build render array.
-    foreach (array('left', 'center', 'right') as $pane) {
+    foreach (['left', 'center', 'right'] as $pane) {
       if ($this->configuration['panes'][$pane]['style'] <> 'none') {
         $variables['pagerer'][$pane . '_pane'] = [
           '#type' => 'pager',

@@ -61,7 +61,7 @@ class PagererConfigForm extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
-      $container->get('entity.manager')->getListBuilder('pagerer_preset'),
+      $container->get('entity_type.manager')->getListBuilder('pagerer_preset'),
       $container->get('pagerer.factory'),
       $container->get('plugin.manager.element_info')
     );
@@ -96,10 +96,10 @@ class PagererConfigForm extends ConfigFormBase {
     $form['presets'] = $this->presetsList->render();
 
     // Container for global options.
-    $form['pagerer'] = array(
+    $form['pagerer'] = [
       '#type' => 'fieldset',
       '#title' => $this->t("General"),
-    );
+    ];
     // Global option for pager override.
     $default_label = (string) $this->t('Default:');
     $replace_label = (string) $this->t('Replace with:');
@@ -107,13 +107,13 @@ class PagererConfigForm extends ConfigFormBase {
       $default_label => ['core' => $this->t('No - use Drupal core pager')],
       $replace_label => $this->presetsList->listOptions(),
     ];
-    $form['pagerer']['core_override_preset'] = array(
+    $form['pagerer']['core_override_preset'] = [
       '#type' => 'select',
       '#title' => $this->t("Replace standard pager"),
       '#description' => $this->t("Core pager theme requests can be overridden. Select whether they need to be fulfilled by Drupal core pager, or the Pagerer pager to use."),
       '#options' => $options,
       '#default_value' => $this->config('pagerer.settings')->get('core_override_preset'),
-    );
+    ];
 
     return parent::buildForm($form, $form_state);
   }

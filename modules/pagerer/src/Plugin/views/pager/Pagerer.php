@@ -2,7 +2,7 @@
 
 namespace Drupal\pagerer\Plugin\views\pager;
 
-use Drupal\Core\Entity\EntityManager;
+use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\views\Plugin\views\pager\Full;
@@ -29,11 +29,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class Pagerer extends Full implements ContainerFactoryPluginInterface {
 
   /**
-   * The entity manager service.
+   * The entity type manager service.
    *
-   * @var \Drupal\Core\Entity\EntityManager
+   * @var \Drupal\Core\Entity\EntityTypeManager
    */
-  protected $entityManager;
+  protected $entityTypeManager;
 
   /**
    * The list of pagerer presets.
@@ -58,14 +58,14 @@ class Pagerer extends Full implements ContainerFactoryPluginInterface {
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   * @param \Drupal\Core\Entity\EntityManager $entity_manager
-   *   The entity manager.
+   * @param \Drupal\Core\Entity\EntityTypeManager $entity_type_manager
+   *   The entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityManager $entity_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManager $entity_type_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->entityManager = $entity_manager;
-    $this->presetsList = $this->entityManager->getListBuilder('pagerer_preset');
-    $this->presetStorage = $this->entityManager->getStorage('pagerer_preset');
+    $this->entityTypeManager = $entity_type_manager;
+    $this->presetsList = $this->entityTypeManager->getListBuilder('pagerer_preset');
+    $this->presetStorage = $this->entityTypeManager->getStorage('pagerer_preset');
   }
 
   /**
@@ -76,7 +76,7 @@ class Pagerer extends Full implements ContainerFactoryPluginInterface {
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('entity.manager')
+      $container->get('entity_type.manager')
     );
   }
 
@@ -95,21 +95,21 @@ class Pagerer extends Full implements ContainerFactoryPluginInterface {
         $this->options['items_per_page'],
         "Using preset %preset, @count item, skip @skip",
         "Using preset %preset, @count items, skip @skip",
-        array(
+        [
           '%preset' => $preset_label,
           '@count' => $this->options['items_per_page'],
           '@skip' => $this->options['offset'],
-        )
+        ]
       );
     }
     return $this->formatPlural(
       $this->options['items_per_page'],
       "Using preset %preset, @count item",
       "Using preset %preset, @count items",
-      array(
+      [
         '%preset' => $preset_label,
         '@count' => $this->options['items_per_page'],
-      )
+      ]
     );
   }
 
@@ -121,7 +121,7 @@ class Pagerer extends Full implements ContainerFactoryPluginInterface {
    */
   public function defineOptions() {
     $options = parent::defineOptions();
-    $options['preset'] = array('default' => 'core');
+    $options['preset'] = ['default' => 'core'];
     return $options;
   }
 
@@ -131,13 +131,13 @@ class Pagerer extends Full implements ContainerFactoryPluginInterface {
    * Same as 'Full', plus preset, less tags and quantity.
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
-    $form['preset'] = array(
+    $form['preset'] = [
       '#type' => 'select',
       '#title' => $this->t('Preset'),
       '#description' => $this->t("Select the Pagerer preset to use to render the pager."),
       '#options' => $this->presetsList->listOptions(),
       '#default_value' => $this->options['preset'],
-    );
+    ];
     parent::buildOptionsForm($form, $form_state);
     unset(
       $form['tags'],
@@ -149,15 +149,15 @@ class Pagerer extends Full implements ContainerFactoryPluginInterface {
    * {@inheritdoc}
    */
   public function render($input) {
-    return array(
+    return [
       '#theme' => $this->themeFunctions(),
       '#route_name' => !empty($this->view->live_preview) ? '<current>' : '<none>',
       '#element' => $this->options['id'],
       '#parameters' => $input,
-      '#config' => array(
+      '#config' => [
         'preset' => $this->options['preset'],
-      ),
-    );
+      ],
+    ];
   }
 
 }

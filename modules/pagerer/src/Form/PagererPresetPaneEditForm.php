@@ -48,11 +48,11 @@ class PagererPresetPaneEditForm extends PagererPresetFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, $pane = NULL) {
-    $this->paneLabels = array(
+    $this->paneLabels = [
       'left' => $this->t('left'),
       'center' => $this->t('center'),
       'right' => $this->t('right'),
-    );
+    ];
     $this->pane = $pane;
     $this->style = $this->entity->getPaneData($pane, 'style');
     $this->config = $this->entity->getPaneData($pane, 'config') ?: [];
@@ -69,10 +69,10 @@ class PagererPresetPaneEditForm extends PagererPresetFormBase {
     // Pane settings form.
     $form['#title'] = $this->t(
       "%preset_name - @pane pane settings",
-      array(
+      [
         '%preset_name' => $this->entity->label(),
         '@pane' => $this->paneLabels[$this->pane],
-      )
+      ]
     );
 
     // In pane edit, do not show the preset name.
@@ -81,12 +81,12 @@ class PagererPresetPaneEditForm extends PagererPresetFormBase {
 
     // Pane style name.
     $plugin_definition = $this->styleManager->getDefinition($this->style);
-    $form['style_label'] = array(
+    $form['style_label'] = [
       '#type' => 'item',
       '#title' => $this->t("Pane style"),
       '#markup' => !empty($plugin_definition) ? $plugin_definition['short_title'] : NULL,
       '#description' => $this->t("To change the pane style, go back to the 'Edit pager' form."),
-    );
+    ];
 
     // Get the config piece from the plugin.
     $form['config'] = $this->plugin->buildConfigurationForm($form, $form_state);
@@ -100,11 +100,11 @@ class PagererPresetPaneEditForm extends PagererPresetFormBase {
   public function actions(array $form, FormStateInterface $form_state) {
     $actions = parent::actions($form, $form_state);
 
-    $actions['cancel'] = array(
+    $actions['cancel'] = [
       '#type' => 'link',
       '#title' => $this->t("Cancel"),
       '#attributes' => ['class' => ['button']],
-    ) + $this->entity->urlInfo('edit-form')->toRenderArray();
+    ] + $this->entity->toUrl('edit-form')->toRenderArray();
 
     // Drop standard delete action.
     unset($actions['delete']);
@@ -126,7 +126,7 @@ class PagererPresetPaneEditForm extends PagererPresetFormBase {
     $this->plugin->setConfigurationContext($this->entity, $this->pane);
     $this->plugin->submitConfigurationForm($form, $form_state);
     parent::submitForm($form, $form_state);
-    $form_state->setRedirectUrl($this->entity->urlInfo('edit-form'));
+    $form_state->setRedirectUrl($this->entity->toUrl('edit-form'));
   }
 
   /**
@@ -137,9 +137,9 @@ class PagererPresetPaneEditForm extends PagererPresetFormBase {
     drupal_set_message(
       $this->t(
         'The @pane pane configuration has been saved.',
-        array(
+        [
           '@pane' => $this->paneLabels[$this->pane],
-        )
+        ]
       ),
       'status'
     );

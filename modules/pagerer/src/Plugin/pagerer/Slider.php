@@ -27,12 +27,12 @@ class Slider extends PagererStyleBase {
 
     unset($config['separators_container']);
 
-    $config['plugin'] = array(
+    $config['plugin'] = [
       '#type' => 'details',
       '#title' => $this->t("Slider"),
       '#description' => $this->t("Slider options."),
-    );
-    $config['plugin']['slider_width'] = array(
+    ];
+    $config['plugin']['slider_width'] = [
       '#type' => 'number',
       '#title' => $this->t("Width"),
       '#field_suffix' => $this->t("em"),
@@ -42,18 +42,18 @@ class Slider extends PagererStyleBase {
       '#size' => 3,
       '#maxlength' => 3,
       '#min' => 1,
-    );
-    $options = array('tickmark', 'timeout', 'auto');
+    ];
+    $options = ['tickmark', 'timeout', 'auto'];
     $options = array_combine($options, $options);
-    $config['plugin']['slider_action'] = array(
+    $config['plugin']['slider_action'] = [
       '#type' => 'select',
       '#title' => $this->t("Action confirmation method"),
       '#options' => $options,
       '#default_value' => $this->configuration['slider_action'],
       '#description' => $this->t("Select how the page relocation should be triggered after it has been selected through the slider. Options are: 'tickmark' (page relocation only occurs after user clicks a tickmark on the slider handle), 'timeout' (page relocation occurs after a grace time has elapsed), 'auto' (the timeout method is automatically selected based on the accuracy of the slider)."),
       '#required' => TRUE,
-    );
-    $config['plugin']['slider_action_timeout'] = array(
+    ];
+    $config['plugin']['slider_action_timeout'] = [
       '#type' => 'number',
       '#title' => $this->t("Confirmation timeout"),
       '#default_value' => $this->configuration['slider_action_timeout'],
@@ -62,17 +62,17 @@ class Slider extends PagererStyleBase {
       '#maxlength' => 5,
       '#required' => TRUE,
       '#min' => 0,
-    );
-    $options = array('yes', 'no', 'auto');
+    ];
+    $options = ['yes', 'no', 'auto'];
     $options = array_combine($options, $options);
-    $config['plugin']['slider_navigation_icons'] = array(
+    $config['plugin']['slider_navigation_icons'] = [
       '#type' => 'select',
       '#title' => $this->t("Display navigation icons"),
       '#options' => $options,
       '#default_value' => $this->configuration['slider_navigation_icons'],
       '#description' => $this->t("Select whether to display +/- navigation icons on the sides of the slider. Options are 'yes', 'no', 'auto' (the icons are automatically displayed based on the accuracy of the slider)."),
       '#required' => TRUE,
-    );
+    ];
 
     return $config;
   }
@@ -85,29 +85,29 @@ class Slider extends PagererStyleBase {
    */
   protected function buildPagerItems() {
     // Prepares state.
-    $state_settings = array(
+    $state_settings = [
       'action' => $this->getOption('slider_action'),
       'timeout' => $this->getOption('slider_action_timeout'),
       'icons' => $this->getOption('slider_navigation_icons'),
       'tickmarkTitle' => $this->getDisplayTag('slider_tickmark_title'),
-    );
+    ];
     if ($slider_width = $this->getOption('slider_width')) {
       $state_settings['sliderWidth'] = $slider_width;
     }
     $pagerer_widget_id = $this->prepareJsState($state_settings);
 
     // Add pager items.
-    $items = array();
+    $items = [];
     if ($this->getOption('slider_navigation_icons') <> 'no') {
-      $items[] = array(
-        'widget' => array(
+      $items[] = [
+        'widget' => [
           '#theme' => 'pagerer_slider_icon',
           '#icon' => 'circle-minus',
-        ),
-      );
+        ],
+      ];
     }
-    $items[] = array(
-      'widget' => array(
+    $items[] = [
+      'widget' => [
         '#theme' => 'pagerer_slider',
         '#id' => $pagerer_widget_id,
         '#title' => $this->getDisplayTag('slider_title'),
@@ -116,15 +116,15 @@ class Slider extends PagererStyleBase {
             'pagerer' => ['state' => [$pagerer_widget_id => $state_settings]],
           ],
         ],
-      ),
-    );
+      ],
+    ];
     if ($this->getOption('slider_navigation_icons') <> 'no') {
-      $items[] = array(
-        'widget' => array(
+      $items[] = [
+        'widget' => [
           '#theme' => 'pagerer_slider_icon',
           '#icon' => 'circle-plus',
-        ),
-      );
+        ],
+      ];
     }
     return $items;
   }

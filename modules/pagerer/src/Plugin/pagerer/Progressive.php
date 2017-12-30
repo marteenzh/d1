@@ -56,13 +56,13 @@ class Progressive extends Standard {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $config = parent::buildConfigurationForm($form, $form_state);
-    $config['display_container']['factors'] = array(
+    $config['display_container']['factors'] = [
       '#type' => 'textfield',
       '#title' => $this->t("Scale factors"),
       '#default_value' => $this->configuration['factors'],
       '#description' => $this->t("Comma delimited string of factors to use to determine progressive links."),
       '#required' => TRUE,
-    );
+    ];
     return $config;
   }
 

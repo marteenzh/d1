@@ -30,7 +30,7 @@ class Standard extends PagererStyleBase {
    * @return array
    *   render array of pages items.
    */
-  protected function buildNeighborhoodPageList(array $pages = array()) {
+  protected function buildNeighborhoodPageList(array $pages = []) {
 
     $quantity = $this->getOption('quantity');
     // Middle is used to "center" pages around the current page.
@@ -84,7 +84,7 @@ class Standard extends PagererStyleBase {
   protected function buildPagerItems() {
     $pages = $this->buildPageList();
 
-    $items = array();
+    $items = [];
 
     $previous_page = NULL;
     foreach ($pages as $page => $page_data) {
@@ -94,35 +94,35 @@ class Standard extends PagererStyleBase {
         if ($page == $previous_page + 1) {
           // Neighbor page.
           if ($this->getOption('separator_display')) {
-            $items[] = array(
+            $items[] = [
               'text' => $this->getTag('page_separator'),
               'is_separator' => TRUE,
-            );
+            ];
           }
         }
         else {
           // Outer page.
           if ($this->getOption('breaker_display')) {
-            $items[] = array(
+            $items[] = [
               'text' => $this->getTag('page_breaker'),
               'is_breaker' => TRUE,
-            );
+            ];
           }
           elseif ($this->getOption('separator_display')) {
-            $items[] = array(
+            $items[] = [
               'text' => $this->getTag('page_separator'),
               'is_separator' => TRUE,
-            );
+            ];
           }
         }
       }
       elseif ($page <> 0 && $this->getOption('fl_breakers') && $this->getOption('breaker_display')) {
         // If on first link, but current page is not first, introduce a
         // breaker before the new link.
-        $items[] = array(
+        $items[] = [
           'text' => $this->getTag('page_breaker'),
           'is_breaker' => TRUE,
-        );
+        ];
       }
       // Sets previous page.
       $previous_page = $page;
@@ -131,10 +131,10 @@ class Standard extends PagererStyleBase {
 
     // Introduce a breaker after last page, if needed.
     if (($page <> $this->pager->getLastPage()) && $this->getOption('fl_breakers') && $this->getOption('breaker_display')) {
-      $items[] = array(
+      $items[] = [
         'text' => $this->getTag('page_breaker'),
         'is_breaker' => TRUE,
-      );
+      ];
     }
 
     return $items;

@@ -47,7 +47,7 @@ class PagererPresetDeleteForm extends EntityDeleteForm {
     if ($config->get('core_override_preset') == $this->getEntity()->id()) {
       $config->set('core_override_preset', 'core')->save();
       $this->elementInfoManager->clearCachedDefinitions();
-      drupal_set_message($this->t("Pager %preset_label was being used as replacement of Drupal's core pager. Drupal's core pager has been reset as main pager.", array('%preset_label' => $this->getEntity()->label())), 'warning');
+      drupal_set_message($this->t("Pager %preset_label was being used as replacement of Drupal's core pager. Drupal's core pager has been reset as main pager.", ['%preset_label' => $this->getEntity()->label()]), 'warning');
     }
   }
 

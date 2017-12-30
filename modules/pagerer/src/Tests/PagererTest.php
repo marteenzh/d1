@@ -13,7 +13,7 @@ class PagererTest extends WebTestBase {
 
   protected $pagererAdmin = 'admin/config/user-interface/pagerer';
 
-  public static $modules = array('dblog', 'pagerer', 'pagerer_example');
+  public static $modules = ['dblog', 'pagerer', 'pagerer_example'];
 
   /**
    * {@inheritdoc}
@@ -38,14 +38,14 @@ class PagererTest extends WebTestBase {
    */
   public function testPagerer() {
     // Admin UI tests.
-    $edit = array(
+    $edit = [
       'label' => 'ui_test',
       'id' => 'ui_test',
-    );
+    ];
     $this->drupalPostForm($this->pagererAdmin . '/preset/add', $edit, 'Create');
-    $edit = array(
+    $edit = [
       'core_override_preset' => 'ui_test',
-    );
+    ];
     $this->drupalPostForm($this->pagererAdmin, $edit, 'Save configuration');
     $styles = [
       'standard',

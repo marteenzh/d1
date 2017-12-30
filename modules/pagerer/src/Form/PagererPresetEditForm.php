@@ -33,26 +33,26 @@ class PagererPresetEditForm extends PagererPresetFormBase {
       }
     }
 
-    $form['#title'] = $this->t("Edit pager %preset_label", array('%preset_label' => $this->entity->label()));
+    $form['#title'] = $this->t("Edit pager %preset_label", ['%preset_label' => $this->entity->label()]);
 
     // AJAX messages.
-    $form['ajax_messages'] = array(
+    $form['ajax_messages'] = [
       '#type' => 'container',
       '#attributes' => [
         'id' => 'pagerer-ajax-messages',
       ],
-    );
+    ];
 
     // List of the styles available for the panes.
-    $options = array('none' => $this->t('- None -')) + $this->styleManager->getPluginOptions('base');
+    $options = ['none' => $this->t('- None -')] + $this->styleManager->getPluginOptions('base');
 
     // Panes configuration.
-    $form['panes_container'] = array(
+    $form['panes_container'] = [
       '#type' => 'fieldset',
       '#title' => $this->t("Panes configuration"),
       '#description' => $this->t("Click 'Configure' to change style settings. Click 'Reset' to reset a pane configuration to its style's default."),
       '#tree'          => TRUE,
-    );
+    ];
     foreach (['left', 'center', 'right'] as $pane) {
       switch ($pane) {
         case 'left':
@@ -77,9 +77,9 @@ class PagererPresetEditForm extends PagererPresetFormBase {
           '#title' => $this->t("Style"),
           '#options' => $options,
           '#default_value' => $this->entity->getPaneData($pane, 'style'),
-          '#ajax' => array(
+          '#ajax' => [
             'callback' => '::processStyleChange',
-          ),
+          ],
         ],
         'actions' => [
           '#type' => 'actions',
@@ -87,25 +87,25 @@ class PagererPresetEditForm extends PagererPresetFormBase {
             '#type' => 'submit',
             '#name' => 'config_' . $pane,
             '#value' => $this->t("Configure"),
-            '#submit' => array('::submitForm', '::save'),
+            '#submit' => ['::submitForm', '::save'],
           ],
           'reset' => [
             '#type' => 'submit',
             '#name' => 'reset_' . $pane,
             '#value' => $this->t("Reset"),
-            '#submit' => array('::submitForm', '::save'),
+            '#submit' => ['::submitForm', '::save'],
           ],
         ],
       ];
     }
 
     // Pagerer's preview.
-    $form['preview'] = array(
+    $form['preview'] = [
       '#type' => 'fieldset',
       '#title' => $this->t("Pager preview"),
       '#id' => 'pagerer-pager-preview',
-    );
-    $form['preview']['pagerer'] = array(
+    ];
+    $form['preview']['pagerer'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer',
       '#config' => [
@@ -115,7 +115,7 @@ class PagererPresetEditForm extends PagererPresetFormBase {
           'right' => $this->entity->getPaneData('right'),
         ],
       ],
-    );
+    ];
 
     return $form;
   }
@@ -126,7 +126,7 @@ class PagererPresetEditForm extends PagererPresetFormBase {
   public function processStyleChange($form, FormStateInterface $form_state) {
     drupal_set_message($this->t('Click on the <em>Save</em> button to confirm the selection.'), 'warning');
     $response = new AjaxResponse();
-    $status_messages = array('#type' => 'status_messages');
+    $status_messages = ['#type' => 'status_messages'];
     $response->addCommand(new HtmlCommand('#pagerer-ajax-messages', $status_messages));
     $response->addCommand(new ReplaceCommand('#pagerer-pager-preview', $form['preview']));
     return $response;
@@ -163,7 +163,9 @@ class PagererPresetEditForm extends PagererPresetFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Set data.
     foreach (['left', 'center', 'right'] as $pane) {
-      $this->entity->setPaneData($pane, 'style', $form_state->getValue(['panes_container', $pane, 'style']));
+      $this->entity->setPaneData($pane, 'style', $form_state->getValue([
+        'panes_container', $pane, 'style',
+      ]));
     }
     parent::submitForm($form, $form_state);
     $form_state->setRedirect('entity.pagerer_preset.collection');
@@ -186,7 +188,7 @@ class PagererPresetEditForm extends PagererPresetFormBase {
       $form_state->setRedirect('entity.pagerer_preset.pane_reset_form', ['pagerer_preset' => $this->entity->id(), 'pane' => $pane]);
     }
     else {
-      drupal_set_message($this->t('Changes to the pager %label have been saved.', array('%label' => $this->entity->label())));
+      drupal_set_message($this->t('Changes to the pager %label have been saved.', ['%label' => $this->entity->label()]));
     }
   }
 

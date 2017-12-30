@@ -12,7 +12,7 @@ class PagererFactory implements PagererFactoryInterface {
    *
    * @var \Drupal\pagerer\Pagerer[]
    */
-  protected $pagers = array();
+  protected $pagers = [];
 
   /**
    * {@inheritdoc}

@@ -47,7 +47,7 @@ class Pagerer implements PagererInterface, ContainerInjectionInterface {
   /**
    * The Pagerer factory.
    *
-   * @var \Drupal\pagerer\PagererFactory
+   * @var \Drupal\pagerer\PagererFactoryInterface
    */
   protected $factory;
 
@@ -61,10 +61,12 @@ class Pagerer implements PagererInterface, ContainerInjectionInterface {
   /**
    * Constructs a new Pagerer pager object.
    *
+   * @param \Drupal\pagerer\PagererFactoryInterface $pagerer_factory
+   *   The Pagerer factory.
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
    *   The request stack.
    */
-  public function __construct(PagererFactory $pagerer_factory, RequestStack $request_stack) {
+  public function __construct(PagererFactoryInterface $pagerer_factory, RequestStack $request_stack) {
     $this->factory = $pagerer_factory;
     $this->requestStack = $request_stack;
   }
@@ -221,8 +223,8 @@ class Pagerer implements PagererInterface, ContainerInjectionInterface {
     // This is built based on the current page of each pager element (or NULL
     // if the pager is not set), with the exception of the requested page index
     // for the current element.
-    $page_el = array();
-    $page_ak = array();
+    $page_el = [];
+    $page_ak = [];
     foreach ($this->factory->all() as $i => $p) {
       $page_el[$i] = ($i == $this->getElement()) ? $page : $p->getCurrentPage();
       $page_ak[$i] = ($i == $this->getElement()) ? $adaptive_keys : $p->getAdaptiveKeys();
@@ -261,7 +263,9 @@ class Pagerer implements PagererInterface, ContainerInjectionInterface {
    * {@inheritdoc}
    */
   public function getHref(array $parameters, $page, $adaptive_keys = NULL, $set_query = TRUE) {
-    $options = $set_query ? ['query' => $this->getQueryParameters($parameters, $page, $adaptive_keys)] : [];
+    $options = $set_query ? [
+      'query' => $this->getQueryParameters($parameters, $page, $adaptive_keys),
+    ] : [];
     return Url::fromRoute($this->getRouteName(), $this->getRouteParameters(), $options);
   }
 

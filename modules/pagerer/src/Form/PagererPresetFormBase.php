@@ -56,7 +56,7 @@ abstract class PagererPresetFormBase extends EntityForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity.manager')->getStorage('pagerer_preset'),
+      $container->get('entity_type.manager')->getStorage('pagerer_preset'),
       $container->get('pagerer.factory'),
       $container->get('pagerer.style.manager')
     );
@@ -66,21 +66,21 @@ abstract class PagererPresetFormBase extends EntityForm {
    * {@inheritdoc}
    */
   public function form(array $form, FormStateInterface $form_state) {
-    $form['label'] = array(
+    $form['label'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Pager name'),
       '#default_value' => $this->entity->label(),
       '#required' => TRUE,
-    );
-    $form['id'] = array(
+    ];
+    $form['id'] = [
       '#type' => 'machine_name',
-      '#machine_name' => array(
-        'exists' => array($this->pagererPresetStorage, 'load'),
-        'source' => array('label'),
-      ),
+      '#machine_name' => [
+        'exists' => [$this->pagererPresetStorage, 'load'],
+        'source' => ['label'],
+      ],
       '#default_value' => $this->entity->id(),
       '#required' => TRUE,
-    );
+    ];
     return parent::form($form, $form_state);
   }
 

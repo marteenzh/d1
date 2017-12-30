@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\pagerer\Tests;
+namespace Drupal\Tests\pagerer\Functional;
 
-use Drupal\comment\Tests\CommentInterfaceTest;
+use Drupal\Tests\comment\Functional\CommentInterfaceTest;
 
 /**
  * Test replacement of Drupal core pager for Comment interface.
@@ -13,7 +13,7 @@ class CorePagerReplaceCommentInterfaceTest extends CommentInterfaceTest {
 
   protected $pagererAdmin = 'admin/config/user-interface/pagerer';
 
-  public static $modules = array('dblog', 'pagerer', 'comment');
+  public static $modules = ['dblog', 'pagerer', 'comment'];
 
   /**
    * {@inheritdoc}
@@ -26,14 +26,14 @@ class CorePagerReplaceCommentInterfaceTest extends CommentInterfaceTest {
       'administer site configuration',
     ]));
 
-    $edit = array(
+    $edit = [
       'label' => 'core_replace',
       'id' => 'core_replace',
-    );
+    ];
     $this->drupalPostForm($this->pagererAdmin . '/preset/add', $edit, 'Create');
-    $edit = array(
+    $edit = [
       'core_override_preset' => 'core_replace',
-    );
+    ];
     $this->drupalPostForm($this->pagererAdmin, $edit, 'Save configuration');
     $this->drupalLogout();
   }

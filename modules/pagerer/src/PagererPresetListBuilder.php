@@ -25,15 +25,15 @@ class PagererPresetListBuilder extends ConfigEntityListBuilder implements Entity
    */
   public function buildRow(EntityInterface $entity) {
     $row['name'] = $this->getLabel($entity);
-    $row['preview']['class'] = array('pagerer-admin-preset-preview');
-    $row['preview']['data'] = array(
+    $row['preview']['class'] = ['pagerer-admin-preset-preview'];
+    $row['preview']['data'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer',
       '#element' => 5,
-      '#config' => array(
+      '#config' => [
         'preset' => $entity->id(),
-      ),
-    );
+      ],
+    ];
     return $row + parent::buildRow($entity);
   }
 
@@ -42,7 +42,7 @@ class PagererPresetListBuilder extends ConfigEntityListBuilder implements Entity
    */
   public function listOptions() {
     $entities = $this->load();
-    $list = array();
+    $list = [];
     if ($entities) {
       foreach ($entities as $preset) {
         $list[$preset->id()] = $preset->label();

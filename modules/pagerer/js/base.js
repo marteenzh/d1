@@ -368,11 +368,12 @@
     getAjaxViewId: function (element) {
       if (drupalSettings && drupalSettings.views && drupalSettings.views.ajaxViews) {
         // Loop through active Views Ajax elements.
-        for (var i in drupalSettings.views.ajaxViews) {
-          if (typeof drupalSettings.views.ajaxViews[i].view_dom_id !== 'undefined') {
+        var ajaxViews = drupalSettings.views.ajaxViews;
+        for (var i in ajaxViews) {
+          if (ajaxViews.hasOwnProperty(i)) {
             var view = '.js-view-dom-id-' + drupalSettings.views.ajaxViews[i].view_dom_id;
             var viewDiv = $(element).parents(view);
-            if (viewDiv.size()) {
+            if (viewDiv.length) {
               return i;
             }
           }
@@ -401,22 +402,24 @@
       var viewData = {};
       $.extend(
         viewData,
-        ajaxView.element_settings.submit,
+        ajaxView.settings,
         Drupal.Views.parseQueryString(href),
         // Extract argument data from the URL.
-        Drupal.Views.parseViewArgs(href, ajaxView.element_settings.view_base_path)
+        Drupal.Views.parseViewArgs(href, ajaxView.settings.view_base_path)
       );
 
+      var settings = $.extend({}, ajaxView.element_settings, {
+        submit: viewData,
+        base: false,
+      });
       // Load AJAX element_settings object and attach AJAX behaviour.
-      ajaxView.element_settings.base = false;
       if (element) {
-        ajaxView.element_settings.element = $(element);
+        settings.element = element;
       }
       if (event) {
-        ajaxView.element_settings.event = event;
+        settings.event = event;
       }
-      ajaxView.element_settings.submit = viewData;
-      ajaxView.pagerAjax = Drupal.ajax(ajaxView.element_settings);
+      ajaxView.pagerAjax = Drupal.ajax(settings);
       return ajaxView.pagerAjax;
     },
 

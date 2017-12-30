@@ -52,11 +52,11 @@ class PagererPresetPaneResetForm extends EntityConfirmFormBase {
   public function __construct(PagererFactory $pagerer_factory, PagererStyleManager $style_manager) {
     $this->pagererFactory = $pagerer_factory;
     $this->styleManager = $style_manager;
-    $this->paneLabels = array(
+    $this->paneLabels = [
       'left' => $this->t('left'),
       'center' => $this->t('center'),
       'right' => $this->t('right'),
-    );
+    ];
   }
 
   /**
@@ -83,9 +83,9 @@ class PagererPresetPaneResetForm extends EntityConfirmFormBase {
   public function getQuestion() {
     return $this->t(
       "Reset @pane pane configuration?",
-      array(
+      [
         '@pane' => $this->paneLabels[$this->pane],
-      )
+      ]
     );
   }
 
@@ -97,11 +97,11 @@ class PagererPresetPaneResetForm extends EntityConfirmFormBase {
     $plugin_definition = $this->styleManager->getDefinition($style);
     return $this->t(
       "The %pane pane of pager %preset_name will be reset to %style style default configuration.",
-      array(
+      [
         '%preset_name' => $this->entity->label(),
         '%pane' => $this->paneLabels[$this->pane],
         '%style' => !empty($plugin_definition) ? $plugin_definition['short_title'] : NULL,
-      )
+      ]
     );
   }
 
@@ -116,7 +116,7 @@ class PagererPresetPaneResetForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return $this->entity->urlInfo('edit-form');
+    return $this->entity->toUrl('edit-form');
   }
 
   /**
@@ -130,10 +130,10 @@ class PagererPresetPaneResetForm extends EntityConfirmFormBase {
     drupal_set_message(
       $this->t(
         'The %pane pane configuration has been reset to %style style default configuration.',
-        array(
+        [
           '%style' => !empty($plugin_definition) ? $plugin_definition['short_title'] : NULL,
           '%pane' => $this->paneLabels[$this->pane],
-        )
+        ]
       ),
       'status'
     );

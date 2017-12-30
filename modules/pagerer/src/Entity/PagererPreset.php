@@ -107,7 +107,7 @@ class PagererPreset extends ConfigEntityBase {
    * @param string $key
    *   The configuration element as a string where '.' identifies array nesting.
    *
-   * @return string|[]
+   * @return string|array|null
    *   The configuration element.
    */
   public function getPaneData($pane, $key = NULL) {

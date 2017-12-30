@@ -14,7 +14,7 @@ class CorePagerReplaceTest extends PagerTest {
 
   protected $pagererAdmin = 'admin/config/user-interface/pagerer';
 
-  public static $modules = array('dblog', 'pagerer');
+  public static $modules = ['dblog', 'pagerer'];
 
   /**
    * {@inheritdoc}
@@ -33,21 +33,21 @@ class CorePagerReplaceTest extends PagerTest {
       'administer site configuration',
     ]));
 
-    $edit = array(
+    $edit = [
       'label' => 'core_replace',
       'id' => 'core_replace',
-    );
+    ];
     $this->drupalPostForm($this->pagererAdmin . '/preset/add', $edit, 'Create');
-    $edit = array(
+    $edit = [
       'core_override_preset' => 'core_replace',
-    );
+    ];
     $this->drupalPostForm($this->pagererAdmin, $edit, 'Save configuration');
   }
 
   /**
    * Test that pagerer specific cache tags have been added.
    */
-  protected function testPagerQueryParametersAndCacheContext() {
+  public function testPagerQueryParametersAndCacheContext() {
     parent::testPagerQueryParametersAndCacheContext();
     $this->assertCacheTag('config:pagerer.settings');
     $this->assertCacheTag('config:pagerer.preset.core_replace');

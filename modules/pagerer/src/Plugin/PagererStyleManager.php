@@ -33,7 +33,7 @@ class PagererStyleManager extends DefaultPluginManager implements PagererStyleMa
   /**
    * {@inheritdoc}
    */
-  public function createInstance($plugin_id, array $configuration = array()) {
+  public function createInstance($plugin_id, array $configuration = []) {
     $default_configuration = $this->configFactory->get('pagerer.style.' . $plugin_id)->get('default_config');
     $configuration = NestedArray::mergeDeep($default_configuration, $configuration);
     return parent::createInstance($plugin_id, $configuration);
@@ -43,7 +43,7 @@ class PagererStyleManager extends DefaultPluginManager implements PagererStyleMa
    * {@inheritdoc}
    */
   public function getPluginOptions($style_type) {
-    $options = array();
+    $options = [];
     foreach ($this->getDefinitions() as $plugin) {
       if ($plugin['style_type'] == $style_type) {
         $options[$plugin['id']] = $plugin['short_title'];

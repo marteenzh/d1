@@ -35,42 +35,42 @@ class Scrollpane extends PagererStyleBase {
    */
   protected function buildPagerItems() {
     // Prepares state.
-    $state_settings = array(
+    $state_settings = [
       'quantity' => $this->getOption('quantity'),
-      'pageTag' => array(
+      'pageTag' => [
         'page_title' => $this->getTag($this->getOption('display') . '.page_title'),
         'first_title' => $this->getTag($this->getOption('display') . '.first_title'),
         'last_title' => $this->getTag($this->getOption('display') . '.last_title'),
-      ),
-    );
+      ],
+    ];
     $pagerer_widget_id = $this->prepareJsState($state_settings);
 
-    $items = array();
+    $items = [];
 
     // Left buttons.
     $vars = $this->getNavigationItem('first', FALSE);
-    $items[] = array(
-      'widget' => array(
+    $items[] = [
+      'widget' => [
         '#theme' => 'pagerer_scrollpane_button',
         '#scope' => 'first',
         '#text' => $vars['text'],
         '#title' => $vars['title'],
-      ),
-    );
+      ],
+    ];
     $vars = $this->getNavigationItem('previous', FALSE);
-    $items[] = array(
-      'widget' => array(
+    $items[] = [
+      'widget' => [
         '#theme' => 'pagerer_scrollpane_button',
         '#scope' => 'previous',
         '#text' => $vars['text'],
         '#title' => $vars['title'],
-      ),
-    );
+      ],
+    ];
 
     // Scrollpane.
     $embed_pager_config = NestedArray::mergeDeep(
       $this->configuration,
-      array(
+      [
         'prefix_display' => FALSE,
         'display_mode' => 'normal',
         'suffix_display' => FALSE,
@@ -79,10 +79,10 @@ class Scrollpane extends PagererStyleBase {
         'next_link' => 'never',
         'last_link' => 'never',
         'fl_breakers' => FALSE,
-      )
+      ]
     );
-    $items[] = array(
-      'widget' => array(
+    $items[] = [
+      'widget' => [
         '#id' => $pagerer_widget_id,
         '#type' => 'pager',
         '#theme' => 'pagerer_base',
@@ -94,28 +94,28 @@ class Scrollpane extends PagererStyleBase {
         '#config' => $embed_pager_config,
         '#embedded' => TRUE,
         '#state'  => $state_settings,
-      ),
-    );
+      ],
+    ];
 
     // Right buttons.
     $vars = $this->getNavigationItem('next', FALSE);
-    $items[] = array(
-      'widget' => array(
+    $items[] = [
+      'widget' => [
         '#theme' => 'pagerer_scrollpane_button',
         '#scope' => 'next',
         '#text' => $vars['text'],
         '#title' => $vars['title'],
-      ),
-    );
+      ],
+    ];
     $vars = $this->getNavigationItem('last', FALSE);
-    $items[] = array(
-      'widget' => array(
+    $items[] = [
+      'widget' => [
         '#theme' => 'pagerer_scrollpane_button',
         '#scope' => 'last',
         '#text' => $vars['text'],
         '#title' => $vars['title'],
-      ),
-    );
+      ],
+    ];
 
     return $items;
   }

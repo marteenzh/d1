@@ -48,27 +48,27 @@ class Mini extends PagererStyleBase {
     unset($config['separators_container']);
 
     // Add widget resizing option specific for mini.
-    $config['plugin'] = array(
+    $config['plugin'] = [
       '#type' => 'details',
       '#title' => $this->t("Input box"),
       '#description' => $this->t("Input box options."),
-    );
-    $config['plugin']['widget_resize'] = array(
+    ];
+    $config['plugin']['widget_resize'] = [
       '#type' => 'checkbox',
       '#title' => $this->t("Automatic width adjustment"),
       '#default_value' => $this->configuration['widget_resize'],
       '#description' => $this->t("If set, the input box width will be adjusted dynamically based on the total number of pages/items. When unset, CSS styling will prevail."),
-    );
-    $options = array('no', 'yes', 'auto');
+    ];
+    $options = ['no', 'yes', 'auto'];
     $options = array_combine($options, $options);
-    $config['plugin']['widget_button'] = array(
+    $config['plugin']['widget_button'] = [
       '#type' => 'select',
       '#title' => $this->t("Trigger button"),
       '#options' => $options,
       '#default_value' => $this->configuration['widget_button'],
       '#description' => $this->t("Select whether to add a clickable navigation button to the input box. Options are 'no' (page relocation will only occur by pressing the 'return' key on the keyboard), 'yes' (button is shown, and styled via CSS), 'auto' (button height is automatically resized to match the input box height)."),
       '#required' => TRUE,
-    );
+    ];
 
     return $config;
   }
@@ -83,14 +83,14 @@ class Mini extends PagererStyleBase {
     // Return immediately if configuration is not set to display the page
     // widget.
     if ($this->getOption('display_mode') != 'widget') {
-      return array();
+      return [];
     }
 
     // Prepares state.
-    $state_settings = array(
+    $state_settings = [
       'widgetResize' => $this->getOption('widget_resize'),
       'widgetButton' => $this->getOption('widget_button'),
-    );
+    ];
     $pagerer_widget_id = $this->prepareJsState($state_settings);
 
     // Entry textbox.

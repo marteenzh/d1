@@ -73,7 +73,7 @@ class Adaptive extends Standard {
     $last = $this->pager->getLastPage();
 
     // Determine adaptive keys coming from query parameters.
-    list($pl, $pr, $px) = array(0, $last, NULL);
+    list($pl, $pr, $px) = [0, $last, NULL];
     if ($tmp = $this->pager->getAdaptiveKeys()) {
       // Adaptive keys for the specific element exist.
       $tmp = explode('.', $tmp);
@@ -171,10 +171,10 @@ class Adaptive extends Standard {
           }
         }
         if ($xpx) {
-          $page_ak_curr = implode('.', array($xpl, $xpr, $xpx));
+          $page_ak_curr = implode('.', [$xpl, $xpr, $xpx]);
         }
         else {
-          $page_ak_curr = implode('.', array($xpl, $xpr));
+          $page_ak_curr = implode('.', [$xpl, $xpr]);
         }
         $d['href'] = $this->pager->getHref($this->parameters, $kpages[$x], $page_ak_curr);
       }
@@ -207,7 +207,7 @@ class Adaptive extends Standard {
     // Space on the right of the holding marker.
     $sr = $r - $x;
     // Half of the maximum space either side to calculate from.
-    $m  = max($sl, $sr) / 2;
+    $m = max($sl, $sr) / 2;
     for ($i = 0; $i < 2; $i++) {
       $off = intval($m * pow(0.5, $i));
       // Pages on the left.
