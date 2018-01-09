@@ -24,6 +24,7 @@ interdiff*.txt
 tmp*
 
 # Excludes for installed Drupal site
+vendor/
 sites/*/files/
 sites/*/settings.php
 sites/development.services.yml
