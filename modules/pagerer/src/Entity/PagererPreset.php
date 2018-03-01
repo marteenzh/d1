@@ -32,8 +32,6 @@ use Drupal\Core\Entity\EntityStorageInterface;
  *   },
  *   links = {
  *     "edit-form" = "/admin/config/user-interface/pagerer/preset/manage/{pagerer_preset}",
- *     "pane-edit-form" = "/admin/config/user-interface/pagerer/preset/manage/{pagerer_preset}/pane/{pane}",
- *     "pane-reset-form" = "/admin/config/user-interface/pagerer/preset/manage/{pagerer_preset}/pane-reset/{pane}",
  *     "delete-form" = "/admin/config/user-interface/pagerer/preset/manage/{pagerer_preset}/delete",
  *     "collection" = "/admin/config/user-interface/pagerer",
  *   },

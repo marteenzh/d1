@@ -256,20 +256,10 @@ function isNodeEditForm() {
  * through the administrative interface.
  */
 function permissions_by_term_node_access(NodeInterface $node, $op, AccountInterface $account) {
-  if (method_exists($node, 'id') && ($op == 'view' OR $op == 'update' OR $op == 'delete')) {
-    if (!$node->isPublished() && !$account->hasPermission('Bypass content access control', $account)) {
-      $eventDispatcher = \Drupal::service('event_dispatcher');
-      $accessDeniedEvent = new PermissionsByTermDeniedEvent($node->id());
-      $eventDispatcher->dispatch(PermissionsByTermDeniedEvent::NAME, $accessDeniedEvent);
+  /* @var \Drupal\permissions_by_term\Service\AccessCheck $accessCheck */
+  $accessCheck = \Drupal::service('permissions_by_term.access_check');
 
-      return AccessResult::forbidden();
-    }
-
-    /* @var \Drupal\permissions_by_term\Service\AccessCheck $accessCheck */
-    $accessCheck = \Drupal::service('permissions_by_term.access_check');
-
-    return $accessCheck->handleNode($node->id());
-  }
+  return $accessCheck->handleNode($node->id());
 }
 
 /**
@@ -325,8 +315,6 @@ function permissions_by_term_node_access_records(\Drupal\node\NodeInterface $nod
     'grant_view' => $grantObject->grant_view,
     'grant_update' => $grantObject->grant_update,
     'grant_delete' => $grantObject->grant_delete,
-    'langcode' => $grantObject->langcode,
-    'fallback' => 1,
     'nid' => $node->id(),
   ];
 
