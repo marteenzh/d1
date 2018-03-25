@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\token_filter\Plugin\Filter\TokenFilter.
- */
-
 namespace Drupal\token_filter\Plugin\Filter;
 
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
