@@ -11,3 +11,10 @@
 function pagerer_update_8201() {
   // Empty function.
 }
+
+/**
+ * Clear caches to update PagererPreset entity changes.
+ */
+function pagerer_update_8202() {
+  // Empty function.
+}

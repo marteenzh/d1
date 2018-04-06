@@ -38,6 +38,19 @@ class PagererPresetListBuilder extends ConfigEntityListBuilder implements Entity
   }
 
   /**
+   * {@inheritdoc}
+   */
+  public function getDefaultOperations(EntityInterface $entity) {
+    $operations = parent::getDefaultOperations($entity);
+
+    if (isset($operations['edit'])) {
+      $operations['edit']['url'] = $entity->toUrl('edit-form');
+    }
+
+    return $operations;
+  }
+
+  /**
    * Create a list of presets suitable for selection.
    */
   public function listOptions() {

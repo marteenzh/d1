@@ -14,6 +14,12 @@ use Drupal\Core\Entity\EntityStorageInterface;
  * @ConfigEntityType(
  *   id = "pagerer_preset",
  *   label = @Translation("Pagerer pager"),
+ *   label_singular = @Translation("pager"),
+ *   label_plural = @Translation("pagers"),
+ *   label_count = @PluralTranslation(
+ *     singular = "@count pager",
+ *     plural = "@count pagers",
+ *   ),
  *   admin_permission = "administer site configuration",
  *   config_prefix = "preset",
  *   handlers = {
