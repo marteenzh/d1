@@ -22,7 +22,7 @@ function ckeditor_media_embed_install() {
  * Implements hook_requirements().
  */
 function ckeditor_media_embed_requirements($phase) {
-  $requirements = array();
+  $requirements = [];
 
   if ($phase === 'runtime') {
     $plugin_statuses = AssetManager::getPluginsInstallStatuses(\Drupal::root() . '/');
@@ -33,12 +33,12 @@ function ckeditor_media_embed_requirements($phase) {
     });
 
     $has_error = !empty($missing_plugins) ? TRUE : FALSE;
-    $requirements["ckeditor_media_embed"] = array(
+    $requirements["ckeditor_media_embed"] = [
       'title' => 'CKEditor Media Embed plugin',
       'value' => ($has_error) ? t('Missing plugins') : t('Installed'),
       'description' => _ckeditor_media_embed_requirments_build_description($installed_plugins, $missing_plugins),
       'severity' => ($has_error) ? REQUIREMENT_ERROR : REQUIREMENT_INFO,
-    );
+    ];
   }
 
   return $requirements;
@@ -59,14 +59,19 @@ function _ckeditor_media_embed_requirments_build_description($installed_plugins,
   $description = '';
 
   if (!empty($missing_plugins)) {
-    $description .= t('The following CKEditor plugins are missing: <strong>%plugins</strong>.', array('%plugins' => implode(', ', array_keys($missing_plugins)))) . '<br />';
+    $description .= t('The following CKEditor plugins are missing: <strong>%plugins</strong>.', ['%plugins' => implode(', ', array_keys($missing_plugins))]) . '<br />';
     $description .=_ckeditor_media_embed_get_install_instructions(FALSE) . '<br />';
   }
   if (!empty($installed_plugins)) {
-    $description .= t('The following CKEditor plugins are installed: %plugins.', array('%plugins' => implode(', ', array_keys($installed_plugins)))) . '<br />';
+    $description .= t('The following CKEditor plugins are installed: %plugins.', ['%plugins' => implode(', ', array_keys($installed_plugins))]) . '<br />';
   }
 
-  $description .= t('CKEditor version: @version', array('@version' => AssetManager::getCKEditorVersion(\Drupal::service('library.discovery'))));
+  $installed_plugin_versions = AssetManager::getPluginsInstalledVersion(\Drupal::service('config.factory'));
+  if (!empty($installed_plugin_versions)) {
+    $description = t('Installed plugins version: @version', ['@version' => $installed_plugin_versions]) . '<br />';
+  }
+
+  $description .= t('CKEditor version: @version', ['@version' => AssetManager::getCKEditorVersion(\Drupal::service('library.discovery'), \Drupal::service('config.factory'))]);
 
   return Markup::Create($description);
 }

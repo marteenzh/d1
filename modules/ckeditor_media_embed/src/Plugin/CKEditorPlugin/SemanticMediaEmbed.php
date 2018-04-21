@@ -22,11 +22,11 @@ class SemanticMediaEmbed extends CKEditorPluginBase {
    * {@inheritdoc}
    */
   public function getDependencies(Editor $editor) {
-    return array(
+    return [
       'embedbase',
       'notificationaggregator',
       'notification',
-    );
+    ];
   }
 
   /**
@@ -40,19 +40,19 @@ class SemanticMediaEmbed extends CKEditorPluginBase {
    * {@inheritdoc}
    */
   public function getButtons() {
-    return array(
-      'EmbedSemantic' => array(
+    return [
+      'EmbedSemantic' => [
         'label' => t('Semantic Media Embed'),
         'image' => AssetManager::getCKEditorLibraryPluginPath() . $this->getPluginId() . '/icons/' . $this->getPluginId() . '.png',
-      ),
-    );
+      ],
+    ];
   }
 
   /**
    * {@inheritdoc}
    */
   public function getConfig(Editor $editor) {
-    return array();
+    return [];
   }
 
 }

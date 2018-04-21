@@ -5,6 +5,7 @@ namespace Drupal\ckeditor_media_embed\Command;
 use Alchemy\Zippy\Zippy;
 use Drupal\ckeditor_media_embed\AssetManager;
 use Drupal\ckeditor\CKEditorPluginManager;
+use Drupal\Core\Config\ConfigFactory;
 use Drupal\Console\Annotations\DrupalCommand;
 use Drupal\Console\Core\Command\Shared\ContainerAwareCommandTrait;
 use Drupal\Console\Core\Style\DrupalStyle;
@@ -14,7 +15,9 @@ use GuzzleHttp\Client;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -47,6 +50,11 @@ class InstallCommand extends Command {
   protected $libraryDiscovery;
 
   /**
+   * @var ConfigFactory
+   */
+  protected $configFactory;
+
+  /**
    * @var Site
    */
   protected $site;
@@ -61,12 +69,12 @@ class InstallCommand extends Command {
   /**
    * {@inheritdoc}
    */
-  public function __construct(CKEditorPluginManager $ckeditorPluginManager, LibraryDiscovery $libraryDiscovery, Client $httpClient) {
+  public function __construct(CKEditorPluginManager $ckeditorPluginManager, LibraryDiscovery $libraryDiscovery, Client $httpClient, ConfigFactory $configFactory) {
     parent::__construct();
-
     $this->ckeditorPluginManager = $ckeditorPluginManager;
     $this->libraryDiscovery = $libraryDiscovery;
     $this->httpClient = $httpClient;
+    $this->configFactory = $configFactory;
 
     $this->fileSystem = new Filesystem();
     $this->setPackageVersion();
@@ -87,13 +95,34 @@ class InstallCommand extends Command {
   protected function execute(InputInterface $input, OutputInterface $output) {
     $io = new DrupalStyle($input, $output);
 
-    $package_directory = $this->downloadCKEditorFull($io);
+    if ($overwrite = $this->askToOverwritePluginFiles($input, $output)) {
+      $package_directory = $this->downloadCKEditorFull($io);
 
-    foreach (AssetManager::getPlugins() as $plugin) {
-      $this->installCKeditorPlugin($io, $package_directory, $plugin);
+      foreach (AssetManager::getPlugins() as $plugin) {
+        $this->installCKeditorPlugin($io, $package_directory, $plugin, $overwrite);
+      }
+
+      $this->configFactory->getEditable('ckeditor_media_embed.settings')->set('plugins_version_installed', $this->packageVersion)->save();
+      $this->ckeditorPluginManager->clearCachedDefinitions();
+    }
+  }
+
+  /**
+   * Present question to user about overwritting the plugin files.
+   */
+  protected function askToOverwritePluginFiles(InputInterface $input, OutputInterface $output) {
+    $libraries_path = AssetManager::getCKEditorLibraryPluginDirectory();
+    if (file_exists($libraries_path)) {
+      $helper = $this->getHelper('question');
+      $question = new ConfirmationQuestion(sprintf(
+          $this->trans('commands.ckeditor_media_embed.install.messages.question-overwrite-files'),
+          $libraries_path
+        ), FALSE);
+
+      return $helper->ask($input, $output, $question);
     }
 
-    $this->ckeditorPluginManager->clearCachedDefinitions();
+    return TRUE;
   }
 
   /**
@@ -102,8 +131,7 @@ class InstallCommand extends Command {
    * @return $this
    */
   protected function setPackageVersion() {
-    $this->packageVersion = AssetManager::getCKEditorVersion($this->libraryDiscovery);
-
+    $this->packageVersion = AssetManager::getCKEditorVersion($this->libraryDiscovery, $this->configFactory);
     return $this;
   }
 
@@ -120,13 +148,13 @@ class InstallCommand extends Command {
    * @return $this
    */
   // @codingStandardsIgnoreLine
-  protected function installCKeditorPlugin(DrupalStyle $io, $package_directory, $plugin_name) {
+  protected function installCKeditorPlugin(DrupalStyle $io, $package_directory, $plugin_name, $overwrite = FALSE) {
     $libraries_path = AssetManager::getCKEditorLibraryPluginDirectory() . $plugin_name;
     $package_plugin_path = $package_directory . '/plugins/' . $plugin_name;
 
     try {
       $this->fileSystem->mkdir($libraries_path);
-      $this->fileSystem->mirror($package_plugin_path, $libraries_path);
+      $this->fileSystem->mirror($package_plugin_path, $libraries_path, NULL, ['override' => $overwrite]);
 
       $io->success(
         sprintf(
@@ -187,7 +215,7 @@ class InstallCommand extends Command {
   }
 
   public function downloadFile($url, $destination) {
-    $this->httpClient->get($url, array('sink' => $destination));
+    $this->httpClient->get($url, ['sink' => $destination]);
     return file_exists($destination);
   }
 }

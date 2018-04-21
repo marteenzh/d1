@@ -3,6 +3,8 @@
 namespace Drupal\ckeditor_media_embed;
 
 use Drupal\Core\Asset\LibraryDiscoveryInterface;
+use Drupal\Core\Serialization\Yaml;
+use Drupal\Core\Config\ConfigFactory;
 
 /**
  * The AssetManager facade for managing CKEditor plugins.
@@ -34,7 +36,7 @@ class AssetManager {
    * Retrieve the install status of all CKEditor plugins.
    */
   public static function getPluginsInstallStatuses() {
-    $plugin_statuses = array();
+    $plugin_statuses = [];
 
     foreach (self::getPlugins() as $plugin_name) {
       $plugin_statuses[$plugin_name] = self::pluginIsInstalled($plugin_name);
@@ -89,18 +91,73 @@ class AssetManager {
    * @param LibraryDiscoveryInterface $library_discovery
    *   The library discovery service to use for retrieving information about
    *   the CKeditor library.
+   * @param ConfigFactory
+   *   The config factory service to use for retrieving configuration
+   *   information about CKeditor Media Embed.
+   * @param string $path
+   *   The path to the library yml file, from the root. Defaults to 'core'.
+   * @param string $extension
+   *   The extension type of the library file. Defaults to 'core'.
    *
    * @return string
    *   The version number of the currently installed CKEditor.
    */
   // @codingStandardsIgnoreLine
-  public static function getCKEditorVersion(LibraryDiscoveryInterface $library_discovery) {
-    $version = self::$libraryVersion;
+  public static function getCKEditorVersion(LibraryDiscoveryInterface $library_discovery, ConfigFactory $config_factory, $path = "core", $extension = "core") {
+    $config_version = $config_factory->get('ckeditor_media_embed.settings')->get('ckeditor_version');
+    if(!empty($config_version)){
+      return $config_version;
+    }
 
-    $ckeditor_library = $library_discovery->getLibraryByName('core', 'ckeditor');
+    $parsed_version =  self::parseForCoreCKEditorVersion($path, $extension);
+    return empty($parsed_version) ? self::$libraryVersion : $parsed_version;
+  }
 
-    if (!empty($ckeditor_library['version'])) {
-      $version = $ckeditor_library['version'];
+  /**
+   * Retrieve the currently installed version of the CKEditor plugins.
+   *
+   * @param ConfigFactory
+   *   The config factory service to use for retrieving configuration settings.
+   *
+   * @return string
+   *   The version number of the currently installed CKEditor plugins.
+   */
+  public static function getPluginsInstalledVersion(ConfigFactory $config_factory) {
+    return $config_factory->get('ckeditor_media_embed.settings')->get('plugins_version_installed');
+  }
+
+  /*
+   * Parse the core libraries to get the current version of CKEditor
+   *
+   * @param string $path
+   *   The path to the library from the root.
+   * @param string $extension
+   *   The extension type of the library
+   *
+   * @return string
+   *   Core's version of CKEditor.
+   *
+   * @see LibraryDiscoveryParser::parseLibraryInfo(). We use our own as Drupal's
+   *      currently can falsely alter the version of the CKEditor library due
+   *      https://www.drupal.org/node/2451411.
+   */
+  protected static function parseForCoreCKEditorVersion($path, $extension){
+    $version = '';
+    $libraries = [];
+
+    $library_file = \Drupal::root() . '/' . $path . '/' . $extension . '.libraries.yml';
+    if (file_exists($library_file)) {
+      try {
+        $libraries = Yaml::decode(file_get_contents($library_file));
+
+        if (!empty($libraries['ckeditor']['version'])) {
+          $version = $libraries['ckeditor']['version'];
+        }
+      }
+      catch (InvalidDataTypeException $e) {
+        // Rethrow a more helpful exception to provide context.
+        throw new InvalidLibraryFileException(sprintf('Invalid library definition in %s: %s', $library_file, $e->getMessage()), 0, $e);
+      }
     }
 
     return $version;

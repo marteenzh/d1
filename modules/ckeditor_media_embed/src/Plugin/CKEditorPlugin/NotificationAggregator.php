@@ -23,14 +23,14 @@ class NotificationAggregator extends PluginBase implements CKEditorPluginInterfa
    * {@inheritdoc}
    */
   public function getDependencies(Editor $editor) {
-    return array('notification');
+    return ['notification'];
   }
 
   /**
    * {@inheritdoc}
    */
   public function getLibraries(Editor $editor) {
-    return array();
+    return [];
   }
 
   /**
@@ -51,7 +51,7 @@ class NotificationAggregator extends PluginBase implements CKEditorPluginInterfa
    * {@inheritdoc}
    */
   public function getConfig(Editor $editor) {
-    return array();
+    return [];
   }
 
 }

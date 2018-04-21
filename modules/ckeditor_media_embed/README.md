@@ -41,15 +41,26 @@ then follow the instructions for installing the CKEditor plugins below.
 ## Configuration
 
 * Install and enable [CKEditor media embed](https://www.drupal.org/project/ckeditor_media_embed) module.
+
+### WYSIWYG
+
 * Go to the 'Text formats and editors' configuration page: `/admin/config/content/formats`, and for each text format/editor combo where you want to embed URLs, do the following:
   * Drag and drop the 'Media Embed' or the 'Semantic Media Embed' button into the Active toolbar.
   * If the text format uses the 'Limit allowed HTML tags and correct faulty HTML' filter, use the 'Semantic Media Embed' and read the instructions for the 'Semantic Media Embed' below.
 
-### Semantic Media Embed
+#### Semantic Media Embed
 
 If you are using the 'Semantic Media Embed' button be sure to do the following:
 * Enable the 'Convert Oembed tags to media embeds' filter.
 * If the text format uses the 'Limit allowed HTML tags and correct faulty HTML' filter, add ```<oembed>``` to the 'Allowed HTML tags' field. (This should happen automatically however, in some cases it does not. See https://www.drupal.org/node/2689083.)
+
+### Field formatter
+
+The field formatter allows link fields to be rendered via the configured oembed service provider.
+
+* Navigate to "Manage display" for the content type, after adding a "Link" field.
+* Select the "Oembed element using CKEditor Media Embed provider" format for the link field you wish.
+
 
 ## Additional plugins
 

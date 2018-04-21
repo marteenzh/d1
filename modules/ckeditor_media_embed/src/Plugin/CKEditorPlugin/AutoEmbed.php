@@ -28,12 +28,12 @@ class AutoEmbed extends PluginBase implements CKEditorPluginInterface, CKEditorP
   public function getDependencies(Editor $editor) {
     $settings = $editor->getSettings();
 
-    $dependencies = array(
+    $dependencies = [
       'autolink',
       'embedbase',
       'notificationaggregator',
       'notification',
-    );
+    ];
 
     if ($embed_plugin = $settings['plugins']['autoembed']['status']) {
       $dependencies[] = $embed_plugin;
@@ -46,7 +46,7 @@ class AutoEmbed extends PluginBase implements CKEditorPluginInterface, CKEditorP
    * {@inheritdoc}
    */
   public function getLibraries(Editor $editor) {
-    return array();
+    return [];
   }
 
   /**
@@ -67,7 +67,7 @@ class AutoEmbed extends PluginBase implements CKEditorPluginInterface, CKEditorP
    * {@inheritdoc}
    */
   public function getConfig(Editor $editor) {
-    return array();
+    return [];
   }
 
   /**
@@ -85,17 +85,17 @@ class AutoEmbed extends PluginBase implements CKEditorPluginInterface, CKEditorP
   public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
     $settings = $editor->getSettings();
 
-    $form['status'] = array(
+    $form['status'] = [
       '#type' => 'radios',
       '#title' => $this->t('Enable auto embed'),
-      '#options' => array(
+      '#options' => [
         '' => $this->t('Disabled'),
         'embed' => t('Media Embed'),
         'embedsemantic' => t('Semantic Media Embed'),
-      ),
+      ],
       '#default_value' => !empty($settings['plugins']['autoembed']['status']) ? $settings['plugins']['autoembed']['status'] : '',
       '#description' => $this->t('When enabled to a Media embed plugin, media resource URLs pasted into the editing area are turned into an embed resource using the selected plugin.'),
-    );
+    ];
 
     return $form;
   }

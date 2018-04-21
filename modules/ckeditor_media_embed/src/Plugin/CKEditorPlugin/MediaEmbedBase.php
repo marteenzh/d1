@@ -25,14 +25,14 @@ class MediaEmbedBase extends PluginBase implements CKEditorPluginInterface, CKEd
    * {@inheritdoc}
    */
   public function getDependencies(Editor $editor) {
-    return array('notificationaggregator');
+    return ['notificationaggregator'];
   }
 
   /**
    * {@inheritdoc}
    */
   public function getLibraries(Editor $editor) {
-    return array();
+    return [];
   }
 
   /**
@@ -66,10 +66,10 @@ class MediaEmbedBase extends PluginBase implements CKEditorPluginInterface, CKEd
   public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
     $settings = $editor->getSettings();
 
-    $form['settings_info'] = array(
+    $form['settings_info'] = [
       '#markup' => $this->t('Settings for the Media Embed and Semantic Media Embed plugins are located on the @link.',
-      array('@link' => \Drupal::service('ckeditor_media_embed')->getSettingsLink())),
-    );
+      ['@link' => \Drupal::service('ckeditor_media_embed')->getSettingsLink()]),
+    ];
 
     return $form;
   }

@@ -53,7 +53,7 @@ class FilterCKEditorMediaEmbed extends FilterBase implements ContainerFactoryPlu
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-    return array();
+    return [];
   }
 
   /**
@@ -80,7 +80,7 @@ class FilterCKEditorMediaEmbed extends FilterBase implements ContainerFactoryPlu
    * {@inheritdoc}
    */
   public function getDescription() {
-    return $this->t('The provider specified as the @link will be used.', array('@link' => $this->ckeditorMediaEmbed->getSettingsLink()));
+    return $this->t('The provider specified as the @link will be used.', ['@link' => $this->ckeditorMediaEmbed->getSettingsLink()]);
   }
 
 }

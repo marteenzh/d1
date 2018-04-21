@@ -127,7 +127,7 @@ class Embed implements EmbedInterface {
    * {@inheritdoc}
    */
   public function getSettingsLink() {
-    $url = URL::fromRoute('ckeditor_media_embed.ckeditor_media_embed_settings_form', array('destination' => \Drupal::service('path.current')->getPath()));
+    $url = URL::fromRoute('ckeditor_media_embed.ckeditor_media_embed_settings_form', ['destination' => \Drupal::service('path.current')->getPath()]);
     return Markup::create(\Drupal::l($this->t('CKEditor Media Embed plugin settings page'), $url));
   }
 
@@ -146,8 +146,8 @@ class Embed implements EmbedInterface {
     $embed_node->setAttribute('class', $this->getClass($embed));
 
     $child = NULL;
-    $embed_document = HTML::load($embed->html);
-    foreach ($embed_document->childNodes as $child) {
+    $embed_body_node = HTML::load($embed->html)->getElementsByTagName('body')->item(0);
+    foreach ($embed_body_node->childNodes as $child) {
       if ($child = $node->ownerDocument->importNode($child, TRUE)) {
         $embed_node->appendChild($child);
       }

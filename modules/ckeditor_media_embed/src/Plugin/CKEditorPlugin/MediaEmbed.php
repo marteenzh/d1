@@ -22,11 +22,11 @@ class MediaEmbed extends CKEditorPluginBase {
    * {@inheritdoc}
    */
   public function getDependencies(Editor $editor) {
-    return array(
+    return [
       'embedbase',
       'notificationaggregator',
       'notification',
-    );
+    ];
   }
 
   /**
@@ -40,19 +40,19 @@ class MediaEmbed extends CKEditorPluginBase {
    * {@inheritdoc}
    */
   public function getButtons() {
-    return array(
-      'Embed' => array(
+    return [
+      'Embed' => [
         'label' => t('Media Embed'),
         'image' => AssetManager::getCKEditorLibraryPluginPath() . $this->getPluginId() . '/icons/' . $this->getPluginId() . '.png',
-      ),
-    );
+      ],
+    ];
   }
 
   /**
    * {@inheritdoc}
    */
   public function getConfig(Editor $editor) {
-    return array();
+    return [];
   }
 
 }

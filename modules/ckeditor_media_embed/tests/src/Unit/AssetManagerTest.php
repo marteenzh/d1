@@ -3,7 +3,6 @@
 namespace Drupal\Tests\ckeditor_media_embed\Unit {
 
 use Drupal\Tests\UnitTestCase;
-
 use Drupal\ckeditor_media_embed\AssetManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -72,12 +71,58 @@ class AssetManagerTest extends UnitTestCase {
       ->disableOriginalConstructor()
       ->setMethods(['getLibraryByName'])
       ->getMock();
-    $this->libraryDiscovery->expects($this->once())
-      ->method('getLibraryByName')
-      ->with('core', 'ckeditor')
-      ->will($this->returnValue(['version' => 'x.x.x']));
 
-    $this->assertSame('x.x.x', AssetManager::getCKEditorVersion($this->libraryDiscovery), 'The version should be retrieved from the core CKEditor library.');
+    $this->config_empty = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $this->config_empty->expects($this->exactly(2))
+      ->method('get')
+      ->with('ckeditor_version')
+      ->willReturn('');
+
+    $this->configFactory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $this->configFactory->expects($this->exactly(2))
+      ->method('get')
+      ->with('ckeditor_media_embed.settings')
+      ->willReturn($this->config_empty);
+
+    $container = new ContainerBuilder();
+    $container->set('app.root', __DIR__ . '/../../assets');
+    $container->set('config.factory', $this->configFactory);
+    \Drupal::setContainer($container);
+
+    $test_library_path = '';
+    $test_extension = 'test.core';
+    $test_empty_extension = 'empty.test.core';
+
+    // Test with a config file that has no ckeditor_version set, and the drupal
+    // library yml file isn't found or can't be parsed.
+    $this->assertSame('4.5.x', AssetManager::getCKEditorVersion($this->libraryDiscovery, $this->configFactory, $test_library_path, $test_empty_extension), 'The version that should be retrieved is 4.5.x');
+
+    // Test with a config file that has no ckeditor_version set, and the drupal
+    // library yml file is able to be found and parsed.
+    $this->assertSame('x.x.x', AssetManager::getCKEditorVersion($this->libraryDiscovery, $this->configFactory, $test_library_path, $test_extension), 'The version that should be retrieved is x.x.x');
+
+    //Test with a config file that has ckeditor_version set.
+    $this->config_set = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $this->config_set->expects($this->once())
+      ->method('get')
+      ->with('ckeditor_version')
+      ->willReturn('4.5.0');
+
+    $this->configFactory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $this->configFactory->expects($this->once())
+      ->method('get')
+      ->with('ckeditor_media_embed.settings')
+      ->willReturn($this->config_set);
+
+    $this->assertSame('4.5.0', AssetManager::getCKEditorVersion($this->libraryDiscovery, $this->configFactory, $test_library_path, $test_extension),'The version that should be retrieved is 4.5.0');
   }
 
   /**
