@@ -22,16 +22,21 @@ class MediaAccessControlHandler extends MediaAccessController {
     switch ($operation) {
       case 'view':
 
-        $bundle = \Drupal::entityTypeManager()
-          ->getStorage('media_bundle')
-          ->load($entity->bundle());
+        /** @var \Drupal\Core\Access\AccessResult $accessResult */
+        $accessResult = parent::checkAccess($entity, $operation, $account);
+        if (!$accessResult->isAllowed()) {
+          $bundle = \Drupal::entityTypeManager()
+            ->getStorage('media_bundle')
+            ->load($entity->bundle());
 
-        if ($bundle->getThirdPartySetting('media_expire', 'enable_expiring')) {
-          return AccessResult::allowedIf($account->hasPermission('view media') && $bundle->getThirdPartySetting('media_expire', 'fallback_media'));
+          return AccessResult::allowedIf(
+            $account->hasPermission('view media') &&
+            $bundle->getThirdPartySetting('media_expire', 'enable_expiring') &&
+            $bundle->getThirdPartySetting('media_expire', 'fallback_media')
+          );
         }
-        else {
-          return parent::checkAccess($entity, $operation, $account);
-        }
+
+        return $accessResult;
 
       default:
         return parent::checkAccess($entity, $operation, $account);

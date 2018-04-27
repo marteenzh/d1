@@ -116,8 +116,7 @@ function media_expire_media_build_defaults_alter(array &$build, EntityInterface 
     $mediaStorage = \Drupal::entityTypeManager()->getStorage('media');
     $fallbackMedia = $bundle->getThirdPartySetting('media_expire', 'fallback_media');
 
-    if ($fallbackMedia) {
-      $media = $mediaStorage->load($fallbackMedia);
+    if ($fallbackMedia && $media = $mediaStorage->load($fallbackMedia)) {
       $renderController = \Drupal::entityTypeManager()->getViewBuilder('media');
       $build = $renderController->view($media, $view_mode);
     }

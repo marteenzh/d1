@@ -152,6 +152,11 @@ class AssetManager {
 
         if (!empty($libraries['ckeditor']['version'])) {
           $version = $libraries['ckeditor']['version'];
+
+          $version_extra_position = strpos($libraries['ckeditor']['version'], '+');
+          if ($version_extra_position > 0) {
+            $version = substr($version, 0, $version_extra_position);
+          }
         }
       }
       catch (InvalidDataTypeException $e) {
