@@ -6,7 +6,7 @@ use Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher;
 use Drupal\permissions_by_term\Event\PermissionsByTermDeniedEvent;
 use Drupal\permissions_by_term\Service\AccessCheck;
 use Drupal\permissions_by_term\Service\AccessStorage;
-use Drupal\permissions_by_term\Service\Term;
+use Drupal\permissions_by_term\Service\TermHandler;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -29,7 +29,7 @@ class KernelEventListener implements EventSubscriberInterface
   private $accessCheckService;
 
   /**
-   * @var Term
+   * @var TermHandler
    */
   private $term;
 
@@ -50,7 +50,7 @@ class KernelEventListener implements EventSubscriberInterface
   {
     $this->accessCheckService = \Drupal::service('permissions_by_term.access_check');
     $this->accessStorageService = \Drupal::service('permissions_by_term.access_storage');
-    $this->term = \Drupal::service('permissions_by_term.term');
+    $this->term = \Drupal::service('permissions_by_term.term_handler');
     $this->eventDispatcher = \Drupal::service('event_dispatcher');
   }
 
@@ -62,7 +62,7 @@ class KernelEventListener implements EventSubscriberInterface
     // Restricts access to nodes (views/edit).
     if ($this->canRequestGetNode($event->getRequest())) {
       $nid = $event->getRequest()->attributes->get('node')->get('nid')->getValue()['0']['value'];
-      if (!$this->accessCheckService->canUserAccessByNodeId($nid, $this->accessStorageService->getLangCode($nid))) {
+      if (!$this->accessCheckService->canUserAccessByNodeId($nid, false, $this->accessStorageService->getLangCode($nid))) {
         $accessDeniedEvent = new PermissionsByTermDeniedEvent($nid);
         $this->eventDispatcher->dispatch(PermissionsByTermDeniedEvent::NAME, $accessDeniedEvent);
 
@@ -79,7 +79,7 @@ class KernelEventListener implements EventSubscriberInterface
       $tid = $this->term->getTermIdByName($query_string);
 
       $term = $this->term->getTerm();
-      $termLangcode = 'en';
+      $termLangcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
       if ($term instanceof \Drupal\taxonomy\Entity\Term) {
         $termLangcode = $term->language()->getId();
       }
@@ -109,7 +109,7 @@ class KernelEventListener implements EventSubscriberInterface
       $allowed_terms = [];
       foreach ($suggested_terms as $term) {
         $tid = $this->term->getTermIdByName($term->label);
-        $termLangcode = 'en';
+        $termLangcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
         if ($this->term->getTerm() instanceof \Drupal\taxonomy\Entity\Term) {
           $termLangcode = $this->term->getTerm()->language()->getId();
         }

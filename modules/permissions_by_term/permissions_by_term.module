@@ -122,11 +122,9 @@ and this taxonomy term itself.
 EOT;
 
     $form['access'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => t('Permissions'),
       '#description' => t($description),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
       '#attributes' => ['id' => 'fieldset_term_access'],
       '#weight' => -5,
       '#tree' => TRUE,
@@ -295,7 +293,14 @@ function permissions_by_term_node_access_records(\Drupal\node\NodeInterface $nod
   foreach ($access_storage->getTidsByNid($node->id()) as $tid) {
     /* @var \Drupal\permissions_by_term\Service\AccessCheck $access_check_service */
     $access_check_service = \Drupal::service('permissions_by_term.access_check');
-    if ($access_check_service->isAnyPermissionSetForTerm($tid, $node->language()->getId())) {
+    if($node->language()->getId() == 'und'){
+      // Current system default language
+      $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    }
+    else {
+      $language = $node->language()->getId();
+    }
+    if ($access_check_service->isAnyPermissionSetForTerm($tid, $language)) {
       $has_term_access_restrictions = TRUE;
       break;
     }

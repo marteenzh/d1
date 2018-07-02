@@ -20,7 +20,7 @@ class NodeEntityBundleInfo {
   private $accessStorage;
 
   /**
-   * @var Term
+   * @var TermHandler
    */
   private $term;
 
@@ -38,13 +38,13 @@ class NodeEntityBundleInfo {
    * Info constructor.
    *
    * @param AccessStorage   $accessStorage
-   * @param Term            $term
+   * @param TermHandler            $term
    * @param TwigEnvironment $twig
    * @param Connection      $database
    */
   public function __construct(
     AccessStorage $accessStorage,
-    Term $term,
+    TermHandler $term,
     TwigEnvironment $twig,
     Connection $database
   ) {

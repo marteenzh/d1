@@ -10,8 +10,8 @@ type: module
 # version: '8.x-1.52'
 package: 'Permissions by Term'
 
-# Information added by Drupal.org packaging script on 2018-05-01
-version: '8.x-1.52'
+# Information added by Drupal.org packaging script on 2018-06-24
+version: '8.x-1.55'
 core: '8.x'
 project: 'permissions_by_term'
-datestamp: 1525180690
+datestamp: 1529852932

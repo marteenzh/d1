@@ -106,7 +106,7 @@ class TokenFilter extends FilterBase implements ContainerFactoryPluginInterface 
       $data[$token_type] = $entity;
     }
 
-    return new FilterProcessResult($this->token->replace($text, $data), [], ['langcode' => $langcode]);
+    return new FilterProcessResult($this->token->replace($text, $data));
   }
 
   /**

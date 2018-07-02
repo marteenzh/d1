@@ -2,8 +2,13 @@
 
 namespace Drupal\Tests\permissions_by_term\Kernel;
 
+use Drupal\node\Entity\Node;
 use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\user\Entity\Role;
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
 
 /**
  * Class AccessCheckTest
@@ -160,6 +165,49 @@ class AccessCheckTest extends PBTKernelTestBase {
     $term->save();
 
     $this->accessCheck->isAccessAllowedByDatabase($term->id(), 0);
+  }
+
+  public function testBypassNodeAccess() {
+    Vocabulary::create([
+      'name'     => 'Test Multilingual',
+      'vid'      => 'test_multilingual',
+      'langcode' => 'de',
+    ])->save();
+
+    $term = Term::create([
+      'name'     => 'term1',
+      'vid'      => 'test',
+      'langcode' => 'de',
+    ]);
+    $term->save();
+
+    $node = Node::create([
+      'type' => 'page',
+      'title' => 'test_title',
+      'field_tags' => [
+        [
+          'target_id' => $term->id()
+        ],
+      ]
+    ]);
+    $node->save();
+
+    $this->accessStorage->addTermPermissionsByUserIds([99], $term->id(), 'de');
+    $this->assertFalse($this->accessCheck->canUserAccessByNodeId($node->id(), \Drupal::currentUser()->id(), 'de'));
+
+    $editorRole = Role::create(['id' => 'editor']);
+    $editorRole->grantPermission('bypass node access');
+    $editorRole->save();
+
+    $user = User::load(\Drupal::currentUser()->id());
+
+    $user->addRole('editor');
+    $user->save();
+
+    $accountSwitcher = \Drupal::service('account_switcher');
+    $accountSwitcher->switchTo($user);
+
+    $this->assertTrue($this->accessCheck->canUserAccessByNodeId($node->id(), \Drupal::currentUser()->id(), 'de'));
   }
 
 }
