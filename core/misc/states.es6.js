@@ -23,6 +23,44 @@
   Drupal.states = states;
 
   /**
+   * Inverts a (if it's not undefined) when invertState is true.
+   *
+   * @function Drupal.states~invert
+   *
+   * @param {*} a
+   *   The value to maybe invert.
+   * @param {bool} invertState
+   *   Whether to invert state or not.
+   *
+   * @return {bool}
+   *   The result.
+   */
+  function invert(a, invertState) {
+    return (invertState && typeof a !== 'undefined') ? !a : a;
+  }
+
+  /**
+   * Compares two values while ignoring undefined values.
+   *
+   * @function Drupal.states~compare
+   *
+   * @param {*} a
+   *   Value a.
+   * @param {*} b
+   *   Value b.
+   *
+   * @return {bool}
+   *   The comparison result.
+   */
+  function compare(a, b) {
+    if (a === b) {
+      return typeof a === 'undefined' ? a : true;
+    }
+
+    return typeof a === 'undefined' || typeof b === 'undefined';
+  }
+
+  /**
    * Attaches the states.
    *
    * @type {Drupal~behavior}
@@ -120,38 +158,30 @@
      *   dependee's compliance status.
      */
     initializeDependee(selector, dependeeStates) {
-      let state;
-      const self = this;
-
-      function stateEventHandler(e) {
-        self.update(e.data.selector, e.data.state, e.value);
-      }
-
       // Cache for the states of this dependee.
       this.values[selector] = {};
 
-      // eslint-disable-next-line no-restricted-syntax
-      for (const i in dependeeStates) {
-        if (dependeeStates.hasOwnProperty(i)) {
-          state = dependeeStates[i];
-          // Make sure we're not initializing this selector/state combination
-          // twice.
-          if ($.inArray(state, dependeeStates) === -1) {
-            continue;
-          }
-
-          state = states.State.sanitize(state);
-
-          // Initialize the value of this state.
-          this.values[selector][state.name] = null;
-
-          // Monitor state changes of the specified state for this dependee.
-          $(selector).on(`state:${state}`, { selector, state }, stateEventHandler);
-
-          // Make sure the event we just bound ourselves to is actually fired.
-          new states.Trigger({ selector, state });
+      Object.keys(dependeeStates).forEach((i) => {
+        let state = dependeeStates[i];
+        // Make sure we're not initializing this selector/state combination
+        // twice.
+        if ($.inArray(state, dependeeStates) === -1) {
+          return;
         }
-      }
+
+        state = states.State.sanitize(state);
+
+        // Initialize the value of this state.
+        this.values[selector][state.name] = null;
+
+        // Monitor state changes of the specified state for this dependee.
+        $(selector).on(`state:${state}`, { selector, state }, (e) => {
+          this.update(e.data.selector, e.data.state, e.value);
+        });
+
+        // Make sure the event we just bound ourselves to is actually fired.
+        new states.Trigger({ selector, state });
+      });
     },
 
     /**
@@ -176,7 +206,7 @@
         return states.Dependent.comparisons[reference.constructor.name](reference, value);
       }
 
-        // Do a plain comparison otherwise.
+      // Do a plain comparison otherwise.
       return compare(reference, value);
     },
 
@@ -262,17 +292,18 @@
       // bogus, we don't want to end up with an infinite loop.
       else if ($.isPlainObject(constraints)) {
         // This constraint is an object (AND).
-        // eslint-disable-next-line no-restricted-syntax
-        for (const n in constraints) {
-          if (constraints.hasOwnProperty(n)) {
-            result = ternary(result, this.checkConstraints(constraints[n], selector, n));
-            // False and anything else will evaluate to false, so return when
-            // any false condition is found.
-            if (result === false) {
-              return false;
-            }
-          }
-        }
+        result = Object.keys(constraints).every((constraint) => {
+          const check = this.checkConstraints(
+            constraints[constraint],
+            selector,
+            constraint,
+          );
+          /**
+           * The checkConstraints() function's return value can be undefined. If
+           * this so, consider it to have returned true.
+           */
+          return typeof check === 'undefined' ? true : check;
+        });
       }
       return result;
     },
@@ -317,7 +348,7 @@
         return invert(this.compare(value, selector, state), state.invert);
       }
 
-        // Resolve this constraint as an AND/OR operator.
+      // Resolve this constraint as an AND/OR operator.
       return this.verifyConstraints(value, selector);
     },
 
@@ -649,71 +680,4 @@
       }
     }
   });
-
-  /**
-   * These are helper functions implementing addition "operators" and don't
-   * implement any logic that is particular to states.
-   */
-
-  /**
-   * Bitwise AND with a third undefined state.
-   *
-   * @function Drupal.states~ternary
-   *
-   * @param {*} a
-   *   Value a.
-   * @param {*} b
-   *   Value b
-   *
-   * @return {bool}
-   *   The result.
-   */
-  function ternary(a, b) {
-    if (typeof a === 'undefined') {
-      return b;
-    }
-    else if (typeof b === 'undefined') {
-      return a;
-    }
-
-    return a && b;
-  }
-
-  /**
-   * Inverts a (if it's not undefined) when invertState is true.
-   *
-   * @function Drupal.states~invert
-   *
-   * @param {*} a
-   *   The value to maybe invert.
-   * @param {bool} invertState
-   *   Whether to invert state or not.
-   *
-   * @return {bool}
-   *   The result.
-   */
-  function invert(a, invertState) {
-    return (invertState && typeof a !== 'undefined') ? !a : a;
-  }
-
-  /**
-   * Compares two values while ignoring undefined values.
-   *
-   * @function Drupal.states~compare
-   *
-   * @param {*} a
-   *   Value a.
-   * @param {*} b
-   *   Value b.
-   *
-   * @return {bool}
-   *   The comparison result.
-   */
-  function compare(a, b) {
-    if (a === b) {
-      return typeof a === 'undefined' ? a : true;
-    }
-
-    return typeof a === 'undefined' || typeof b === 'undefined';
-  }
 }(jQuery, Drupal));

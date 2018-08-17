@@ -2,6 +2,8 @@
 
 namespace Drupal\KernelTests\Core\Database;
 
+use Drupal\Core\Database\Database;
+
 /**
  * Regression tests cases for the database layer.
  *
@@ -55,6 +57,29 @@ class RegressionTest extends DatabaseTestBase {
   public function testDBIndexExists() {
     $this->assertSame(TRUE, db_index_exists('test', 'ages'), 'Returns true for existent index.');
     $this->assertSame(FALSE, db_index_exists('test', 'nosuchindex'), 'Returns false for nonexistent index.');
+  }
+
+  /**
+   * Tests the db_set_active() function.
+   *
+   * @group legacy
+   *
+   * @expectedDeprecation db_set_active() is deprecated in Drupal 8.0.x and will be removed before Drupal 9.0.0. Use \Drupal\Core\Database\Database::setActiveConnection() instead. See https://www.drupal.org/node/2944084.
+   */
+  public function testDBIsActive() {
+    $get_active_db = Database::getConnection()->getKey();
+    $this->assert(db_set_active($get_active_db), 'Database connection is active');
+  }
+
+  /**
+   * Tests the db_drop_table() function.
+   *
+   * @group legacy
+   *
+   * @expectedDeprecation db_drop_table() is deprecated in Drupal 8.0.x and will be removed before Drupal 9.0.0. Use \Drupal\Core\Database\Database::getConnection()->schema()->dropTable() instead. See https://www.drupal.org/node/2987737
+   */
+  public function testDbDropTable() {
+    $this->assertFalse(db_drop_table('temp_test_table'));
   }
 
 }

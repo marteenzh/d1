@@ -4,7 +4,8 @@
  */
 
 (function ($, Drupal, drupalSettings, _, Backbone, JSON, storage) {
-  const options = $.extend(drupalSettings.contextual,
+  const options = $.extend(
+    drupalSettings.contextual,
     // Merge strings on top of drupalSettings so that they are not mutable.
     {
       strings: {
@@ -27,6 +28,46 @@
       });
     }
     storage.setItem('Drupal.contextual.permissionsHash', permissionsHash);
+  }
+
+  /**
+   * Determines if a contextual link is nested & overlapping, if so: adjusts it.
+   *
+   * This only deals with two levels of nesting; deeper levels are not touched.
+   *
+   * @param {jQuery} $contextual
+   *   A contextual links placeholder DOM element, containing the actual
+   *   contextual links as rendered by the server.
+   */
+  function adjustIfNestedAndOverlapping($contextual) {
+    const $contextuals = $contextual
+      // @todo confirm that .closest() is not sufficient
+      .parents('.contextual-region').eq(-1)
+      .find('.contextual');
+
+    // Early-return when there's no nesting.
+    if ($contextuals.length <= 1) {
+      return;
+    }
+
+    // If the two contextual links overlap, then we move the second one.
+    const firstTop = $contextuals.eq(0).offset().top;
+    const secondTop = $contextuals.eq(1).offset().top;
+    if (firstTop === secondTop) {
+      const $nestedContextual = $contextuals.eq(1);
+
+      // Retrieve height of nested contextual link.
+      let height = 0;
+      const $trigger = $nestedContextual.find('.trigger');
+      // Elements with the .visually-hidden class have no dimensions, so this
+      // class must be temporarily removed to the calculate the height.
+      $trigger.removeClass('visually-hidden');
+      height = $nestedContextual.height();
+      $trigger.addClass('visually-hidden');
+
+      // Adjust nested contextual link's position.
+      $nestedContextual.css({ top: $nestedContextual.position().top + height });
+    }
   }
 
   /**
@@ -69,8 +110,8 @@
       aural: new contextual.AuralView(viewOptions),
       keyboard: new contextual.KeyboardView(viewOptions),
     });
-    contextual.regionViews.push(new contextual.RegionView(
-      $.extend({ el: $region, model }, options)),
+    contextual.regionViews.push(
+      new contextual.RegionView($.extend({ el: $region, model }, options)),
     );
 
     // Add the model to the collection. This must happen after the views have
@@ -87,46 +128,6 @@
 
     // Fix visual collisions between contextual link triggers.
     adjustIfNestedAndOverlapping($contextual);
-  }
-
-  /**
-   * Determines if a contextual link is nested & overlapping, if so: adjusts it.
-   *
-   * This only deals with two levels of nesting; deeper levels are not touched.
-   *
-   * @param {jQuery} $contextual
-   *   A contextual links placeholder DOM element, containing the actual
-   *   contextual links as rendered by the server.
-   */
-  function adjustIfNestedAndOverlapping($contextual) {
-    const $contextuals = $contextual
-      // @todo confirm that .closest() is not sufficient
-      .parents('.contextual-region').eq(-1)
-      .find('.contextual');
-
-    // Early-return when there's no nesting.
-    if ($contextuals.length <= 1) {
-      return;
-    }
-
-    // If the two contextual links overlap, then we move the second one.
-    const firstTop = $contextuals.eq(0).offset().top;
-    const secondTop = $contextuals.eq(1).offset().top;
-    if (firstTop === secondTop) {
-      const $nestedContextual = $contextuals.eq(1);
-
-      // Retrieve height of nested contextual link.
-      let height = 0;
-      const $trigger = $nestedContextual.find('.trigger');
-      // Elements with the .visually-hidden class have no dimensions, so this
-      // class must be temporarily removed to the calculate the height.
-      $trigger.removeClass('visually-hidden');
-      height = $nestedContextual.height();
-      $trigger.addClass('visually-hidden');
-
-      // Adjust nested contextual link's position.
-      $nestedContextual.css({ top: $nestedContextual.position().top + height });
-    }
   }
 
   /**

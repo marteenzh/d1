@@ -193,7 +193,7 @@ abstract class UpdatePathTestBase extends BrowserTestBase {
 
     $this->replaceUser1();
 
-    require_once \Drupal::root() . '/core/includes/update.inc';
+    require_once $this->root . '/core/includes/update.inc';
 
     // Setup Mink.
     $session = $this->initMink();
@@ -265,7 +265,7 @@ abstract class UpdatePathTestBase extends BrowserTestBase {
     }
 
     $selectors_handler = new SelectorsHandler([
-      'hidden_field_selector' => new HiddenFieldSelector()
+      'hidden_field_selector' => new HiddenFieldSelector(),
     ]);
     $session = new Session($driver, $selectors_handler);
     $this->mink = new Mink();

@@ -211,14 +211,15 @@
     });
 
     // Add a link before the table for users to show or hide weight columns.
-    $table.before($('<button type="button" class="link tabledrag-toggle-weight"></button>')
-      .attr('title', Drupal.t('Re-order rows by numerical weight instead of dragging.'))
-      .on('click', $.proxy(function (e) {
-        e.preventDefault();
-        this.toggleColumns();
-      }, this))
-      .wrap('<div class="tabledrag-toggle-weight-wrapper"></div>')
-      .parent(),
+    $table.before(
+      $('<button type="button" class="link tabledrag-toggle-weight"></button>')
+        .attr('title', Drupal.t('Re-order rows by numerical weight instead of dragging.'))
+        .on('click', $.proxy(function (e) {
+          e.preventDefault();
+          this.toggleColumns();
+        }, this))
+        .wrap('<div class="tabledrag-toggle-weight-wrapper"></div>')
+        .parent(),
     );
 
     // Initialize the specified columns (for example, weight or parent columns)
@@ -260,17 +261,15 @@
     let columnIndex;
     Object.keys(this.tableSettings || {}).forEach((group) => {
       // Find the first field in this group.
-      // eslint-disable-next-line no-restricted-syntax
-      for (const d in this.tableSettings[group]) {
-        if (this.tableSettings[group].hasOwnProperty(d)) {
-          const field = $table.find(`.${this.tableSettings[group][d].target}`).eq(0);
-          if (field.length && this.tableSettings[group][d].hidden) {
-            hidden = this.tableSettings[group][d].hidden;
-            cell = field.closest('td');
-            break;
-          }
+      Object.keys(this.tableSettings[group]).some((tableSetting) => {
+        const field = $table.find(`.${this.tableSettings[group][tableSetting].target}`).eq(0);
+        if (field.length && this.tableSettings[group][tableSetting].hidden) {
+          hidden = this.tableSettings[group][tableSetting].hidden;
+          cell = field.closest('td');
+          return true;
         }
-      }
+        return false;
+      });
 
       // Mark the column containing this field so it can be hidden.
       if (hidden && cell[0]) {
@@ -412,23 +411,18 @@
   Drupal.tableDrag.prototype.rowSettings = function (group, row) {
     const field = $(row).find(`.${group}`);
     const tableSettingsGroup = this.tableSettings[group];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const delta in tableSettingsGroup) {
-      if (tableSettingsGroup.hasOwnProperty(delta)) {
-        const targetClass = tableSettingsGroup[delta].target;
-        if (field.is(`.${targetClass}`)) {
-          // Return a copy of the row settings.
-          const rowSettings = {};
-          // eslint-disable-next-line no-restricted-syntax
-          for (const n in tableSettingsGroup[delta]) {
-            if (tableSettingsGroup[delta].hasOwnProperty(n)) {
-              rowSettings[n] = tableSettingsGroup[delta][n];
-            }
-          }
-          return rowSettings;
-        }
+    return Object.keys(tableSettingsGroup).map((delta) => {
+      const targetClass = tableSettingsGroup[delta].target;
+      let rowSettings;
+      if (field.is(`.${targetClass}`)) {
+        // Return a copy of the row settings.
+        rowSettings = {};
+        Object.keys(tableSettingsGroup[delta]).forEach((n) => {
+          rowSettings[n] = tableSettingsGroup[delta][n];
+        });
       }
-    }
+      return rowSettings;
+    }).filter(rowSetting => rowSetting)[0];
   };
 
   /**
@@ -708,8 +702,10 @@
         // Stop any current scrolling.
         clearInterval(self.scrollInterval);
         // Continue scrolling if the mouse has moved in the scroll direction.
-        if ((scrollAmount > 0 && self.rowObject.direction === 'down')
-          || (scrollAmount < 0 && self.rowObject.direction === 'up')) {
+        if (
+          (scrollAmount > 0 && self.rowObject.direction === 'down') ||
+          (scrollAmount < 0 && self.rowObject.direction === 'up')
+        ) {
           self.setScroll(scrollAmount);
         }
 
@@ -879,11 +875,9 @@
       if ((y > (rowY - rowHeight)) && (y < (rowY + rowHeight))) {
         if (this.indentEnabled) {
           // Check that this row is not a child of the row being dragged.
-          // eslint-disable-next-line no-restricted-syntax
-          for (n in this.rowObject.group) {
-            if (this.rowObject.group[n] === row) {
-              return null;
-            }
+          if (Object.keys(this.rowObject.group)
+            .some(o => (this.rowObject.group[o] === row))) {
+            return null;
           }
         }
         // Do not allow a row to be swapped with itself.
@@ -1116,7 +1110,7 @@
       delta = (delta > 0 && delta < trigger) ? delta : trigger;
       return delta * this.scrollSettings.amount;
     }
-    else if (cursorY - scrollY < trigger) {
+    if (cursorY - scrollY < trigger) {
       delta = trigger / (cursorY - scrollY);
       delta = (delta > 0 && delta < trigger) ? delta : trigger;
       return -delta * this.scrollSettings.amount;
@@ -1137,8 +1131,10 @@
       self.checkScroll(self.currentPointerCoords.y);
       const aboveTable = self.scrollY > self.table.topY;
       const belowTable = self.scrollY + self.windowHeight < self.table.bottomY;
-      if ((scrollAmount > 0 && belowTable)
-        || (scrollAmount < 0 && aboveTable)) {
+      if (
+        (scrollAmount > 0 && belowTable) ||
+        (scrollAmount < 0 && aboveTable)
+      ) {
         window.scrollBy(0, scrollAmount);
       }
     }, this.scrollSettings.interval);

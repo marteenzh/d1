@@ -22,7 +22,8 @@
         $form.find(
           '.js-form-item-label label,' +
           '.js-form-item-field-name label,' +
-          '.js-form-item-existing-storage-label label')
+          '.js-form-item-existing-storage-label label',
+        )
           .addClass('js-form-required form-required');
 
         const $newFieldType = $form.find('select[name="new_storage_type"]');
@@ -219,7 +220,7 @@
 
       if (rowNames.length) {
         // Add a throbber next each of the ajaxElements.
-        $(ajaxElements).after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
+        $(ajaxElements).after(Drupal.theme.ajaxProgressThrobber());
 
         // Fire the Ajax update.
         $('input[name=refresh_rows]').val(rowNames.join(' '));

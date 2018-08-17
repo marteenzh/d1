@@ -89,6 +89,20 @@
      */
     featureIsAllowedByFilters(feature) {
       /**
+       * Provided a section of a feature or filter rule, checks if no property
+       * values are defined for all properties: attributes, classes and styles.
+       *
+       * @param {object} section
+       *   The section to check.
+       *
+       * @return {bool}
+       *   Returns true if the section has empty properties, false otherwise.
+       */
+      function emptyProperties(section) {
+        return section.attributes.length === 0 && section.classes.length === 0 && section.styles.length === 0;
+      }
+
+      /**
        * Generate the universe U of possible values that can result from the
        * feature's rules' requirements.
        *
@@ -183,79 +197,6 @@
       }
 
       /**
-       * Provided a section of a feature or filter rule, checks if no property
-       * values are defined for all properties: attributes, classes and styles.
-       *
-       * @param {object} section
-       *   The section to check.
-       *
-       * @return {bool}
-       *   Returns true if the section has empty properties, false otherwise.
-       */
-      function emptyProperties(section) {
-        return section.attributes.length === 0 && section.classes.length === 0 && section.styles.length === 0;
-      }
-
-      /**
-       * Calls findPropertyValueOnTag on the given tag for every property value
-       * that is listed in the "propertyValues" parameter. Supports the wildcard
-       * tag.
-       *
-       * @param {object} universe
-       *   The universe to check.
-       * @param {string} tag
-       *   The tag to look for.
-       * @param {string} property
-       *   The property to check.
-       * @param {Array} propertyValues
-       *   Values of the property to check.
-       * @param {bool} allowing
-       *   Whether to update the universe or not.
-       *
-       * @return {bool}
-       *   Returns true if found, false otherwise.
-       */
-      function findPropertyValuesOnTag(universe, tag, property, propertyValues, allowing) {
-        // Detect the wildcard case.
-        if (tag === '*') {
-          return findPropertyValuesOnAllTags(universe, property, propertyValues, allowing);
-        }
-
-        let atLeastOneFound = false;
-        _.each(propertyValues, (propertyValue) => {
-          if (findPropertyValueOnTag(universe, tag, property, propertyValue, allowing)) {
-            atLeastOneFound = true;
-          }
-        });
-        return atLeastOneFound;
-      }
-
-      /**
-       * Calls findPropertyValuesOnAllTags for all tags in the universe.
-       *
-       * @param {object} universe
-       *   The universe to check.
-       * @param {string} property
-       *   The property to check.
-       * @param {Array} propertyValues
-       *   Values of the property to check.
-       * @param {bool} allowing
-       *   Whether to update the universe or not.
-       *
-       * @return {bool}
-       *   Returns true if found, false otherwise.
-       */
-      function findPropertyValuesOnAllTags(universe, property, propertyValues, allowing) {
-        let atLeastOneFound = false;
-        _.each(_.keys(universe), (tag) => {
-          if (findPropertyValuesOnTag(universe, tag, property, propertyValues, allowing)) {
-            atLeastOneFound = true;
-          }
-        });
-        return atLeastOneFound;
-      }
-
-      /**
        * Finds out if a specific property value (potentially containing
        * wildcards) exists on the given tag. When the "allowing" parameter
        * equals true, the universe will be updated if that specific property
@@ -317,6 +258,86 @@
       }
 
       /**
+       * Calls findPropertyValuesOnAllTags for all tags in the universe.
+       *
+       * @param {object} universe
+       *   The universe to check.
+       * @param {string} property
+       *   The property to check.
+       * @param {Array} propertyValues
+       *   Values of the property to check.
+       * @param {bool} allowing
+       *   Whether to update the universe or not.
+       *
+       * @return {bool}
+       *   Returns true if found, false otherwise.
+       */
+      function findPropertyValuesOnAllTags(universe, property, propertyValues, allowing) {
+        let atLeastOneFound = false;
+        _.each(_.keys(universe), (tag) => {
+          // eslint-disable-next-line no-use-before-define
+          if (findPropertyValuesOnTag(universe, tag, property, propertyValues, allowing)) {
+            atLeastOneFound = true;
+          }
+        });
+        return atLeastOneFound;
+      }
+
+      /**
+       * Calls findPropertyValueOnTag on the given tag for every property value
+       * that is listed in the "propertyValues" parameter. Supports the wildcard
+       * tag.
+       *
+       * @param {object} universe
+       *   The universe to check.
+       * @param {string} tag
+       *   The tag to look for.
+       * @param {string} property
+       *   The property to check.
+       * @param {Array} propertyValues
+       *   Values of the property to check.
+       * @param {bool} allowing
+       *   Whether to update the universe or not.
+       *
+       * @return {bool}
+       *   Returns true if found, false otherwise.
+       */
+      function findPropertyValuesOnTag(universe, tag, property, propertyValues, allowing) {
+        // Detect the wildcard case.
+        if (tag === '*') {
+          return findPropertyValuesOnAllTags(universe, property, propertyValues, allowing);
+        }
+
+        let atLeastOneFound = false;
+        _.each(propertyValues, (propertyValue) => {
+          if (findPropertyValueOnTag(universe, tag, property, propertyValue, allowing)) {
+            atLeastOneFound = true;
+          }
+        });
+        return atLeastOneFound;
+      }
+
+      /**
+       * Calls deleteFromUniverseIfAllowed for all tags in the universe.
+       *
+       * @param {object} universe
+       *   The universe to delete from.
+       *
+       * @return {bool}
+       *   Whether something was deleted from the universe.
+       */
+      function deleteAllTagsFromUniverseIfAllowed(universe) {
+        let atLeastOneDeleted = false;
+        _.each(_.keys(universe), (tag) => {
+          // eslint-disable-next-line no-use-before-define
+          if (deleteFromUniverseIfAllowed(universe, tag)) {
+            atLeastOneDeleted = true;
+          }
+        });
+        return atLeastOneDeleted;
+      }
+
+      /**
        * Deletes a tag from the universe if the tag itself and each of its
        * properties are marked as allowed.
        *
@@ -338,25 +359,6 @@
           return true;
         }
         return false;
-      }
-
-      /**
-       * Calls deleteFromUniverseIfAllowed for all tags in the universe.
-       *
-       * @param {object} universe
-       *   The universe to delete from.
-       *
-       * @return {bool}
-       *   Whether something was deleted from the universe.
-       */
-      function deleteAllTagsFromUniverseIfAllowed(universe) {
-        let atLeastOneDeleted = false;
-        _.each(_.keys(universe), (tag) => {
-          if (deleteFromUniverseIfAllowed(universe, tag)) {
-            atLeastOneDeleted = true;
-          }
-        });
-        return atLeastOneDeleted;
       }
 
       /**
@@ -530,23 +532,23 @@
           }
           // Otherwise, it is still possible that this feature is allowed.
 
-            // Every tag must be explicitly allowed if there are filter rules
-            // doing tag whitelisting.
+          // Every tag must be explicitly allowed if there are filter rules
+          // doing tag whitelisting.
           if (!_.every(_.pluck(universe, 'tag'))) {
             return false;
           }
-            // Every tag was explicitly allowed, but since the universe is not
-            // empty, one or more tag properties are disallowed. However, if
-            // only blacklisting of tag properties was applied to these tags,
-            // and no whitelisting was ever applied, then it's still fine:
-            // since none of the tag properties were blacklisted, we got to
-            // this point, and since no whitelisting was applied, it doesn't
-            // matter that the properties: this could never have happened
-            // anyway. It's only this late that we can know this for certain.
+          // Every tag was explicitly allowed, but since the universe is not
+          // empty, one or more tag properties are disallowed. However, if
+          // only blacklisting of tag properties was applied to these tags,
+          // and no whitelisting was ever applied, then it's still fine:
+          // since none of the tag properties were blacklisted, we got to
+          // this point, and since no whitelisting was applied, it doesn't
+          // matter that the properties: this could never have happened
+          // anyway. It's only this late that we can know this for certain.
 
           const tags = _.keys(universe);
-              // Figure out if there was any rule applying whitelisting tag
-              // restrictions to each of the remaining tags.
+          // Figure out if there was any rule applying whitelisting tag
+          // restrictions to each of the remaining tags.
           for (let i = 0; i < tags.length; i++) {
             const tag = tags[i];
             if (_.has(universe, tag)) {
@@ -567,17 +569,10 @@
       // If any filter's current status forbids the editor feature, return
       // false.
       Drupal.filterConfiguration.update();
-      // eslint-disable-next-line no-restricted-syntax
-      for (const filterID in Drupal.filterConfiguration.statuses) {
-        if (Drupal.filterConfiguration.statuses.hasOwnProperty(filterID)) {
-          const filterStatus = Drupal.filterConfiguration.statuses[filterID];
-          if (!(filterStatusAllowsFeature(filterStatus, feature))) {
-            return false;
-          }
-        }
-      }
-
-      return true;
+      return Object.keys(Drupal.filterConfiguration.statuses)
+        .every(filterID => (
+          filterStatusAllowsFeature(Drupal.filterConfiguration.statuses[filterID], feature)
+        ));
     },
   };
 
@@ -615,25 +610,35 @@
   Drupal.EditorFeatureHTMLRule = function () {
     /**
      *
-     * @type {object}
+     * @type {Object}
      *
      * @prop {Array} tags
      * @prop {Array} attributes
      * @prop {Array} styles
      * @prop {Array} classes
      */
-    this.required = { tags: [], attributes: [], styles: [], classes: [] };
+    this.required = {
+      tags: [],
+      attributes: [],
+      styles: [],
+      classes: [],
+    };
 
     /**
      *
-     * @type {object}
+     * @type {Object}
      *
      * @prop {Array} tags
      * @prop {Array} attributes
      * @prop {Array} styles
      * @prop {Array} classes
      */
-    this.allowed = { tags: [], attributes: [], styles: [], classes: [] };
+    this.allowed = {
+      tags: [],
+      attributes: [],
+      styles: [],
+      classes: [],
+    };
 
     /**
      *
