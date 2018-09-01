@@ -211,7 +211,7 @@ EOT;
 /**
  * Implements hook_form_alter().
  */
-function permissions_by_term_form_alter(&$form, FormStateInterface $oFormState, $form_id) {
+function permissions_by_term_form_alter(&$form, FormStateInterface $formState, $form_id) {
   $form['#validate'][] = 'permissions_by_term_validate';
   if (isNodeEditForm()) {
     $form['permissions_by_term_info'] = [
@@ -220,6 +220,11 @@ function permissions_by_term_form_alter(&$form, FormStateInterface $oFormState, 
       '#title' => t('Permissions by Term'),
       '#access' => \Drupal::currentUser()->hasPermission('show term permissions on node edit page'),
     ];
+
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    if (!empty($formState->getUserInput()['langcode']['0']['value'])) {
+      $langcode = $formState->getUserInput()['langcode']['0']['value'];
+    }
 
     $nid = null;
     if (!empty($node = \Drupal::routeMatch()->getParameter('node'))) {
@@ -234,7 +239,7 @@ function permissions_by_term_form_alter(&$form, FormStateInterface $oFormState, 
 
     $form['permissions_by_term_info']['revision'] = array(
       '#type' => 'item',
-      '#markup' => $nodeEntityBundleInfo->renderNodeDetails($viewFilePath, $nid),
+      '#markup' => $nodeEntityBundleInfo->renderNodeDetails($viewFilePath, $langcode, $nid),
     );
 
     $form['#attached']['library'][] = 'permissions_by_term/nodeForm';

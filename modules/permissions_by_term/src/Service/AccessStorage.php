@@ -149,15 +149,15 @@ class AccessStorage {
   }
 
   /**
-   * @param array $tids
-   *
+   * @param array  $tids
+   * @param string $langcode
    * @return array
    */
-  public function getUserTermPermissionsByTids($tids) {
+  public function getUserTermPermissionsByTids($tids, $langcode) {
     $uids = [];
 
     foreach ($tids as $tid) {
-      if (!empty($tmpUids = $this->getUserTermPermissionsByTid($tid))) {
+      if (!empty($tmpUids = $this->getUserTermPermissionsByTid($tid, $langcode))) {
         foreach ($tmpUids as $tmpUid) {
           $uids[] = $tmpUid;
         }
@@ -183,15 +183,15 @@ class AccessStorage {
   }
 
   /**
-   * @param array $tids
-   *
+   * @param array  $tids
+   * @param string $langcode
    * @return array
    */
-  public function getRoleTermPermissionsByTids($tids) {
+  public function getRoleTermPermissionsByTids($tids, $langcode) {
     $rids = [];
 
     foreach ($tids as $tid) {
-      $tmpRids = $this->getRoleTermPermissionsByTid($tid);
+      $tmpRids = $this->getRoleTermPermissionsByTid($tid, $langcode);
       if (!empty($tmpRids)) {
         foreach ($tmpRids as $tmpRid) {
           $rids[] = $tmpRid;
