@@ -6,8 +6,8 @@ package: "Spam control"
 configure: honeypot.config
 hidden: false
 
-# Information added by Drupal.org packaging script on 2018-08-09
-version: '8.x-1.28'
+# Information added by Drupal.org packaging script on 2018-09-05
+version: '8.x-1.29'
 core: '8.x'
 project: 'honeypot'
-datestamp: 1533849185
+datestamp: 1536179284

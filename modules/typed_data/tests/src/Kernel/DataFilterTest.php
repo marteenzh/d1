@@ -3,18 +3,20 @@
 namespace Drupal\Tests\typed_data\Kernel;
 
 use Drupal\Core\Datetime\Entity\DateFormat;
+use Drupal\Core\Entity\TypedData\EntityDataDefinition;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\TypedData\DataDefinition;
-use Drupal\KernelTests\KernelTestBase;
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+use Drupal\node\Entity\Node;
 
 /**
  * Tests using typed data filters.
  *
  * @group typed_data
  *
- * @cover \Drupal\typed_data\DataFilterManager
+ * @coversDefaultClass \Drupal\typed_data\DataFilterManager
  */
-class DataFiterTest extends KernelTestBase {
+class DataFilterTest extends EntityKernelTestBase {
 
   /**
    * The typed data manager.
@@ -35,7 +37,7 @@ class DataFiterTest extends KernelTestBase {
    *
    * @var array
    */
-  public static $modules = ['typed_data', 'system', 'user'];
+  public static $modules = ['typed_data', 'node'];
 
   /**
    * {@inheritdoc}
@@ -45,13 +47,13 @@ class DataFiterTest extends KernelTestBase {
     $this->typedDataManager = $this->container->get('typed_data_manager');
     $this->dataFilterManager = $this->container->get('plugin.manager.typed_data_filter');
 
-    // Make sure default date formats are there for testing the format_date
-    // filter.
+    // Make sure default date formats are available
+    // for testing the format_date filter.
     $this->installConfig(['system']);
   }
 
   /**
-   * @cover \Drupal\typed_data\Plugin\TypedDataFilter\LowerFilter
+   * @covers \Drupal\typed_data\Plugin\TypedDataFilter\LowerFilter
    */
   public function testLowerFilter() {
     $filter = $this->dataFilterManager->createInstance('lower');
@@ -66,7 +68,7 @@ class DataFiterTest extends KernelTestBase {
   }
 
   /**
-   * @cover \Drupal\typed_data\Plugin\TypedDataFilter\DefaultFilter
+   * @covers \Drupal\typed_data\Plugin\TypedDataFilter\DefaultFilter
    */
   public function testDefaultFilter() {
     $filter = $this->dataFilterManager->createInstance('default');
@@ -90,7 +92,7 @@ class DataFiterTest extends KernelTestBase {
   }
 
   /**
-   * @cover \Drupal\typed_data\Plugin\TypedDataFilter\FormatDateFilter
+   * @covers \Drupal\typed_data\Plugin\TypedDataFilter\FormatDateFilter
    */
   public function testFormatDateFilter() {
     $filter = $this->dataFilterManager->createInstance('format_date');
@@ -131,6 +133,46 @@ class DataFiterTest extends KernelTestBase {
     $metadata = new BubbleableMetadata();
     $filter->filter($data->getDataDefinition(), $data->getValue(), ['custom', 'Y'], $metadata);
     $this->assertEquals([], $metadata->getCacheTags());
+  }
+
+  /**
+   * @covers \Drupal\typed_data\Plugin\TypedDataFilter\StripTagsFilter
+   */
+  public function testStripTagsFilter() {
+    $filter = $this->dataFilterManager->createInstance('striptags');
+    $data = $this->typedDataManager->create(DataDefinition::create('string'), '<b>Test <em>striptags</em> filter</b>');
+
+    $this->assertTrue($filter->canFilter($data->getDataDefinition()));
+    $this->assertFalse($filter->canFilter(DataDefinition::create('any')));
+
+    $this->assertEquals('string', $filter->filtersTo($data->getDataDefinition(), [])->getDataType());
+
+    $this->assertEquals('Test striptags filter', $filter->filter($data->getDataDefinition(), $data->getValue(), []));
+  }
+
+  /**
+   * @covers \Drupal\typed_data\Plugin\TypedDataFilter\EntityUrlFilter
+   */
+  public function testEntityUrlFilter() {
+    /* @var $node \Drupal\node\NodeInterface */
+    $node = Node::create([
+      'title' => 'Test node',
+      'type' => 'page',
+    ]);
+    $node->save();
+
+    $filter = $this->dataFilterManager->createInstance('entity_url');
+    $data = $this->typedDataManager->create(EntityDataDefinition::create('node'));
+    $data->setValue($node);
+
+    $this->assertTrue($filter->canFilter($data->getDataDefinition()));
+    $this->assertFalse($filter->canFilter(DataDefinition::create('any')));
+
+    $this->assertEquals('uri', $filter->filtersTo($data->getDataDefinition(), [])->getDataType());
+
+    // Test the output of the filter.
+    $output = $filter->filter($data->getDataDefinition(), $data->getValue(), []);
+    $this->assertEquals($node->toUrl('canonical', ['absolute' => TRUE])->toString(), $output);
   }
 
 }

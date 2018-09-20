@@ -8,13 +8,15 @@ use Drupal\KernelTests\KernelTestBase;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\TypedData\Exception\MissingDataException;
+use Drupal\typed_data\Exception\InvalidArgumentException;
 
 /**
  * Class DataFetcherTest.
  *
  * @group typed_data
  *
- * @cover \Drupal\typed_data\DataFetcher
+ * @coversDefaultClass \Drupal\typed_data\DataFetcher
  */
 class DataFetcherTest extends KernelTestBase {
 
@@ -98,7 +100,7 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingByBasicPropertyPath() {
     $this->assertEquals(
@@ -110,7 +112,7 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataBySubPaths
+   * @covers ::fetchDataBySubPaths
    */
   public function testFetchingByBasicSubPath() {
     $this->assertEquals(
@@ -125,7 +127,7 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingEntityReference() {
     $user = $this->entityTypeManager->getStorage('user')
@@ -142,7 +144,7 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingAcrossReferences() {
     $user = $this->entityTypeManager->getStorage('user')
@@ -159,7 +161,7 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingNonExistingEntityReference() {
     $fetched_user = $this->dataFetcher
@@ -169,7 +171,7 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingValueAtValidPositions() {
     $this->node->field_integer->setValue(['0' => 1, '1' => 2]);
@@ -186,11 +188,10 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
-   * @expectedException \Drupal\Core\TypedData\Exception\MissingDataException
-   * @expectedExceptionMessage Unable to apply data selector 'field_integer.0.value' at 'field_integer.0'
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingValueAtInvalidPosition() {
+    $this->setExpectedException(MissingDataException::class, "Unable to apply data selector 'field_integer.0.value' at 'field_integer.0'");
     $this->node->field_integer->setValue([]);
 
     // This should trigger an exception.
@@ -200,11 +201,10 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
-   * @expectedException \Drupal\typed_data\Exception\InvalidArgumentException
-   * @expectedExceptionMessage Unable to apply data selector 'field_invalid.0.value' at 'field_invalid'
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingInvalidProperty() {
+    $this->setExpectedException(InvalidArgumentException::class, "Unable to apply data selector 'field_invalid.0.value' at 'field_invalid'");
     // This should trigger an exception.
     $this->dataFetcher
       ->fetchDataByPropertyPath($this->node->getTypedData(), 'field_invalid.0.value')
@@ -212,7 +212,7 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingEmptyProperty() {
     $this->node->field_integer->setValue([]);
@@ -224,10 +224,10 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
-   * @expectedException \Drupal\Core\TypedData\Exception\MissingDataException
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingNotExistingListItem() {
+    $this->setExpectedException(MissingDataException::class);
     $this->node->field_integer->setValue([]);
 
     // This will throw an exception.
@@ -237,11 +237,10 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
-   * @expectedException \Drupal\Core\TypedData\Exception\MissingDataException
-   * @expectedExceptionMessageRegExp #Unable to apply data selector 'field_integer.0.value' at 'field_integer':.*#
+   * @covers ::fetchDataByPropertyPath
    */
   public function testFetchingFromEmptyData() {
+    $this->setExpectedException(MissingDataException::class, "Unable to apply data selector 'field_integer.0.value' at 'field_integer': Unable to get property field_integer as no entity has been provided.");
     $data_empty = $this->typedDataManager->create(EntityDataDefinition::create('node'));
     // This should trigger an exception.
     $this->dataFetcher
@@ -250,7 +249,7 @@ class DataFetcherTest extends KernelTestBase {
   }
 
   /**
-   * @cover fetchDataByPropertyPath
+   * @covers ::fetchDataByPropertyPath
    */
   public function testBubbleableMetadata() {
     $this->node->field_integer->setValue([]);

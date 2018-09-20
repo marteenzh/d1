@@ -17,7 +17,7 @@ use Drupal\KernelTests\KernelTestBase;
  *
  * @group typed_data
  *
- * @cover \Drupal\typed_data\PlaceholderResolver
+ * @coversDefaultClass \Drupal\typed_data\PlaceholderResolver
  */
 class PlaceholderResolverTest extends KernelTestBase {
 
@@ -105,7 +105,7 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover scan
+   * @covers ::scan
    */
   public function testScanningForPlaceholders() {
     $text = 'token {{example.foo}} and {{example.foo.bar}} just as {{example.foo|default(bar)}} and {{ example.whitespace }}';
@@ -129,14 +129,24 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover resolvePlaceholders
+   * @covers ::resolvePlaceholders
    */
   public function testResolvingPlaceholders() {
+    // Test resolving multiple tokens.
     $text = 'test {{node.title}} and {{node.title.value}}';
     $result = $this->placeholderResolver->resolvePlaceholders($text, ['node' => $this->node->getTypedData()]);
     $expected = [
       '{{node.title}}' => 'test',
       '{{node.title.value}}' => 'test',
+    ];
+    $this->assertEquals($expected, $result);
+
+    // Test resolving multiple tokens, one with a filter.
+    $this->node->title->value = 'tEsT';
+    $result = $this->placeholderResolver->resolvePlaceHolders("test {{ node.title.value | lower }} and {{ node.title.value }}", ['node' => $this->node->getTypedData()]);
+    $expected = [
+      '{{ node.title.value | lower }}' => 'test',
+      '{{ node.title.value }}' => 'tEsT',
     ];
     $this->assertEquals($expected, $result);
 
@@ -154,7 +164,7 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover replacePlaceHolders
+   * @covers ::replacePlaceHolders
    */
   public function testReplacePlaceholders() {
     $text = 'test {{node.title}} and {{node.title.value}}';
@@ -163,7 +173,7 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover replacePlaceHolders
+   * @covers ::replacePlaceHolders
    */
   public function testPlaceholdersAcrossReferences() {
     $user = $this->entityTypeManager->getStorage('user')
@@ -178,7 +188,7 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover replacePlaceHolders
+   * @covers ::replacePlaceHolders
    */
   public function testPlaceholdersWithMissingData() {
     $text = 'test {{node.title.1.value}}';
@@ -191,7 +201,7 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover replacePlaceHolders
+   * @covers ::replacePlaceHolders
    */
   public function testStringEncoding() {
     $this->node->title->value = '<b>XSS</b>';
@@ -201,7 +211,7 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover replacePlaceHolders
+   * @covers ::replacePlaceHolders
    */
   public function testIntegerPlaceholder() {
     $this->node->field_integer->value = 3;
@@ -211,7 +221,7 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover replacePlaceHolders
+   * @covers ::replacePlaceHolders
    */
   public function testListPlaceholder() {
     $this->node->field_integer = [1, 2];
@@ -221,19 +231,27 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover replacePlaceHolders
+   * @covers ::replacePlaceHolders
    */
   public function testApplyingFilters() {
+    // Test filter expression.
     $this->node->field_integer = [1, 2, NULL];
     $this->node->title->value = NULL;
     $result = $this->placeholderResolver->replacePlaceHolders("test {{node.field_integer.2.value|default('0')}}", ['node' => $this->node->getTypedData()]);
     $this->assertEquals('test 0', $result);
+
+    // Test piping filter expressions.
     $result = $this->placeholderResolver->replacePlaceHolders("test {{node.title.value|default('tEsT')|lower}}", ['node' => $this->node->getTypedData()]);
     $this->assertEquals('test test', $result);
 
-    // Test filter expressions with whitespaces.
+    // Test piping filter expressions with whitespaces.
     $result = $this->placeholderResolver->replacePlaceHolders("test {{ node.title.value | default('tEsT') | lower }}", ['node' => $this->node->getTypedData()]);
     $this->assertEquals('test test', $result);
+
+    // Test multiple tokens with filters.
+    $this->node->title->value = 'tEsT';
+    $result = $this->placeholderResolver->replacePlaceHolders("test {{ node.title.value | lower }} and {{ node.title.value }}", ['node' => $this->node->getTypedData()]);
+    $this->assertEquals('test test and tEsT', $result);
 
     // Test a filter expression on data without accessing a property.
     $text = 'test {{string | lower}}';
@@ -250,7 +268,7 @@ class PlaceholderResolverTest extends KernelTestBase {
   }
 
   /**
-   * @cover replacePlaceHolders
+   * @covers ::replacePlaceHolders
    */
   public function testBubbleableMetadata() {
     // Make sure the bubbleable metadata added by the fetcher is properly passed
