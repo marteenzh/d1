@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 /**
  * @returns array
  */
@@ -12,9 +14,9 @@ const fetchFromBackend = async () => {
     url = '/admin/permissions-by-term/access-info-by-content-type/' + contentType;
   }
 
-  return await fetch(url, { credentials:'include' })
+  return await axios.get(url, { credentials:'include' })
       .then(function(response) {
-        return response.json();
+        return response.data;
       }).then(function(data) {
         return data;
       });
