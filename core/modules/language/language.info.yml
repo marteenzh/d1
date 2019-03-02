@@ -6,8 +6,8 @@ package: Multilingual
 # core: 8.x
 configure: entity.configurable_language.collection
 
-# Information added by Drupal.org packaging script on 2019-02-08
-version: '8.6.9'
+# Information added by Drupal.org packaging script on 2019-02-20
+version: '8.6.10'
 core: '8.x'
 project: 'drupal'
-datestamp: 1549628750
+datestamp: 1550692191
