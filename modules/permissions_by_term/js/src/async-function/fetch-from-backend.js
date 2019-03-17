@@ -9,9 +9,9 @@ const fetchFromBackend = async () => {
     contentType = window.location.href.split("/").pop();
   }
 
-  let url = '/admin/permissions-by-term/access-info-by-url?url=' + window.location.pathname;
+  let url = drupalSettings.path.baseUrl + 'admin/permissions-by-term/access-info-by-url?url=' + window.location.pathname;
   if (contentType !== null) {
-    url = '/admin/permissions-by-term/access-info-by-content-type/' + contentType;
+    url = drupalSettings.path.baseUrl + 'admin/permissions-by-term/access-info-by-content-type/' + contentType;
   }
 
   return await axios.get(url, { credentials:'include' })

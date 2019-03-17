@@ -1,12 +1,13 @@
 import isEmpty from 'lodash/isEmpty';
 import Backend from '../model/backend.prototype';
+import get from 'lodash/get';
 
 /**
  * @returns Access
  */
 const createPermission = async (fetchFromBackend) => {
-  let data = await fetchFromBackend(),
-      fieldCssClasses = [];
+  const fieldCssClasses = [];
+  let data = await fetchFromBackend();
 
   if (!isEmpty(data.taxonomyRelationFieldNames)) {
     data.taxonomyRelationFieldNames.forEach((fieldName) => {
@@ -16,11 +17,21 @@ const createPermission = async (fetchFromBackend) => {
     });
   }
 
+  let userDisplayNames = null;
+  if (get(data, 'permissions.userDisplayNames')) {
+    userDisplayNames = data.permissions.userDisplayNames;
+  }
+
+  let roleLabels = null;
+  if (get(data, 'permissions.roleLabels')) {
+    roleLabels = data.permissions.roleLabels;
+  }
+
   return new Backend(
-      data.taxonomyRelationFieldNames,
-      data.permissions.userDisplayNames,
-      data.permissions.roleLabels,
-      fieldCssClasses
+    data.taxonomyRelationFieldNames,
+    userDisplayNames,
+    roleLabels,
+    fieldCssClasses
   );
 }
 
