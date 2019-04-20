@@ -8,24 +8,24 @@
  * Implementation of hook_drush_command().
  */
 function zurb_foundation_drush_command() {
-  $items = array();
+  $items = [];
 
-  $items['foundation-sub-theme'] = array(
+  $items['foundation-sub-theme'] = [
     'description' => 'Create a ZURB foundation sub-theme',
-    'aliases' => array('fst'),
-    'arguments' => array(
+    'aliases' => ['fst'],
+    'arguments' => [
       'name'         => 'Your sub-theme name.',
       'machine_name' => 'A machine-readable name for your theme, optional only  [a-z, 0-9] ',
-    ),
-    'options' => array(
+    ],
+    'options' => [
       'description'  => 'Your sub-theme description.',
       'machine-name' => '[a-z, 0-9] A machine-readable name for your theme.'
-    ),
-    'examples' => array(
+    ],
+    'examples' => [
       'drush fst "custom theme name"' => 'Create a sub-theme with the default options.',
       'drush fst "foo bar" "foo_bar"  --description="My supersweet awesome theme"' => 'Create a sub-theme with additional options.',
-    ),
-  );
+    ],
+  ];
 
   return $items;
 }
@@ -43,7 +43,7 @@ function drush_zurb_foundation_foundation_sub_theme($name = NULL, $machine_name 
   // Eliminate hyphens
   $machine_name = str_replace('-', '_', $machine_name);
 
-  $zurb_path = drush_locate_root() . '/' . drupal_get_path('theme', 'zurb_foundation');
+  $zurb_path = drush_get_context('DRUSH_DRUPAL_ROOT') . '/' . drupal_get_path('theme', 'zurb_foundation');
   $subtheme_path = explode('/', $zurb_path);
   array_pop($subtheme_path);
   $subtheme_path = implode('/', $subtheme_path) . '/' . $machine_name;
@@ -75,13 +75,15 @@ function drush_zurb_foundation_foundation_sub_theme($name = NULL, $machine_name 
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/$machine_name.libraries.yml", 'STARTER', "$machine_name");
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/theme-settings.php", 'STARTER', "$machine_name");
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/$machine_name.info.yml", 'STARTER', "$machine_name");
+  drush_op('zurb_foundation_file_str_replace', "$subtheme_path/gulpfile.js", 'STARTER', "$machine_name");
+  drush_op('zurb_foundation_file_str_replace', "$subtheme_path/package.json", 'STARTER', "$name");
 
   // Notify user of the newly created theme.
   drush_print(dt("\n!name sub-theme was created in !path. \n",
-    array(
+    [
       '!name' => $name,
       '!path' => $subtheme_path,
-    )
+    ]
   ));
   drush_pm_enable_validate($machine_name);
   drush_pm_enable($machine_name);

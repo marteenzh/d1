@@ -6,10 +6,11 @@ use Drupal\node\NodeInterface;
 /**
  * Load template files
  */
-require_once('inc/elements.inc');
 require_once('inc/form.inc');
 require_once('inc/menu.inc');
 require_once('inc/theme.inc');
+
+use Drupal\Core\Link;
 
 /**
  * Implements hook_preprocess_breadcrumb().
@@ -22,6 +23,9 @@ function zurb_foundation_preprocess_breadcrumb(&$variables) {
   $title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
 
   $variables['title'] = $title;
+
+  // Add cache context based on url.
+  $variables['#cache']['contexts'][] = 'url';
 }
 
 /**
@@ -65,10 +69,10 @@ function zurb_foundation_preprocess_block(&$variables) {
  */
 function zurb_foundation_preprocess_field(&$variables) {
   if (!isset($variables['title_attributes']['class'])) {
-    $variables['title_attributes']['class'] = array();
+    $variables['title_attributes']['class'] = [];
   }
   if (!isset($variables['content_attributes']['class'])) {
-    $variables['content_attributes']['class'] = array();
+    $variables['content_attributes']['class'] = [];
   }
   $variables['title_attributes']['class'][] = 'field-label';
 
@@ -76,7 +80,7 @@ function zurb_foundation_preprocess_field(&$variables) {
   $mode = $variables['element']['#view_mode'];
   $classes = &$variables['attributes']['class'];
   $content_classes = &$variables['content_attributes']['class'];
-  $item_classes = array();
+  $item_classes = [];
 
   // Global field classes
   $classes[] = 'field-wrapper';
@@ -112,7 +116,7 @@ function zurb_foundation_preprocess_field(&$variables) {
   // Add class to a specific fields across content types.
   switch ($variables['element']['#field_name']) {
     case 'body':
-      $classes = array('body');
+      $classes[] = 'body';
       break;
 
     case 'field_summary':
@@ -121,13 +125,11 @@ function zurb_foundation_preprocess_field(&$variables) {
 
     case 'field_link':
     case 'field_date':
-      // Replace classes entirely, instead of adding extra.
-    $classes = array('text-content');
+      $classes[] = 'text-content';
       break;
 
     case 'field_image':
-      // Replace classes entirely, instead of adding extra.
-      $classes = array('image');
+      $classes[] = 'image';
       break;
 
     default:
@@ -136,14 +138,7 @@ function zurb_foundation_preprocess_field(&$variables) {
 
   // Add classes to body based on content type and view mode.
   if ($variables['element']['#field_name'] == 'body') {
-    // Add classes to other content types with view mode 'teaser';
-    if ($variables['element']['#view_mode'] == 'teaser') {
-      $classes[] = 'text-secondary';
-    }
-    // The rest is text-content.
-    else {
       $classes[] = 'field';
-    }
   }
 }
 
@@ -156,11 +151,7 @@ function zurb_foundation_preprocess_html(&$variables) {
   /* @var Drupal\Core\Language\LanguageInterface */
   $language = \Drupal::languageManager()->getCurrentLanguage();
   $site_language = $language->getId();
-  $site_language_direction = $language->getDirection();
   $request = \Drupal::request();
-
-  // Clean up the lang attributes
-  $variables['html_attributes'] = 'lang="' . $site_language . '" dir="' . $site_language_direction . '"';
 
   // Add language body class.
   $variables['attributes']['class'][] = 'lang-' . $site_language;
@@ -199,24 +190,24 @@ function zurb_foundation_preprocess_html(&$variables) {
  */
 function zurb_foundation_page_attachments_alter(&$page) {
   // Force IE to use Chrome Frame if installed.
-  $page['#attached']['html_head'][] = array(array(
+  $page['#attached']['html_head']['chrome_frame'] = [[
     '#type' => 'html_tag',
     '#tag' => 'meta',
-    '#attributes' => array(
+    '#attributes' => [
       'content' => 'ie=edge, chrome=1',
       'http-equiv' => 'x-ua-compatible',
-    ),
-  ), 'chrome_frame');
+    ],
+  ], 'chrome_frame'];
 
   // Remove image toolbar in IE.
-  $page['#attached']['html_head'][] = array(array(
+  $page['#attached']['html_head']['ie_image_toolbar'] = [[
     '#type' => 'html_tag',
     '#tag' => 'meta',
-    '#attributes' => array(
+    '#attributes' => [
       'http-equiv' => 'ImageToolbar',
       'content' => 'false',
-    ),
-  ), 'ie_image_toolbar');
+    ],
+  ], 'ie_image_toolbar'];
 }
 
 /**
@@ -268,34 +259,34 @@ function zurb_foundation_preprocess_page(&$variables) {
   $logo = theme_get_setting('logo.url');
 
   if (!empty($logo)) {
-    $elements = array(
+    $elements = [
       '#theme' => 'image',
       '#uri' => $logo,
-      '#attributes' => array(
+      '#attributes' => [
         'alt' => strip_tags($site_name) . ' ' . t('logo'),
         'title' => strip_tags($site_name) . ' ' . t('Home'),
-        'class' => array('logo'),
-      )
-    );
+        'class' => ['logo'],
+      ]
+    ];
 
     $variables['logo_img'] = $elements;
   }
 
   $title = strip_tags($site_name) . ' ' . t('Home');
   $url = \Drupal\Core\Url::fromRoute('<front>');
-  $url->setOption('attributes', array('title' => $title));
+  $url->setOption('attributes', ['title' => $title]);
 
   if (theme_get_setting('zurb_foundation_page_site_logo')) {
     $variables['linked_logo'] = '';
     if (!empty($variables['logo_img'])) {
-      $variables['linked_logo'] = \Drupal::l($variables['logo_img'], $url);
+      $variables['linked_logo'] = Link::fromTextAndUrl($variables['logo_img'], $url)->toString();
     }
   }
 
   if (theme_get_setting('zurb_foundation_page_site_name')) {
     $variables['linked_site_name'] = '';
     if (!empty($site_name)) {
-      $variables['linked_site_name'] = \Drupal::l($site_name, $url);
+      $variables['linked_site_name'] = Link::fromTextAndUrl($site_name, $url)->toString();
     }
   }
 
@@ -309,18 +300,18 @@ function zurb_foundation_preprocess_page(&$variables) {
 
   // Dynamic sidebars
   if (!empty($left) && !empty($right)) {
-    $variables['main_grid'] = 'large-6 large-push-3';
-    $variables['sidebar_first_grid'] = 'large-3 large-pull-6';
-    $variables['sidebar_sec_grid'] = 'large-3';
+    $variables['main_grid'] = 'medium-6 medium-push-3';
+    $variables['sidebar_first_grid'] = 'medium-3 medium-pull-6';
+    $variables['sidebar_sec_grid'] = 'medium-3';
   }
   elseif (empty($left) && !empty($right)) {
-    $variables['main_grid'] = 'large-9';
+    $variables['main_grid'] = 'medium-9';
     $variables['sidebar_first_grid'] = '';
-    $variables['sidebar_sec_grid'] = 'large-3';
+    $variables['sidebar_sec_grid'] = 'medium-3';
   }
   elseif (!empty($left) && empty($right)) {
-    $variables['main_grid'] = 'large-9 large-push-3';
-    $variables['sidebar_first_grid'] = 'large-3 large-pull-9';
+    $variables['main_grid'] = 'medium-9 medium-push-3';
+    $variables['sidebar_first_grid'] = 'medium-3 medium-pull-9';
     $variables['sidebar_sec_grid'] = '';
   }
   else {
@@ -373,7 +364,10 @@ function zurb_foundation_js_alter(&$js) {
   if(theme_get_setting('zurb_foundation_disable_base_js') == TRUE) {
 
     foreach($js as $path => $values) {
-      if(strpos((string) $values['data'], $theme_path) === 0) {
+      if(strpos((string) $values['data'], $theme_path) === 0 &&
+        strpos((string) $values['data'], 'top_bar_active.js') === FALSE &&
+        strpos((string) $values['data'], 'status_in_reveal.js') === FALSE &&
+        strpos((string) $values['data'], 'alert_close.js') === FALSE) {
         unset($js[$path]);
       }
     }
@@ -384,4 +378,27 @@ function zurb_foundation_js_alter(&$js) {
   if (isset($js[$theme_path . '/js/top_bar_active.js'])) {
     $js[$theme_path . '/js/top_bar_active.js']['weight'] = 1;
   }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for status_messages.
+ */
+function zurb_foundation_preprocess_status_messages(&$variables) {
+  $variables['zurb_status_class_mapping'] = [
+    'error' => 'alert',
+    'status' => 'success',
+    'warning' => 'secondary',
+  ];
+
+  $status_in_reveal = (bool) theme_get_setting('zurb_foundation_status_in_reveal');
+  $variables['zurb_foundation_status_in_reveal'] = $status_in_reveal;
+  $variables['#attached']['library'][] = $status_in_reveal ?
+    'zurb_foundation/status_in_reveal' : 'zurb_foundation/alert_close';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function zurb_foundation_theme_suggestions_field_alter(&$suggestions, $variables) {
+  $suggestions[] = 'field__node__' . $variables['element']['#field_name'] . '__' . $variables['element']['#bundle'] . '__' . $variables['element']['#view_mode'];
 }
