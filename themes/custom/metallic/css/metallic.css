@@ -28,7 +28,7 @@
 // Here we define the colors used in the Metallic theme.
 // These are based on U.S. Web Standards.
 */
-@import url("https://fonts.googleapis.com/css?family=Merriweather:700|Source+Sans+Pro:400,400i,700");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:700|Lato:400,400i,700");
 /* line 8, ../scss/base/_init.scss */
 .innermost {
   padding: 0 1em;
@@ -260,7 +260,7 @@
 .article-metadata {
   font-weight: 500;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #AEB0B5;
+  border-bottom: 1px solid #aeb0b5;
 }
 
 /* line 197, ../scss/base/_init.scss */
@@ -270,9 +270,9 @@
 
 /* line 199, ../scss/base/_init.scss */
 .blog-top {
-  border: 1px solid #AEB0B5;
+  border: 1px solid #aeb0b5;
   padding: 3em;
-  background-color: #D6D7D9;
+  background-color: #d6d7d9;
 }
 
 /* line 200, ../scss/base/_init.scss */
@@ -309,7 +309,7 @@
 /* line 207, ../scss/base/_init.scss */
 .article-tags-block {
   padding: 2em 1em 2em 0;
-  border-top: 1px solid #AEB0B5;
+  border-top: 1px solid #aeb0b5;
 }
 
 /* line 208, ../scss/base/_init.scss */
@@ -399,7 +399,7 @@
 .video-listing-item {
   margin: 1em 0;
   padding: 1em;
-  background: #DCE4EF;
+  background: #dce4ef;
   overflow: auto;
 }
 
@@ -438,7 +438,7 @@
 /* line 239, ../scss/base/_init.scss */
 .media-top {
   padding-bottom: 1rem;
-  border-bottom: 1px solid #AEB0B5;
+  border-bottom: 1px solid #aeb0b5;
 }
 
 /* line 240, ../scss/base/_init.scss */
@@ -470,7 +470,7 @@
 .media-listing-item {
   margin: 1em 0;
   padding: 1em;
-  background: #DCE4EF;
+  background: #dce4ef;
   display: block;
 }
 
@@ -488,13 +488,13 @@
 .media-listing-topics-wrapper {
   display: block;
   margin: 1em 0 0 0;
-  border-top: 1px solid #AEB0B5;
+  border-top: 1px solid #aeb0b5;
   padding-top: 1em;
 }
 
 /* line 257, ../scss/base/_init.scss */
 .media-listing-term {
-  color: #112E51;
+  color: #112e51;
 }
 
 /* line 259, ../scss/base/_init.scss */
@@ -598,7 +598,7 @@
 
 /* line 280, ../scss/base/_init.scss */
 .category-term li {
-  background: #F1F1F1;
+  background: #f1f1f1;
   border-radius: 3px 0 0 3px;
   color: #999;
   display: inline-block;
@@ -638,13 +638,13 @@
 
 /* line 317, ../scss/base/_init.scss */
 .category-term li:hover {
-  background-color: #E4E2E0;
+  background-color: #e4e2e0;
   color: white;
 }
 
 /* line 322, ../scss/base/_init.scss */
 .category-term li:hover::after {
-  border-left-color: #E4E2E0;
+  border-left-color: #e4e2e0;
 }
 
 /* Adds tag style for taxonomy terms on Video Listing Wrapper */
@@ -655,7 +655,7 @@
 
 /* line 328, ../scss/base/_init.scss */
 .category-term-dark li {
-  background: #F1F1F1;
+  background: #f1f1f1;
   border-radius: 3px 0 0 3px;
   color: #999;
   display: inline-block;
@@ -670,7 +670,7 @@
 
 /* line 342, ../scss/base/_init.scss */
 .category-term-dark li::before {
-  background: #DCE4EF;
+  background: #dce4ef;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
   content: '';
@@ -683,7 +683,7 @@
 
 /* line 354, ../scss/base/_init.scss */
 .category-term-dark li::after {
-  background: #DCE4EF;
+  background: #dce4ef;
   border-bottom: 13px solid transparent;
   border-left: 10px solid #eee;
   border-top: 13px solid transparent;
@@ -695,13 +695,13 @@
 
 /* line 365, ../scss/base/_init.scss */
 .category-term-dark li:hover {
-  background-color: #E4E2E0;
+  background-color: #e4e2e0;
   color: white;
 }
 
 /* line 370, ../scss/base/_init.scss */
 .category-term-dark li:hover::after {
-  border-left-color: #E4E2E0;
+  border-left-color: #e4e2e0;
 }
 
 /* For primary Blog landing page and associated views */
@@ -1257,10 +1257,10 @@ body {
 
 /* line 502, ../../../contrib/zurb_foundation/scss/foundation/components/_global.scss */
 body {
-  background: #fff;
-  color: #222;
+  background: white;
+  color: #222222;
   cursor: auto;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.5;
@@ -2876,10 +2876,10 @@ select {
 }
 /* line 140, ../../../contrib/zurb_foundation/scss/foundation/components/_accordion.scss */
 .accordion .accordion-navigation > a, .accordion dd > a {
-  background: #EFEFEF;
+  background: #efefef;
   color: #222222;
   display: block;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   padding: 1rem;
 }
@@ -2894,7 +2894,7 @@ select {
 }
 /* line 153, ../../../contrib/zurb_foundation/scss/foundation/components/_accordion.scss */
 .accordion .accordion-navigation > .content.active, .accordion dd > .content.active {
-  background: #FFF;
+  background: white;
   display: block;
 }
 
@@ -2909,9 +2909,9 @@ select {
   padding: 0.875rem 1.5rem 0.875rem 0.875rem;
   position: relative;
   transition: opacity 300ms ease-out;
-  background-color: #008CBA;
+  background-color: #008cba;
   border-color: #0078a0;
-  color: #FFF;
+  color: white;
 }
 /* line 115, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box .close {
@@ -2940,15 +2940,15 @@ select {
 }
 /* line 120, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.success {
-  background-color: #43AC6A;
+  background-color: #43ac6a;
   border-color: #3a945b;
-  color: #FFF;
+  color: white;
 }
 /* line 121, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.alert {
   background-color: #f04124;
   border-color: #de2d0f;
-  color: #FFF;
+  color: white;
 }
 /* line 122, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.secondary {
@@ -2960,7 +2960,7 @@ select {
 .alert-box.warning {
   background-color: #f08a24;
   border-color: #de770f;
-  color: #FFF;
+  color: white;
 }
 /* line 124, ../../../contrib/zurb_foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.info {
@@ -3511,7 +3511,7 @@ button, .button {
   border-style: solid;
   border-width: 0;
   cursor: pointer;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -3521,9 +3521,9 @@ button, .button {
   display: inline-block;
   padding: 1rem 2rem 1.0625rem 2rem;
   font-size: 1rem;
-  background-color: #008CBA;
+  background-color: #008cba;
   border-color: #007095;
-  color: #FFF;
+  color: white;
   transition: background-color 300ms ease-out;
 }
 /* line 163, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
@@ -3532,7 +3532,7 @@ button:hover, button:focus, .button:hover, .button:focus {
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button:hover, button:focus, .button:hover, .button:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 225, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.secondary, .button.secondary {
@@ -3550,9 +3550,9 @@ button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button
 }
 /* line 226, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.success, .button.success {
-  background-color: #43AC6A;
+  background-color: #43ac6a;
   border-color: #368a55;
-  color: #FFF;
+  color: white;
 }
 /* line 163, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
@@ -3560,13 +3560,13 @@ button.success:hover, button.success:focus, .button.success:hover, .button.succe
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 227, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.alert, .button.alert {
   background-color: #f04124;
   border-color: #cf2a0e;
-  color: #FFF;
+  color: white;
 }
 /* line 163, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
@@ -3574,13 +3574,13 @@ button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 228, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.warning, .button.warning {
   background-color: #f08a24;
   border-color: #cf6e0e;
-  color: #FFF;
+  color: white;
 }
 /* line 163, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
@@ -3588,7 +3588,7 @@ button.warning:hover, button.warning:focus, .button.warning:hover, .button.warni
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 229, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.info, .button.info {
@@ -3602,7 +3602,7 @@ button.info:hover, button.info:focus, .button.info:hover, .button.info:focus {
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.info:hover, button.info:focus, .button.info:hover, .button.info:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 231, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.large, .button.large {
@@ -3649,9 +3649,9 @@ button.round, .button.round {
 }
 /* line 242, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled, button[disabled], .button.disabled, .button[disabled] {
-  background-color: #008CBA;
+  background-color: #008cba;
   border-color: #007095;
-  color: #FFF;
+  color: white;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
@@ -3662,11 +3662,11 @@ button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[dis
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-  background-color: #008CBA;
+  background-color: #008cba;
 }
 /* line 243, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
@@ -3691,9 +3691,9 @@ button.disabled.secondary:hover, button.disabled.secondary:focus, button[disable
 }
 /* line 244, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
-  background-color: #43AC6A;
+  background-color: #43ac6a;
   border-color: #368a55;
-  color: #FFF;
+  color: white;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
@@ -3704,17 +3704,17 @@ button.disabled.success:hover, button.disabled.success:focus, button[disabled].s
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
-  background-color: #43AC6A;
+  background-color: #43ac6a;
 }
 /* line 245, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
   background-color: #f04124;
   border-color: #cf2a0e;
-  color: #FFF;
+  color: white;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
@@ -3725,7 +3725,7 @@ button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
@@ -3735,7 +3735,7 @@ button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert
 button.disabled.warning, button[disabled].warning, .button.disabled.warning, .button[disabled].warning {
   background-color: #f08a24;
   border-color: #cf6e0e;
-  color: #FFF;
+  color: white;
   box-shadow: none;
   cursor: default;
   opacity: 0.7;
@@ -3746,7 +3746,7 @@ button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].w
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
@@ -3767,7 +3767,7 @@ button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:ho
 }
 /* line 169, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:hover, button[disabled].info:focus, .button.disabled.info:hover, .button.disabled.info:focus, .button[disabled].info:hover, .button[disabled].info:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_buttons.scss */
 button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:hover, button[disabled].info:focus, .button.disabled.info:hover, .button.disabled.info:focus, .button[disabled].info:hover, .button[disabled].info:focus {
@@ -4480,7 +4480,7 @@ button::-moz-focus-inner {
 .clearing-caption {
   background: #333333;
   bottom: 0;
-  color: #CCCCCC;
+  color: #cccccc;
   font-size: 0.875em;
   line-height: 1.3;
   margin-bottom: 0;
@@ -4493,7 +4493,7 @@ button::-moz-focus-inner {
 
 /* line 129, ../../../contrib/zurb_foundation/scss/foundation/components/_clearing.scss */
 .clearing-close {
-  color: #CCCCCC;
+  color: #cccccc;
   display: none;
   font-size: 30px;
   line-height: 1;
@@ -4503,7 +4503,7 @@ button::-moz-focus-inner {
 }
 /* line 138, ../../../contrib/zurb_foundation/scss/foundation/components/_clearing.scss */
 .clearing-close:hover, .clearing-close:focus {
-  color: #CCCCCC;
+  color: #cccccc;
 }
 
 /* line 142, ../../../contrib/zurb_foundation/scss/foundation/components/_clearing.scss */
@@ -4557,7 +4557,7 @@ button::-moz-focus-inner {
   .clearing-main-prev > span {
     left: 5px;
     border-color: transparent;
-    border-right-color: #CCCCCC;
+    border-right-color: #cccccc;
   }
 
   /* line 180, ../../../contrib/zurb_foundation/scss/foundation/components/_clearing.scss */
@@ -4567,7 +4567,7 @@ button::-moz-focus-inner {
   /* line 182, ../../../contrib/zurb_foundation/scss/foundation/components/_clearing.scss */
   .clearing-main-next > span {
     border-color: transparent;
-    border-left-color: #CCCCCC;
+    border-left-color: #cccccc;
   }
 
   /* line 188, ../../../contrib/zurb_foundation/scss/foundation/components/_clearing.scss */
@@ -4653,7 +4653,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFF;
+  background: white;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4682,7 +4682,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent transparent #FFF transparent;
+  border-color: transparent transparent white transparent;
   border-bottom-style: solid;
   position: absolute;
   top: -12px;
@@ -4720,7 +4720,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFF;
+  background: white;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4750,7 +4750,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent #FFF transparent transparent;
+  border-color: transparent white transparent transparent;
   border-right-style: solid;
   position: absolute;
   top: 10px;
@@ -4778,7 +4778,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFF;
+  background: white;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4808,7 +4808,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent transparent transparent #FFF;
+  border-color: transparent transparent transparent white;
   border-left-style: solid;
   position: absolute;
   top: 10px;
@@ -4838,7 +4838,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFF;
+  background: white;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4868,7 +4868,7 @@ button::-moz-focus-inner {
   display: block;
   height: 0;
   width: 0;
-  border-color: #FFF transparent transparent transparent;
+  border-color: white transparent transparent transparent;
   border-top-style: solid;
   bottom: -12px;
   position: absolute;
@@ -4902,7 +4902,7 @@ button::-moz-focus-inner {
 }
 /* line 215, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown.scss */
 .f-dropdown li:hover, .f-dropdown li:focus {
-  background: #EEEEEE;
+  background: #eeeeee;
 }
 /* line 218, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown.scss */
 .f-dropdown li a {
@@ -4917,7 +4917,7 @@ button::-moz-focus-inner {
   list-style: none;
   margin-left: 0;
   position: absolute;
-  background: #FFF;
+  background: white;
   border: solid 1px #cccccc;
   font-size: 0.875rem;
   height: auto;
@@ -4976,7 +4976,7 @@ button::-moz-focus-inner {
 }
 /* line 63, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button::after, button.dropdown::after {
-  border-color: #FFF transparent transparent transparent;
+  border-color: white transparent transparent transparent;
   border-style: solid;
   content: "";
   display: block;
@@ -4993,7 +4993,7 @@ button::-moz-focus-inner {
 }
 /* line 117, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button::after, button.dropdown::after {
-  border-color: #FFF transparent transparent transparent;
+  border-color: white transparent transparent transparent;
 }
 /* line 124, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.tiny, button.dropdown.tiny {
@@ -5007,7 +5007,7 @@ button::-moz-focus-inner {
 }
 /* line 117, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.tiny::after, button.dropdown.tiny::after {
-  border-color: #FFF transparent transparent transparent;
+  border-color: white transparent transparent transparent;
 }
 /* line 125, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.small, button.dropdown.small {
@@ -5021,7 +5021,7 @@ button::-moz-focus-inner {
 }
 /* line 117, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.small::after, button.dropdown.small::after {
-  border-color: #FFF transparent transparent transparent;
+  border-color: white transparent transparent transparent;
 }
 /* line 126, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.large, button.dropdown.large {
@@ -5035,7 +5035,7 @@ button::-moz-focus-inner {
 }
 /* line 117, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.large::after, button.dropdown.large::after {
-  border-color: #FFF transparent transparent transparent;
+  border-color: white transparent transparent transparent;
 }
 /* line 127, ../../../contrib/zurb_foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.secondary:after, button.dropdown.secondary:after {
@@ -5182,35 +5182,35 @@ button::-moz-focus-inner {
 }
 /* line 177, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * label {
-  color: #FFF;
+  color: white;
 }
 /* line 179, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * i {
-  color: #FFF;
+  color: white;
 }
 /* line 182, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a:hover {
-  background: #008CBA;
+  background: #008cba;
 }
 /* line 186, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a:hover label {
-  color: #FFF;
+  color: white;
 }
 /* line 188, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a:hover i {
-  color: #FFF;
+  color: white;
 }
 /* line 191, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a.active {
-  background: #008CBA;
+  background: #008cba;
 }
 /* line 195, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a.active label {
-  color: #FFF;
+  color: white;
 }
 /* line 197, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > a.active i {
-  color: #FFF;
+  color: white;
 }
 /* line 201, ../../../contrib/zurb_foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar .item.disabled {
@@ -5537,7 +5537,7 @@ button::-moz-focus-inner {
 /* line 51, ../../../contrib/zurb_foundation/scss/foundation/components/_joyride.scss */
 .joyride-tip-guide {
   background: #333333;
-  color: #FFF;
+  color: white;
   display: none;
   font-family: inherit;
   font-weight: normal;
@@ -5614,7 +5614,7 @@ button::-moz-focus-inner {
 .joyride-tip-guide h4,
 .joyride-tip-guide h5,
 .joyride-tip-guide h6 {
-  color: #FFF;
+  color: white;
   font-weight: bold;
   line-height: 1.25;
   margin: 0;
@@ -5658,7 +5658,7 @@ button::-moz-focus-inner {
 }
 /* line 154, ../../../contrib/zurb_foundation/scss/foundation/components/_joyride.scss */
 .joyride-close-tip:hover, .joyride-close-tip:focus {
-  color: #EEEEEE !important;
+  color: #eeeeee !important;
 }
 
 /* line 158, ../../../contrib/zurb_foundation/scss/foundation/components/_joyride.scss */
@@ -5676,9 +5676,9 @@ button::-moz-focus-inner {
 
 /* line 170, ../../../contrib/zurb_foundation/scss/foundation/components/_joyride.scss */
 .joyride-expose-wrapper {
-  background-color: #FFF;
+  background-color: white;
   border-radius: 3px;
-  box-shadow: 0 0 15px #FFF;
+  box-shadow: 0 0 15px white;
   position: absolute;
   z-index: 102;
 }
@@ -5747,7 +5747,7 @@ kbd {
 /* line 91, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label {
   display: inline-block;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-weight: normal;
   line-height: 1;
   margin-bottom: auto;
@@ -5757,8 +5757,8 @@ kbd {
   white-space: nowrap;
   padding: 0.25rem 0.5rem 0.25rem;
   font-size: 0.6875rem;
-  background-color: #008CBA;
-  color: #FFF;
+  background-color: #008cba;
+  color: white;
 }
 /* line 96, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.radius {
@@ -5771,17 +5771,17 @@ kbd {
 /* line 99, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.alert {
   background-color: #f04124;
-  color: #FFF;
+  color: white;
 }
 /* line 100, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.warning {
   background-color: #f08a24;
-  color: #FFF;
+  color: white;
 }
 /* line 101, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.success {
-  background-color: #43AC6A;
-  color: #FFF;
+  background-color: #43ac6a;
+  color: white;
 }
 /* line 102, ../../../contrib/zurb_foundation/scss/foundation/components/_labels.scss */
 .label.secondary {
@@ -5796,7 +5796,7 @@ kbd {
 
 /* line 18, ../../../contrib/zurb_foundation/scss/foundation/components/_magellan.scss */
 [data-magellan-expedition], [data-magellan-expedition-clone] {
-  background: #FFF;
+  background: white;
   min-width: 100%;
   padding: 10px;
   z-index: 50;
@@ -5815,22 +5815,28 @@ kbd {
 }
 
 @-webkit-keyframes rotate {
+  /* line 54, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
   from {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
+  /* line 58, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
   to {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 @keyframes rotate {
+  /* line 66, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
   from {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
+  /* line 72, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
   to {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -5880,7 +5886,7 @@ kbd {
   animation-iteration-count: infinite;
   animation-name: rotate;
   animation-timing-function: linear;
-  border-color: #555555 #FFF;
+  border-color: #555555 white;
   border: solid 3px;
   display: block;
   height: 40px;
@@ -5932,7 +5938,7 @@ kbd {
   bottom: 0;
   position: absolute;
   background-color: rgba(51, 51, 51, 0.8);
-  color: #FFF;
+  color: white;
   font-size: 0.875rem;
   padding: 0.625rem 0.875rem;
   width: 100%;
@@ -5941,7 +5947,7 @@ kbd {
 .orbit-container .orbit-slide-number {
   left: 10px;
   background: transparent;
-  color: #FFF;
+  color: white;
   font-size: 12px;
   position: absolute;
   top: 10px;
@@ -5973,7 +5979,7 @@ kbd {
 }
 /* line 223, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-timer > span {
-  border: solid 4px #FFF;
+  border: solid 4px white;
   border-bottom: none;
   border-top: none;
   display: none;
@@ -5991,7 +5997,7 @@ kbd {
   border: inset 8px;
   border-left-style: solid;
   border-color: transparent;
-  border-left-color: #FFF;
+  border-left-color: white;
   right: -4px;
 }
 /* line 247, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
@@ -6040,11 +6046,11 @@ kbd {
 .orbit-container .orbit-prev > span {
   border-right-style: solid;
   border-color: transparent;
-  border-right-color: #FFF;
+  border-right-color: white;
 }
 /* line 292, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-prev:hover > span {
-  border-right-color: #FFF;
+  border-right-color: white;
 }
 /* line 296, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-next {
@@ -6054,13 +6060,13 @@ kbd {
 .orbit-container .orbit-next > span {
   border-color: transparent;
   border-left-style: solid;
-  border-left-color: #FFF;
+  border-left-color: white;
   left: 50%;
   margin-left: -4px;
 }
 /* line 304, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-next:hover > span {
-  border-left-color: #FFF;
+  border-left-color: white;
 }
 
 /* line 310, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
@@ -6080,7 +6086,7 @@ kbd {
 }
 /* line 320, ../../../contrib/zurb_foundation/scss/foundation/components/_orbit.scss */
 .orbit-bullets li {
-  background: #CCCCCC;
+  background: #cccccc;
   cursor: pointer;
   display: inline-block;
   float: none;
@@ -6193,14 +6199,14 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.p
 }
 /* line 69, ../../../contrib/zurb_foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li.current a, ul.pagination li.current button {
-  background: #008CBA;
-  color: #FFF;
+  background: #008cba;
+  color: white;
   cursor: default;
   font-weight: bold;
 }
 /* line 75, ../../../contrib/zurb_foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li.current a:hover, ul.pagination li.current a:focus, ul.pagination li.current button:hover, ul.pagination li.current button:focus {
-  background: #008CBA;
+  background: #008cba;
 }
 /* line 137, ../../../contrib/zurb_foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li {
@@ -6222,7 +6228,7 @@ ul.pagination li {
 /* Pricing Tables */
 /* line 139, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table {
-  border: solid 1px #DDDDDD;
+  border: solid 1px #dddddd;
   margin-left: 0;
   margin-bottom: 1.25rem;
 }
@@ -6234,8 +6240,8 @@ ul.pagination li {
 /* line 142, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .title {
   background-color: #333333;
-  color: #EEEEEE;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  color: #eeeeee;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   padding: 0.9375rem 1.25rem;
@@ -6243,9 +6249,9 @@ ul.pagination li {
 }
 /* line 143, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .price {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   color: #333333;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: normal;
   padding: 0.9375rem 1.25rem;
@@ -6253,8 +6259,8 @@ ul.pagination li {
 }
 /* line 144, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .description {
-  background-color: #FFF;
-  border-bottom: dotted 1px #DDDDDD;
+  background-color: white;
+  border-bottom: dotted 1px #dddddd;
   color: #777777;
   font-size: 0.75rem;
   font-weight: normal;
@@ -6264,8 +6270,8 @@ ul.pagination li {
 }
 /* line 145, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .bullet-item {
-  background-color: #FFF;
-  border-bottom: dotted 1px #DDDDDD;
+  background-color: white;
+  border-bottom: dotted 1px #dddddd;
   color: #333333;
   font-size: 0.875rem;
   font-weight: normal;
@@ -6274,7 +6280,7 @@ ul.pagination li {
 }
 /* line 146, ../../../contrib/zurb_foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .cta-button {
-  background-color: #FFF;
+  background-color: white;
   padding: 1.25rem 1.25rem 0;
   text-align: center;
 }
@@ -6282,7 +6288,7 @@ ul.pagination li {
 /* Progress Bar */
 /* line 59, ../../../contrib/zurb_foundation/scss/foundation/components/_progress-bars.scss */
 .progress {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border: 1px solid white;
   height: 1.5625rem;
   margin-bottom: 0.625rem;
@@ -6290,7 +6296,7 @@ ul.pagination li {
 }
 /* line 63, ../../../contrib/zurb_foundation/scss/foundation/components/_progress-bars.scss */
 .progress .meter {
-  background: #008CBA;
+  background: #008cba;
   display: block;
   height: 100%;
   float: left;
@@ -6306,7 +6312,7 @@ ul.pagination li {
 }
 /* line 67, ../../../contrib/zurb_foundation/scss/foundation/components/_progress-bars.scss */
 .progress .meter.success {
-  background: #43AC6A;
+  background: #43ac6a;
   display: block;
   height: 100%;
   float: left;
@@ -6330,7 +6336,7 @@ ul.pagination li {
 }
 /* line 71, ../../../contrib/zurb_foundation/scss/foundation/components/_progress-bars.scss */
 .progress.success .meter {
-  background: #43AC6A;
+  background: #43ac6a;
   display: block;
   height: 100%;
   float: left;
@@ -6363,7 +6369,7 @@ ul.pagination li {
 
 /* line 131, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider {
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   margin: 1.25rem 0;
   position: relative;
   -ms-touch-action: none;
@@ -6371,11 +6377,11 @@ ul.pagination li {
   display: block;
   height: 1rem;
   width: 100%;
-  background: #FAFAFA;
+  background: #fafafa;
 }
 /* line 134, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.vertical-range {
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   margin: 1.25rem 0;
   position: relative;
   -ms-touch-action: none;
@@ -6402,12 +6408,12 @@ ul.pagination li {
 }
 /* line 151, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.radius {
-  background: #FAFAFA;
+  background: #fafafa;
   border-radius: 3px;
 }
 /* line 153, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.radius .range-slider-handle {
-  background: #008CBA;
+  background: #008cba;
   border-radius: 3px;
 }
 /* line 118, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
@@ -6416,12 +6422,12 @@ ul.pagination li {
 }
 /* line 155, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.round {
-  background: #FAFAFA;
+  background: #fafafa;
   border-radius: 1000px;
 }
 /* line 157, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.round .range-slider-handle {
-  background: #008CBA;
+  background: #008cba;
   border-radius: 1000px;
 }
 /* line 118, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
@@ -6430,13 +6436,13 @@ ul.pagination li {
 }
 /* line 159, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.disabled, .range-slider[disabled] {
-  background: #FAFAFA;
+  background: #fafafa;
   cursor: not-allowed;
   opacity: 0.7;
 }
 /* line 161, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.disabled .range-slider-handle, .range-slider[disabled] .range-slider-handle {
-  background: #008CBA;
+  background: #008cba;
   cursor: default;
   opacity: 0.7;
 }
@@ -6467,7 +6473,7 @@ ul.pagination li {
   z-index: 1;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: #008CBA;
+  background: #008cba;
 }
 /* line 118, ../../../contrib/zurb_foundation/scss/foundation/components/_range-slider.scss */
 .range-slider-handle:hover {
@@ -6476,7 +6482,7 @@ ul.pagination li {
 
 /* line 172, ../../../contrib/zurb_foundation/scss/foundation/components/_reveal.scss */
 .reveal-modal-bg {
-  background: #000000;
+  background: black;
   background: rgba(0, 0, 0, 0.45);
   bottom: 0;
   display: none;
@@ -6498,7 +6504,7 @@ ul.pagination li {
   width: 100%;
   z-index: 1005;
   left: 0;
-  background-color: #FFF;
+  background-color: white;
   padding: 1.875rem;
   border: solid 1px #666666;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -6641,7 +6647,7 @@ ul.pagination li {
 /* line 118, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav {
   display: block;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   list-style-position: outside;
   list-style-type: none;
   margin: 0;
@@ -6655,7 +6661,7 @@ ul.pagination li {
 }
 /* line 76, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li a:not(.button) {
-  color: #008CBA;
+  color: #008cba;
   display: block;
   margin: 0;
   padding: 0.4375rem 0.875rem;
@@ -6672,7 +6678,7 @@ ul.pagination li {
 /* line 91, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li.active > a:first-child:not(.button) {
   color: #1cc7ff;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
 /* line 97, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
@@ -6685,7 +6691,7 @@ ul.pagination li {
 }
 /* line 105, ../../../contrib/zurb_foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li.heading {
-  color: #008CBA;
+  color: #008cba;
   font-size: 0.875rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -6737,7 +6743,7 @@ ul.pagination li {
 }
 /* line 166, ../../../contrib/zurb_foundation/scss/foundation/components/_split-buttons.scss */
 .split.button span:after {
-  border-color: #FFF transparent transparent transparent;
+  border-color: white transparent transparent transparent;
 }
 /* line 103, ../../../contrib/zurb_foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.secondary span {
@@ -6745,7 +6751,7 @@ ul.pagination li {
 }
 /* line 166, ../../../contrib/zurb_foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.secondary span:after {
-  border-color: #FFF transparent transparent transparent;
+  border-color: white transparent transparent transparent;
 }
 /* line 103, ../../../contrib/zurb_foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.alert span {
@@ -6858,7 +6864,7 @@ ul.pagination li {
 .sub-nav li {
   color: #999999;
   float: left;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   font-weight: normal;
   margin-left: 1rem;
@@ -6883,8 +6889,8 @@ ul.pagination li {
 .sub-nav dd.active a,
 .sub-nav li.active a {
   border-radius: 3px;
-  background: #008CBA;
-  color: #FFF;
+  background: #008cba;
+  color: white;
   cursor: default;
   font-weight: normal;
   padding: 0.1875rem 1rem;
@@ -6910,7 +6916,7 @@ ul.pagination li {
 }
 /* line 58, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch label {
-  background: #DDDDDD;
+  background: #dddddd;
   color: transparent;
   cursor: pointer;
   display: block;
@@ -6936,7 +6942,7 @@ ul.pagination li {
 }
 /* line 88, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch label:after {
-  background: #FFF;
+  background: white;
   content: "";
   display: block;
   height: 1.5rem;
@@ -6956,7 +6962,7 @@ ul.pagination li {
 }
 /* line 110, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch input:checked + label {
-  background: #008CBA;
+  background: #008cba;
 }
 /* line 114, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch input:checked + label:after {
@@ -6979,15 +6985,15 @@ ul.pagination li {
 /* line 157, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch label {
   color: transparent;
-  background: #DDDDDD;
+  background: #dddddd;
 }
 /* line 162, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch label:after {
-  background: #FFF;
+  background: white;
 }
 /* line 166, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch input:checked + label {
-  background: #008CBA;
+  background: #008cba;
 }
 /* line 126, ../../../contrib/zurb_foundation/scss/foundation/components/_switches.scss */
 .switch.large label {
@@ -7054,8 +7060,8 @@ ul.pagination li {
 
 /* line 131, ../../../contrib/zurb_foundation/scss/foundation/components/_tables.scss */
 table {
-  background: #FFF;
-  border: solid 1px #DDDDDD;
+  background: white;
+  border: solid 1px #dddddd;
   margin-bottom: 1.25rem;
   table-layout: auto;
 }
@@ -7068,7 +7074,7 @@ table caption {
 }
 /* line 78, ../../../contrib/zurb_foundation/scss/foundation/components/_tables.scss */
 table thead {
-  background: #F5F5F5;
+  background: whitesmoke;
 }
 /* line 82, ../../../contrib/zurb_foundation/scss/foundation/components/_tables.scss */
 table thead tr th,
@@ -7080,7 +7086,7 @@ table thead tr td {
 }
 /* line 92, ../../../contrib/zurb_foundation/scss/foundation/components/_tables.scss */
 table tfoot {
-  background: #F5F5F5;
+  background: whitesmoke;
 }
 /* line 96, ../../../contrib/zurb_foundation/scss/foundation/components/_tables.scss */
 table tfoot tr th,
@@ -7100,7 +7106,7 @@ table tr td {
 }
 /* line 115, ../../../contrib/zurb_foundation/scss/foundation/components/_tables.scss */
 table tr.even, table tr.alt, table tr:nth-of-type(even) {
-  background: #F9F9F9;
+  background: #f9f9f9;
 }
 /* line 120, ../../../contrib/zurb_foundation/scss/foundation/components/_tables.scss */
 table thead tr th,
@@ -7116,7 +7122,7 @@ table tr td {
 /* Image Thumbnails */
 /* line 59, ../../../contrib/zurb_foundation/scss/foundation/components/_thumbs.scss */
 .th {
-  border: solid 4px #FFF;
+  border: solid 4px white;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
   display: inline-block;
   line-height: 0;
@@ -7135,7 +7141,7 @@ table tr td {
 /* Tooltips */
 /* line 38, ../../../contrib/zurb_foundation/scss/foundation/components/_tooltips.scss */
 .has-tip {
-  border-bottom: dotted 1px #CCCCCC;
+  border-bottom: dotted 1px #cccccc;
   color: #333333;
   cursor: help;
   font-weight: bold;
@@ -7143,7 +7149,7 @@ table tr td {
 /* line 44, ../../../contrib/zurb_foundation/scss/foundation/components/_tooltips.scss */
 .has-tip:hover, .has-tip:focus {
   border-bottom: dotted 1px #003f54;
-  color: #008CBA;
+  color: #008cba;
 }
 /* line 50, ../../../contrib/zurb_foundation/scss/foundation/components/_tooltips.scss */
 .has-tip.tip-left, .has-tip.tip-right {
@@ -7153,7 +7159,7 @@ table tr td {
 /* line 54, ../../../contrib/zurb_foundation/scss/foundation/components/_tooltips.scss */
 .tooltip {
   background: #333333;
-  color: #FFF;
+  color: white;
   display: none;
   font-size: 0.875rem;
   font-weight: normal;
@@ -7197,7 +7203,7 @@ table tr td {
 /* line 95, ../../../contrib/zurb_foundation/scss/foundation/components/_tooltips.scss */
 .tooltip.opened {
   border-bottom: dotted 1px #003f54 !important;
-  color: #008CBA !important;
+  color: #008cba !important;
 }
 
 /* line 101, ../../../contrib/zurb_foundation/scss/foundation/components/_tooltips.scss */
@@ -7499,7 +7505,7 @@ td {
 /* Default Link Styles */
 /* line 220, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 a {
-  color: #00A6D2;
+  color: #00a6d2;
   line-height: inherit;
   text-decoration: none;
 }
@@ -7538,8 +7544,8 @@ p aside {
 /* Default header styles */
 /* line 255, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 h1, h2, h3, h4, h5, h6 {
-  color: #323A45;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  color: #323a45;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.4;
@@ -7595,7 +7601,7 @@ h6 {
 
 /* line 281, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 hr {
-  border: solid #DDDDDD;
+  border: solid #dddddd;
   border-width: 1px 0 0;
   clear: both;
   height: 0;
@@ -7721,7 +7727,7 @@ abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: #222;
+  color: #222222;
   cursor: help;
 }
 
@@ -7731,7 +7737,7 @@ abbr {
 }
 /* line 399, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 abbr[title] {
-  border-bottom: 1px dotted #DDDDDD;
+  border-bottom: 1px dotted #dddddd;
 }
 
 /* Blockquotes */
@@ -7739,7 +7745,7 @@ abbr[title] {
 blockquote {
   margin: 0 0 1.25rem;
   padding: 0.5625rem 1.25rem 0 1.1875rem;
-  border-left: 1px solid #DDDDDD;
+  border-left: 1px solid #dddddd;
 }
 /* line 410, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
 blockquote cite {
@@ -7769,7 +7775,7 @@ blockquote p {
 .vcard {
   display: inline-block;
   margin: 0 0 1.25rem 0;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   padding: 0.625rem 0.75rem;
 }
 /* line 437, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
@@ -7842,7 +7848,7 @@ blockquote p {
   /* line 479, ../../../contrib/zurb_foundation/scss/foundation/components/_type.scss */
   * {
     background: transparent !important;
-    color: #000000 !important;
+    color: black !important;
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
     text-shadow: none !important;
@@ -7949,14 +7955,14 @@ blockquote p {
 .tab-bar {
   -webkit-backface-visibility: hidden;
   background: #333333;
-  color: #FFF;
+  color: white;
   height: 2.8125rem;
   line-height: 2.8125rem;
   position: relative;
 }
 /* line 185, ../../../contrib/zurb_foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar h1, .tab-bar h2, .tab-bar h3, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
-  color: #FFF;
+  color: white;
   font-weight: bold;
   line-height: 2.8125rem;
   margin: 0;
@@ -8020,7 +8026,7 @@ blockquote p {
 
 /* line 424, ../../../contrib/zurb_foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar .menu-icon {
-  color: #FFF;
+  color: white;
   display: block;
   height: 2.8125rem;
   padding: 0;
@@ -8038,7 +8044,7 @@ blockquote p {
   top: 50%;
   margin-top: -0.5rem;
   left: 0.90625rem;
-  box-shadow: 0 0 0 1px #FFF, 0 7px 0 1px #FFF, 0 14px 0 1px #FFF;
+  box-shadow: 0 0 0 1px white, 0 7px 0 1px white, 0 14px 0 1px white;
   width: 1rem;
 }
 /* line 229, ../../../contrib/zurb_foundation/scss/foundation/components/_global.scss */
@@ -8543,7 +8549,7 @@ ul.off-canvas-list li a:active {
 }
 /* line 345, ../../../contrib/zurb_foundation/scss/foundation/components/_offcanvas.scss */
 .left-submenu .back > a {
-  background: #444;
+  background: #444444;
   border-bottom: none;
   border-top: 1px solid #5e5e5e;
   color: #999999;
@@ -8606,7 +8612,7 @@ ul.off-canvas-list li a:active {
 }
 /* line 345, ../../../contrib/zurb_foundation/scss/foundation/components/_offcanvas.scss */
 .right-submenu .back > a {
-  background: #444;
+  background: #444444;
   border-bottom: none;
   border-top: 1px solid #5e5e5e;
   color: #999999;
@@ -8670,7 +8676,7 @@ ul.off-canvas-list li a:active {
 }
 /* line 345, ../../../contrib/zurb_foundation/scss/foundation/components/_offcanvas.scss */
 .top-submenu .back > a {
-  background: #444;
+  background: #444444;
   border-bottom: none;
   border-top: 1px solid #5e5e5e;
   color: #999999;
@@ -8728,7 +8734,7 @@ ul.off-canvas-list li a:active {
 }
 /* line 345, ../../../contrib/zurb_foundation/scss/foundation/components/_offcanvas.scss */
 .bottom-submenu .back > a {
-  background: #444;
+  background: #444444;
   border-bottom: none;
   border-top: 1px solid #5e5e5e;
   color: #999999;
@@ -8769,17 +8775,17 @@ ul.off-canvas-list li a:active {
 /* small displays */
 @media only screen {
   /* line 244, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .show-for-small-only, .show-for-small-up, .show-for-small, .show-for-small-down, .hide-for-medium-only, .hide-for-medium-up, .hide-for-medium, .show-for-medium-down, .hide-for-large-only, .hide-for-large-up, .hide-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xlarge, .show-for-xlarge-down, .hide-for-xxlarge-only, .hide-for-xxlarge-up, .hide-for-xxlarge, .show-for-xxlarge-down {
+  .show-for-small-only, .show-for-small-up, .show-for-small, .show-for-small-down, .hide-for-medium-only, .hide-for-medium-up, .hide-for-medium, .show-for-medium-down, .hide-for-large-only, .hide-for-large-up, .hide-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xxlarge-only, .hide-for-xxlarge-up {
     display: inherit !important;
   }
 
   /* line 247, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hide-for-small-only, .hide-for-small-up, .hide-for-small, .hide-for-small-down, .show-for-medium-only, .show-for-medium-up, .show-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .show-for-xlarge, .hide-for-xlarge-down, .show-for-xxlarge-only, .show-for-xxlarge-up, .show-for-xxlarge, .hide-for-xxlarge-down {
+  .hide-for-small-only, .hide-for-small-up, .hide-for-small, .hide-for-small-down, .show-for-medium-only, .show-for-medium-up, .show-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .show-for-xxlarge-only, .show-for-xxlarge-up {
     display: none !important;
   }
 
   /* line 251, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .visible-for-small-only, .visible-for-small-up, .visible-for-small, .visible-for-small-down, .hidden-for-medium-only, .hidden-for-medium-up, .hidden-for-medium, .visible-for-medium-down, .hidden-for-large-only, .hidden-for-large-up, .hidden-for-large, .visible-for-large-down, .hidden-for-xlarge-only, .hidden-for-xlarge-up, .hidden-for-xlarge, .visible-for-xlarge-down, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up, .hidden-for-xxlarge, .visible-for-xxlarge-down {
+  .visible-for-small-only, .visible-for-small-up, .visible-for-small, .visible-for-small-down, .hidden-for-medium-only, .hidden-for-medium-up, .hidden-for-medium, .visible-for-medium-down, .hidden-for-large-only, .hidden-for-large-up, .hidden-for-large, .visible-for-large-down, .hidden-for-xlarge-only, .hidden-for-xlarge-up, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up {
     position: static !important;
     height: auto;
     width: auto;
@@ -8788,7 +8794,7 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 254, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hidden-for-small-only, .hidden-for-small-up, .hidden-for-small, .hidden-for-small-down, .visible-for-medium-only, .visible-for-medium-up, .visible-for-medium, .hidden-for-medium-down, .visible-for-large-only, .visible-for-large-up, .visible-for-large, .hidden-for-large-down, .visible-for-xlarge-only, .visible-for-xlarge-up, .visible-for-xlarge, .hidden-for-xlarge-down, .visible-for-xxlarge-only, .visible-for-xxlarge-up, .visible-for-xxlarge, .hidden-for-xxlarge-down {
+  .hidden-for-small-only, .hidden-for-small-up, .hidden-for-small, .hidden-for-small-down, .visible-for-medium-only, .visible-for-medium-up, .visible-for-medium, .hidden-for-medium-down, .visible-for-large-only, .visible-for-large-up, .visible-for-large, .hidden-for-large-down, .visible-for-xlarge-only, .visible-for-xlarge-up, .visible-for-xxlarge-only, .visible-for-xxlarge-up {
     clip: rect(1px, 1px, 1px, 1px);
     height: 1px;
     overflow: hidden;
@@ -8797,44 +8803,44 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 259, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  table.show-for-small-only, table.show-for-small-up, table.show-for-small, table.show-for-small-down, table.hide-for-medium-only, table.hide-for-medium-up, table.hide-for-medium, table.show-for-medium-down, table.hide-for-large-only, table.hide-for-large-up, table.hide-for-large, table.show-for-large-down, table.hide-for-xlarge-only, table.hide-for-xlarge-up, table.hide-for-xlarge, table.show-for-xlarge-down, table.hide-for-xxlarge-only, table.hide-for-xxlarge-up, table.hide-for-xxlarge, table.show-for-xxlarge-down {
+  table.show-for-small-only, table.show-for-small-up, table.show-for-small, table.show-for-small-down, table.hide-for-medium-only, table.hide-for-medium-up, table.hide-for-medium, table.show-for-medium-down, table.hide-for-large-only, table.hide-for-large-up, table.hide-for-large, table.show-for-large-down, table.hide-for-xlarge-only, table.hide-for-xlarge-up, table.hide-for-xxlarge-only, table.hide-for-xxlarge-up {
     display: table !important;
   }
 
   /* line 262, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  thead.show-for-small-only, thead.show-for-small-up, thead.show-for-small, thead.show-for-small-down, thead.hide-for-medium-only, thead.hide-for-medium-up, thead.hide-for-medium, thead.show-for-medium-down, thead.hide-for-large-only, thead.hide-for-large-up, thead.hide-for-large, thead.show-for-large-down, thead.hide-for-xlarge-only, thead.hide-for-xlarge-up, thead.hide-for-xlarge, thead.show-for-xlarge-down, thead.hide-for-xxlarge-only, thead.hide-for-xxlarge-up, thead.hide-for-xxlarge, thead.show-for-xxlarge-down {
+  thead.show-for-small-only, thead.show-for-small-up, thead.show-for-small, thead.show-for-small-down, thead.hide-for-medium-only, thead.hide-for-medium-up, thead.hide-for-medium, thead.show-for-medium-down, thead.hide-for-large-only, thead.hide-for-large-up, thead.hide-for-large, thead.show-for-large-down, thead.hide-for-xlarge-only, thead.hide-for-xlarge-up, thead.hide-for-xxlarge-only, thead.hide-for-xxlarge-up {
     display: table-header-group !important;
   }
 
   /* line 265, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tbody.show-for-small-only, tbody.show-for-small-up, tbody.show-for-small, tbody.show-for-small-down, tbody.hide-for-medium-only, tbody.hide-for-medium-up, tbody.hide-for-medium, tbody.show-for-medium-down, tbody.hide-for-large-only, tbody.hide-for-large-up, tbody.hide-for-large, tbody.show-for-large-down, tbody.hide-for-xlarge-only, tbody.hide-for-xlarge-up, tbody.hide-for-xlarge, tbody.show-for-xlarge-down, tbody.hide-for-xxlarge-only, tbody.hide-for-xxlarge-up, tbody.hide-for-xxlarge, tbody.show-for-xxlarge-down {
+  tbody.show-for-small-only, tbody.show-for-small-up, tbody.show-for-small, tbody.show-for-small-down, tbody.hide-for-medium-only, tbody.hide-for-medium-up, tbody.hide-for-medium, tbody.show-for-medium-down, tbody.hide-for-large-only, tbody.hide-for-large-up, tbody.hide-for-large, tbody.show-for-large-down, tbody.hide-for-xlarge-only, tbody.hide-for-xlarge-up, tbody.hide-for-xxlarge-only, tbody.hide-for-xxlarge-up {
     display: table-row-group !important;
   }
 
   /* line 268, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tr.show-for-small-only, tr.show-for-small-up, tr.show-for-small, tr.show-for-small-down, tr.hide-for-medium-only, tr.hide-for-medium-up, tr.hide-for-medium, tr.show-for-medium-down, tr.hide-for-large-only, tr.hide-for-large-up, tr.hide-for-large, tr.show-for-large-down, tr.hide-for-xlarge-only, tr.hide-for-xlarge-up, tr.hide-for-xlarge, tr.show-for-xlarge-down, tr.hide-for-xxlarge-only, tr.hide-for-xxlarge-up, tr.hide-for-xxlarge, tr.show-for-xxlarge-down {
+  tr.show-for-small-only, tr.show-for-small-up, tr.show-for-small, tr.show-for-small-down, tr.hide-for-medium-only, tr.hide-for-medium-up, tr.hide-for-medium, tr.show-for-medium-down, tr.hide-for-large-only, tr.hide-for-large-up, tr.hide-for-large, tr.show-for-large-down, tr.hide-for-xlarge-only, tr.hide-for-xlarge-up, tr.hide-for-xxlarge-only, tr.hide-for-xxlarge-up {
     display: table-row;
   }
 
   /* line 271, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  th.show-for-small-only, td.show-for-small-only, th.show-for-small-up, td.show-for-small-up, th.show-for-small, td.show-for-small, th.show-for-small-down, td.show-for-small-down, th.hide-for-medium-only, td.hide-for-medium-only, th.hide-for-medium-up, td.hide-for-medium-up, th.hide-for-medium, td.hide-for-medium, th.show-for-medium-down, td.show-for-medium-down, th.hide-for-large-only, td.hide-for-large-only, th.hide-for-large-up, td.hide-for-large-up, th.hide-for-large, td.hide-for-large, th.show-for-large-down, td.show-for-large-down, th.hide-for-xlarge-only, td.hide-for-xlarge-only, th.hide-for-xlarge-up, td.hide-for-xlarge-up, th.hide-for-xlarge, td.hide-for-xlarge, th.show-for-xlarge-down, td.show-for-xlarge-down, th.hide-for-xxlarge-only, td.hide-for-xxlarge-only, th.hide-for-xxlarge-up, td.hide-for-xxlarge-up, th.hide-for-xxlarge, td.hide-for-xxlarge, th.show-for-xxlarge-down, td.show-for-xxlarge-down {
+  th.show-for-small-only, td.show-for-small-only, th.show-for-small-up, td.show-for-small-up, th.show-for-small, td.show-for-small, th.show-for-small-down, td.show-for-small-down, th.hide-for-medium-only, td.hide-for-medium-only, th.hide-for-medium-up, td.hide-for-medium-up, th.hide-for-medium, td.hide-for-medium, th.show-for-medium-down, td.show-for-medium-down, th.hide-for-large-only, td.hide-for-large-only, th.hide-for-large-up, td.hide-for-large-up, th.hide-for-large, td.hide-for-large, th.show-for-large-down, td.show-for-large-down, th.hide-for-xlarge-only, td.hide-for-xlarge-only, th.hide-for-xlarge-up, td.hide-for-xlarge-up, th.hide-for-xxlarge-only, td.hide-for-xxlarge-only, th.hide-for-xxlarge-up, td.hide-for-xxlarge-up {
     display: table-cell !important;
   }
 }
 /* medium displays */
 @media only screen and (min-width: 40.0625em) {
   /* line 244, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .show-for-medium-only, .show-for-medium-up, .show-for-medium, .show-for-medium-down, .hide-for-large-only, .hide-for-large-up, .hide-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xlarge, .show-for-xlarge-down, .hide-for-xxlarge-only, .hide-for-xxlarge-up, .hide-for-xxlarge, .show-for-xxlarge-down {
+  .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .show-for-medium-only, .show-for-medium-up, .show-for-medium, .show-for-medium-down, .hide-for-large-only, .hide-for-large-up, .hide-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xxlarge-only, .hide-for-xxlarge-up {
     display: inherit !important;
   }
 
   /* line 247, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .show-for-small-only, .hide-for-small-up, .show-for-small, .show-for-small-down, .hide-for-medium-only, .hide-for-medium-up, .hide-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .show-for-xlarge, .hide-for-xlarge-down, .show-for-xxlarge-only, .show-for-xxlarge-up, .show-for-xxlarge, .hide-for-xxlarge-down {
+  .show-for-small-only, .hide-for-small-up, .show-for-small, .show-for-small-down, .hide-for-medium-only, .hide-for-medium-up, .hide-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .show-for-xxlarge-only, .show-for-xxlarge-up {
     display: none !important;
   }
 
   /* line 251, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hidden-for-small-only, .visible-for-small-up, .hidden-for-small, .hidden-for-small-down, .visible-for-medium-only, .visible-for-medium-up, .visible-for-medium, .visible-for-medium-down, .hidden-for-large-only, .hidden-for-large-up, .hidden-for-large, .visible-for-large-down, .hidden-for-xlarge-only, .hidden-for-xlarge-up, .hidden-for-xlarge, .visible-for-xlarge-down, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up, .hidden-for-xxlarge, .visible-for-xxlarge-down {
+  .hidden-for-small-only, .visible-for-small-up, .hidden-for-small, .hidden-for-small-down, .visible-for-medium-only, .visible-for-medium-up, .visible-for-medium, .visible-for-medium-down, .hidden-for-large-only, .hidden-for-large-up, .hidden-for-large, .visible-for-large-down, .hidden-for-xlarge-only, .hidden-for-xlarge-up, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up {
     position: static !important;
     height: auto;
     width: auto;
@@ -8843,7 +8849,7 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 254, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .visible-for-small-only, .hidden-for-small-up, .visible-for-small, .visible-for-small-down, .hidden-for-medium-only, .hidden-for-medium-up, .hidden-for-medium, .hidden-for-medium-down, .visible-for-large-only, .visible-for-large-up, .visible-for-large, .hidden-for-large-down, .visible-for-xlarge-only, .visible-for-xlarge-up, .visible-for-xlarge, .hidden-for-xlarge-down, .visible-for-xxlarge-only, .visible-for-xxlarge-up, .visible-for-xxlarge, .hidden-for-xxlarge-down {
+  .visible-for-small-only, .hidden-for-small-up, .visible-for-small, .visible-for-small-down, .hidden-for-medium-only, .hidden-for-medium-up, .hidden-for-medium, .hidden-for-medium-down, .visible-for-large-only, .visible-for-large-up, .visible-for-large, .hidden-for-large-down, .visible-for-xlarge-only, .visible-for-xlarge-up, .visible-for-xxlarge-only, .visible-for-xxlarge-up {
     clip: rect(1px, 1px, 1px, 1px);
     height: 1px;
     overflow: hidden;
@@ -8852,44 +8858,44 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 259, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  table.hide-for-small-only, table.show-for-small-up, table.hide-for-small, table.hide-for-small-down, table.show-for-medium-only, table.show-for-medium-up, table.show-for-medium, table.show-for-medium-down, table.hide-for-large-only, table.hide-for-large-up, table.hide-for-large, table.show-for-large-down, table.hide-for-xlarge-only, table.hide-for-xlarge-up, table.hide-for-xlarge, table.show-for-xlarge-down, table.hide-for-xxlarge-only, table.hide-for-xxlarge-up, table.hide-for-xxlarge, table.show-for-xxlarge-down {
+  table.hide-for-small-only, table.show-for-small-up, table.hide-for-small, table.hide-for-small-down, table.show-for-medium-only, table.show-for-medium-up, table.show-for-medium, table.show-for-medium-down, table.hide-for-large-only, table.hide-for-large-up, table.hide-for-large, table.show-for-large-down, table.hide-for-xlarge-only, table.hide-for-xlarge-up, table.hide-for-xxlarge-only, table.hide-for-xxlarge-up {
     display: table !important;
   }
 
   /* line 262, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  thead.hide-for-small-only, thead.show-for-small-up, thead.hide-for-small, thead.hide-for-small-down, thead.show-for-medium-only, thead.show-for-medium-up, thead.show-for-medium, thead.show-for-medium-down, thead.hide-for-large-only, thead.hide-for-large-up, thead.hide-for-large, thead.show-for-large-down, thead.hide-for-xlarge-only, thead.hide-for-xlarge-up, thead.hide-for-xlarge, thead.show-for-xlarge-down, thead.hide-for-xxlarge-only, thead.hide-for-xxlarge-up, thead.hide-for-xxlarge, thead.show-for-xxlarge-down {
+  thead.hide-for-small-only, thead.show-for-small-up, thead.hide-for-small, thead.hide-for-small-down, thead.show-for-medium-only, thead.show-for-medium-up, thead.show-for-medium, thead.show-for-medium-down, thead.hide-for-large-only, thead.hide-for-large-up, thead.hide-for-large, thead.show-for-large-down, thead.hide-for-xlarge-only, thead.hide-for-xlarge-up, thead.hide-for-xxlarge-only, thead.hide-for-xxlarge-up {
     display: table-header-group !important;
   }
 
   /* line 265, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tbody.hide-for-small-only, tbody.show-for-small-up, tbody.hide-for-small, tbody.hide-for-small-down, tbody.show-for-medium-only, tbody.show-for-medium-up, tbody.show-for-medium, tbody.show-for-medium-down, tbody.hide-for-large-only, tbody.hide-for-large-up, tbody.hide-for-large, tbody.show-for-large-down, tbody.hide-for-xlarge-only, tbody.hide-for-xlarge-up, tbody.hide-for-xlarge, tbody.show-for-xlarge-down, tbody.hide-for-xxlarge-only, tbody.hide-for-xxlarge-up, tbody.hide-for-xxlarge, tbody.show-for-xxlarge-down {
+  tbody.hide-for-small-only, tbody.show-for-small-up, tbody.hide-for-small, tbody.hide-for-small-down, tbody.show-for-medium-only, tbody.show-for-medium-up, tbody.show-for-medium, tbody.show-for-medium-down, tbody.hide-for-large-only, tbody.hide-for-large-up, tbody.hide-for-large, tbody.show-for-large-down, tbody.hide-for-xlarge-only, tbody.hide-for-xlarge-up, tbody.hide-for-xxlarge-only, tbody.hide-for-xxlarge-up {
     display: table-row-group !important;
   }
 
   /* line 268, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tr.hide-for-small-only, tr.show-for-small-up, tr.hide-for-small, tr.hide-for-small-down, tr.show-for-medium-only, tr.show-for-medium-up, tr.show-for-medium, tr.show-for-medium-down, tr.hide-for-large-only, tr.hide-for-large-up, tr.hide-for-large, tr.show-for-large-down, tr.hide-for-xlarge-only, tr.hide-for-xlarge-up, tr.hide-for-xlarge, tr.show-for-xlarge-down, tr.hide-for-xxlarge-only, tr.hide-for-xxlarge-up, tr.hide-for-xxlarge, tr.show-for-xxlarge-down {
+  tr.hide-for-small-only, tr.show-for-small-up, tr.hide-for-small, tr.hide-for-small-down, tr.show-for-medium-only, tr.show-for-medium-up, tr.show-for-medium, tr.show-for-medium-down, tr.hide-for-large-only, tr.hide-for-large-up, tr.hide-for-large, tr.show-for-large-down, tr.hide-for-xlarge-only, tr.hide-for-xlarge-up, tr.hide-for-xxlarge-only, tr.hide-for-xxlarge-up {
     display: table-row;
   }
 
   /* line 271, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  th.hide-for-small-only, td.hide-for-small-only, th.show-for-small-up, td.show-for-small-up, th.hide-for-small, td.hide-for-small, th.hide-for-small-down, td.hide-for-small-down, th.show-for-medium-only, td.show-for-medium-only, th.show-for-medium-up, td.show-for-medium-up, th.show-for-medium, td.show-for-medium, th.show-for-medium-down, td.show-for-medium-down, th.hide-for-large-only, td.hide-for-large-only, th.hide-for-large-up, td.hide-for-large-up, th.hide-for-large, td.hide-for-large, th.show-for-large-down, td.show-for-large-down, th.hide-for-xlarge-only, td.hide-for-xlarge-only, th.hide-for-xlarge-up, td.hide-for-xlarge-up, th.hide-for-xlarge, td.hide-for-xlarge, th.show-for-xlarge-down, td.show-for-xlarge-down, th.hide-for-xxlarge-only, td.hide-for-xxlarge-only, th.hide-for-xxlarge-up, td.hide-for-xxlarge-up, th.hide-for-xxlarge, td.hide-for-xxlarge, th.show-for-xxlarge-down, td.show-for-xxlarge-down {
+  th.hide-for-small-only, td.hide-for-small-only, th.show-for-small-up, td.show-for-small-up, th.hide-for-small, td.hide-for-small, th.hide-for-small-down, td.hide-for-small-down, th.show-for-medium-only, td.show-for-medium-only, th.show-for-medium-up, td.show-for-medium-up, th.show-for-medium, td.show-for-medium, th.show-for-medium-down, td.show-for-medium-down, th.hide-for-large-only, td.hide-for-large-only, th.hide-for-large-up, td.hide-for-large-up, th.hide-for-large, td.hide-for-large, th.show-for-large-down, td.show-for-large-down, th.hide-for-xlarge-only, td.hide-for-xlarge-only, th.hide-for-xlarge-up, td.hide-for-xlarge-up, th.hide-for-xxlarge-only, td.hide-for-xxlarge-only, th.hide-for-xxlarge-up, td.hide-for-xxlarge-up {
     display: table-cell !important;
   }
 }
 /* large displays */
 @media only screen and (min-width: 64.0625em) {
   /* line 244, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xlarge, .show-for-xlarge-down, .hide-for-xxlarge-only, .hide-for-xxlarge-up, .hide-for-xxlarge, .show-for-xxlarge-down {
+  .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xxlarge-only, .hide-for-xxlarge-up {
     display: inherit !important;
   }
 
   /* line 247, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .show-for-small-only, .hide-for-small-up, .show-for-small, .show-for-small-down, .show-for-medium-only, .hide-for-medium-up, .show-for-medium, .show-for-medium-down, .hide-for-large-only, .hide-for-large-up, .hide-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .show-for-xlarge, .hide-for-xlarge-down, .show-for-xxlarge-only, .show-for-xxlarge-up, .show-for-xxlarge, .hide-for-xxlarge-down {
+  .show-for-small-only, .hide-for-small-up, .show-for-small, .show-for-small-down, .show-for-medium-only, .hide-for-medium-up, .show-for-medium, .show-for-medium-down, .hide-for-large-only, .hide-for-large-up, .hide-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .show-for-xxlarge-only, .show-for-xxlarge-up {
     display: none !important;
   }
 
   /* line 251, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hidden-for-small-only, .visible-for-small-up, .hidden-for-small, .hidden-for-small-down, .hidden-for-medium-only, .visible-for-medium-up, .hidden-for-medium, .hidden-for-medium-down, .visible-for-large-only, .visible-for-large-up, .visible-for-large, .visible-for-large-down, .hidden-for-xlarge-only, .hidden-for-xlarge-up, .hidden-for-xlarge, .visible-for-xlarge-down, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up, .hidden-for-xxlarge, .visible-for-xxlarge-down {
+  .hidden-for-small-only, .visible-for-small-up, .hidden-for-small, .hidden-for-small-down, .hidden-for-medium-only, .visible-for-medium-up, .hidden-for-medium, .hidden-for-medium-down, .visible-for-large-only, .visible-for-large-up, .visible-for-large, .visible-for-large-down, .hidden-for-xlarge-only, .hidden-for-xlarge-up, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up {
     position: static !important;
     height: auto;
     width: auto;
@@ -8898,7 +8904,7 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 254, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .visible-for-small-only, .hidden-for-small-up, .visible-for-small, .visible-for-small-down, .visible-for-medium-only, .hidden-for-medium-up, .visible-for-medium, .visible-for-medium-down, .hidden-for-large-only, .hidden-for-large-up, .hidden-for-large, .hidden-for-large-down, .visible-for-xlarge-only, .visible-for-xlarge-up, .visible-for-xlarge, .hidden-for-xlarge-down, .visible-for-xxlarge-only, .visible-for-xxlarge-up, .visible-for-xxlarge, .hidden-for-xxlarge-down {
+  .visible-for-small-only, .hidden-for-small-up, .visible-for-small, .visible-for-small-down, .visible-for-medium-only, .hidden-for-medium-up, .visible-for-medium, .visible-for-medium-down, .hidden-for-large-only, .hidden-for-large-up, .hidden-for-large, .hidden-for-large-down, .visible-for-xlarge-only, .visible-for-xlarge-up, .visible-for-xxlarge-only, .visible-for-xxlarge-up {
     clip: rect(1px, 1px, 1px, 1px);
     height: 1px;
     overflow: hidden;
@@ -8907,44 +8913,44 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 259, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  table.hide-for-small-only, table.show-for-small-up, table.hide-for-small, table.hide-for-small-down, table.hide-for-medium-only, table.show-for-medium-up, table.hide-for-medium, table.hide-for-medium-down, table.show-for-large-only, table.show-for-large-up, table.show-for-large, table.show-for-large-down, table.hide-for-xlarge-only, table.hide-for-xlarge-up, table.hide-for-xlarge, table.show-for-xlarge-down, table.hide-for-xxlarge-only, table.hide-for-xxlarge-up, table.hide-for-xxlarge, table.show-for-xxlarge-down {
+  table.hide-for-small-only, table.show-for-small-up, table.hide-for-small, table.hide-for-small-down, table.hide-for-medium-only, table.show-for-medium-up, table.hide-for-medium, table.hide-for-medium-down, table.show-for-large-only, table.show-for-large-up, table.show-for-large, table.show-for-large-down, table.hide-for-xlarge-only, table.hide-for-xlarge-up, table.hide-for-xxlarge-only, table.hide-for-xxlarge-up {
     display: table !important;
   }
 
   /* line 262, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  thead.hide-for-small-only, thead.show-for-small-up, thead.hide-for-small, thead.hide-for-small-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.hide-for-medium, thead.hide-for-medium-down, thead.show-for-large-only, thead.show-for-large-up, thead.show-for-large, thead.show-for-large-down, thead.hide-for-xlarge-only, thead.hide-for-xlarge-up, thead.hide-for-xlarge, thead.show-for-xlarge-down, thead.hide-for-xxlarge-only, thead.hide-for-xxlarge-up, thead.hide-for-xxlarge, thead.show-for-xxlarge-down {
+  thead.hide-for-small-only, thead.show-for-small-up, thead.hide-for-small, thead.hide-for-small-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.hide-for-medium, thead.hide-for-medium-down, thead.show-for-large-only, thead.show-for-large-up, thead.show-for-large, thead.show-for-large-down, thead.hide-for-xlarge-only, thead.hide-for-xlarge-up, thead.hide-for-xxlarge-only, thead.hide-for-xxlarge-up {
     display: table-header-group !important;
   }
 
   /* line 265, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tbody.hide-for-small-only, tbody.show-for-small-up, tbody.hide-for-small, tbody.hide-for-small-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.show-for-large-only, tbody.show-for-large-up, tbody.show-for-large, tbody.show-for-large-down, tbody.hide-for-xlarge-only, tbody.hide-for-xlarge-up, tbody.hide-for-xlarge, tbody.show-for-xlarge-down, tbody.hide-for-xxlarge-only, tbody.hide-for-xxlarge-up, tbody.hide-for-xxlarge, tbody.show-for-xxlarge-down {
+  tbody.hide-for-small-only, tbody.show-for-small-up, tbody.hide-for-small, tbody.hide-for-small-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.show-for-large-only, tbody.show-for-large-up, tbody.show-for-large, tbody.show-for-large-down, tbody.hide-for-xlarge-only, tbody.hide-for-xlarge-up, tbody.hide-for-xxlarge-only, tbody.hide-for-xxlarge-up {
     display: table-row-group !important;
   }
 
   /* line 268, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tr.hide-for-small-only, tr.show-for-small-up, tr.hide-for-small, tr.hide-for-small-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.hide-for-medium, tr.hide-for-medium-down, tr.show-for-large-only, tr.show-for-large-up, tr.show-for-large, tr.show-for-large-down, tr.hide-for-xlarge-only, tr.hide-for-xlarge-up, tr.hide-for-xlarge, tr.show-for-xlarge-down, tr.hide-for-xxlarge-only, tr.hide-for-xxlarge-up, tr.hide-for-xxlarge, tr.show-for-xxlarge-down {
+  tr.hide-for-small-only, tr.show-for-small-up, tr.hide-for-small, tr.hide-for-small-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.hide-for-medium, tr.hide-for-medium-down, tr.show-for-large-only, tr.show-for-large-up, tr.show-for-large, tr.show-for-large-down, tr.hide-for-xlarge-only, tr.hide-for-xlarge-up, tr.hide-for-xxlarge-only, tr.hide-for-xxlarge-up {
     display: table-row;
   }
 
   /* line 271, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  th.hide-for-small-only, td.hide-for-small-only, th.show-for-small-up, td.show-for-small-up, th.hide-for-small, td.hide-for-small, th.hide-for-small-down, td.hide-for-small-down, th.hide-for-medium-only, td.hide-for-medium-only, th.show-for-medium-up, td.show-for-medium-up, th.hide-for-medium, td.hide-for-medium, th.hide-for-medium-down, td.hide-for-medium-down, th.show-for-large-only, td.show-for-large-only, th.show-for-large-up, td.show-for-large-up, th.show-for-large, td.show-for-large, th.show-for-large-down, td.show-for-large-down, th.hide-for-xlarge-only, td.hide-for-xlarge-only, th.hide-for-xlarge-up, td.hide-for-xlarge-up, th.hide-for-xlarge, td.hide-for-xlarge, th.show-for-xlarge-down, td.show-for-xlarge-down, th.hide-for-xxlarge-only, td.hide-for-xxlarge-only, th.hide-for-xxlarge-up, td.hide-for-xxlarge-up, th.hide-for-xxlarge, td.hide-for-xxlarge, th.show-for-xxlarge-down, td.show-for-xxlarge-down {
+  th.hide-for-small-only, td.hide-for-small-only, th.show-for-small-up, td.show-for-small-up, th.hide-for-small, td.hide-for-small, th.hide-for-small-down, td.hide-for-small-down, th.hide-for-medium-only, td.hide-for-medium-only, th.show-for-medium-up, td.show-for-medium-up, th.hide-for-medium, td.hide-for-medium, th.hide-for-medium-down, td.hide-for-medium-down, th.show-for-large-only, td.show-for-large-only, th.show-for-large-up, td.show-for-large-up, th.show-for-large, td.show-for-large, th.show-for-large-down, td.show-for-large-down, th.hide-for-xlarge-only, td.hide-for-xlarge-only, th.hide-for-xlarge-up, td.hide-for-xlarge-up, th.hide-for-xxlarge-only, td.hide-for-xxlarge-only, th.hide-for-xxlarge-up, td.hide-for-xxlarge-up {
     display: table-cell !important;
   }
 }
 /* xlarge displays */
 @media only screen and (min-width: 90.0625em) {
   /* line 244, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .hide-for-large-only, .show-for-large-up, .hide-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .show-for-xlarge, .show-for-xlarge-down, .hide-for-xxlarge-only, .hide-for-xxlarge-up, .hide-for-xxlarge, .show-for-xxlarge-down {
+  .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .hide-for-large-only, .show-for-large-up, .hide-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .hide-for-xxlarge-only, .hide-for-xxlarge-up {
     display: inherit !important;
   }
 
   /* line 247, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .show-for-small-only, .hide-for-small-up, .show-for-small, .show-for-small-down, .show-for-medium-only, .hide-for-medium-up, .show-for-medium, .show-for-medium-down, .show-for-large-only, .hide-for-large-up, .show-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xlarge, .hide-for-xlarge-down, .show-for-xxlarge-only, .show-for-xxlarge-up, .show-for-xxlarge, .hide-for-xxlarge-down {
+  .show-for-small-only, .hide-for-small-up, .show-for-small, .show-for-small-down, .show-for-medium-only, .hide-for-medium-up, .show-for-medium, .show-for-medium-down, .show-for-large-only, .hide-for-large-up, .show-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .show-for-xxlarge-only, .show-for-xxlarge-up {
     display: none !important;
   }
 
   /* line 251, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hidden-for-small-only, .visible-for-small-up, .hidden-for-small, .hidden-for-small-down, .hidden-for-medium-only, .visible-for-medium-up, .hidden-for-medium, .hidden-for-medium-down, .hidden-for-large-only, .visible-for-large-up, .hidden-for-large, .hidden-for-large-down, .visible-for-xlarge-only, .visible-for-xlarge-up, .visible-for-xlarge, .visible-for-xlarge-down, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up, .hidden-for-xxlarge, .visible-for-xxlarge-down {
+  .hidden-for-small-only, .visible-for-small-up, .hidden-for-small, .hidden-for-small-down, .hidden-for-medium-only, .visible-for-medium-up, .hidden-for-medium, .hidden-for-medium-down, .hidden-for-large-only, .visible-for-large-up, .hidden-for-large, .hidden-for-large-down, .visible-for-xlarge-only, .visible-for-xlarge-up, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up {
     position: static !important;
     height: auto;
     width: auto;
@@ -8953,7 +8959,7 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 254, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .visible-for-small-only, .hidden-for-small-up, .visible-for-small, .visible-for-small-down, .visible-for-medium-only, .hidden-for-medium-up, .visible-for-medium, .visible-for-medium-down, .visible-for-large-only, .hidden-for-large-up, .visible-for-large, .visible-for-large-down, .hidden-for-xlarge-only, .hidden-for-xlarge-up, .hidden-for-xlarge, .hidden-for-xlarge-down, .visible-for-xxlarge-only, .visible-for-xxlarge-up, .visible-for-xxlarge, .hidden-for-xxlarge-down {
+  .visible-for-small-only, .hidden-for-small-up, .visible-for-small, .visible-for-small-down, .visible-for-medium-only, .hidden-for-medium-up, .visible-for-medium, .visible-for-medium-down, .visible-for-large-only, .hidden-for-large-up, .visible-for-large, .visible-for-large-down, .hidden-for-xlarge-only, .hidden-for-xlarge-up, .visible-for-xxlarge-only, .visible-for-xxlarge-up {
     clip: rect(1px, 1px, 1px, 1px);
     height: 1px;
     overflow: hidden;
@@ -8962,44 +8968,44 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 259, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  table.hide-for-small-only, table.show-for-small-up, table.hide-for-small, table.hide-for-small-down, table.hide-for-medium-only, table.show-for-medium-up, table.hide-for-medium, table.hide-for-medium-down, table.hide-for-large-only, table.show-for-large-up, table.hide-for-large, table.hide-for-large-down, table.show-for-xlarge-only, table.show-for-xlarge-up, table.show-for-xlarge, table.show-for-xlarge-down, table.hide-for-xxlarge-only, table.hide-for-xxlarge-up, table.hide-for-xxlarge, table.show-for-xxlarge-down {
+  table.hide-for-small-only, table.show-for-small-up, table.hide-for-small, table.hide-for-small-down, table.hide-for-medium-only, table.show-for-medium-up, table.hide-for-medium, table.hide-for-medium-down, table.hide-for-large-only, table.show-for-large-up, table.hide-for-large, table.hide-for-large-down, table.show-for-xlarge-only, table.show-for-xlarge-up, table.hide-for-xxlarge-only, table.hide-for-xxlarge-up {
     display: table !important;
   }
 
   /* line 262, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  thead.hide-for-small-only, thead.show-for-small-up, thead.hide-for-small, thead.hide-for-small-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.hide-for-medium, thead.hide-for-medium-down, thead.hide-for-large-only, thead.show-for-large-up, thead.hide-for-large, thead.hide-for-large-down, thead.show-for-xlarge-only, thead.show-for-xlarge-up, thead.show-for-xlarge, thead.show-for-xlarge-down, thead.hide-for-xxlarge-only, thead.hide-for-xxlarge-up, thead.hide-for-xxlarge, thead.show-for-xxlarge-down {
+  thead.hide-for-small-only, thead.show-for-small-up, thead.hide-for-small, thead.hide-for-small-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.hide-for-medium, thead.hide-for-medium-down, thead.hide-for-large-only, thead.show-for-large-up, thead.hide-for-large, thead.hide-for-large-down, thead.show-for-xlarge-only, thead.show-for-xlarge-up, thead.hide-for-xxlarge-only, thead.hide-for-xxlarge-up {
     display: table-header-group !important;
   }
 
   /* line 265, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tbody.hide-for-small-only, tbody.show-for-small-up, tbody.hide-for-small, tbody.hide-for-small-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.hide-for-large-only, tbody.show-for-large-up, tbody.hide-for-large, tbody.hide-for-large-down, tbody.show-for-xlarge-only, tbody.show-for-xlarge-up, tbody.show-for-xlarge, tbody.show-for-xlarge-down, tbody.hide-for-xxlarge-only, tbody.hide-for-xxlarge-up, tbody.hide-for-xxlarge, tbody.show-for-xxlarge-down {
+  tbody.hide-for-small-only, tbody.show-for-small-up, tbody.hide-for-small, tbody.hide-for-small-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.hide-for-large-only, tbody.show-for-large-up, tbody.hide-for-large, tbody.hide-for-large-down, tbody.show-for-xlarge-only, tbody.show-for-xlarge-up, tbody.hide-for-xxlarge-only, tbody.hide-for-xxlarge-up {
     display: table-row-group !important;
   }
 
   /* line 268, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tr.hide-for-small-only, tr.show-for-small-up, tr.hide-for-small, tr.hide-for-small-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.hide-for-medium, tr.hide-for-medium-down, tr.hide-for-large-only, tr.show-for-large-up, tr.hide-for-large, tr.hide-for-large-down, tr.show-for-xlarge-only, tr.show-for-xlarge-up, tr.show-for-xlarge, tr.show-for-xlarge-down, tr.hide-for-xxlarge-only, tr.hide-for-xxlarge-up, tr.hide-for-xxlarge, tr.show-for-xxlarge-down {
+  tr.hide-for-small-only, tr.show-for-small-up, tr.hide-for-small, tr.hide-for-small-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.hide-for-medium, tr.hide-for-medium-down, tr.hide-for-large-only, tr.show-for-large-up, tr.hide-for-large, tr.hide-for-large-down, tr.show-for-xlarge-only, tr.show-for-xlarge-up, tr.hide-for-xxlarge-only, tr.hide-for-xxlarge-up {
     display: table-row;
   }
 
   /* line 271, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  th.hide-for-small-only, td.hide-for-small-only, th.show-for-small-up, td.show-for-small-up, th.hide-for-small, td.hide-for-small, th.hide-for-small-down, td.hide-for-small-down, th.hide-for-medium-only, td.hide-for-medium-only, th.show-for-medium-up, td.show-for-medium-up, th.hide-for-medium, td.hide-for-medium, th.hide-for-medium-down, td.hide-for-medium-down, th.hide-for-large-only, td.hide-for-large-only, th.show-for-large-up, td.show-for-large-up, th.hide-for-large, td.hide-for-large, th.hide-for-large-down, td.hide-for-large-down, th.show-for-xlarge-only, td.show-for-xlarge-only, th.show-for-xlarge-up, td.show-for-xlarge-up, th.show-for-xlarge, td.show-for-xlarge, th.show-for-xlarge-down, td.show-for-xlarge-down, th.hide-for-xxlarge-only, td.hide-for-xxlarge-only, th.hide-for-xxlarge-up, td.hide-for-xxlarge-up, th.hide-for-xxlarge, td.hide-for-xxlarge, th.show-for-xxlarge-down, td.show-for-xxlarge-down {
+  th.hide-for-small-only, td.hide-for-small-only, th.show-for-small-up, td.show-for-small-up, th.hide-for-small, td.hide-for-small, th.hide-for-small-down, td.hide-for-small-down, th.hide-for-medium-only, td.hide-for-medium-only, th.show-for-medium-up, td.show-for-medium-up, th.hide-for-medium, td.hide-for-medium, th.hide-for-medium-down, td.hide-for-medium-down, th.hide-for-large-only, td.hide-for-large-only, th.show-for-large-up, td.show-for-large-up, th.hide-for-large, td.hide-for-large, th.hide-for-large-down, td.hide-for-large-down, th.show-for-xlarge-only, td.show-for-xlarge-only, th.show-for-xlarge-up, td.show-for-xlarge-up, th.hide-for-xxlarge-only, td.hide-for-xxlarge-only, th.hide-for-xxlarge-up, td.hide-for-xxlarge-up {
     display: table-cell !important;
   }
 }
 /* xxlarge displays */
 @media only screen and (min-width: 120.0625em) {
   /* line 244, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .hide-for-large-only, .show-for-large-up, .hide-for-large, .hide-for-large-down, .hide-for-xlarge-only, .show-for-xlarge-up, .hide-for-xlarge, .hide-for-xlarge-down, .show-for-xxlarge-only, .show-for-xxlarge-up, .show-for-xxlarge, .show-for-xxlarge-down {
+  .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .hide-for-large-only, .show-for-large-up, .hide-for-large, .hide-for-large-down, .hide-for-xlarge-only, .show-for-xlarge-up, .show-for-xxlarge-only, .show-for-xxlarge-up {
     display: inherit !important;
   }
 
   /* line 247, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .show-for-small-only, .hide-for-small-up, .show-for-small, .show-for-small-down, .show-for-medium-only, .hide-for-medium-up, .show-for-medium, .show-for-medium-down, .show-for-large-only, .hide-for-large-up, .show-for-large, .show-for-large-down, .show-for-xlarge-only, .hide-for-xlarge-up, .show-for-xlarge, .show-for-xlarge-down, .hide-for-xxlarge-only, .hide-for-xxlarge-up, .hide-for-xxlarge, .hide-for-xxlarge-down {
+  .show-for-small-only, .hide-for-small-up, .show-for-small, .show-for-small-down, .show-for-medium-only, .hide-for-medium-up, .show-for-medium, .show-for-medium-down, .show-for-large-only, .hide-for-large-up, .show-for-large, .show-for-large-down, .show-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xxlarge-only, .hide-for-xxlarge-up {
     display: none !important;
   }
 
   /* line 251, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .hidden-for-small-only, .visible-for-small-up, .hidden-for-small, .hidden-for-small-down, .hidden-for-medium-only, .visible-for-medium-up, .hidden-for-medium, .hidden-for-medium-down, .hidden-for-large-only, .visible-for-large-up, .hidden-for-large, .hidden-for-large-down, .hidden-for-xlarge-only, .visible-for-xlarge-up, .hidden-for-xlarge, .hidden-for-xlarge-down, .visible-for-xxlarge-only, .visible-for-xxlarge-up, .visible-for-xxlarge, .visible-for-xxlarge-down {
+  .hidden-for-small-only, .visible-for-small-up, .hidden-for-small, .hidden-for-small-down, .hidden-for-medium-only, .visible-for-medium-up, .hidden-for-medium, .hidden-for-medium-down, .hidden-for-large-only, .visible-for-large-up, .hidden-for-large, .hidden-for-large-down, .hidden-for-xlarge-only, .visible-for-xlarge-up, .visible-for-xxlarge-only, .visible-for-xxlarge-up {
     position: static !important;
     height: auto;
     width: auto;
@@ -9008,7 +9014,7 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 254, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  .visible-for-small-only, .hidden-for-small-up, .visible-for-small, .visible-for-small-down, .visible-for-medium-only, .hidden-for-medium-up, .visible-for-medium, .visible-for-medium-down, .visible-for-large-only, .hidden-for-large-up, .visible-for-large, .visible-for-large-down, .visible-for-xlarge-only, .hidden-for-xlarge-up, .visible-for-xlarge, .visible-for-xlarge-down, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up, .hidden-for-xxlarge, .hidden-for-xxlarge-down {
+  .visible-for-small-only, .hidden-for-small-up, .visible-for-small, .visible-for-small-down, .visible-for-medium-only, .hidden-for-medium-up, .visible-for-medium, .visible-for-medium-down, .visible-for-large-only, .hidden-for-large-up, .visible-for-large, .visible-for-large-down, .visible-for-xlarge-only, .hidden-for-xlarge-up, .hidden-for-xxlarge-only, .hidden-for-xxlarge-up {
     clip: rect(1px, 1px, 1px, 1px);
     height: 1px;
     overflow: hidden;
@@ -9017,27 +9023,27 @@ ul.off-canvas-list li a:active {
   }
 
   /* line 259, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  table.hide-for-small-only, table.show-for-small-up, table.hide-for-small, table.hide-for-small-down, table.hide-for-medium-only, table.show-for-medium-up, table.hide-for-medium, table.hide-for-medium-down, table.hide-for-large-only, table.show-for-large-up, table.hide-for-large, table.hide-for-large-down, table.hide-for-xlarge-only, table.show-for-xlarge-up, table.hide-for-xlarge, table.hide-for-xlarge-down, table.show-for-xxlarge-only, table.show-for-xxlarge-up, table.show-for-xxlarge, table.show-for-xxlarge-down {
+  table.hide-for-small-only, table.show-for-small-up, table.hide-for-small, table.hide-for-small-down, table.hide-for-medium-only, table.show-for-medium-up, table.hide-for-medium, table.hide-for-medium-down, table.hide-for-large-only, table.show-for-large-up, table.hide-for-large, table.hide-for-large-down, table.hide-for-xlarge-only, table.show-for-xlarge-up, table.show-for-xxlarge-only, table.show-for-xxlarge-up {
     display: table !important;
   }
 
   /* line 262, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  thead.hide-for-small-only, thead.show-for-small-up, thead.hide-for-small, thead.hide-for-small-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.hide-for-medium, thead.hide-for-medium-down, thead.hide-for-large-only, thead.show-for-large-up, thead.hide-for-large, thead.hide-for-large-down, thead.hide-for-xlarge-only, thead.show-for-xlarge-up, thead.hide-for-xlarge, thead.hide-for-xlarge-down, thead.show-for-xxlarge-only, thead.show-for-xxlarge-up, thead.show-for-xxlarge, thead.show-for-xxlarge-down {
+  thead.hide-for-small-only, thead.show-for-small-up, thead.hide-for-small, thead.hide-for-small-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.hide-for-medium, thead.hide-for-medium-down, thead.hide-for-large-only, thead.show-for-large-up, thead.hide-for-large, thead.hide-for-large-down, thead.hide-for-xlarge-only, thead.show-for-xlarge-up, thead.show-for-xxlarge-only, thead.show-for-xxlarge-up {
     display: table-header-group !important;
   }
 
   /* line 265, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tbody.hide-for-small-only, tbody.show-for-small-up, tbody.hide-for-small, tbody.hide-for-small-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.hide-for-large-only, tbody.show-for-large-up, tbody.hide-for-large, tbody.hide-for-large-down, tbody.hide-for-xlarge-only, tbody.show-for-xlarge-up, tbody.hide-for-xlarge, tbody.hide-for-xlarge-down, tbody.show-for-xxlarge-only, tbody.show-for-xxlarge-up, tbody.show-for-xxlarge, tbody.show-for-xxlarge-down {
+  tbody.hide-for-small-only, tbody.show-for-small-up, tbody.hide-for-small, tbody.hide-for-small-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.hide-for-large-only, tbody.show-for-large-up, tbody.hide-for-large, tbody.hide-for-large-down, tbody.hide-for-xlarge-only, tbody.show-for-xlarge-up, tbody.show-for-xxlarge-only, tbody.show-for-xxlarge-up {
     display: table-row-group !important;
   }
 
   /* line 268, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  tr.hide-for-small-only, tr.show-for-small-up, tr.hide-for-small, tr.hide-for-small-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.hide-for-medium, tr.hide-for-medium-down, tr.hide-for-large-only, tr.show-for-large-up, tr.hide-for-large, tr.hide-for-large-down, tr.hide-for-xlarge-only, tr.show-for-xlarge-up, tr.hide-for-xlarge, tr.hide-for-xlarge-down, tr.show-for-xxlarge-only, tr.show-for-xxlarge-up, tr.show-for-xxlarge, tr.show-for-xxlarge-down {
+  tr.hide-for-small-only, tr.show-for-small-up, tr.hide-for-small, tr.hide-for-small-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.hide-for-medium, tr.hide-for-medium-down, tr.hide-for-large-only, tr.show-for-large-up, tr.hide-for-large, tr.hide-for-large-down, tr.hide-for-xlarge-only, tr.show-for-xlarge-up, tr.show-for-xxlarge-only, tr.show-for-xxlarge-up {
     display: table-row;
   }
 
   /* line 271, ../../../contrib/zurb_foundation/scss/foundation/components/_visibility.scss */
-  th.hide-for-small-only, td.hide-for-small-only, th.show-for-small-up, td.show-for-small-up, th.hide-for-small, td.hide-for-small, th.hide-for-small-down, td.hide-for-small-down, th.hide-for-medium-only, td.hide-for-medium-only, th.show-for-medium-up, td.show-for-medium-up, th.hide-for-medium, td.hide-for-medium, th.hide-for-medium-down, td.hide-for-medium-down, th.hide-for-large-only, td.hide-for-large-only, th.show-for-large-up, td.show-for-large-up, th.hide-for-large, td.hide-for-large, th.hide-for-large-down, td.hide-for-large-down, th.hide-for-xlarge-only, td.hide-for-xlarge-only, th.show-for-xlarge-up, td.show-for-xlarge-up, th.hide-for-xlarge, td.hide-for-xlarge, th.hide-for-xlarge-down, td.hide-for-xlarge-down, th.show-for-xxlarge-only, td.show-for-xxlarge-only, th.show-for-xxlarge-up, td.show-for-xxlarge-up, th.show-for-xxlarge, td.show-for-xxlarge, th.show-for-xxlarge-down, td.show-for-xxlarge-down {
+  th.hide-for-small-only, td.hide-for-small-only, th.show-for-small-up, td.show-for-small-up, th.hide-for-small, td.hide-for-small, th.hide-for-small-down, td.hide-for-small-down, th.hide-for-medium-only, td.hide-for-medium-only, th.show-for-medium-up, td.show-for-medium-up, th.hide-for-medium, td.hide-for-medium, th.hide-for-medium-down, td.hide-for-medium-down, th.hide-for-large-only, td.hide-for-large-only, th.show-for-large-up, td.show-for-large-up, th.hide-for-large, td.hide-for-large, th.hide-for-large-down, td.hide-for-large-down, th.hide-for-xlarge-only, td.hide-for-xlarge-only, th.show-for-xlarge-up, td.show-for-xlarge-up, th.show-for-xxlarge-only, td.show-for-xxlarge-only, th.show-for-xxlarge-up, td.show-for-xxlarge-up {
     display: table-cell !important;
   }
 }
@@ -9417,13 +9423,13 @@ body {
   margin-left: 0;
   overflow: hidden;
   padding: 0.5625rem 0 0.5625rem;
-  background-color: #fff;
-  border-color: #fff;
+  background-color: white;
+  border-color: white;
   border-radius: 3px;
 }
 /* line 116, ../scss/modules/_breadcrumbs.scss */
 .breadcrumbs > * {
-  color: #008CBA;
+  color: #008cba;
   float: left;
   font-size: 0.875rem;
   line-height: 0.875rem;
@@ -9436,7 +9442,7 @@ body {
 }
 /* line 64, ../scss/modules/_breadcrumbs.scss */
 .breadcrumbs > * a {
-  color: #008CBA;
+  color: #008cba;
 }
 /* line 69, ../scss/modules/_breadcrumbs.scss */
 .breadcrumbs > *.current {
@@ -9572,7 +9578,7 @@ body {
 }
 /* line 43, ../scss/modules/_service.scss */
 .service:hover {
-  border-color: #055F82;
+  border-color: #055f82;
 }
 /* line 47, ../scss/modules/_service.scss */
 .service:hover .service-icon-box {
@@ -9593,7 +9599,7 @@ body {
 
 /* line 1, ../scss/modules/_footer.scss */
 .footer {
-  background-color: #323A45;
+  background-color: #323a45;
   padding: 4rem 4rem 2rem;
   margin: 2em 0 0 0;
   overflow: hidden;
@@ -9735,9 +9741,9 @@ body {
 .tabs dd > a,
 .tabs .tab-title > a {
   display: block;
-  background-color: #040A1A;
-  color: #FFF;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  background-color: #040a1a;
+  color: white;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
 }
@@ -9749,8 +9755,8 @@ body {
 /* line 48, ../scss/modules/_tabs.scss */
 .tabs dd.active > a,
 .tabs .tab-title.active > a {
-  background-color: #055F82;
-  color: #FFF;
+  background-color: #055f82;
+  color: white;
 }
 /* line 57, ../scss/modules/_tabs.scss */
 .tabs.radius dd:first-child a,
@@ -9851,7 +9857,7 @@ meta.foundation-mq-topbar {
 /* line 110, ../scss/modules/_topbar.scss */
 .contain-to-grid {
   width: 100%;
-  background: #323A45;
+  background: #323a45;
 }
 /* line 114, ../scss/modules/_topbar.scss */
 .contain-to-grid .top-bar {
@@ -9887,7 +9893,7 @@ meta.foundation-mq-topbar {
 
 /* line 147, ../scss/modules/_topbar.scss */
 .top-bar {
-  background: #323A45;
+  background: #323a45;
   height: 4.6875rem;
   line-height: 4.6875rem;
   margin-bottom: 1.25rem;
@@ -9981,7 +9987,7 @@ meta.foundation-mq-topbar {
 }
 /* line 244, ../scss/modules/_topbar.scss */
 .top-bar .toggle-topbar.menu-icon a {
-  color: #FFF;
+  color: white;
   height: 34px;
   line-height: 33px;
   padding: 0 3.125rem 0 1.5625rem;
@@ -9996,7 +10002,7 @@ meta.foundation-mq-topbar {
   margin-top: -8px;
   top: 50%;
   right: 1.5625rem;
-  box-shadow: 0 0 0 1px #FFF, 0 7px 0 1px #FFF, 0 14px 0 1px #FFF;
+  box-shadow: 0 0 0 1px white, 0 7px 0 1px white, 0 14px 0 1px white;
   width: 16px;
 }
 /* line 229, ../../../contrib/zurb_foundation/scss/foundation/components/_global.scss */
@@ -10010,7 +10016,7 @@ meta.foundation-mq-topbar {
 }
 /* line 264, ../scss/modules/_topbar.scss */
 .top-bar.expanded .title-area {
-  background: #323A45;
+  background: #323a45;
 }
 /* line 269, ../scss/modules/_topbar.scss */
 .top-bar.expanded .toggle-topbar a {
@@ -10051,20 +10057,20 @@ meta.foundation-mq-topbar {
 /* line 315, ../scss/modules/_topbar.scss */
 .top-bar-section .divider,
 .top-bar-section [role="separator"] {
-  border-top: solid 1px #191d23;
+  border-top: solid 1px #191d22;
   clear: both;
   height: 1px;
   width: 100%;
 }
 /* line 323, ../scss/modules/_topbar.scss */
 .top-bar-section ul li {
-  background: #323A45;
+  background: #323a45;
 }
 /* line 326, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a {
   color: #fafafa;
   display: block;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   padding-left: 1.5625rem;
@@ -10077,9 +10083,9 @@ meta.foundation-mq-topbar {
   font-size: 1rem;
   padding-left: 1.5625rem;
   padding-right: 1.5625rem;
-  background-color: #008CBA;
+  background-color: #008cba;
   border-color: #007095;
-  color: #FFF;
+  color: white;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
@@ -10087,7 +10093,7 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 344, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.secondary {
@@ -10105,9 +10111,9 @@ meta.foundation-mq-topbar {
 }
 /* line 345, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.success {
-  background-color: #43AC6A;
+  background-color: #43ac6a;
   border-color: #368a55;
-  color: #FFF;
+  color: white;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.success:hover, .top-bar-section ul li > a.button.success:focus {
@@ -10115,13 +10121,13 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.success:hover, .top-bar-section ul li > a.button.success:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 346, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.alert {
   background-color: #f04124;
   border-color: #cf2a0e;
-  color: #FFF;
+  color: white;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.alert:hover, .top-bar-section ul li > a.button.alert:focus {
@@ -10129,13 +10135,13 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.alert:hover, .top-bar-section ul li > a.button.alert:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 347, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.warning {
   background-color: #f08a24;
   border-color: #cf6e0e;
-  color: #FFF;
+  color: white;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.warning:hover, .top-bar-section ul li > a.button.warning:focus {
@@ -10143,7 +10149,7 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.warning:hover, .top-bar-section ul li > a.button.warning:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 348, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > a.button.info {
@@ -10157,16 +10163,16 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > a.button.info:hover, .top-bar-section ul li > a.button.info:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 351, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button {
   font-size: 1rem;
   padding-left: 1.5625rem;
   padding-right: 1.5625rem;
-  background-color: #008CBA;
+  background-color: #008cba;
   border-color: #007095;
-  color: #FFF;
+  color: white;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
@@ -10174,7 +10180,7 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 357, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.secondary {
@@ -10192,9 +10198,9 @@ meta.foundation-mq-topbar {
 }
 /* line 358, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.success {
-  background-color: #43AC6A;
+  background-color: #43ac6a;
   border-color: #368a55;
-  color: #FFF;
+  color: white;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.success:hover, .top-bar-section ul li > button.success:focus {
@@ -10202,13 +10208,13 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.success:hover, .top-bar-section ul li > button.success:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 359, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.alert {
   background-color: #f04124;
   border-color: #cf2a0e;
-  color: #FFF;
+  color: white;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
@@ -10216,13 +10222,13 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 360, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.warning {
   background-color: #f08a24;
   border-color: #cf6e0e;
-  color: #FFF;
+  color: white;
 }
 /* line 154, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
@@ -10230,7 +10236,7 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 361, ../scss/modules/_topbar.scss */
 .top-bar-section ul li > button.info {
@@ -10244,23 +10250,23 @@ meta.foundation-mq-topbar {
 }
 /* line 160, ../scss/modules/_button.scss */
 .top-bar-section ul li > button.info:hover, .top-bar-section ul li > button.info:focus {
-  color: #FFF;
+  color: white;
 }
 /* line 365, ../scss/modules/_topbar.scss */
 .top-bar-section ul li:hover:not(.has-form) > a {
-  background-color: #AEB0B5;
-  color: #FFF;
-  background: #5B616B;
+  background-color: #aeb0b5;
+  color: white;
+  background: #5b616b;
 }
 /* line 375, ../scss/modules/_topbar.scss */
 .top-bar-section ul li.active > a {
-  background: #D6D7D9;
-  color: #FFF;
+  background: #d6d7d9;
+  color: white;
 }
 /* line 379, ../scss/modules/_topbar.scss */
 .top-bar-section ul li.active > a:hover {
   background: #b7b8bc;
-  color: #FFF;
+  color: white;
 }
 /* line 387, ../scss/modules/_topbar.scss */
 .top-bar-section .has-form {
@@ -10374,7 +10380,7 @@ meta.foundation-mq-topbar {
 @media only screen and (min-width: 40.0625em) {
   /* line 484, ../scss/modules/_topbar.scss */
   .top-bar {
-    background: #323A45;
+    background: #323a45;
     overflow: visible;
   }
   /* line 239, ../../../contrib/zurb_foundation/scss/foundation/components/_global.scss */
@@ -10423,7 +10429,7 @@ meta.foundation-mq-topbar {
   }
   /* line 517, ../scss/modules/_topbar.scss */
   .top-bar.expanded {
-    background: #323A45;
+    background: #323a45;
   }
 
   /* line 522, ../scss/modules/_topbar.scss */
@@ -10454,32 +10460,32 @@ meta.foundation-mq-topbar {
   }
   /* line 545, ../scss/modules/_topbar.scss */
   .top-bar-section li.hover > a:not(.button) {
-    background-color: #AEB0B5;
-    background: #5B616B;
-    color: #FFF;
+    background-color: #aeb0b5;
+    background: #5b616b;
+    color: white;
   }
   /* line 555, ../scss/modules/_topbar.scss */
   .top-bar-section li:not(.has-form) a:not(.button) {
-    background: #323A45;
+    background: #323a45;
     line-height: 4.6875rem;
     padding: 0 1.5625rem;
   }
   /* line 559, ../scss/modules/_topbar.scss */
   .top-bar-section li:not(.has-form) a:not(.button):hover {
-    background-color: #AEB0B5;
-    background: #5B616B;
+    background-color: #aeb0b5;
+    background: #5b616b;
   }
   /* line 569, ../scss/modules/_topbar.scss */
   .top-bar-section li.active:not(.has-form) a:not(.button) {
-    background: #D6D7D9;
-    color: #FFF;
+    background: #d6d7d9;
+    color: white;
     line-height: 4.6875rem;
     padding: 0 1.5625rem;
   }
   /* line 574, ../scss/modules/_topbar.scss */
   .top-bar-section li.active:not(.has-form) a:not(.button):hover {
     background: #b7b8bc;
-    color: #FFF;
+    color: white;
   }
   /* line 584, ../scss/modules/_topbar.scss */
   .top-bar-section .has-dropdown > a {
@@ -10547,7 +10553,7 @@ meta.foundation-mq-topbar {
   /* line 632, ../scss/modules/_topbar.scss */
   .top-bar-section .dropdown li a {
     background: #333333;
-    color: #FFF;
+    color: white;
     line-height: 4.6875rem;
     padding: 12px 1.5625rem;
     white-space: nowrap;
@@ -10555,12 +10561,12 @@ meta.foundation-mq-topbar {
   /* line 641, ../scss/modules/_topbar.scss */
   .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
     background: #333333;
-    color: #FFF;
+    color: white;
   }
   /* line 646, ../scss/modules/_topbar.scss */
   .top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button) {
-    background-color: #AEB0B5;
-    color: #FFF;
+    background-color: #aeb0b5;
+    color: white;
     background: #222222;
   }
   /* line 655, ../scss/modules/_topbar.scss */
@@ -10585,7 +10591,7 @@ meta.foundation-mq-topbar {
   }
   /* line 678, ../scss/modules/_topbar.scss */
   .top-bar-section .has-form {
-    background: #323A45;
+    background: #323a45;
     height: 4.6875rem;
     padding: 0 1.5625rem;
   }
@@ -10610,14 +10616,14 @@ meta.foundation-mq-topbar {
 
   /* line 708, ../scss/modules/_topbar.scss */
   .no-js .top-bar-section ul li:hover > a {
-    background-color: #AEB0B5;
-    background: #5B616B;
-    color: #FFF;
+    background-color: #aeb0b5;
+    background: #5b616b;
+    color: white;
   }
   /* line 717, ../scss/modules/_topbar.scss */
   .no-js .top-bar-section ul li:active > a {
-    background: #D6D7D9;
-    color: #FFF;
+    background: #d6d7d9;
+    color: white;
   }
   /* line 725, ../scss/modules/_topbar.scss */
   .no-js .top-bar-section .has-dropdown:hover > .dropdown {
@@ -10802,7 +10808,7 @@ input:not([type]), input[type="text"], input[type="password"], input[type="date"
   -webkit-appearance: none;
   -moz-appearance: none;
   border-radius: 0;
-  background-color: #FFF;
+  background-color: white;
   border-style: solid;
   border-width: 1px;
   border-color: #cccccc;
@@ -10832,12 +10838,12 @@ input:not([type]):focus, input[type="text"]:focus, input[type="password"]:focus,
 }
 /* line 136, ../scss/modules/_forms.scss */
 input:not([type]):disabled, input[type="text"]:disabled, input[type="password"]:disabled, input[type="date"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled, input[type="month"]:disabled, input[type="week"]:disabled, input[type="email"]:disabled, input[type="number"]:disabled, input[type="search"]:disabled, input[type="tel"]:disabled, input[type="time"]:disabled, input[type="url"]:disabled, input[type="color"]:disabled, textarea:disabled {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   cursor: default;
 }
 /* line 142, ../scss/modules/_forms.scss */
 input:not([type])[disabled], input:not([type])[readonly], fieldset[disabled] input:not([type]), input[type="text"][disabled], input[type="text"][readonly], fieldset[disabled] input[type="text"], input[type="password"][disabled], input[type="password"][readonly], fieldset[disabled] input[type="password"], input[type="date"][disabled], input[type="date"][readonly], fieldset[disabled] input[type="date"], input[type="datetime"][disabled], input[type="datetime"][readonly], fieldset[disabled] input[type="datetime"], input[type="datetime-local"][disabled], input[type="datetime-local"][readonly], fieldset[disabled] input[type="datetime-local"], input[type="month"][disabled], input[type="month"][readonly], fieldset[disabled] input[type="month"], input[type="week"][disabled], input[type="week"][readonly], fieldset[disabled] input[type="week"], input[type="email"][disabled], input[type="email"][readonly], fieldset[disabled] input[type="email"], input[type="number"][disabled], input[type="number"][readonly], fieldset[disabled] input[type="number"], input[type="search"][disabled], input[type="search"][readonly], fieldset[disabled] input[type="search"], input[type="tel"][disabled], input[type="tel"][readonly], fieldset[disabled] input[type="tel"], input[type="time"][disabled], input[type="time"][readonly], fieldset[disabled] input[type="time"], input[type="url"][disabled], input[type="url"][readonly], fieldset[disabled] input[type="url"], input[type="color"][disabled], input[type="color"][readonly], fieldset[disabled] input[type="color"], textarea[disabled], textarea[readonly], fieldset[disabled] textarea {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   cursor: default;
 }
 /* line 424, ../scss/modules/_forms.scss */
@@ -10968,7 +10974,7 @@ textarea {
 select {
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   border-radius: 0;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+");
   background-position: 100% center;
@@ -10999,7 +11005,7 @@ select:focus {
 }
 /* line 357, ../scss/modules/_forms.scss */
 select:disabled {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   cursor: default;
 }
 /* line 500, ../scss/modules/_forms.scss */
@@ -11036,7 +11042,7 @@ input[type="file"] {
 /* We add basic fieldset styling */
 /* line 537, ../scss/modules/_forms.scss */
 fieldset {
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   margin: 1.125rem 0;
   padding: 1.25rem;
 }
@@ -11059,7 +11065,7 @@ fieldset legend {
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
   background: #f04124;
-  color: #FFF;
+  color: white;
 }
 /* line 547, ../scss/modules/_forms.scss */
 [data-abide] span.error, [data-abide] small.error {
@@ -11076,7 +11082,7 @@ span.error, small.error {
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
   background: #f04124;
-  color: #FFF;
+  color: white;
 }
 
 /* line 555, ../scss/modules/_forms.scss */
@@ -11105,7 +11111,7 @@ span.error, small.error {
   margin-top: -1px;
   padding: 0.375rem 0.5625rem 0.5625rem;
   background: #f04124;
-  color: #FFF;
+  color: white;
 }
 /* line 576, ../scss/modules/_forms.scss */
 .error > label > small {
@@ -11143,7 +11149,7 @@ label.error {
   border-color: #b9c9df;
   margin-bottom: 1.25rem;
   padding: 3.125rem 0;
-  background: #DCE4EF;
+  background: #dce4ef;
   color: #333333;
 }
 /* line 58, ../scss/modules/_panels.scss */
@@ -11200,7 +11206,7 @@ label.error {
 }
 /* line 87, ../scss/modules/_panels.scss */
 .panel.callout a:not(.button) {
-  color: #008CBA;
+  color: #008cba;
 }
 /* line 90, ../scss/modules/_panels.scss */
 .panel.callout a:not(.button):hover, .panel.callout a:not(.button):focus {
