@@ -2,7 +2,6 @@
 
 namespace Drupal\simplenews\Tests;
 
-use Drupal\Component\Utility\Unicode;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\language\Entity\ContentLanguageSettings;
@@ -71,7 +70,6 @@ class SimplenewsI18nTest extends SimplenewsTestBase {
     drupal_static_reset();
     \Drupal::entityManager()->clearCachedDefinitions();
     \Drupal::service('router.builder')->rebuild();
-    \Drupal::service('entity.definition_update_manager')->applyUpdates();
 
     // Make Simplenews issue body translatable.
     $field = FieldConfig::loadByName('node', 'simplenews_issue', 'body');
@@ -121,7 +119,7 @@ class SimplenewsI18nTest extends SimplenewsTestBase {
       'simplenews_issue' => $newsletter_id,
       'body[0][value]' => 'Link to node: [node:url]',
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $english, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $english, ('Save'));
     $this->assertTrue(preg_match('|node/(\d+)$|', $this->getUrl(), $matches), 'Node created');
     $node = Node::load($matches[1]);
 
@@ -131,7 +129,7 @@ class SimplenewsI18nTest extends SimplenewsTestBase {
       'title[0][value]' => $this->randomMachineName(),
       'body[0][value]' => 'Link to node: [node:url] ES',
     );
-    $this->drupalPostForm(NULL, $spanish, t('Save and keep published (this translation)'));
+    $this->drupalPostForm(NULL, $spanish, t('Save (this translation)'));
 
     \Drupal::entityManager()->getStorage('node')->resetCache(array($node->id()));
     $node = Node::load($node->id());
@@ -168,7 +166,7 @@ class SimplenewsI18nTest extends SimplenewsTestBase {
       // Verify that the link is in the correct language.
       $this->assertTrue(strpos($mail['body'], $node_url) !== FALSE);
       // The <h1> tag is converted to uppercase characters.
-      $this->assertTrue(strpos($mail['body'], Unicode::strtoupper($title)) !== FALSE);
+      $this->assertTrue(strpos($mail['body'], mb_strtoupper($title)) !== FALSE);
     }
 
     // Verify sent subscriber count for each node.
@@ -184,12 +182,12 @@ class SimplenewsI18nTest extends SimplenewsTestBase {
       'langcode[0][value]' => 'en',
       'body[0][value]' => 'Link to node: [node:url]',
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $english, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $english, ('Save'));
     $this->clickLink(t('Edit'));
     $edit = array(
       'langcode[0][value]' => 'es',
     );
-    $this->drupalPostForm(NULL, $edit, t('Save and keep published'));
+    $this->drupalPostForm(NULL, $edit, t('Save'));
   }
 
 }

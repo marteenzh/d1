@@ -5,7 +5,7 @@ namespace Drupal\simplenews\Mail;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Lock\LockBackendInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
+use Psr\Log\LoggerInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Session\AccountSwitcherInterface;
 use Drupal\Core\Session\AnonymousUserSession;
@@ -20,11 +20,14 @@ use Drupal\simplenews\Mail\MailInterface;
 use Drupal\simplenews\SkipMailException;
 use Drupal\simplenews\Spool\SpoolStorageInterface;
 use Drupal\simplenews\SubscriberInterface;
+use Drupal\Core\Messenger\MessengerTrait;
 
 /**
  * Default Mailer.
  */
 class Mailer implements MailerInterface {
+
+  use MessengerTrait;
 
   /**
    * Amount of mails after which the execution time should be checked again.
@@ -52,7 +55,7 @@ class Mailer implements MailerInterface {
   protected $state;
 
   /**
-   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   * @var \Psr\Log\LoggerInterface
    */
   protected $logger;
 
@@ -87,8 +90,8 @@ class Mailer implements MailerInterface {
    *   The mail manager.
    * @param \Drupal\Core\State\StateInterface $state
    *   State service.
-   * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
-   *   Logger channel.
+   * @param \Psr\Log\LoggerInterface $logger
+   *   A logger instance.
    * @param \Drupal\Core\Session\AccountSwitcherInterface $account_switcher
    *   Account switcher.
    * @param \Drupal\Core\Lock\LockBackendInterface $lock
@@ -96,7 +99,7 @@ class Mailer implements MailerInterface {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config factory.
    */
-  public function __construct(SpoolStorageInterface $spool_storage, MailManagerInterface $mail_manager, StateInterface $state, LoggerChannelInterface $logger, AccountSwitcherInterface $account_switcher, LockBackendInterface $lock, ConfigFactoryInterface $config_factory) {
+  public function __construct(SpoolStorageInterface $spool_storage, MailManagerInterface $mail_manager, StateInterface $state, LoggerInterface $logger, AccountSwitcherInterface $account_switcher, LockBackendInterface $lock, ConfigFactoryInterface $config_factory) {
     $this->spoolStorage = $spool_storage;
     $this->mailManager = $mail_manager;
     $this->state = $state;
@@ -353,11 +356,11 @@ class Mailer implements MailerInterface {
     }
     if (count($recipients['user'])) {
       $recipients_txt = implode(', ', $recipients['user']);
-      drupal_set_message(t('Test newsletter sent to user %recipient.', array('%recipient' => $recipients_txt)));
+      $this->messenger()->addMessage(t('Test newsletter sent to user %recipient.', array('%recipient' => $recipients_txt)));
     }
     if (count($recipients['anonymous'])) {
       $recipients_txt = implode(', ', $recipients['anonymous']);
-      drupal_set_message(t('Test newsletter sent to anonymous %recipient.', array('%recipient' => $recipients_txt)));
+      $this->messenger()->addMessage(t('Test newsletter sent to anonymous %recipient.', array('%recipient' => $recipients_txt)));
     }
 
     $this->accountSwitcher->switchBack();
@@ -439,7 +442,7 @@ class Mailer implements MailerInterface {
     $name = $this->config->get('newsletter.from_name');
 
     // Windows based PHP systems don't accept formatted email addresses.
-    $formatted_address = (Unicode::substr(PHP_OS, 0, 3) == 'WIN') ? $address : '"'. addslashes(Unicode::mimeHeaderEncode($name)) .'" <'. $address .'>';
+    $formatted_address = (mb_substr(PHP_OS, 0, 3) == 'WIN') ? $address : '"'. addslashes(Unicode::mimeHeaderEncode($name)) .'" <'. $address .'>';
 
     return array(
       'address' => $address,

@@ -6,7 +6,7 @@
  */
 
 use Drupal\Component\Utility\Crypt;
-use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -16,9 +16,11 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Row;
 use Drupal\node\NodeInterface;
 use Drupal\node\NodeTypeInterface;
-use Drupal\simplenews\Entity\Subscriber;
 use Drupal\simplenews\SubscriberInterface;
 use Drupal\user\UserInterface;
 
@@ -133,10 +135,10 @@ function simplenews_node_delete($node) {
   // Check if pending emails of this newsletter issue exist and delete these too.
   $count = \Drupal::service('simplenews.spool_storage')->deleteMails(array('entity_id' => $node->id(), 'entity_type' => 'node'));
   if ($count) {
-    drupal_set_message(t('@count pending emails for %title were found and deleted.', array(
+    \Drupal::messenger()->addWarning(t('@count pending emails for %title were found and deleted.', array(
         '%title' => $node->getTitle(),
         '@count' => $count,
-      )), 'warning');
+      )));
     \Drupal::logger('simplenews')->alert('Newsletter %title deleted with @count pending emails..', array(
       '%title' => $node->getTitle(),
       '@count' => $count,
@@ -260,7 +262,7 @@ function simplenews_form_node_form_alter(&$form, FormStateInterface $form_state,
     // Display warning if the node is currently being sent.
     if (!$node->isNew()) {
       if ($node->simplenews_issue->status == SIMPLENEWS_STATUS_SEND_PENDING) {
-        drupal_set_message(t('This newsletter issue is currently being sent. Any changes will be reflected in the e-mails which have not been sent yet.'), 'warning');
+        \Drupal::messenger()->addWarning(t('This newsletter issue is currently being sent. Any changes will be reflected in the e-mails which have not been sent yet.'));
       }
     }
 
@@ -377,7 +379,7 @@ function simplenews_user_profile_form_submit($form, FormStateInterface $form_sta
       $newsletters = simplenews_newsletter_load_multiple($ids);
       foreach ($newsletters as $newsletter) {
         $subscription_manager->subscribe($account->getEmail(), $newsletter->id(), FALSE, 'website', $account->getPreferredLangcode());
-        drupal_set_message(t('You have been subscribed to %newsletter.', array('%newsletter' => $newsletter->name)));
+        \Drupal::messenger()->addMessage(t('You have been subscribed to %newsletter.', array('%newsletter' => $newsletter->name)));
       }
     }
   }
@@ -462,8 +464,6 @@ function simplenews_user_login(UserInterface $account) {
  * @see simplenews_user_insert()
  */
 function simplenews_user_presave(UserInterface $account) {
-  $syncing = &drupal_static(__FUNCTION__, FALSE);
-
   // Don't do anything if the user has no email.
   if (!$account->getEmail()) {
     return;
@@ -474,7 +474,7 @@ function simplenews_user_presave(UserInterface $account) {
     simplenews_subscriber_load_by_mail($account->getEmail()) :
     simplenews_subscriber_load_by_uid($account->id());
   if ($subscriber && !$subscriber->isSyncing()) {
-    $syncing = TRUE;
+    $subscriber->setSyncing();
     // We only process existing accounts.
     if (!$account->isNew()) {
       // Update mail, status and language if they are changed.
@@ -491,7 +491,7 @@ function simplenews_user_presave(UserInterface $account) {
     }
 
     $subscriber->save();
-    $syncing = FALSE;
+    $subscriber->setSyncing(FALSE);
   }
 }
 
@@ -764,7 +764,7 @@ function simplenews_newsletter_load($newsletter_id, $reset = FALSE) {
 function simplenews_newsletter_list() {
   $newsletters = array();
   foreach (simplenews_newsletter_get_all() as $id => $newsletter) {
-    $newsletters[$id] = SafeMarkup::checkPlain($newsletter->label());
+    $newsletters[$id] = Html::escape($newsletter->label());
   }
   return $newsletters;
 }
@@ -775,7 +775,7 @@ function simplenews_newsletter_list() {
  * Does not include newsletters with the opt-out/opt-in setting set to hidden.
  * It is possible to apply additional conditions.
  *
- * @param $conditions Aditional contitions.
+ * @param $conditions Additional conditions.
  * @return array Filtered newsletter entities.
  *
  * @ingroup newsletter
@@ -789,7 +789,7 @@ function simplenews_newsletter_get_visible($conditions = array()) {
     $query->condition($key, $value);
   }
   $result = $query->execute();
-  return !empty($result) ? simplenews_newsletter_load_multiple($result) : NULL;
+  return !empty($result) ? simplenews_newsletter_load_multiple($result) : [];
 }
 
 /**
@@ -807,7 +807,7 @@ function simplenews_newsletter_get_all() {
 }
 
 /**
- * Load one or many newsletter entites from database.
+ * Load one or many newsletter entities from database.
  *
  * @param array $ids List of ids to be loaded or empty array for all.
  * @param boolean $reset
@@ -1035,7 +1035,7 @@ function simplenews_count_subscriptions($newsletter_id) {
   }
 
   // @todo: entity query + aggregate
-  $query = db_select('simplenews_subscriber__subscriptions', 'ss');
+  $query = \Drupal::database()->select('simplenews_subscriber__subscriptions', 'ss');
   $query->leftJoin('simplenews_subscriber', 'sn', 'sn.id = ss.entity_id');
   $query->condition('subscriptions_target_id', $newsletter_id)
     ->condition('sn.status', SubscriberInterface::ACTIVE)
@@ -1148,4 +1148,19 @@ function _simplenews_batch_dispatcher() {
   $args = func_get_args();
   list($service, $method) = explode(':', array_shift($args));
   call_user_func_array(array(\Drupal::service($service), $method), $args);
+}
+
+/**
+ * Implements hook_migrate_prepare_row().
+ */
+function simplenews_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+  if ($migration->id() == 'd7_node_type') {
+    $value = $source->getDatabase()->query(
+      'SELECT value FROM {variable} WHERE name = :name',
+      [':name' => 'simplenews_content_type_' . $row->getSourceProperty('type')]
+    )->fetchField();
+    if ($value) {
+      $row->setSourceProperty('simplenews_content_type', unserialize($value));
+    }
+  }
 }

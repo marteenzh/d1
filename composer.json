@@ -8,10 +8,9 @@
         "wikimedia/composer-merge-plugin": "^1.4",
         "embed/embed": "^3.3",
         "drupal/zurb_foundation": "^6.0"
-
     },
     "replace": {
-        "drupal/core": "^8.6"
+        "drupal/core": "^8.7"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

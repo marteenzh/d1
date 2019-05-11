@@ -134,7 +134,7 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
       'body[0][value]' => "Mail token: <strong>[simplenews-subscriber:mail]</strong>",
       'simplenews_issue' => 'default',
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save'));
     $this->assertTrue(preg_match('|node/(\d+)$|', $this->getUrl(), $matches), 'Node created');
     $node = Node::load($matches[1]);
 
@@ -204,7 +204,7 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
       'body[0][value]' => "Mail token: <strong>[simplenews-subscriber:mail]</strong>",
       'simplenews_issue' => 'default',
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save'));
     $this->assertTrue(preg_match('|node/(\d+)$|', $this->getUrl(), $matches), 'Node created');
     $node = Node::load($matches[1]);
 
@@ -219,7 +219,8 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
     // Test that tokens are correctly replaced.
     foreach (array_slice($this->drupalGetMails(), 0, 3) as $mail) {
       // Verify title.
-      $this->assertTrue(strpos($mail['body'], '<h2>' . Html::escape($node->getTitle()) . '</h2>') !== FALSE);
+      preg_match('|<h2>(.*)</h2>|', $mail['body'], $matches);
+      $this->assertEqual(Html::decodeEntities($matches[1]), $node->getTitle());
 
       // Verify the format/content type.
       $this->assertEqual($mail['params']['format'], 'text/html');
@@ -282,7 +283,7 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
       'body[0][value]' => "Mail token: <strong>[simplenews-subscriber:mail]</strong>",
       'simplenews_issue' => 'default',
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save'));
     $this->assertTrue(preg_match('|node/(\d+)$|', $this->getUrl(), $matches), 'Node created');
     $node = Node::load($matches[1]);
 
@@ -324,7 +325,7 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
       'body[0][value]' => "Mail token: <strong>[simplenews-subscriber:mail]</strong>",
       'simplenews_issue' => 'default',
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save'));
     $this->assertTrue(preg_match('|node/(\d+)$|', $this->getUrl(), $matches), 'Node created');
     $node = Node::load($matches[1]);
 
@@ -363,7 +364,7 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
       'body[0][value]' => "Mail token: <strong>[simplenews-subscriber:mail]</strong>",
       'simplenews_issue' => 'default',
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save'));
     $this->assertTrue(preg_match('|node/(\d+)$|', $this->getUrl(), $matches), 'Node created');
     $node = Node::load($matches[1]);
 
@@ -371,10 +372,10 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
     \Drupal::service('simplenews.spool_storage')->addFromEntity($node);
 
     // Delete the node manually in the database.
-    db_delete('node')
+    \Drupal::database()->delete('node')
       ->condition('nid', $node->id())
       ->execute();
-    db_delete('node_revision')
+    \Drupal::database()->delete('node_revision')
       ->condition('nid', $node->id())
       ->execute();
     \Drupal::entityManager()->getStorage('node')->resetCache();
@@ -399,7 +400,7 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
       'body[0][value]' => "Mail token: <strong>[simplenews-subscriber:mail]</strong>",
       'simplenews_issue' => 'default',
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save'));
     $this->assertTrue(preg_match('|node/(\d+)$|', $this->getUrl(), $matches), 'Node created');
     $node = Node::load($matches[1]);
 
@@ -434,7 +435,7 @@ class SimplenewsSourceTest extends SimplenewsTestBase {
     \Drupal::service('simplenews.spool_storage')->addFromEntity($node);
     \Drupal::service('simplenews.mailer')->sendSpool();
     $this->assertEqual(0, count($this->drupalGetMails()));
-    $spool_row = db_select('simplenews_mail_spool', 'ms')
+    $spool_row = \Drupal::database()->select('simplenews_mail_spool', 'ms')
       ->fields('ms', ['status'])
       ->execute()
       ->fetchAssoc();

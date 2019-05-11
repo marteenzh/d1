@@ -5,7 +5,7 @@ namespace Drupal\simplenews\Subscription;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\DestructableInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
+use Psr\Log\LoggerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Utility\Token;
 use Drupal\simplenews\Entity\Subscriber;
@@ -58,7 +58,7 @@ class SubscriptionManager implements SubscriptionManagerInterface, DestructableI
   protected $token;
 
   /**
-   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   * @var \Psr\Log\LoggerInterface
    */
   protected $logger;
 
@@ -78,10 +78,10 @@ class SubscriptionManager implements SubscriptionManagerInterface, DestructableI
    *   The simplenews manager.
    * @param \Drupal\Core\Utility\Token $token
    *   The token service.
-   * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
+   * @param \Psr\Log\LoggerInterface $logger
    *   The simplenews logger channel.
    */
-  public function __construct(LanguageManagerInterface $language_manager, ConfigFactoryInterface $config_factory, MailerInterface $mailer, Token $token, LoggerChannelInterface $logger, AccountInterface $current_user) {
+  public function __construct(LanguageManagerInterface $language_manager, ConfigFactoryInterface $config_factory, MailerInterface $mailer, Token $token, LoggerInterface $logger, AccountInterface $current_user) {
     $this->languageManager = $language_manager;
     $this->config = $config_factory->get('simplenews.settings');
     $this->mailer = $mailer;
@@ -165,7 +165,9 @@ class SubscriptionManager implements SubscriptionManagerInterface, DestructableI
    */
   public function unsubscribe($mail, $newsletter_id, $confirm = NULL, $source = 'unknown') {
     $subscriber = simplenews_subscriber_load_by_mail($mail);
-
+    if (!$subscriber) {
+      throw new \Exception('The subscriber does not exist.');
+    }
     // The unlikely case that a user is unsubscribed from a non existing mailing list is logged
     if (!$newsletter = simplenews_newsletter_load($newsletter_id)) {
       $this->logger->error('Attempt to unsubscribe from non existing mailing list ID %id', array('%id' => $newsletter_id));

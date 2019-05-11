@@ -2,7 +2,7 @@
 
 namespace Drupal\simplenews\Form;
 
-use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -38,7 +38,7 @@ class SubscriberMassUnsubscribeForm extends FormBase {
     );
 
     foreach (simplenews_newsletter_get_all() as $id => $newsletter) {
-      $form['newsletters'][$id]['#description'] = SafeMarkup::checkPlain($newsletter->description);
+      $form['newsletters'][$id]['#description'] = Html::escape($newsletter->description);
     }
 
     $form['submit'] = array(
@@ -80,21 +80,21 @@ class SubscriberMassUnsubscribeForm extends FormBase {
     }
     if ($removed) {
       $removed = implode(", ", $removed);
-      drupal_set_message(t('The following addresses were unsubscribed: %removed.', array('%removed' => $removed)));
+      $this->messenger()->addMessage(t('The following addresses were unsubscribed: %removed.', array('%removed' => $removed)));
 
       $newsletters = simplenews_newsletter_get_all();
       $list_names = array();
       foreach ($checked_lists as $newsletter_id) {
         $list_names[] = $newsletters[$newsletter_id]->label();
       }
-      drupal_set_message(t('The addresses were unsubscribed from the following newsletters: %newsletters.', array('%newsletters' => implode(', ', $list_names))));
+      $this->messenger()->addMessage(t('The addresses were unsubscribed from the following newsletters: %newsletters.', array('%newsletters' => implode(', ', $list_names))));
     }
     else {
-      drupal_set_message(t('No addresses were removed.'));
+      $this->messenger()->addMessage(t('No addresses were removed.'));
     }
     if ($invalid) {
       $invalid = implode(", ", $invalid);
-      drupal_set_message(t('The following addresses were invalid: %invalid.', array('%invalid' => $invalid)), 'error');
+      $this->messenger()->addError(t('The following addresses were invalid: %invalid.', array('%invalid' => $invalid)));
     }
 
     // Return to the parent page.

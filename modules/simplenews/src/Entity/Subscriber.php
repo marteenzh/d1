@@ -20,6 +20,7 @@ use Drupal\user\UserInterface;
  *   label = @Translation("Simplenews subscriber"),
  *   handlers = {
  *     "storage" = "Drupal\simplenews\Subscription\SubscriptionStorage",
+ *     "access" = "Drupal\simplenews\SubscriberAccessControlHandler",
  *     "form" = {
  *       "default" = "Drupal\simplenews\Form\SubscriberForm",
  *       "account" = "Drupal\simplenews\Form\SubscriptionsAccountForm",
@@ -178,6 +179,13 @@ class Subscriber extends ContentEntityBase implements SubscriberInterface {
   /**
    * {@inheritdoc}
    */
+  public function setSyncing($sync = TRUE) {
+    static::$syncing = $sync;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function isSubscribed($newsletter_id) {
     foreach ($this->subscriptions as $item) {
       if ($item->target_id == $newsletter_id) {
@@ -274,7 +282,7 @@ class Subscriber extends ContentEntityBase implements SubscriberInterface {
     parent::postSave($storage, $update);
 
     // Copy values for shared fields to existing user.
-    if (\Drupal::config('simplenews.settings')->get('subscriber.sync_fields') && $user = $this->getUser()) {
+    if (!static::$syncing === TRUE && \Drupal::config('simplenews.settings')->get('subscriber.sync_fields') && $user = $this->getUser()) {
       static::$syncing = TRUE;
       foreach ($this->getUserSharedFields($user) as $field_name) {
         $user->set($field_name, $this->get($field_name)->getValue());
@@ -349,7 +357,7 @@ class Subscriber extends ContentEntityBase implements SubscriberInterface {
       ->setSetting('default_value', '')
       ->setRequired(TRUE)
       ->setDisplayOptions('form', array(
-        'type' => 'email',
+        'type' => 'email_default',
         'settings' => array(),
         'weight' => 5,
       ))
@@ -359,8 +367,7 @@ class Subscriber extends ContentEntityBase implements SubscriberInterface {
       ->setLabel(t('User'))
       ->setDescription(t('The corresponding user.'))
       ->setSetting('target_type', 'user')
-      ->setSetting('handler', 'default')
-      ->setDisplayConfigurable('form', TRUE);
+      ->setSetting('handler', 'default');
 
     $fields['langcode'] = BaseFieldDefinition::create('language')
       ->setLabel(t('Language'))

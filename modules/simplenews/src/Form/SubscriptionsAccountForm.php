@@ -34,15 +34,6 @@ class SubscriptionsAccountForm extends SubscriptionsFormBase {
   /**
    * {@inheritdoc}
    */
-  protected function actions(array $form, FormStateInterface $form_state) {
-    $actions = parent::actions($form, $form_state);
-    $actions[static::SUBMIT_UPDATE]['#value'] = $this->t('Save');
-    return $actions;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function getSubmitMessage(FormStateInterface $form_state, $op, $confirm) {
     $user = $form_state->get('user');
     if (\Drupal::currentUser()->id() == $user->id()) {
@@ -55,7 +46,7 @@ class SubscriptionsAccountForm extends SubscriptionsFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    parent::submitUpdate($form, $form_state);
+    parent::submitForm($form, $form_state);
     $form_state->setRedirectUrl($this->entity->getUser()->toUrl());
   }
 
@@ -70,6 +61,11 @@ class SubscriptionsAccountForm extends SubscriptionsFormBase {
    */
   public function checkAccess(UserInterface $user) {
     $account = $this->currentUser();
+
+    // Deny access for anonymous user at /user/0/simplenews.
+    if ($user->isAnonymous()) {
+      return AccessResult::forbidden();
+    }
 
     return AccessResult::allowedIfHasPermission($account, 'administer simplenews subscriptions')
       ->orIf(AccessResult::allowedIfHasPermission($account, 'subscribe to newsletters')

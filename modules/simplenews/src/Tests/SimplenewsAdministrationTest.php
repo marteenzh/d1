@@ -3,10 +3,10 @@
 namespace Drupal\simplenews\Tests;
 
 use Drupal\block\Entity\Block;
-use Drupal\Component\Utility\SafeMarkup;
-use Drupal\Component\Utility\Unicode;
+use Drupal\Component\Utility\Html;
 use Drupal\simplenews\Entity\Newsletter;
 use Drupal\simplenews\Entity\Subscriber;
+use Drupal\views\Entity\View;
 use Drupal\simplenews\SubscriberInterface;
 
 /**
@@ -190,7 +190,16 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
       }
     }*/
 
+    // Check saving the subscriber as admin does not wipe the hidden newsletter settings.
     $this->drupalLogin($admin_user);
+    $subscriber = simplenews_subscriber_load_by_mail($user->getEmail());
+    $this->drupalGet('admin/people/simplenews/edit/' . $subscriber->id());
+    $this->assertNoField($this->getNewsletterFieldId('on_hidden'));
+    $this->assertNoField('mail');
+    $this->drupalPostForm('admin/people/simplenews/edit/' . $subscriber->id(), [], t('Save'));
+    $this->drupalGet('admin/people/simplenews/edit/' . $subscriber->id());
+    $this->assertTrue($subscriber->isSubscribed('on_hidden'));
+    $this->assertTrue($subscriber->isUnsubscribed($off_double_newsletter_id));
 
     /*$this->setupSubscriptionBlock($edit_newsletter->newsletter_id, $settings = array(
       'issue count' => 2,
@@ -271,15 +280,16 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
     $this->drupalLogin($admin_user);
 
     // Create a newsletter.
-    $newsletter_name = Unicode::strtolower($this->randomMachineName());
+    $newsletter_name = mb_strtolower($this->randomMachineName());
     $edit = array(
       'name' => $newsletter_name,
       'id'  => $newsletter_name,
     );
     $this->drupalPostForm('admin/config/services/simplenews/add', $edit, t('Save'));
 
-    // Add a number of users to each newsletter separately and then add another
-    // bunch to both.
+    // This test adds a number of subscribers to each newsletter separately and
+    // then adds another bunch to both. First step is to create some arrays
+    // that describe the actions to take.
     $subscribers = array();
 
     $groups = array();
@@ -299,6 +309,7 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
     }
 
     // Create a user and assign him one of the mail addresses of the all group.
+    // The other subscribers will not be users, just anonymous subscribers.
     $user = $this->drupalCreateUser(array('subscribe to newsletters'));
     // Make sure that user_save() does not update the user object, as it will
     // override the pass_raw property which we'll need to log this user in
@@ -309,7 +320,7 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
 
     $delimiters = array(',', ' ', "\n");
 
-    // Visit subscribers by clicking menu tab in people.
+    // Add the subscribers using mass subscribe.
     $this->drupalGet('admin/people');
     $this->clickLink('Subscribers');
     $i = 0;
@@ -325,14 +336,20 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
       $this->drupalPostForm(NULL, $edit, t('Subscribe'));
     }
 
-    // The user to which the mail was assigned should be listed too.
-    $this->assertText($user->label());
-
     // Verify that all addresses are displayed in the table.
     $rows = $this->xpath('//tbody/tr');
     $mail_addresses = array();
     for ($i = 0; $i < count($subscribers_flat); $i++) {
-      $mail_addresses[] = trim((string) $rows[$i]->td[0]);
+      $email = trim((string) $rows[$i]->td[0]);
+      $mail_addresses[] = $email;
+      if ($email == $user_mail) {
+         // The user to which the mail was assigned should show the user name.
+        $this->assertEqual(trim((string) $rows[$i]->td[1]->children()[0]), $user->getAccountName());
+      }
+      else {
+        // Blank value for user name.
+        $this->assertEqual($rows[$i]->td[1]->count(), 0);
+      }
     }
     $this->assertEqual(15, count($mail_addresses));
     foreach ($mail_addresses as $mail_address) {
@@ -372,14 +389,15 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
 
     // Filter a single mail address, the one assigned to a user.
     $edit = array(
-      'mail' => Unicode::substr(current($subscribers['all']), 0, 4)
+      'mail' => mb_substr(current($subscribers['all']), 0, 4)
     );
     $this->drupalGet('admin/people/simplenews', array('query' => array('mail' => $edit['mail'])));
 
     $rows = $this->xpath('//tbody/tr');
     $this->assertEqual(1, count($rows));
     $this->assertEqual(current($subscribers['all']), trim((string) $rows[0]->td[0]));
-    $this->assertEqual($user->label(), trim((string) $rows[0]->td[1]->span));
+    // Mysteriously, the username is sometimes a span and sometimes a link.  Accept both.
+    $this->assertEqual($user->label(), trim((string) $rows[0]->td[1]->xpath('span|a')[0]));
 
     // Reset the filter.
     $this->drupalGet('admin/people/simplenews');
@@ -520,7 +538,7 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
     $this->assertFalse($subscription_manager->isSubscribed($tested_subscribers[0], $first), t('Subscriber not resubscribed through mass subscription.'));
     $this->assertFalse($subscription_manager->isSubscribed($tested_subscribers[1], $first), t('Subscriber not resubscribed through mass subscription.'));
     $this->assertTrue($subscription_manager->isSubscribed($tested_subscribers[2], $first), t('Subscriber subscribed through mass subscription.'));
-    $substitutes = array('@name' => SafeMarkup::checkPlain(simplenews_newsletter_load($first)->label()), '@mail' => $unsubscribed);
+    $substitutes = array('@name' => simplenews_newsletter_load($first)->label(), '@mail' => $unsubscribed);
     $this->assertText(t('The following addresses were skipped because they have previously unsubscribed from @name: @mail.', $substitutes));
     $this->assertText(t("If you would like to resubscribe them, use the 'Force resubscription' option."));
 
@@ -641,12 +659,12 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
     $subscription_manager->subscribe($xss_mail, $this->getRandomNewsletter(), FALSE);
     $this->drupalGet('admin/people/simplenews');
     $this->assertNoRaw($xss_mail);
-    $this->assertRaw(SafeMarkup::checkPlain($xss_mail));
+    $this->assertRaw(Html::escape($xss_mail));
 
     $xss_subscriber = simplenews_subscriber_load_by_mail($xss_mail);
     $this->drupalGet('admin/people/simplenews/edit/' . $xss_subscriber->id());
     $this->assertNoRaw($xss_mail);
-    $this->assertRaw(SafeMarkup::checkPlain($xss_mail));
+    $this->assertRaw(Html::escape($xss_mail));
 
     // Create a new user for the next test.
     $new_user = $this->drupalCreateUser(array('subscribe to newsletters'));
@@ -664,7 +682,7 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
     $this->assertText('Subscriber edit@example.com has been updated.');
 
     // Create a second newsletter.
-    $second_newsletter_name = Unicode::strtolower($this->randomMachineName());
+    $second_newsletter_name = mb_strtolower($this->randomMachineName());
     $edit2 = array(
       'name' => $second_newsletter_name,
       'id'  => $second_newsletter_name,
@@ -734,7 +752,7 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
       'body[0][value]' => 'User ID: [current-user:uid]',
       'simplenews_issue' => $this->getRandomNewsletter(),
     );
-    $this->drupalPostForm(NULL, $edit, ('Save and publish'));
+    $this->drupalPostForm(NULL, $edit, ('Save'));
 
     $node = $this->drupalGetNodeByTitle($edit['title[0][value]']);
 
@@ -743,7 +761,7 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
       'body[0][value]' => 'Sample body text - Newsletter issue',
       'simplenews_issue' => $this->getRandomNewsletter(),
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, ('Save'));
 
     // Assert that body text is displayed.
     $this->assertText('Sample body text - Newsletter issue');
@@ -899,28 +917,29 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
     // Create a newsletter.
     $edit = array(
       'name' => $name = $this->randomMachineName(),
-      'id'  => Unicode::strtolower($name),
+      'id'  => mb_strtolower($name),
     );
     $this->drupalPostForm('admin/config/services/simplenews/add', $edit, t('Save'));
     // Create a newsletter issue and publish.
     $edit = array(
       'title[0][value]' => 'Test_issue_1',
-      'simplenews_issue'  => Unicode::strtolower($name),
+      'simplenews_issue'  => mb_strtolower($name),
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, t('Save and publish'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, t('Save'));
     // Create another newsletter issue and keep unpublished.
     $edit = array(
       'title[0][value]' => 'Test_issue_2',
-      'simplenews_issue'  => Unicode::strtolower($name),
+      'simplenews_issue'  => mb_strtolower($name),
+      'status[value]' => FALSE,
     );
-    $this->drupalPostForm('node/add/simplenews_issue', $edit, t('Save as unpublished'));
+    $this->drupalPostForm('node/add/simplenews_issue', $edit, t('Save'));
     // Test mass subscribe with previously unsubscribed users.
     for ($i = 0; $i < 3; $i++) {
       $subscribers[] = $this->randomEmail();
     }
     $edit = array(
       'emails' => implode(', ', $subscribers),
-      'newsletters[' . Unicode::strtolower($name) . ']' => TRUE,
+      'newsletters[' . mb_strtolower($name) . ']' => TRUE,
     );
     $this->drupalPostForm('admin/people/simplenews/import', $edit, t('Subscribe'));
     $this->drupalGet('admin/content/simplenews');
@@ -1002,6 +1021,60 @@ class SimplenewsAdministrationTest extends SimplenewsTestBase {
         $this->assertEqual(file_url_transform_relative(file_create_url(drupal_get_path('module', 'simplenews') . '/images/sn-sent.png')), trim((string) $row->td[5]->img['src']));
       }
     }
+  }
+
+  /**
+   * Test access for subscriber admin page.
+   */
+  function testAccess() {
+    $admin_user = $this->drupalCreateUser(array(
+        'administer newsletters',
+        'administer simplenews subscriptions',
+      ));
+    $this->drupalLogin($admin_user);
+
+    // Create a newsletter.
+    $newsletter_name = mb_strtolower($this->randomMachineName());
+    $edit = array(
+      'name' => $newsletter_name,
+      'id'  => $newsletter_name,
+    );
+    $this->drupalPostForm('admin/config/services/simplenews/add', $edit, t('Save'));
+
+    // Create a user and subscribe them.
+    $user = $this->drupalCreateUser();
+    $subscriber = Subscriber::create(array('mail' => $user->getEmail()));
+    $subscriber->subscribe('default', SIMPLENEWS_SUBSCRIPTION_STATUS_SUBSCRIBED);
+    $subscriber->setStatus(SubscriberInterface::ACTIVE);
+    $subscriber->save();
+
+    // Check anonymous user can't access admin page.
+    $this->drupalLogout();
+    $this->drupalGet('admin/people/simplenews');
+    $this->assertResponse(403);
+
+    // Turn off the access permission on the view.
+    $view = View::load('simplenews_subscribers');
+    $display = &$view->getDisplay('default');
+    $display['display_options']['access'] = ['type' => 'none', 'options' => []];
+    $view->save();
+    \Drupal::service('router.builder')->rebuild();
+
+    // Check username is public but email is not shown.
+    $this->drupalGet('admin/people/simplenews');
+    $this->assertText($user->getUsername());
+    $this->assertNoText($user->getEmail());
+
+    // Grant view permission.
+    $view_user = $this->drupalCreateUser(array(
+        'view simplenews subscriptions',
+      ));
+    $this->drupalLogin($view_user);
+
+    // Check can see username and email.
+    $this->drupalGet('admin/people/simplenews');
+    $this->assertText($user->getUsername());
+    $this->assertText($user->getEmail());
   }
 
 }

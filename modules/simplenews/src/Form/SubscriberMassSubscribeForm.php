@@ -2,7 +2,7 @@
 
 namespace Drupal\simplenews\Form;
 
-use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -38,7 +38,7 @@ class SubscriberMassSubscribeForm extends FormBase {
     );
 
     foreach (simplenews_newsletter_get_all() as $id => $newsletter) {
-      $form['newsletters'][$id]['#description'] = SafeMarkup::checkPlain($newsletter->description);
+      $form['newsletters'][$id]['#description'] = Html::escape($newsletter->description);
     }
 
     $form['resubscribe'] = array(
@@ -128,29 +128,29 @@ class SubscriberMassSubscribeForm extends FormBase {
     }
     if ($added) {
       $added = implode(", ", $added);
-      drupal_set_message(t('The following addresses were added or updated: %added.', array('%added' => $added)));
+      $this->messenger()->addMessage(t('The following addresses were added or updated: %added.', array('%added' => $added)));
 
       $list_names = array();
       foreach (simplenews_newsletter_load_multiple($checked_newsletters) as $newsletter) {
         $list_names[] = $newsletter->label();
       }
-      drupal_set_message(t('The addresses were subscribed to the following newsletters: %newsletters.', array('%newsletters' => implode(', ', $list_names))));
+      $this->messenger()->addMessage(t('The addresses were subscribed to the following newsletters: %newsletters.', array('%newsletters' => implode(', ', $list_names))));
     }
     else {
-      drupal_set_message(t('No addresses were added.'));
+      $this->messenger()->addMessage(t('No addresses were added.'));
     }
     if ($invalid) {
       $invalid = implode(", ", $invalid);
-      drupal_set_message(t('The following addresses were invalid: %invalid.', array('%invalid' => $invalid)), 'error');
+      $this->messenger()->addError(t('The following addresses were invalid: %invalid.', array('%invalid' => $invalid)));
     }
 
     foreach ($unsubscribed as $name => $subscribers) {
       $subscribers = implode(", ", $subscribers);
-      drupal_set_message(t('The following addresses were skipped because they have previously unsubscribed from %name: %unsubscribed.', array('%name' => $name, '%unsubscribed' => $subscribers)), 'warning');
+      $this->messenger()->addWarning(t('The following addresses were skipped because they have previously unsubscribed from %name: %unsubscribed.', array('%name' => $name, '%unsubscribed' => $subscribers)));
     }
 
     if (!empty($unsubscribed)) {
-      drupal_set_message(t("If you would like to resubscribe them, use the 'Force resubscription' option."), 'warning');
+      $this->messenger()->addWarning(t("If you would like to resubscribe them, use the 'Force resubscription' option."));
     }
 
     // Return to the parent page.
