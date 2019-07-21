@@ -64,8 +64,6 @@ class MediaEmbedBase extends PluginBase implements CKEditorPluginInterface, CKEd
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
-    $settings = $editor->getSettings();
-
     $form['settings_info'] = [
       '#markup' => $this->t('Settings for the Media Embed and Semantic Media Embed plugins are located on the @link.',
       ['@link' => \Drupal::service('ckeditor_media_embed')->getSettingsLink()]),

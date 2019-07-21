@@ -73,11 +73,33 @@ function ckeditor_media_embed_help($route_name, RouteMatchInterface $route_match
  * Implements hook_ckeditor_plugin_info_alter().
  */
 function ckeditor_media_embed_ckeditor_plugin_info_alter(array &$plugins) {
-  $plugin_statuses = AssetManager::getPluginsInstallStatuses(DRUPAL_ROOT . '/');
+  $version = AssetManager::getPluginsVersion(\Drupal::service('library.discovery'), \Drupal::service('config.factory'));
+  $plugin_statuses = AssetManager::getPluginsInstallStatuses($version);
+
+  $all_installed = array_reduce($plugin_statuses, function ($acc, $plugin_status) {
+    if ($acc && $plugin_status == FALSE) {
+      $acc = $plugin_status;
+    }
+
+    return $acc;
+  }, TRUE);
+
+  $uninstalled_plugins = [];
   foreach ($plugin_statuses as $plugin_name => $is_installed) {
-    if (!$is_installed && !empty($plugins[$plugin_name])) {
+    if (!$all_installed && !empty($plugins[$plugin_name])) {
       unset($plugins[$plugin_name]);
     }
+
+    if (!$is_installed) {
+      $uninstalled_plugins[] = $plugin_name;
+    }
+  }
+
+  if (!$all_installed) {
+    \Drupal::logger('ckeditor_media_embed')->error('The following plugins are missing: @uninstalled_plugins. <br />@install_message', [
+      '@uninstalled_plugins' => implode(', ', $uninstalled_plugins),
+      '@install_message' => _ckeditor_media_embed_get_install_instructions(FALSE),
+    ]);
   }
 }
 
@@ -91,15 +113,16 @@ function ckeditor_media_embed_ckeditor_plugin_info_alter(array &$plugins) {
  * @return string|\Drupal\Component\Render\MarkupInterface
  *   A safe string representation of the install instructions.
  */
-function _ckeditor_media_embed_get_install_instructions($prefix = TRUE) {
+function _ckeditor_media_embed_get_install_instructions($prefix = TRUE, $update = FALSE) {
   $message_prefix = '';
 
   if ($prefix) {
     $message_prefix = t('The required CKEditor plugs are missing.');
   }
 
-  return Markup::Create(t('@prefix To install the missing CKEditor plugins run <strong><code>drupal ckeditor_media_embed:install</code></strong> if you have <a href=":drupal_console" target="_blank">Drupal Console</a> installed. Otherwise, please see the <a href=":project_page" target="_blank">installation instructions</a> on the page for additional install methods.',
+  return Markup::Create(t('@prefix To :op the CKEditor plugins run <strong><code>drupal ckeditor_media_embed::op</code></strong> if you have <a href=":drupal_console" target="_blank">Drupal Console</a> installed. Otherwise, please see the <a href=":project_page" target="_blank">installation instructions</a> on the page for additional :op methods.',
     [
+      ':op' => $update ? 'update' : 'install',
       ':drupal_console' => URL::fromUri('https://drupalconsole.com/', ['absolute' => TRUE])->toString(),
       ':project_page' => URL::fromUri('https://www.drupal.org/project/ckeditor_media_embed', ['absolute' => TRUE, 'fragment' => 'ckeditor-media-embed--install'])->toString(),
       '@prefix' => $message_prefix,

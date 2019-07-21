@@ -26,7 +26,17 @@ class AssetManagerTest extends UnitTestCase {
    * Tests \Drupal\ckeditor_media_embed\AssetManager::getPlugins().
    */
   public function testGetPlugins() {
-    $this->assertTrue(is_array(AssetManager::getPlugins()));
+    $plugins = AssetManager::getPlugins();
+    $this->assertTrue(is_array($plugins));
+    $this->assertCount(7, $plugins, 'There should be 7 plugins.');
+  }
+
+  /**
+   * Tests \Drupal\ckeditor_media_embed\AssetManager::getPlugins(<version>).
+   */
+  public function testGetPluginsAbove411() {
+    $plugins = AssetManager::getPlugins('4.11');
+    $this->assertCount(8, $plugins, 'There should be 8 plugins.');
   }
 
   /**
@@ -45,6 +55,16 @@ class AssetManagerTest extends UnitTestCase {
 
     $installed_plugins = array_filter($statuses);
     $this->assertCount(1, $installed_plugins, 'There should only be one installed plugin.');
+  }
+
+  /**
+   * Tests \Drupal\ckeditor_media_embed\AssetManager::getPluginsInstallStatuses(<version>).
+   */
+  public function testGetPluginInstallStatusesAbove411() {
+    $plugins = AssetManager::getPlugins('4.11');
+    $plugin_count = count($plugins);
+    $statuses = AssetManager::getPluginsInstallStatuses('4.11');
+    $this->assertCount($plugin_count, $statuses, 'There should be a status for each plugin.');
   }
 
   /**
@@ -67,30 +87,30 @@ class AssetManagerTest extends UnitTestCase {
    */
   // @codingStandardsIgnoreLine
   public function testGetCKEditorVersion() {
-    $this->libraryDiscovery = $this->getMockBuilder('Drupal\Core\Asset\LibraryDiscovery')
+    $library_discovery = $this->getMockBuilder('Drupal\Core\Asset\LibraryDiscovery')
       ->disableOriginalConstructor()
       ->setMethods(['getLibraryByName'])
       ->getMock();
 
-    $this->config_empty = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
+    $config_empty = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
       ->disableOriginalConstructor()
       ->getMock();
-    $this->config_empty->expects($this->exactly(2))
+    $config_empty->expects($this->exactly(2))
       ->method('get')
       ->with('ckeditor_version')
       ->willReturn('');
 
-    $this->configFactory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
+    $config_factory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
       ->disableOriginalConstructor()
       ->getMock();
-    $this->configFactory->expects($this->exactly(2))
+    $config_factory->expects($this->exactly(2))
       ->method('get')
       ->with('ckeditor_media_embed.settings')
-      ->willReturn($this->config_empty);
+      ->willReturn($config_empty);
 
     $container = new ContainerBuilder();
     $container->set('app.root', __DIR__ . '/../../assets');
-    $container->set('config.factory', $this->configFactory);
+    $container->set('config.factory', $config_factory);
     \Drupal::setContainer($container);
 
     $test_library_path = '';
@@ -99,30 +119,108 @@ class AssetManagerTest extends UnitTestCase {
 
     // Test with a config file that has no ckeditor_version set, and the drupal
     // library yml file isn't found or can't be parsed.
-    $this->assertSame('4.5.x', AssetManager::getCKEditorVersion($this->libraryDiscovery, $this->configFactory, $test_library_path, $test_empty_extension), 'The version that should be retrieved is 4.5.x');
+    $this->assertSame('4.5.x', AssetManager::getCKEditorVersion($library_discovery, $config_factory, $test_library_path, $test_empty_extension), 'The version that should be retrieved is 4.5.x');
 
     // Test with a config file that has no ckeditor_version set, and the drupal
     // library yml file is able to be found and parsed.
-    $this->assertSame('x.x.x', AssetManager::getCKEditorVersion($this->libraryDiscovery, $this->configFactory, $test_library_path, $test_extension), 'The version that should be retrieved is x.x.x');
+    $this->assertSame('x.x.x', AssetManager::getCKEditorVersion($library_discovery, $config_factory, $test_library_path, $test_extension), 'The version that should be retrieved is x.x.x');
 
     //Test with a config file that has ckeditor_version set.
-    $this->config_set = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
+    $config_set = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
       ->disableOriginalConstructor()
       ->getMock();
-    $this->config_set->expects($this->once())
+    $config_set->expects($this->once())
       ->method('get')
       ->with('ckeditor_version')
       ->willReturn('4.5.0');
 
-    $this->configFactory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
+    $config_factory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
       ->disableOriginalConstructor()
       ->getMock();
-    $this->configFactory->expects($this->once())
+    $config_factory->expects($this->once())
       ->method('get')
       ->with('ckeditor_media_embed.settings')
-      ->willReturn($this->config_set);
+      ->willReturn($config_set);
 
-    $this->assertSame('4.5.0', AssetManager::getCKEditorVersion($this->libraryDiscovery, $this->configFactory, $test_library_path, $test_extension),'The version that should be retrieved is 4.5.0');
+    $this->assertSame('4.5.0', AssetManager::getCKEditorVersion($library_discovery, $config_factory, $test_library_path, $test_extension),'The version that should be retrieved is 4.5.0');
+  }
+
+  /**
+   * Tests \Drupal\ckeditor_media_embed\AssetManager::getPluginsInstalledVersion().
+   */
+  public function testGetPluginsInstalledVersion() {
+    $config_set = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $config_set->expects($this->once())
+      ->method('get')
+      ->with('plugins_version_installed')
+      ->willReturn('4.5.0');
+
+    $config_factory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $config_factory->expects($this->once())
+      ->method('get')
+      ->with('ckeditor_media_embed.settings')
+      ->willReturn($config_set);
+
+    $this->assertSame('4.5.0', AssetManager::getPluginsInstalledVersion($config_factory),'The plugin version that should be retrieved is 4.5.0');
+
+  }
+
+  /**
+   * Tests \Drupal\ckeditor_media_embed\AssetManager::getPluginsVersion().
+   */
+  public function testGetPluginsVersion() {
+    $test_library_path = '';
+    $test_extension = 'test.core';
+
+    // Retrieve the version from the CKEditor plugins.
+    $library_discovery = $this->getMockBuilder('Drupal\Core\Asset\LibraryDiscovery')
+      ->disableOriginalConstructor()
+      ->setMethods(['getLibraryByName'])
+      ->getMock();
+    $config_set = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $config_set->expects($this->once())
+      ->method('get')
+      ->with('plugins_version_installed')
+      ->willReturn('x.x.x');
+
+    $config_factory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $config_factory->expects($this->once())
+      ->method('get')
+      ->with('ckeditor_media_embed.settings')
+      ->willReturn($config_set);
+
+    $this->assertSame('x.x.x', AssetManager::getPluginsVersion($library_discovery, $config_factory, $test_library_path, $test_extension), 'The plugin version that should be retrieved is x.x.x');
+
+    // Retrieve the version from the CKEditor.
+    $value_map = [
+      ['plugins_version_installed', ''],
+      ['ckeditor_version', '4.5.0'],
+    ];
+
+    $config_set = $this->getMockBuilder('\Drupal\Core\Config\ImmutableConfig')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $config_set->expects($this->exactly(2))
+      ->method('get')
+      ->will($this->returnValueMap($value_map));
+
+    $config_factory = $this->getMockBuilder('\Drupal\Core\Config\ConfigFactory')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $config_factory->expects($this->exactly(2))
+      ->method('get')
+      ->with('ckeditor_media_embed.settings')
+      ->willReturn($config_set);
+
+    $this->assertSame('4.5.0', AssetManager::getPluginsVersion($library_discovery, $config_factory, $test_library_path, $test_extension), 'The plugin version that should be retrieved is 4.5.0');
   }
 
   /**

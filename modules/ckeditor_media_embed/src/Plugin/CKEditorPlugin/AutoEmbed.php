@@ -3,10 +3,9 @@
 namespace Drupal\ckeditor_media_embed\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor_media_embed\AssetManager;
+use Drupal\ckeditor_media_embed\CKEditorVersionAwarePluginBase;
 
-use Drupal\Core\Plugin\PluginBase;
 use Drupal\editor\Entity\Editor;
-use Drupal\ckeditor\CKEditorPluginInterface;
 use Drupal\ckeditor\CKEditorPluginConfigurableInterface;
 use Drupal\ckeditor\CKEditorPluginContextualInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -20,7 +19,7 @@ use Drupal\Core\Form\FormStateInterface;
  *   module = "ckeditor_media_embed"
  * )
  */
-class AutoEmbed extends PluginBase implements CKEditorPluginInterface, CKEditorPluginContextualInterface, CKEditorPluginConfigurableInterface {
+class AutoEmbed extends CKEditorVersionAwarePluginBase implements CKEditorPluginConfigurableInterface, CKEditorPluginContextualInterface {
 
   /**
    * {@inheritdoc}
@@ -35,11 +34,25 @@ class AutoEmbed extends PluginBase implements CKEditorPluginInterface, CKEditorP
       'notification',
     ];
 
+    if ($this->needsTextMatchDependency()) {
+      $dependencies[] = 'textmatch';
+    }
+
     if ($embed_plugin = $settings['plugins']['autoembed']['status']) {
       $dependencies[] = $embed_plugin;
     }
 
     return $dependencies;
+  }
+
+  /**
+   * Determine if the textmatch plugin is needed as a dependency.
+   *
+   * @return bool
+   *   Returns TRUE if the textmatch plugin is necessary.
+   */
+  public function needsTextMatchDependency() {
+    return $this->versionCompare('4.11') >= 0;
   }
 
   /**
@@ -90,8 +103,8 @@ class AutoEmbed extends PluginBase implements CKEditorPluginInterface, CKEditorP
       '#title' => $this->t('Enable auto embed'),
       '#options' => [
         '' => $this->t('Disabled'),
-        'embed' => t('Media Embed'),
-        'embedsemantic' => t('Semantic Media Embed'),
+        'embed' => $this->t('Media Embed'),
+        'embedsemantic' => $this->t('Semantic Media Embed'),
       ],
       '#default_value' => !empty($settings['plugins']['autoembed']['status']) ? $settings['plugins']['autoembed']['status'] : '',
       '#description' => $this->t('When enabled to a Media embed plugin, media resource URLs pasted into the editing area are turned into an embed resource using the selected plugin.'),

@@ -3,10 +3,9 @@
 namespace Drupal\ckeditor_media_embed\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor_media_embed\AssetManager;
+use Drupal\ckeditor_media_embed\CKEditorVersionAwarePluginBase;
 
-use Drupal\Core\Plugin\PluginBase;
 use Drupal\editor\Entity\Editor;
-use Drupal\ckeditor\CKEditorPluginInterface;
 
 /**
  * Defines the "Media Embed Base" plugin.
@@ -17,13 +16,29 @@ use Drupal\ckeditor\CKEditorPluginInterface;
  *   module = "ckeditor_media_embed"
  * )
  */
-class AutoLink extends PluginBase implements CKEditorPluginInterface {
+class AutoLink extends CKEditorVersionAwarePluginBase {
 
   /**
    * {@inheritdoc}
    */
   public function getDependencies(Editor $editor) {
-    return [];
+    $dependencies = [];
+
+    if ($this->needsTextMatchDependency()) {
+      $dependencies[] = 'textmatch';
+    }
+
+    return $dependencies;
+  }
+
+  /**
+   * Determine if the textmatch plugin is needed as a dependency.
+   *
+   * @return bool
+   *   Returns TRUE if the textmatch plugin is necessary.
+   */
+  public function needsTextMatchDependency() {
+    return $this->versionCompare('4.11') >= 0;
   }
 
   /**

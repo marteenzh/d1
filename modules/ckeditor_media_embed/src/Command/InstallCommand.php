@@ -6,16 +6,14 @@ use Alchemy\Zippy\Zippy;
 use Drupal\ckeditor_media_embed\AssetManager;
 use Drupal\ckeditor\CKEditorPluginManager;
 use Drupal\Core\Config\ConfigFactory;
+// @codingStandardsIgnoreLine
 use Drupal\Console\Annotations\DrupalCommand;
+use Drupal\Console\Core\Command\Command;
 use Drupal\Console\Core\Command\Shared\ContainerAwareCommandTrait;
 use Drupal\Console\Core\Style\DrupalStyle;
-use Drupal\Console\Helper\HelperTrait;
 use Drupal\Core\Asset\LibraryDiscovery;
 use GuzzleHttp\Client;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Filesystem\Filesystem;
@@ -35,35 +33,45 @@ class InstallCommand extends Command {
   use ContainerAwareCommandTrait;
 
   /**
-   * @var CKEditorPluginManager
+   * The CKEditor plugin manager service.
+   *
+   * @var \Drupal\ckeditor\CKEditorPluginManager
    */
   protected $ckeditorPluginManager;
 
   /**
-   * @var Client
+   * The http client.
+   *
+   * @var \GuzzleHttp\Client
    */
   protected $httpClient;
 
   /**
-   * @var LibraryDiscovery
+   * The library discovery service.
+   *
+   * @var \Drupal\Core\Asset\LibraryDiscovery
    */
   protected $libraryDiscovery;
 
   /**
-   * @var ConfigFactory
+   * The config factory service.
+   *
+   * @var \Drupal\Core\Config\ConfigFactory
    */
   protected $configFactory;
 
   /**
-   * @var Site
-   */
-  protected $site;
-
-  /**
-   * @var FileSystem
+   * The file system component.
+   *
+   * @var \Symfony\Component\Filesystem\Filesystem
    */
   protected $fileSystem;
 
+  /**
+   * The version of the package to be installed.
+   *
+   * @var string
+   */
   protected $packageVersion;
 
   /**
@@ -98,7 +106,7 @@ class InstallCommand extends Command {
     if ($overwrite = $this->askToOverwritePluginFiles($input, $output)) {
       $package_directory = $this->downloadCKEditorFull($io);
 
-      foreach (AssetManager::getPlugins() as $plugin) {
+      foreach (AssetManager::getPlugins($this->packageVersion) as $plugin) {
         $this->installCKeditorPlugin($io, $package_directory, $plugin, $overwrite);
       }
 
@@ -138,7 +146,7 @@ class InstallCommand extends Command {
   /**
    * Install an individual CKEditor plugin.
    *
-   * @param DrupalStyle $io
+   * @param \Drupal\Console\Core\Style\DrupalStyle $io
    *   The Drupal i/o object.
    * @param string $package_directory
    *   The full path to the downloaded CKEditor full development package.
@@ -173,7 +181,7 @@ class InstallCommand extends Command {
   /**
    * Download the full source package of CKEditor and extract it.
    *
-   * @param DrupalStyle $io
+   * @param \Drupal\Console\Core\Style\DrupalStyle $io
    *   The Drupal i/o object.
    *
    * @return string
@@ -214,8 +222,20 @@ class InstallCommand extends Command {
     return $package_directory;
   }
 
+  /**
+   * Download the file.
+   *
+   * @param string $url
+   *   The full url to the file to download.
+   * @param string $destination
+   *   The location to place the file.
+   *
+   * @return bool
+   *   Returns TRUE if the file was downloaded as expected, otherwise FALSE.
+   */
   public function downloadFile($url, $destination) {
     $this->httpClient->get($url, ['sink' => $destination]);
     return file_exists($destination);
   }
+
 }

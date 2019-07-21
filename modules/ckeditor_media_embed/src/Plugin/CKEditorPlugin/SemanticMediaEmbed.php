@@ -42,7 +42,7 @@ class SemanticMediaEmbed extends CKEditorPluginBase {
   public function getButtons() {
     return [
       'EmbedSemantic' => [
-        'label' => t('Semantic Media Embed'),
+        'label' => $this->t('Semantic Media Embed'),
         'image' => AssetManager::getCKEditorLibraryPluginPath() . $this->getPluginId() . '/icons/' . $this->getPluginId() . '.png',
       ],
     ];

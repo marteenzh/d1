@@ -5,6 +5,7 @@ namespace Drupal\ckeditor_media_embed\Form;
 use Drupal\ckeditor_media_embed\AssetManager;
 
 use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Asset\LibraryDiscoveryInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Extension\ModuleHandler;
 use Drupal\Core\Form\ConfigFormBase;
@@ -34,6 +35,13 @@ class CKEditorMediaEmbedSettingsForm extends ConfigFormBase {
   protected $urlGenerator;
 
   /**
+   * The library discovery service.
+   *
+   * @var \Drupal\Core\Asset\LibraryDiscoveryInterface
+   */
+  protected $libraryDiscovery;
+
+  /**
    * Constructs a \Drupal\system\ConfigFormBase object.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
@@ -42,12 +50,16 @@ class CKEditorMediaEmbedSettingsForm extends ConfigFormBase {
    *   The module handler.
    * @param \Drupal\Core\Routing\UrlGeneratorInterface $url_generator
    *   The URL generator.
+   * @param \Drupal\Core\Asset\LibraryDiscoveryInterface $library_discovery
+   *   The library discovery service to use for retrieving information about
+   *   the CKeditor library.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, ModuleHandler $module_handler, UrlGeneratorInterface $url_generator) {
+  public function __construct(ConfigFactoryInterface $config_factory, ModuleHandler $module_handler, UrlGeneratorInterface $url_generator, LibraryDiscoveryInterface $library_discovery) {
     parent::__construct($config_factory);
 
     $this->urlGenerator = $url_generator;
     $this->moduleHandler = $module_handler;
+    $this->libraryDiscovery = $library_discovery;
   }
 
   /**
@@ -57,7 +69,8 @@ class CKEditorMediaEmbedSettingsForm extends ConfigFormBase {
     return new static(
       $container->get('config.factory'),
       $container->get('module_handler'),
-      $container->get('url_generator')
+      $container->get('url_generator'),
+      $container->get('library.discovery')
     );
   }
 
@@ -81,8 +94,9 @@ class CKEditorMediaEmbedSettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('ckeditor_media_embed.settings');
 
-    if (!AssetManager::pluginsAreInstalled()) {
-      drupal_set_message(_ckeditor_media_embed_get_install_instructions(), 'warning');
+    $version = AssetManager::getCKEditorVersion($this->libraryDiscovery, $this->configFactory);
+    if (!AssetManager::pluginsAreInstalled($version)) {
+      $this->messenger()->addWarning(_ckeditor_media_embed_get_install_instructions());
       return [];
     }
 
@@ -101,8 +115,10 @@ class CKEditorMediaEmbedSettingsForm extends ConfigFormBase {
 
     if ($this->moduleHandler->moduleExists('help')) {
       $form['embed_provider']['#description'] .= $this->t('Check out the <a href=":help">help</a> page for more information.<br />',
-        [':help' => $this->urlGenerator->generateFromRoute('help.page', ['name' => 'ckeditor_media_embed'])
-      ]);
+        [
+          ':help' => $this->urlGenerator->generateFromRoute('help.page', ['name' => 'ckeditor_media_embed']),
+        ]
+      );
     }
 
     return parent::buildForm($form, $form_state);

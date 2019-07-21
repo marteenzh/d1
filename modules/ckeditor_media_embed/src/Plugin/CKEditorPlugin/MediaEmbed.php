@@ -42,7 +42,7 @@ class MediaEmbed extends CKEditorPluginBase {
   public function getButtons() {
     return [
       'Embed' => [
-        'label' => t('Media Embed'),
+        'label' => $this->t('Media Embed'),
         'image' => AssetManager::getCKEditorLibraryPluginPath() . $this->getPluginId() . '/icons/' . $this->getPluginId() . '.png',
       ],
     ];
