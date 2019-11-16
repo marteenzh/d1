@@ -5,6 +5,7 @@ namespace Drupal\pagerer\Form;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\pagerer\PagererFactory;
 use Drupal\pagerer\Plugin\PagererStyleManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -36,6 +37,13 @@ abstract class PagererPresetFormBase extends EntityForm {
   protected $styleManager;
 
   /**
+   * The messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * Constructs a base class for pagerer preset add and edit forms.
    *
    * @param \Drupal\Core\Entity\EntityStorageInterface $pagerer_preset_storage
@@ -44,11 +52,14 @@ abstract class PagererPresetFormBase extends EntityForm {
    *   The Pagerer factory.
    * @param \Drupal\pagerer\Plugin\PagererStyleManager $style_manager
    *   The plugin manager for Pagerer style plugins.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
    */
-  public function __construct(EntityStorageInterface $pagerer_preset_storage, PagererFactory $pagerer_factory, PagererStyleManager $style_manager) {
+  public function __construct(EntityStorageInterface $pagerer_preset_storage, PagererFactory $pagerer_factory, PagererStyleManager $style_manager, MessengerInterface $messenger) {
     $this->pagererPresetStorage = $pagerer_preset_storage;
     $this->pagererFactory = $pagerer_factory;
     $this->styleManager = $style_manager;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -58,7 +69,8 @@ abstract class PagererPresetFormBase extends EntityForm {
     return new static(
       $container->get('entity_type.manager')->getStorage('pagerer_preset'),
       $container->get('pagerer.factory'),
-      $container->get('pagerer.style.manager')
+      $container->get('pagerer.style.manager'),
+      $container->get('messenger')
     );
   }
 

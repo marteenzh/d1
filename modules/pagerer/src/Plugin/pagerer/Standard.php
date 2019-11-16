@@ -2,6 +2,8 @@
 
 namespace Drupal\pagerer\Plugin\pagerer;
 
+use Drupal\Core\Template\Attribute;
+
 /**
  * Pager style alike standard Drupal pager theme.
  *
@@ -97,6 +99,7 @@ class Standard extends PagererStyleBase {
             $items[] = [
               'text' => $this->getTag('page_separator'),
               'is_separator' => TRUE,
+              'attributes' => new Attribute(),
             ];
           }
         }
@@ -106,12 +109,14 @@ class Standard extends PagererStyleBase {
             $items[] = [
               'text' => $this->getTag('page_breaker'),
               'is_breaker' => TRUE,
+              'attributes' => new Attribute(),
             ];
           }
           elseif ($this->getOption('separator_display')) {
             $items[] = [
               'text' => $this->getTag('page_separator'),
               'is_separator' => TRUE,
+              'attributes' => new Attribute(),
             ];
           }
         }
@@ -122,6 +127,7 @@ class Standard extends PagererStyleBase {
         $items[] = [
           'text' => $this->getTag('page_breaker'),
           'is_breaker' => TRUE,
+          'attributes' => new Attribute(),
         ];
       }
       // Sets previous page.
@@ -134,6 +140,7 @@ class Standard extends PagererStyleBase {
       $items[] = [
         'text' => $this->getTag('page_breaker'),
         'is_breaker' => TRUE,
+        'attributes' => new Attribute(),
       ];
     }
 

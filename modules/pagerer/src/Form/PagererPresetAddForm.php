@@ -43,7 +43,7 @@ class PagererPresetAddForm extends PagererPresetFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
     $form_state->setRedirectUrl($this->entity->toUrl('edit-form'));
-    drupal_set_message($this->t('Pager %label has been created.', ['%label' => $this->entity->label()]));
+    $this->messenger->addMessage($this->t('Pager %label has been created.', ['%label' => $this->entity->label()]));
   }
 
 }

@@ -48,7 +48,7 @@ Multipane   - a multi-pane (left, center, and right) pager style, enabling
 
 Requirements:
 -------------
-- Drupal 8
+- Drupal 8.5.0 or higher
 
 Instructions:
 -------------

@@ -19,8 +19,12 @@ class PagererFactory implements PagererFactoryInterface {
    */
   public function initPagers() {
     global $pager_total;
-    if (!empty($pager_total)) {
-      for ($i = 0; $i <= max(array_keys($pager_total)); $i++) {
+    if (!empty($pager_total) && count($pager_total) > 0) {
+      $max_pager_id = 0;
+      foreach ($pager_total as $id => $value) {
+        $max_pager_id = $id > $max_pager_id ? $id : $max_pager_id;
+      }
+      for ($i = 0; $i <= $max_pager_id; $i++) {
         $this->get($i);
       }
     }

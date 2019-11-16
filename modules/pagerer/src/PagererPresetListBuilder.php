@@ -24,7 +24,7 @@ class PagererPresetListBuilder extends ConfigEntityListBuilder implements Entity
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    $row['name'] = $this->getLabel($entity);
+    $row['name'] = $entity->label();
     $row['preview']['class'] = ['pagerer-admin-preset-preview'];
     $row['preview']['data'] = [
       '#type' => 'pager',

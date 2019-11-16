@@ -6,8 +6,8 @@ configure: disqus.settings
 dependencies:
   - field
 
-# Information added by Drupal.org packaging script on 2016-10-16
-version: '8.x-1.0-rc3'
+# Information added by Drupal.org packaging script on 2019-08-09
+version: '8.x-1.0-rc4'
 core: '8.x'
 project: 'disqus'
-datestamp: 1476615540
+datestamp: 1565393587

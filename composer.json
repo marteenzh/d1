@@ -6,8 +6,7 @@
     "require": {
         "composer/installers": "^1.0.24",
         "wikimedia/composer-merge-plugin": "^1.4",
-        "embed/embed": "^3.3",
-        "drupal/zurb_foundation": "^6.0"
+        "drupal/media_entity_generic": "^1.0"
     },
     "replace": {
         "drupal/core": "^8.7"

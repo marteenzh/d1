@@ -12,6 +12,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Plugin\PluginFormInterface;
+use Drupal\Core\Template\Attribute;
 use Drupal\pagerer\Entity\PagererPreset;
 use Drupal\pagerer\Pagerer;
 use Drupal\pagerer\Plugin\PagererStyleInterface;
@@ -426,6 +427,7 @@ abstract class PagererStyleBase extends PluginBase implements PagererStyleInterf
       if ($this->getOption('prefix_display')) {
         $items['prefix'] = [
           'text' => $this->getDisplayTag('prefix_label'),
+          'attributes' => new Attribute(),
         ];
       }
       // 3 - Pager.
@@ -435,6 +437,7 @@ abstract class PagererStyleBase extends PluginBase implements PagererStyleInterf
       if ($this->getOption('suffix_display')) {
         $items['suffix'] = [
           'text' => $this->getDisplayTag('suffix_label'),
+          'attributes' => new Attribute(),
         ];
       }
       // 5 - Next + last links.
@@ -457,6 +460,7 @@ abstract class PagererStyleBase extends PluginBase implements PagererStyleInterf
     return [
       [
         'text' => $this->getDisplayTag('pageset_empty'),
+        'attributes' => new Attribute(),
       ],
     ];
   }
@@ -600,6 +604,7 @@ abstract class PagererStyleBase extends PluginBase implements PagererStyleInterf
       'href' => $this->pager->getHref($this->parameters, $this->pager->getCurrentPage() + $offset, NULL, $set_query),
       'title' => $this->getDisplayTag($title_tag . '_title', $offset),
       'reader_text' => $this->getDisplayTag($title_tag . '_reader', $offset),
+      'attributes' => new Attribute(),
     ];
     if ($offset == 0) {
       $ret['is_current'] = TRUE;
@@ -646,6 +651,7 @@ abstract class PagererStyleBase extends PluginBase implements PagererStyleInterf
       'text' => $this->getDisplayTag($scope, $offset),
       'title' => $this->getDisplayTag($scope . '_title', $offset),
       'reader_text' => $this->getDisplayTag($scope . '_reader', $offset),
+      'attributes' => new Attribute(),
     ];
 
     // Get the destination URL link if neeeded.

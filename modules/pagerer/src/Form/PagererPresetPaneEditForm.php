@@ -134,7 +134,7 @@ class PagererPresetPaneEditForm extends PagererPresetFormBase {
    */
   public function save(array $form, FormStateInterface $form_state) {
     parent::save($form, $form_state);
-    drupal_set_message(
+    $this->messenger->addMessage(
       $this->t(
         'The @pane pane configuration has been saved.',
         [

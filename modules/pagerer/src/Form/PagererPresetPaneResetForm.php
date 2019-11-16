@@ -4,6 +4,7 @@ namespace Drupal\pagerer\Form;
 
 use Drupal\Core\Entity\EntityConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\pagerer\PagererFactory;
 use Drupal\pagerer\Plugin\PagererStyleManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -42,16 +43,26 @@ class PagererPresetPaneResetForm extends EntityConfirmFormBase {
   protected $styleManager;
 
   /**
+   * The messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * Constructs the form object.
    *
    * @param \Drupal\pagerer\PagererFactory $pagerer_factory
    *   The Pagerer factory.
    * @param \Drupal\pagerer\Plugin\PagererStyleManager $style_manager
    *   The plugin manager for Pagerer style plugins.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
    */
-  public function __construct(PagererFactory $pagerer_factory, PagererStyleManager $style_manager) {
+  public function __construct(PagererFactory $pagerer_factory, PagererStyleManager $style_manager, MessengerInterface $messenger) {
     $this->pagererFactory = $pagerer_factory;
     $this->styleManager = $style_manager;
+    $this->messenger = $messenger;
     $this->paneLabels = [
       'left' => $this->t('left'),
       'center' => $this->t('center'),
@@ -65,7 +76,8 @@ class PagererPresetPaneResetForm extends EntityConfirmFormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('pagerer.factory'),
-      $container->get('pagerer.style.manager')
+      $container->get('pagerer.style.manager'),
+      $container->get('messenger')
     );
   }
 
@@ -127,7 +139,7 @@ class PagererPresetPaneResetForm extends EntityConfirmFormBase {
     $plugin_definition = $this->styleManager->getDefinition($style);
     $this->entity->setPaneData($this->pane, 'config', []);
     $this->entity->save();
-    drupal_set_message(
+    $this->messenger->addMessage(
       $this->t(
         'The %pane pane configuration has been reset to %style style default configuration.',
         [
