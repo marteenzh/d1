@@ -73,21 +73,17 @@ class Adaptive extends Standard {
     $last = $this->pager->getLastPage();
 
     // Determine adaptive keys coming from query parameters.
-    list($pl, $pr, $px) = [0, $last, NULL];
-    if ($tmp = $this->pager->getAdaptiveKeys()) {
-      // Adaptive keys for the specific element exist.
-      $tmp = explode('.', $tmp);
-      $pl = isset($tmp[0]) ? ($tmp[0] ? $tmp[0] : 0) : 0;
-      $pr = isset($tmp[1]) ? $tmp[1] : $last;
-      $px = isset($tmp[2]) ? $tmp[2] : NULL;
-    }
+    $ak = $this->pager->getAdaptiveKeys() ?? [];
+    $pl = $ak[0] ?? 0;
+    $pr = $ak[1] ?? $last;
+    $px = $ak[2] ?? NULL;
 
     // First.
     $pages[0] = $this->getPageItem(-$current, 'absolute', FALSE, ($current == 0 ? 'page_current' : 'page'), FALSE);
-    $pages[0]['href'] = $this->pager->getHref($this->parameters, 0, "0.$last");
+    $pages[0]['href'] = $this->pagerManager->getHref($this->pager, $this->parameters, 0, [0, $last]);
     // Last.
     $pages[$last] = $this->getPageItem($last - $current, 'absolute', FALSE, ($current == $last ? 'page_current' : 'page'), FALSE);
-    $pages[$last]['href'] = $this->pager->getHref($this->parameters, $last, "0.$last");
+    $pages[$last]['href'] = $this->pagerManager->getHref($this->pager, $this->parameters, $last, [0, $last]);
     // Neighborhood.
     $pages = $this->buildNeighborhoodPageList($pages);
     // Adaptive keys left pointed page.
@@ -126,7 +122,7 @@ class Adaptive extends Standard {
         $d = &$pages[$kpages[$x]];
         // Adaptive page.
         if (isset($d['outer_page'])) {
-          $d['href'] = $this->pager->getHref($this->parameters, $kpages[$x], $kpages[$x - 1] . '.' . $kpages[$x + 1]);
+          $d['href'] = $this->pagerManager->getHref($this->pager, $this->parameters, $kpages[$x], [$kpages[$x - 1], $kpages[$x + 1]]);
           continue;
 
         }
@@ -171,12 +167,12 @@ class Adaptive extends Standard {
           }
         }
         if ($xpx) {
-          $page_ak_curr = implode('.', [$xpl, $xpr, $xpx]);
+          $page_ak_curr = [$xpl, $xpr, $xpx];
         }
         else {
-          $page_ak_curr = implode('.', [$xpl, $xpr]);
+          $page_ak_curr = [$xpl, $xpr];
         }
-        $d['href'] = $this->pager->getHref($this->parameters, $kpages[$x], $page_ak_curr);
+        $d['href'] = $this->pagerManager->getHref($this->pager, $this->parameters, $kpages[$x], $page_ak_curr);
       }
     }
     return $pages;
@@ -192,12 +188,12 @@ class Adaptive extends Standard {
    * @param int $r
    *   Adaptive lock to right page.
    * @param int $x
-   *   Adaptive center lock for neighborhood.
+   *   (Optional) Adaptive center lock for neighborhood.
    *
    * @return array
    *   Render array of pages items, with a 'outer_page' key set to TRUE.
    */
-  protected function buildAdaptivePageList(array &$pages, $l, $r, $x) {
+  protected function buildAdaptivePageList(array &$pages, int $l, int $r, int $x = NULL) {
     $current = $this->pager->getCurrentPage();
 
     $x = is_null($x) ? $current : $x;

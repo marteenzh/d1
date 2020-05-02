@@ -11,6 +11,11 @@ use Drupal\Tests\views\FunctionalJavascript\PaginationAJAXTest;
  */
 class CorePagerReplacePaginationAJAXTest extends PaginationAJAXTest {
 
+  /**
+   * The URL for Pagerer admin UI page.
+   *
+   * @var string
+   */
   protected $pagererAdmin = 'admin/config/user-interface/pagerer';
 
   /**

@@ -1,0 +1,13 @@
+name: jQuery UI Selectmenu
+type: module
+description: 'Provides jQuery UI Selectmenu library.'
+package: jQuery UI
+core: 8.x
+dependencies:
+  - jquery_ui:jquery_ui
+  - jquery_ui_menu:jquery_ui_menu
+
+# Information added by Drupal.org packaging script on 2019-10-16
+version: '8.x-1.1'
+project: 'jquery_ui_selectmenu'
+datestamp: 1571242396

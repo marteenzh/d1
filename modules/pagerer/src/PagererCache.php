@@ -3,11 +3,19 @@
 namespace Drupal\pagerer;
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Security\TrustedCallbackInterface;
 
 /**
- * Cache related helpers.
+ * Pagerer cache callback.
  */
-class PagererCache {
+class PagererCache implements TrustedCallbackInterface {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function trustedCallbacks() {
+    return ['preRenderPager'];
+  }
 
   /**
    * A #pre_render callback for type #pager.

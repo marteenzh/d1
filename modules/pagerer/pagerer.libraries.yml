@@ -31,7 +31,7 @@ mini:
       css/pagerer.mini.css: {}
   dependencies:
     - pagerer/base.js
-    - core/jquery.ui.button
+    - jquery_ui_button/button
 
 multipane:
   version: VERSION
@@ -48,7 +48,7 @@ scrollpane:
       css/pagerer.scrollpane.css: {}
   dependencies:
     - pagerer/base.js
-    - core/jquery.ui.button
+    - jquery_ui_button/button
 
 slider:
   version: VERSION
@@ -59,4 +59,4 @@ slider:
       css/pagerer.slider.css: {}
   dependencies:
     - pagerer/base.js
-    - core/jquery.ui.slider
+    - jquery_ui_slider/slider

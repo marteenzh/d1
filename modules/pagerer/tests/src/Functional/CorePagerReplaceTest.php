@@ -12,8 +12,16 @@ use Drupal\Tests\system\Functional\Pager\PagerTest;
  */
 class CorePagerReplaceTest extends PagerTest {
 
+  /**
+   * The URL for Pagerer admin UI page.
+   *
+   * @var string
+   */
   protected $pagererAdmin = 'admin/config/user-interface/pagerer';
 
+  /**
+   * {@inheritdoc}
+   */
   public static $modules = [
     'dblog',
     'image',
@@ -40,6 +48,7 @@ class CorePagerReplaceTest extends PagerTest {
       'administer site configuration',
     ]));
 
+    // Replace the core pager.
     $edit = [
       'label' => 'core_replace',
       'id' => 'core_replace',

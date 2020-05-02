@@ -74,12 +74,18 @@ class AccessStorage {
 
   private $logger;
 
+  /**
+   * @var array
+   */
+  private $grantsCache;
+
   public function __construct(Connection $database, TermHandler $term, AccessCheck $accessCheck, CacheNegotiator $cacheNegotiator, LoggerChannelInterface $logger) {
     $this->database  = $database;
     $this->term = $term;
     $this->accessCheck = $accessCheck;
     $this->cacheNegotiator = $cacheNegotiator;
     $this->logger = $logger;
+    $this->grantsCache = [];
   }
 
   /**
@@ -633,6 +639,10 @@ class AccessStorage {
   {
     $grants = null;
 
+    if (isset($this->grantsCache[$user->id()])) {
+      return $this->grantsCache[$user->id()];
+    }
+
     if (!empty($permittedNids = $this->computePermittedTids($user))) {
       $query = $this->database->select('node_access', 'na')
         ->fields('na', ['gid'])
@@ -645,6 +655,8 @@ class AccessStorage {
         $grants[self::NODE_ACCESS_REALM][] = $gid;
       }
     }
+
+    $this->grantsCache[$user->id()] = $grants;
 
     return $grants;
   }

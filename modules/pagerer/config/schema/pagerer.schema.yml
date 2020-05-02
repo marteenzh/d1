@@ -8,6 +8,21 @@ pagerer.settings:
     core_override_preset:
       type: string
       label: 'Preset replacing standard pager'
+    url_querystring:
+      type: mapping
+      mapping:
+        core_override:
+          type: boolean
+          label: 'Whether Pagerer is overriding the standard URL querystring "page" key'
+        querystring_key:
+          type: string
+          label: 'The parameter key to be used in the URL querystring to identify the current pages, overriding "page", for example "pg"'
+        index_base:
+          type: integer
+          label: 'The number base for the page index in the URL querystring, 0 or 1'
+        encode_method:
+          type: string
+          label: 'A method to be used to encode the querystring'
 
 # Pagerer preset entities.
 pagerer.preset.*:

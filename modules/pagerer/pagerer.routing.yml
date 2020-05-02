@@ -8,6 +8,14 @@ entity.pagerer_preset.collection:
   requirements:
     _permission: 'administer site configuration'
 
+pagerer.url_settings:
+  path: '/admin/config/user-interface/pagerer/url_settings'
+  defaults:
+    _form: '\Drupal\pagerer\Form\PagererUrlConfigForm'
+    _title: 'Pagerer URL settings'
+  requirements:
+    _permission: 'administer site configuration'
+
 pagerer.preset_add:
   path: '/admin/config/user-interface/pagerer/preset/add'
   defaults:

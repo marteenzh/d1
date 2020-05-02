@@ -233,14 +233,14 @@
         return 0;
       }
       var queryParameters = this.parseQueryString(url);
-      if (typeof queryParameters['page'] == 'undefined') {
+      if (typeof queryParameters[pState.qsKey] == 'undefined') {
         return 0;
       }
-      var elementPages = queryParameters['page'].split(',');
+      var elementPages = queryParameters[pState.qsKey].split(pState.qsValueSep);
       if (typeof elementPages[pState.element] == 'undefined') {
         return 0;
       }
-      return parseInt(elementPages[pState.element]);
+      return parseInt(elementPages[pState.element]) - pState.qsIndexBase;
     },
 
     /**
@@ -307,7 +307,7 @@
         targetUrl = Drupal.url(location.pathname.slice(drupalSettings.path.baseUrl.length + drupalSettings.path.pathPrefix.length));
       }
       if (pState.queryString) {
-        targetUrl = targetUrl + '?' + pState.queryString.replace(/pagererpage/, targetPage);
+        targetUrl = targetUrl + '?' + pState.queryString.replace(/pagererpage/, targetPage + pState.qsIndexBase);
       }
       return targetUrl;
     },

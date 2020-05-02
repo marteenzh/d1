@@ -17,7 +17,7 @@ class PagererExampleController extends ControllerBase {
    */
   public function examplePageTitle() {
     // Set the page title to show current Pagerer version.
-    $module_info = system_get_info('module', 'pagerer');
+    $module_info = \Drupal::service('extension.list.module')->getExtensionInfo('pagerer');
     return $this->t("Pagerer @version - example page", ['@version' => $module_info['version']]);
   }
 
@@ -99,12 +99,14 @@ class PagererExampleController extends ControllerBase {
     $build['pager_pager_0'] = [
       '#type' => 'pager',
       '#theme' => 'pager',
+      '#attributes' => ['class' => ['pager-pager-0']],
       '#element' => 0,
     ];
     $build['l_pagerer_standard_0'] = ['#markup' => '<br/>' . $this->t("<b>'Standard' pagerer style (mimick of Drupal's standard)</b> in three 'display' modes: 'pages', 'items', and 'item_ranges'")];
     $build['pagerer_standard_pages_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-standard-pages-0']],
       '#element' => 0,
       '#style' => 'standard',
       '#config' => [
@@ -114,6 +116,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_standard_items_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-standard-items-0']],
       '#element' => 0,
       '#style' => 'standard',
       '#config' => [
@@ -124,6 +127,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_standard_item_ranges_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-standard-item-ranges-0']],
       '#element' => 0,
       '#style' => 'standard',
       '#config' => [
@@ -135,6 +139,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_progressive_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-progressive-0']],
       '#element' => 0,
       '#style' => 'progressive',
       '#config' => [
@@ -145,6 +150,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_adaptive_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-adaptive-0']],
       '#element' => 0,
       '#style' => 'adaptive',
       '#config' => [
@@ -155,6 +161,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_mini_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-mini-0']],
       '#element' => 0,
       '#style' => 'mini',
       '#config' => [
@@ -165,6 +172,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_scrollpane_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-scrollpane-0']],
       '#element' => 0,
       '#style' => 'scrollpane',
       '#config' => [
@@ -175,6 +183,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_slider_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-slider-0']],
       '#element' => 0,
       '#style' => 'slider',
       '#config' => [
@@ -186,6 +195,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_pagerer_0'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer',
+      '#attributes' => ['class' => ['pagerer-pagerer-0']],
       '#element' => 0,
       '#config' => [
         'preset' => $this->config('pagerer.settings')->get('core_override_preset'),
@@ -210,6 +220,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_basic_1'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-basic-1']],
       '#element' => 1,
       '#style' => 'basic',
       '#config' => [
@@ -220,6 +231,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_adaptive_1'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-adaptive-1']],
       '#element' => 1,
       '#style' => 'adaptive',
       '#config' => [
@@ -230,6 +242,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_pagerer_1'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer',
+      '#attributes' => ['class' => ['pagerer-pagerer-1']],
       '#element' => 1,
       '#config' => [
         'preset' => $this->config('pagerer.settings')->get('core_override_preset'),
@@ -239,6 +252,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_pagerer_direct_1'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer',
+      '#attributes' => ['class' => ['pagerer-pagerer-direct-1']],
       '#element' => 1,
       '#config' => [
         'panes' => [
@@ -322,6 +336,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_adaptive_2'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer_base',
+      '#attributes' => ['class' => ['pagerer-adaptive-2']],
       '#element' => 2,
       '#style' => 'adaptive',
       '#config' => [
@@ -332,6 +347,7 @@ class PagererExampleController extends ControllerBase {
     $build['pagerer_pagerer_2'] = [
       '#type' => 'pager',
       '#theme' => 'pagerer',
+      '#attributes' => ['class' => ['pagerer-pagerer-2']],
       '#element' => 2,
       '#config' => [
         'preset' => $this->config('pagerer.settings')->get('core_override_preset'),

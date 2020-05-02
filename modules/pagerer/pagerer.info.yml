@@ -1,13 +1,14 @@
 type: module
-core: 8.x
+core_version_requirement: ^8.8 || ^9
 name: Pagerer
 description: 'Configurable pager styles.'
 package: User interface
 configure: entity.pagerer_preset.collection
 dependencies:
-  - drupal:system (>=8.5.0)
+  - jquery_ui_button:jquery_ui_button
+  - jquery_ui_slider:jquery_ui_slider
 
-# Information added by Drupal.org packaging script on 2019-10-18
-version: '8.x-1.5'
+# Information added by Drupal.org packaging script on 2020-03-24
+version: '8.x-2.0-rc1'
 project: 'pagerer'
-datestamp: 1571388493
+datestamp: 1585047903

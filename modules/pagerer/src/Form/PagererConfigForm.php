@@ -7,7 +7,7 @@ use Drupal\Core\Entity\EntityListBuilderInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\ElementInfoManagerInterface;
-use Drupal\pagerer\PagererFactory;
+use Drupal\Core\Pager\PagerManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -23,11 +23,11 @@ class PagererConfigForm extends ConfigFormBase {
   protected $presetsList;
 
   /**
-   * The Pagerer factory.
+   * The pager manager.
    *
-   * @var \Drupal\pagerer\PagererFactory
+   * @var \Drupal\Core\Pager\PagerManagerInterface
    */
-  protected $pagererFactory;
+  protected $pagerManager;
 
   /**
    * The element info manager.
@@ -43,15 +43,15 @@ class PagererConfigForm extends ConfigFormBase {
    *   The factory for configuration objects.
    * @param \Drupal\Core\Entity\EntityListBuilderInterface $presets_list
    *   The list of Pagerer presets.
-   * @param \Drupal\pagerer\PagererFactory $pagerer_factory
-   *   The Pagerer factory.
+   * @param \Drupal\Core\Pager\PagerManagerInterface $pager_manager
+   *   The pager manager.
    * @param \Drupal\Core\Render\ElementInfoManagerInterface $element_info_manager
    *   The element info manager.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, EntityListBuilderInterface $presets_list, PagererFactory $pagerer_factory, ElementInfoManagerInterface $element_info_manager) {
+  public function __construct(ConfigFactoryInterface $config_factory, EntityListBuilderInterface $presets_list, PagerManagerInterface $pager_manager, ElementInfoManagerInterface $element_info_manager) {
     parent::__construct($config_factory);
     $this->presetsList = $presets_list;
-    $this->pagererFactory = $pagerer_factory;
+    $this->pagerManager = $pager_manager;
     $this->elementInfoManager = $element_info_manager;
   }
 
@@ -62,7 +62,7 @@ class PagererConfigForm extends ConfigFormBase {
     return new static(
       $container->get('config.factory'),
       $container->get('entity_type.manager')->getListBuilder('pagerer_preset'),
-      $container->get('pagerer.factory'),
+      $container->get('pager.manager'),
       $container->get('plugin.manager.element_info')
     );
   }
@@ -90,7 +90,7 @@ class PagererConfigForm extends ConfigFormBase {
     $form['#attached']['library'][] = 'pagerer/admin.ui';
 
     // Prepare fake pager for previews.
-    $this->pagererFactory->get(5)->init(47884, 50);
+    $this->pagerManager->createPager(47884, 50, 5);
 
     // Presets table.
     $form['presets'] = $this->presetsList->render();
@@ -122,12 +122,14 @@ class PagererConfigForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $config = $this->config('pagerer.settings');
     // Set pager override if it has changed.
     $pager_override = $form_state->getValue('core_override_preset');
-    if ($this->config('pagerer.settings')->get('core_override_preset') !== $pager_override) {
-      $this->config('pagerer.settings')->set('core_override_preset', $pager_override)->save();
+    if ($config->get('core_override_preset') !== $pager_override) {
+      $config->set('core_override_preset', $pager_override);
       $this->elementInfoManager->clearCachedDefinitions();
     }
+    $config->save();
     parent::submitForm($form, $form_state);
   }
 

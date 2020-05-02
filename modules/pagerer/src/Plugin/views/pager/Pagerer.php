@@ -4,6 +4,8 @@ namespace Drupal\pagerer\Plugin\views\pager;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Pager\PagerManagerInterface;
+use Drupal\Core\Pager\PagerParametersInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\views\Plugin\views\pager\Full;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -58,11 +60,15 @@ class Pagerer extends Full implements ContainerFactoryPluginInterface {
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
+   * @param \Drupal\Core\Pager\PagerManagerInterface $pager_manager
+   *   The pager manager.
+   * @param \Drupal\Core\Pager\PagerParametersInterface $pager_parameters
+   *   The pager parameters.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, PagerManagerInterface $pager_manager, PagerParametersInterface $pager_parameters, EntityTypeManagerInterface $entity_type_manager) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $pager_manager, $pager_parameters);
     $this->entityTypeManager = $entity_type_manager;
     $this->presetsList = $this->entityTypeManager->getListBuilder('pagerer_preset');
     $this->presetStorage = $this->entityTypeManager->getStorage('pagerer_preset');
@@ -76,6 +82,8 @@ class Pagerer extends Full implements ContainerFactoryPluginInterface {
       $configuration,
       $plugin_id,
       $plugin_definition,
+      $container->get('pager.manager'),
+      $container->get('pager.parameters'),
       $container->get('entity_type.manager')
     );
   }

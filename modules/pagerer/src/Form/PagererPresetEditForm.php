@@ -20,7 +20,7 @@ class PagererPresetEditForm extends PagererPresetFormBase {
     $form = parent::form($form, $form_state);
 
     // Fake pager for preview.
-    $this->pagererFactory->get(0)->init(47884, 50);
+    $this->pagerManager->createPager(47884, 50);
 
     // Add admin UI library.
     $form['#attached']['library'][] = 'pagerer/admin.ui';

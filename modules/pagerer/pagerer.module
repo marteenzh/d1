@@ -20,6 +20,12 @@ function pagerer_help($route_name, RouteMatchInterface $route_match) {
     case 'entity.pagerer_preset.edit_form':
       return '<p>' . t("Select a Pagerer style for each of the left, center and right panes. Each pane can be further configured clicking the appropriate action button.") . '</p>';
 
+    case 'pagerer.url_settings':
+      $output = '<p>' . t("Pagerer allows replacing the standard <kbd>page</kbd> querystring parameter in URLs with its own version. That can also allow starting the page count from 1 rather than from 0 in URLs.") . '</p>';
+      $output .= '<dt>' . t('<b>Example</b>') . '</dt>';
+      $output .= '<dd>' . t("Select the <em>URL querystring</em> checkbox, and <em>One-based</em> from <em>Page index base</em>. This will turn a <kbd>?page=0</kbd> pager URL into <kbd>?pg=1</kbd>.") . '</dd>';
+      return $output;
+
   }
 }
 
@@ -113,9 +119,15 @@ function template_preprocess_pagerer(array &$variables) {
     '#config' => [],
   ], $variables['pager']);
 
+  $pager = \Drupal::service('pager.manager')->getPager($variables['pager']['#element']);
+
+  // Nothing to do if there is no pager.
+  if (!isset($pager)) {
+    return;
+  }
+
   // Preprocess through the multipane pager plugin.
-  $pager = \Drupal::service('pagerer.factory')
-    ->get($variables['pager']['#element'])
+  $pager
     ->setRouteName($variables['pager']['#route_name'])
     ->setRouteParameters(isset($variables['pager']['#route_parameters']) ? $variables['pager']['#route_parameters'] : []);
   \Drupal::service('pagerer.style.manager')
@@ -154,6 +166,13 @@ function template_preprocess_pagerer_base(array &$variables) {
     '#state'      => [],
   ], $variables['pager']);
 
+  $pager = \Drupal::service('pager.manager')->getPager($variables['pager']['#element']);
+
+  // Nothing to do if there is no pager.
+  if (!isset($pager)) {
+    return;
+  }
+
   // Move some variables from the pager element to root.
   $variables['style'] = $variables['pager']['#style'];
   $variables['embedded'] = $variables['pager']['#embedded'];
@@ -168,8 +187,7 @@ function template_preprocess_pagerer_base(array &$variables) {
   }
 
   // Let the style plugin do its own preprocessing.
-  $pager = \Drupal::service('pagerer.factory')
-    ->get($variables['pager']['#element'])
+  $pager
     ->setRouteName($variables['pager']['#route_name'])
     ->setRouteParameters(isset($variables['pager']['#route_parameters']) ? $variables['pager']['#route_parameters'] : []);
   \Drupal::service('pagerer.style.manager')

@@ -37,3 +37,4 @@ sites/default/services.yml
 # Exclude IDE's project directory
 nbproject
 .idea
+/README.txt

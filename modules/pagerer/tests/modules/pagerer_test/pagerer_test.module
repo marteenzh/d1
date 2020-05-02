@@ -10,7 +10,7 @@
  */
 function pagerer_test_preprocess_pagerer_base(&$variables) {
   // Check if pager is needed; if not, return immediately.
-  $pager = \Drupal::service('pagerer.factory')->get($variables['pager']['#element']);
+  $pager = \Drupal::service('pager.manager')->getPager($variables['pager']['#element']);
   if ($pager->getTotalPages() <= 1) {
     return;
   }

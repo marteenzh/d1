@@ -11,8 +11,16 @@ use Drupal\Tests\comment\Functional\CommentInterfaceTest;
  */
 class CorePagerReplaceCommentInterfaceTest extends CommentInterfaceTest {
 
+  /**
+   * The URL for Pagerer admin UI page.
+   *
+   * @var string
+   */
   protected $pagererAdmin = 'admin/config/user-interface/pagerer';
 
+  /**
+   * {@inheritdoc}
+   */
   public static $modules = ['dblog', 'pagerer', 'comment'];
 
   /**
